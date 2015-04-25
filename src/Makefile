@@ -22,7 +22,6 @@ ready: dirs gitting chmods
 chmods:
 	chmod +x *ok.py
 
-
 define p2md
   BEGIN	   {  
 	 q="\""
