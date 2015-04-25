@@ -3,14 +3,10 @@ out    = ../doc#
 etc    = ../etc#
 prefix = https://github.com/txt/mase/blob/master#
 
-srcdocs=$(shell ls doc/*.md)#
-uppers= $(root)/$(subst doc/,$(root)/,$(srcdocs))#
 pys  = $(subst .py,.md,$(shell ls *.py;))#
 mds  = $(out)/$(subst .md ,.md $(out)/,$(pys))#
 Make = $(MAKE) --no-print-directory #
 
-x:
-	@echo $(uppers)
 
 publish: dirs $(mds) $(uppers) typo
 
@@ -93,8 +89,4 @@ $(root)/TOC.md : $(etc)/header.txt $(etc)/footer.txt $(etc)/toc.sh
           | sed 's?__PRE?$(prefix)?g' > $@;
 	@git add $@
 
-$(root)/*.md : doc/*.md $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
-	@echo "making... $<"
-	@(cat $(etc)/header.txt  $<  $(etc)/footer.txt) \
-	| sed 's?__PRE?$(prefix)?g' > $@;
-	@git add $@
+

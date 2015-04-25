@@ -1,4 +1,4 @@
-"""
+
 
 # MASE:  (Model-based) Automated   Software Engineering
 
@@ -266,4 +266,4 @@ While MASE is very old, it still has numerous pressing problems and open issues:
 + **How to scope the models?**   While this  subject advoated using models, it has to be said that if they are used out-of-scope, then models become very dangerous. Models reflect the experience of the modeler or the training data used to build the model. When models are applied outside of that experience base, disasterous consequences can follow (e.g. [the model that
 killed seven American astronauts](http://spaceflightnow.com/columbia/report/inflight.html)).
 
-"""
+
