@@ -28,11 +28,11 @@ define p2md
 	 In = 1
   }	 
   /^"""</,/^>"""/ {  next } 
-  /^"""/	  {  In = 1 - In       
-		     if (In)	{  
-                       Once = 1  
+  /^"""/	  {  Once = 1
+                     In = 1 - In       
+		     if (In) 
 		       print "````python"
-		     } else	  
+		     else	  
 		       if (First)   
 			 First = 0   
 		       else     
