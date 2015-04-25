@@ -1,7 +1,7 @@
 root=../..#
 etc=$(root)/etc#
 prefix = https://github.com/txt/mase/blob/master#
-img=https://raw.githubusercontent.com/txt/mase/master/img
+img=https://raw.githubusercontent.com/txt/mase/master/img#
 
 mds=$(shell ls *.md)
 outs=$(root)/$(subst .md ,.md $(root)/,$(mds))

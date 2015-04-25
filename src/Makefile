@@ -9,7 +9,7 @@ mds  = $(out)/$(subst .md ,.md $(out)/,$(pys))#
 Make = $(MAKE) --no-print-directory #
 
 
-publish: dirs $(mds) $(uppers) typo
+publish: dirs $(mds) uppers typo
 
 typo   : ;cd ..; $(Make) typo
 commit : ;cd ..; $(Make) commit
@@ -66,6 +66,9 @@ endef
 export toc
 
 tocs : $(root)/TOC.md
+
+uppers:
+	@cd doc; $(Make) all
 
 dirs:
 	@ - mkdir -p $(out) $(etc)
