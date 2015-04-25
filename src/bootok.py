@@ -1,5 +1,12 @@
 #!/usr/bin/python
 from __future__ import print_function
+
+"""
+
+Boot test routines.
+
+"""
+
 from boot import * # get the test engine
 
 @ok # run+test something at load time
