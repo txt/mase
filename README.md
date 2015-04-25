@@ -26,7 +26,7 @@ models used in software engineering
 <tr><td valign=top>
 <ul>
 <li>[Syllabus](syllabus.md)</lu1>
-<li><a href="Repos">Sample code</a></lu1>
+
 </ul>
 </td><td valign=top>
 
@@ -37,8 +37,6 @@ models used in software engineering
 </td><td valign=top>
 0. [HomeWork0](hw0.md) <br>
 
-<hr>
-[Models](
 </td><td valign=top>
 
 1. [Review1](review1.md)<br>
