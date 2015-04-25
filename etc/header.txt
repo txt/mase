@@ -1,6 +1,6 @@
 
 
 [<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](__PRE/README.md)    
-_Go to: [Home](__PRE/README.md) | [About](__PRE/ABOUT.md) | [Contents](__PRE/TOC.md)_ | [Syllabus](__PRE/SYLLABUS.md)_
+_Go to: [Home](__PRE/README.md) | [About](__PRE/ABOUT.md) | [Contents](__PRE/TOC.md) | [Syllabus](__PRE/SYLLABUS.md)_
 
 
