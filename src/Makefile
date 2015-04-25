@@ -68,7 +68,7 @@ export toc
 tocs : $(root)/TOC.md
 
 uppers:
-	@cd doc; $(Make) all
+	cd doc; $(Make) all
 
 dirs:
 	@ - mkdir -p $(out) $(etc)
