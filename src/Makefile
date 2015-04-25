@@ -24,6 +24,8 @@ chmods:
 
 moves:
 	mv $(out)/[A-Z]*.md $(root)
+	git add $(root)/*.md
+	git add $(out)/*.md
 
 define p2md
   BEGIN	   {  
