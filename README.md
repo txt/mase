@@ -48,7 +48,7 @@ models used in software engineering
 __________
 
 
-<img  align=left src="https://raw.githubusercontent.com/txt/mase/master/img/license.png">
+<img  align=right src="https://raw.githubusercontent.com/txt/mase/master/img/license.png">
 Copyright © 2015 [Tim Menzies](http://menzies.us), email: <tim.menzies@gmail.com>.
 
 This is free and unencumbered software released into the public domain.
