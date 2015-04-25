@@ -1,6 +1,6 @@
 
-_[Home](__PRE/README.md) | [Contents](__PRE/TOC.md) | [Contact](http://menzies.us) _    
+[Home](__PRE/README.md) | [Contents](__PRE/TOC.md) | [Contact](http://menzies.us)   
 [<img width=900 src="__IMG/banner.png">](__PRE/README.md)    
-_Go to: [About](__PRE/ABOUT.md) | [Syllabus](__PRE/SYLLABUS.md) | [Code](https://github.com/txt/mase/tree/master/src)_
+Go to: [About](__PRE/ABOUT.md) | [Syllabus](__PRE/SYLLABUS.md) | [Code](https://github.com/txt/mase/tree/master/src)
 
 
