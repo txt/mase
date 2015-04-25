@@ -68,10 +68,14 @@ class Row:
     if t:
       i.table = t
       t.rows += [i]
-      for hdr in t.all:
-        tmp = cells[hdr.pos]
-        if tmp != the.TBL.skip:
-          hdr += tmp
+      i += cells
+  def __iadd__(i,cells):
+    i._cache = None
+    for hdr in i.table.all:
+      tmp = cells[hdr.pos]
+      if tmp != the.TBL.skip:
+        hdr += tmp
+    return i
   def __getitem__(i,k): return i.cells[k]
   def __sub__(i,j)    : return dist(i,j,i.table)
   def __hash__(i)     : return i.id
@@ -79,16 +83,14 @@ class Row:
   @cache
   def fromHell(i) :
     n = inc = 0
-    for hdr in t.more.values():
+    for hdr in i.table.more.values():
       n   += 1
-      inc += hdr.fromHell(i[hdr.pos],
-                          the.TBL.norm,
-                          more=True)
-    for hdr in t.less.values():
+      x    = i[hdr.pos]
+      inc += hdr.fromHell(x,the.TBL.norm,True)
+    for hdr in i.table.less.values():
       n   += 1
-      inc += hdr.fromHell(i[hdr.pos],
-                          the.TBL.norm,
-                          more=False)
+      x    = i[hdr.pos]
+      inc += hdr.fromHell(x,the.TBL.norm,False)
     return inc**0.5 / n**0.5
 
 def furthest(i,rows=None,t=None):

@@ -68,7 +68,7 @@ def has(x,  decs=None, wicked=None, skip=None) :
 def cache(f):
   name = f.__name__
   def wrapper(i):
-    i.cache = i._cache or {}
+    i._cache = i._cache or {}
     key = (name, i.id)
     if key in i._cache:
       x = i._cache[key]

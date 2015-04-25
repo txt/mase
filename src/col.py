@@ -43,8 +43,10 @@ class Num:
   def trim(i,x):
     return max(i.lo, min(x, i.hi))
   def fromHell(i,x,norm, want):
-    if want: hell =  0 if norm else i.lo
-    else:    hell =  1 if norm else i.hi
+    if want:
+      hell =  0 if norm else i.lo
+    else:
+      hell =  1 if norm else i.hi
     if norm:
       x = i.norm(x) 
     return (x-hell)**2
