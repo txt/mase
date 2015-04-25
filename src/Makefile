@@ -9,32 +9,14 @@ Make = $(MAKE) --no-print-directory #
 
 publish: dirs $(mds)  typo
 
-typo:  ready
-	@- git status
-	@- git commit -am "saving"
-	@- git push origin master
-
-commit:  ready
-	@- git status
-	@- git commit -a
-	@- git push origin master
-
-update:; @- git pull origin master
-status:; @- git status
+typo   : ;cd ..; $(Make) typo
+commit : ;cd ..; $(Make) commit
+update : ;cd ..; $(Make) update
+status : ;cd ..; $(Make) status
+gitting: ;cd ..; $(Make) gitting
+timm   : ;cd ..; $(Make) timm
 
 ready: dirs gitting
-
-gitting:
-	@git config --global credential.helper cache
-	@git config credential.helper 'cache --timeout=3600'
-
-your:
-	@git config --global user.name "Your name"
-	@git config --global user.email your@email.address
-
-timm:
-	@git config --global user.name "Tim Menzies"
-	@git config --global user.email tim.menzies@gmail.com
 
 define p2md
   BEGIN	   {  
