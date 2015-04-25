@@ -8,7 +8,7 @@ pys  = $(subst .py,.md,$(shell ls *.py;))#
 mds  = $(out)/$(subst .md ,.md $(out)/,$(pys))#
 Make = $(MAKE) --no-print-directory #
 
-publish: dirs $(mds) uppers typo
+publish: dirs $(mds) $(root)/toc.md uppers typo
 
 typo   : ;cd ..; $(Make) typo
 commit : ;cd ..; $(Make) commit
@@ -83,14 +83,13 @@ $(out)/%.md: %.py $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
          | sed 's?__IMG?$(img)?g' > $@;
 	@git add $@
 
-
-$(root)/TOC.md : $(etc)/header.txt $(etc)/footer.txt $(etc)/toc.sh
-	@echo "making... $@"
+$(root)/toc.md:  Makefile $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
+	@echo "making... $(root)/TOC.md"
 	@(cat $(etc)/header.txt; \
           bash $(etc)/toc.sh   ; \
           cat $(etc)/footer.txt) \
           | sed 's?__PRE?$(prefix)?g'  \
-          | sed 's?__IMG?$(img)?g' > $@;
+          | sed 's?__IMG?$(img)?g' > $(root)/TOC.md 
 	@git add $@
 
 
