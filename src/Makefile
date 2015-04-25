@@ -9,9 +9,6 @@ Make = $(MAKE) --no-print-directory #
 
 publish: dirs $(mds)  typo
 
-x:
-	echo $(pys)
-
 typo:  ready
 	@- git status
 	@- git commit -am "saving"
