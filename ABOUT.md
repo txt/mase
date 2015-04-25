@@ -8,7 +8,7 @@ _Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](http
 
 # MASE:  (Model-based) Automated   Software Engineering
 
-<img align=left src="https://raw.githubusercontent.com/txt/mase/master/img/mace.png">
+<img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/mace.png">
 Welcome to MASE (rhymes with "base", pronounced like "mace").
 
 MASE is about
@@ -277,7 +277,8 @@ killed seven American astronauts](http://spaceflightnow.com/columbia/report/infl
 __________
 
 
-<img  align=right src="https://raw.githubusercontent.com/txt/mase/master/img/license.png">
+![lic](img/license.png)
+
 Copyright © 2015 [Tim Menzies](http://menzies.us), email: <tim.menzies@gmail.com>.
 
 This is free and unencumbered software released into the public domain.
