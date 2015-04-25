@@ -39,7 +39,9 @@ define p2md
 			 print "````"  
 		     next }       
   ! First { print $$0 }       
-  END     { if (In || !Once) print "````"  }
+  END     { if (In ) print "````"
+            if (!Once) print "```"  
+}
 endef
 
 export p2md
