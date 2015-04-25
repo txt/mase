@@ -3,12 +3,16 @@ out    = ../doc#
 etc    = ../etc#
 prefix = https://github.com/txt/mase/blob/master#
 
-
+srcdocs=$(shell ls doc/*.md)#
+uppers= $(root)/$(subst doc/,$(root)/,$(srcdocs))#
 pys  = $(subst .py,.md,$(shell ls *.py;))#
 mds  = $(out)/$(subst .md ,.md $(out)/,$(pys))#
 Make = $(MAKE) --no-print-directory #
 
-publish: dirs $(mds) moves typo
+x:
+	@echo $(uppers)
+
+publish: dirs $(mds) $(uppers) typo
 
 typo   : ;cd ..; $(Make) typo
 commit : ;cd ..; $(Make) commit
@@ -22,10 +26,6 @@ ready: dirs gitting chmods
 chmods:
 	chmod +x *ok.py
 
-moves:
-	mv $(out)/[A-Z]*.md $(root)
-	git add $(root)/*.md
-	git add $(out)/*.md
 
 define p2md
   BEGIN	   {  
@@ -82,6 +82,7 @@ $(out)/%.md: %.py $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
          awk -f $(etc)/p2md.awk -v name="$<" $< ; \
          cat $(etc)/footer.txt) \
          | sed 's?__PRE?$(prefix)?g' > $@;
+	@git add $@
 
 
 $(root)/TOC.md : $(etc)/header.txt $(etc)/footer.txt $(etc)/toc.sh
@@ -90,4 +91,10 @@ $(root)/TOC.md : $(etc)/header.txt $(etc)/footer.txt $(etc)/toc.sh
           bash $(etc)/toc.sh   ; \
           cat $(etc)/footer.txt) \
           | sed 's?__PRE?$(prefix)?g' > $@;
+	@git add $@
+
+$(root)/*.md : doc/*.md $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
+	@echo "making... $<"
+	@(cat $(etc)/header.txt  $<  $(etc)/footer.txt) \
+	| sed 's?__PRE?$(prefix)?g' > $@;
 	@git add $@

@@ -2,11 +2,12 @@
 
 # MASE:  (Model-based) Automated   Software Engineering
 
+**NCSU, Fall 2015**
+
 <img align=left src="img/mace.png">
 Welcome to MASE (rhymes with "base", pronounced like "mace").
 
-MASE is about
-the wide wild   world of _Research Programming_:
+Here we explore the wide wild   world of _Research Programming_:
 
 + Step 1: codify your current understanding of "it" into a model.   
 + Step 2: reason about that model.
@@ -31,36 +32,99 @@ we explore **BIG** things like String Theory or
 "hello world model of climate change and economic
 impacts".
 
-## Why Study MASE?
+# Structure
 
-+ If you interested in general methods 
-  for being a better scientist,
-  then there are
-  [many reasons to study MASE](#science).
-+ If you are an industry-focused individual, there are
-  [other reasons to study MASE](#career) to improve your
-  skills and your productivity.
-+ Finally if  you are fascinated by 
-  wild and fantastic and profound ideas,
-  then [you should also study MASE](#ideas).
+**Topics:** AI and software engineering; principles
+  of model-based reasoning with a heavy focus on
+  models about software engineering; search-based
+  and evolutionary inference; representing and
+  reasoning about models; handling uncertainty;
+  decision making and model-based reasoning.
 
-## <a name=science>Be an Agile Research Programming</a>
+**Project:** 700-level students will implement and
+reason about a large model of their own choosing
+(ideally, some model relating to software
+engineering). Optionally, 500-level students may
+also elect to do so.
 
-Research programming is 
-the future of SE. 
+**Prerequisite:** A programming background is
+  required in a contemporary language such as Java
+  or C/C++ or Python. Students in this class will
+  work in Python, but no background knowledge of
+  that language will be assumed
+
+
+# Why take this Subject?
+
+
+## For your career
+
+**Be Ahead of the Curve!:** What is the next "big
+  thing" after "big data"? Well, after "data
+  collection" comes "model construction" so the next
+  big thing after big data will be "big
+  modeling". In this subject, students will learn
+  how to represent, execute, and reason about
+  models. Our case studies will come from software
+  engineering but the principles of this subject
+  could be applied to models in general.
+
+**Be More Agile:** Humans learn best (and fastest)
+via feedback from direct feedback from the
+domain. That is is true of agile software
+development as well as something else I want to call
+_agile science_:
+
++ The agile scientists tackles problems at a much
+higher level than a programmer.
++ While agile programmers debug string functions,
+agile scientists debug theories.
+
+As such, the agile scientist tests ideas more and
+changes their mind more as they evolve a better
+undestandng of some phenomenon.
+
+**Be a Better Scientist:** This subject will teach
+you a **lot** about empirical methods and how to
+sample and test complex phenomena. For example, you
+will understand the _variability_ of any conclusion
+made by any scientific method (so after completing
+this subject, the next time anyone offers you a
+conclusion, your initial reaction will always be
+"yes, but how brittle is that conclusion to changes
+in condictions?").  That is, this subject it is a
+great place to hone your skills as a scientist as
+well as your critical thinking prowess.
+
+**Be a Stats Guru**: More specifically, we will
+spend much effort on practical, fast, large scale
+statistical methods.
+
+**Be employed!! For decades to come!!:** This
+subject will make you be the world's greatest Python
+programmer.  And that is no bad thing:
+
+![Python pop](http://edge.alluremedia.com.au/m/l/2014/02/codeeval2014.jpg)
+
+![Python salaries](http://www.gobrightwing.com/wp-content/uploads/2015/03/programming-languages.jpg)
+
+![Python job growth](img/RelativeGrowthPython.png)
+
+But also, this subject could also help you stay
+ahead of the game for decades to come.  This subject
+is a bet on the future of SE.
 
 + In traditional manual software engineering,
   engineers laboriously convert (by hand)
-  non-executable paper models into executable code.  
-+ MASE about a new kind of SE which
-  relies, at least in part, on executable models.  In
-  this approach, engineers codify the current
-  understanding of the domain into a model, and then
-  study those models.
+  non-executable paper models into executable code.
++ This subject is about a new kind of SE which
+   relies, at least in part, on executable models.
+   In this approach, engineers codify the current
+   understanding of the domain into a model, and
+   then study those models.
 
-Many of these new SE models are delivered as part of
-working systems.  Those models now mediate nearly
-all aspects of our lives:
+Many of these new SE models are delivered as part of working systems.
+Those  models now mediate nearly all aspects of our lives:
 
 + If you
   live in London or New York and need to call an
@@ -98,109 +162,46 @@ human exploration of the world around them. As
 Philip Jia Guo says in his [Ph.D.
 dissertation](http://purl.stanford.edu/mb510fs4943):
 
-<em>People across a diverse range of science, engineering, and business-related disciplines
-spend their workdays writing, executing, debugging, and interpreting the outputs
-of computer programs. Here are some examples of such "research programming":
-
+<em>People across a diverse range of science,
+engineering, and business-related disciplines spend
+their workdays writing, executing, debugging, and
+interpreting the outputs of computer programs. Here
+are some examples of such "research programming":
 
 + _Science:_ Computational scientists in fields
-ranging from bioinformatics to neuroscience write
-programs to analyze data sets and make scientific
-discoveries.
+  ranging from bioinformatics to neuroscience write
+  programs to analyze data sets and make scientific
+  discoveries.
 + _Engineering:_ Engineers perform experiments to
-optimize the efficacy of machine learning algorithms
-by testing on data sets, adjusting their code,
-tuning execution parameters, and graphing the
-resulting performance characteristics.
+  optimize the efficacy of machine learning algorithms
+  by testing on data sets, adjusting their code,
+  tuning execution parameters, and graphing the
+  resulting performance characteristics.
 + _Business:_ Web marketing analysts write programs
-to analyze clickstream data to decide how to improve
-sales and marketing strategies.
+  to analyze clickstream data to decide how to improve
+  sales and marketing strategies.
 + _Finance:_ Algorithmic traders write programs to
-prototype and simulate experimental trading
-strategies on financial data.
+  prototype and simulate experimental trading
+  strategies on financial data.
 + _Public policy:_ Analysts write programs to mine
-U.S. Census and labor statistics data to predict the
-merits of proposed government policies.
+  U.S. Census and labor statistics data to predict the
+  merits of proposed government policies.
 + _Data-driven journalism:_ Journalists write
-programs to analyze economic data and make
-information visualizations to publish alongside
-their news stories.</em>
+  programs to analyze economic data and make
+  information visualizations to publish alongside
+  their news stories.</em>
 
 In one form of the above, the "research programmer"
 builds and explores models-- which can be a complex
 process that this subject aims to simplify.
 
+## Study This Subject to Blow Your Mind
 
-**Be a Stats Guru**:
-MASE requires that we know better ways to understand
-complex Phenomena.  
-Hence, skilled practitioners of MASE, know 
-much about practical, fast, large-scale statistical methods. 
-
-**Be a Better Scientist:**
-MASE is an excellent way
- hone your skills as a scientist as well as
-your critical thinking prowess.
-MASE teaches us much  about
-empirical methods and how to sample and test complex
-phenomena. For example, MASE practitioners
-  understand the
-_variability_ of any conclusion made by any
-scientific method (e.g. when someone
-offers  a conclusion, the experienced MASE programmer
-always be "yes, but how
-brittle is that conclusion to changes in
-conditions?").  
-
-**Be More Agile:** 
-Humans learn best (and fastest)
-via feedback from direct feedback from the
-domain. That is is true of agile software
-development as well as something else I want to call
-_agile research programming_:
-
-+ The research programmer tackles problems at a much
-higher level than a programmer.  
-+ While agile
-programmers debug string functions, agile scientists
-debug theories.
-
-As such, the agile research programmers tests ideas
-more and changes their mind more as they evolve a
-better undestandng of some phenomenon.
-
-
-
-## <a name=career>Career Security</a>
-
-**Be Ahead of the Curve!:** What is the next "big
-  thing" after "big data"? Well, after "data
-  collection" comes "model construction" so the next
-  big thing after big data will be "big
-  modeling". In this subject, students will learn
-  how to represent, execute, and reason about
-  models. Our case studies will come from software
-  engineering but the principles of this subject
-  could be applied to models in general.
-
-**Be employed!! For decades to come!!:**
-This subject will make you  be the world's greatest Python programmer.  And that is no bad thing:
-
-![Python pop](http://edge.alluremedia.com.au/m/l/2014/02/codeeval2014.jpg)
-
-![Python salaries](http://www.gobrightwing.com/wp-content/uploads/2015/03/programming-languages.jpg)
-
-![Python job growth](img/RelativeGrowthPython.png)
-
-
-But also, this subject could also help you stay ahead of the game for decades to come.
-
-##  <a name=ideas>MASE and the Future of Ideas</a>
-
-MASE is about some fantastic, profound, and amazing ideas.
+This subject is about two amazing ideas.
+After completing this subject, your view of the world will be radically different. Promise.
 
 **Evolutionary-based Computing:**
-The main tool of MASE are  algorithms that explore (and sometimes combines) multiple randomly selected solutions to a program. Such evolutionary methods are very cool indeed. In 2012, the website Edge.org asked noted scientists the following question:
+The main tool discussed in this sibject  algorithms that explore (and sometimes combines) multiple randomly selected solutions to a program. Such evolutionary methods are very cool indeed. In 2012, the website Edge.org asked noted scientists the following question:
 
 + [What is your favorite deep, elegant, or beautiful explanation?](http://edge.org/responses/what-is-your-favorite-deep-elegant-or-beautiful-explanation)
 
@@ -223,9 +224,9 @@ Now this is not a new insight. Much prior work has commented on the profound con
 
 But what I think we are close too is a unification of data mining and optimization into one higher-level framework that will simplify both approaches. I think. Maybe. Come help me bumble around on this one and tell me what you think.
 
-### History and Future of   MASE
+## History and Future of   MASE
 
-#### History
+### History
 
 Recall the above definition: MASE has two steps (1)   codify your current understanding of "it" into a model; then  
 (2)   reason about that model.
@@ -251,7 +252,7 @@ Von Neumann's Princeton group was very successfully in selling this idea to the 
 + Shock waves in ballistic: simulating events that happen in the blink of an eye;
 + Nuclear explosions: simulating events over the lifetime of a neutron in a nuclear explosion (a mere 10-8) seconds).
 
-#### Future
+### Future
 
 While MASE is very old, it still has numerous pressing problems and open issues:
 
