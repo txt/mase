@@ -29,16 +29,17 @@ define p2md
   }	 
   /^"""</,/^>"""/ {  next } 
   /^"""/	  {  In = 1 - In       
-		     if (In)	    
+		     if (In)	{  
+                       Once = 1  
 		       print "````python"
-		     else	  
+		     } else	  
 		       if (First)   
 			 First = 0   
 		       else     
 			 print "````"  
 		     next }       
   ! First { print $$0 }       
-  END     { if (In) print "````"  }
+  END     { if (In || !Once) print "````"  }
 endef
 
 export p2md
