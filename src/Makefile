@@ -79,7 +79,7 @@ $(out)/%.md: %.py $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
 	@(cat $(etc)/header.txt; \
          awk -f $(etc)/p2md.awk -v name="$<" $< ; \
          cat $(etc)/footer.txt) \
-         | sed 's?__PRE?$(prefix)?g  \
+         | sed 's?__PRE?$(prefix)?g'  \
          | sed 's?__IMG?$(img)?g' > $@;
 	@git add $@
 
@@ -89,7 +89,7 @@ $(root)/TOC.md : $(etc)/header.txt $(etc)/footer.txt $(etc)/toc.sh
 	@(cat $(etc)/header.txt; \
           bash $(etc)/toc.sh   ; \
           cat $(etc)/footer.txt) \
-          | sed 's?__PRE?$(prefix)?g  \
+          | sed 's?__PRE?$(prefix)?g'  \
           | sed 's?__IMG?$(img)?g' > $@;
 	@git add $@
 

@@ -1,10 +1,12 @@
+
+
 [<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](https://github.com/txt/mase/blob/master/README.md)    
-_Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](https://github.com/txt/mase/blob/master/about.md) | [Sitemap](https://github.com/txt/mase/blob/master/TOC.md)_
+_Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](https://github.com/txt/mase/blob/master/ABOUT.md) | [Contents](https://github.com/txt/mase/blob/master/TOC.md) | [Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md)_
+
 
 
 # Table of Contents
 
-+ [MASE:  (Model-based) Automated   Software Engineering](https://github.com/txt/mase/blob/master/doc/README.md)
 + [Anywhere: Randomized Local Search](https://github.com/txt/mase/blob/master/doc/anywhere.md)
 + [Boot: Core utilities](https://github.com/txt/mase/blob/master/doc/boot.md)
 + [Num,Sym : Knowledge about numbers and symbols](https://github.com/txt/mase/blob/master/doc/col.md)
@@ -42,3 +44,4 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>
+

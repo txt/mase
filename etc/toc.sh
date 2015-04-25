@@ -1,7 +1,7 @@
 echo ""
 echo "# Table of Contents"
 echo ""
-files=`ls *.py | grep -v "ok.py"`
+files=`ls [0-9a-z]*.py | grep -v "ok.py"`
 for f in $files; do
    awk ' gsub(/^# /,"") {
          name=$0
