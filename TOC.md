@@ -1,35 +1,16 @@
 [<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](https://github.com/txt/mase/blob/master/README.md)    
-_Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](https://github.com/txt/mase/blob/master/ABOUT.md) | [Sitemap](https://github.com/txt/mase/blob/master/TOC.md)_
+_Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](https://github.com/txt/mase/blob/master/about.md) | [Sitemap](https://github.com/txt/mase/blob/master/TOC.md)_
 
 
-# Boot test routines.
+# Table of Contents
 
-````python
++ [MASE:  (Model-based) Automated   Software Engineering](https://github.com/txt/mase/blob/master/doc/README.md)
++ [Anywhere: Randomized Local Search](https://github.com/txt/mase/blob/master/doc/anywhere.md)
++ [Boot: Core utilities](https://github.com/txt/mase/blob/master/doc/boot.md)
++ [Num,Sym : Knowledge about numbers and symbols](https://github.com/txt/mase/blob/master/doc/col.md)
++ [Lib: Standard library routines](https://github.com/txt/mase/blob/master/doc/lib.md)
++ [Table: tables of data](https://github.com/txt/mase/blob/master/doc/table.md)
 
-from boot import * # get the test engine
-
-@ok # run+test something at load time
-def noop(): return True # never fails
-
-@ok # ditto
-def oops(): 1/0  # always fails
-
-@ok # eg3: test the test engine
-def unittestok():
-  ok(oops,       # "ok" accepts multiple arguments
-    noop,        # can be named functions
-    lambda: 1+1, # or anonymous functions
-    lambda: 1/0
-    )
-  ok(oops)       # ok can also run with 1 test
-  ok(oops,noop)
-  # note that, when runm we never see 'unitest fail'
-  assert unittest.tries == 10, 'unit test fail'
-  assert unittest.fails == 5,  'unit test fail'
-
-print("\n"+"EXPECT...... # TRIES= 10 FAIL= 5 %PASS = 67%")
-print("GOT.........",unittest.score())
-````
 
 __________
 

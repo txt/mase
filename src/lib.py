@@ -1,4 +1,11 @@
 from __future__ import print_function,division
+
+"""
+
+# Lib: Standard library routines
+
+"""
+
 import random, pprint, re, datetime, time
 from contextlib import contextmanager
 import pprint,sys

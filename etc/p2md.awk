@@ -1,11 +1,8 @@
   BEGIN	   {  
 	 q="\""
-	 print "" 
-	 print "# " name 
-	 print ""
 	 First = 1      
 	 In = 1
-  }	 
+  }
   /^"""</,/^>"""/ {  next } 
   /^"""/	  {  Once = 1
                      In = 1 - In       

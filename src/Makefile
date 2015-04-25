@@ -1,3 +1,4 @@
+root   = ..#
 out    = ../doc#
 etc    = ../etc#
 prefix = https://github.com/txt/mase/blob/master#
@@ -7,7 +8,7 @@ pys  = $(subst .py,.md,$(shell ls *.py;))#
 mds  = $(out)/$(subst .md ,.md $(out)/,$(pys))#
 Make = $(MAKE) --no-print-directory #
 
-publish: dirs $(mds)  typo
+publish: dirs $(mds) moves typo
 
 typo   : ;cd ..; $(Make) typo
 commit : ;cd ..; $(Make) commit
@@ -21,15 +22,15 @@ ready: dirs gitting chmods
 chmods:
 	chmod +x *ok.py
 
+moves:
+	mv $(out)/[A-Z]*.md $(root)
+
 define p2md
   BEGIN	   {  
 	 q="\""
-	 print "" 
-	 print "# " name 
-	 print ""
 	 First = 1      
 	 In = 1
-  }	 
+  }
   /^"""</,/^>"""/ {  next } 
   /^"""/	  {  Once = 1
                      In = 1 - In       
@@ -46,19 +47,45 @@ define p2md
             if (!Once) print "```"  
 }
 endef
-
 export p2md
+
+define toc
+echo ""
+echo "# Table of Contents"
+echo ""
+files=`ls [0-9a-z]*.py | grep -v "ok.py"`
+for f in $$files; do
+   awk ' gsub(/^# /,"") {
+         name=$$0
+	 file=FILENAME
+         gsub(/.py$$/,".md",file)
+         print "+ ["$$0"](__PRE/doc/"file")"; 
+         exit}' $$f
+done
+echo ""   
+endef
+export toc
+
+tocs : $(root)/TOC.md
 
 dirs:
 	@ - mkdir -p $(out) $(etc)
 
-$(etc)/p2md.awk  : Makefile
-	 @- echo "$$p2md" > $@
+$(etc)/p2md.awk : Makefile ; @- echo "$$p2md" > $@
+$(etc)/toc.sh   : Makefile ; @- echo "$$toc"  > $@
 
 $(out)/%.md: %.py $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
 	@echo "making... $<"
 	@(cat $(etc)/header.txt; \
          awk -f $(etc)/p2md.awk -v name="$<" $< ; \
          cat $(etc)/footer.txt) \
-         | sed 's?_PREFIX?$(prefix)?g' > $@;
+         | sed 's?__PRE?$(prefix)?g' > $@;
+
+
+$(root)/TOC.md : $(etc)/header.txt $(etc)/footer.txt $(etc)/toc.sh
+	@echo "making... $@"
+	@(cat $(etc)/header.txt; \
+          bash $(etc)/toc.sh   ; \
+          cat $(etc)/footer.txt) \
+          | sed 's?__PRE?$(prefix)?g' > $@;
 	@git add $@

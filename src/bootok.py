@@ -3,7 +3,7 @@ from __future__ import print_function
 
 """
 
-Boot test routines.
+# Boot test routines.
 
 """
 

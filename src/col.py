@@ -1,5 +1,11 @@
 from __future__ import print_function, division
 
+"""
+
+# Num,Sym : Knowledge about numbers and symbols
+
+"""
+
 from lib import *
 
 @setting
