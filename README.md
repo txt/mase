@@ -25,21 +25,21 @@ models used in software engineering
 </td> </tr>
 <tr><td valign=top>
 <ul>
-<li>[Syllabus](syllabus.md)</lu1>
+<li><a href="SYLLABUS.md">Syllabus</a></lu1>
 
 </ul>
 </td><td valign=top>
 
-1. [Sa](sa.md)   <br>
+1. <a href="Sa">sa.md</a>   <br>
 
-0.[History](
-
-</td><td valign=top>
-0. [HomeWork0](hw0.md) <br>
+0.<a href="aa">History</a>
 
 </td><td valign=top>
+0. <a href="HomeWork0">hw0.md</a> <br>
 
-1. [Review1](review1.md)<br>
+</td><td valign=top>
+
+1. <a href="Review1">review1.md</a><br>
 
 
 </td> 
