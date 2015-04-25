@@ -2,6 +2,7 @@ root   = ..#
 out    = ../doc#
 etc    = ../etc#
 prefix = https://github.com/txt/mase/blob/master#
+img=https://raw.githubusercontent.com/txt/mase/master/img#
 
 pys  = $(subst .py,.md,$(shell ls *.py;))#
 mds  = $(out)/$(subst .md ,.md $(out)/,$(pys))#
@@ -77,7 +78,8 @@ $(out)/%.md: %.py $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
 	@(cat $(etc)/header.txt; \
          awk -f $(etc)/p2md.awk -v name="$<" $< ; \
          cat $(etc)/footer.txt) \
-         | sed 's?__PRE?$(prefix)?g' > $@;
+         | sed 's?__PRE?$(prefix)?g  \
+         | sed 's?__IMG?$(img)?g' > $@;
 	@git add $@
 
 
@@ -86,7 +88,8 @@ $(root)/TOC.md : $(etc)/header.txt $(etc)/footer.txt $(etc)/toc.sh
 	@(cat $(etc)/header.txt; \
           bash $(etc)/toc.sh   ; \
           cat $(etc)/footer.txt) \
-          | sed 's?__PRE?$(prefix)?g' > $@;
+          | sed 's?__PRE?$(prefix)?g  \
+          | sed 's?__IMG?$(img)?g' > $@;
 	@git add $@
 
 

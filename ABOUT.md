@@ -8,7 +8,7 @@ _Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](http
 
 # MASE:  (Model-based) Automated   Software Engineering
 
-<img align=left src="img/mace.png">
+<img align=left src="https://raw.githubusercontent.com/txt/mase/master/img/mace.png">
 Welcome to MASE (rhymes with "base", pronounced like "mace").
 
 MASE is about
@@ -19,7 +19,7 @@ the wide wild   world of _Research Programming_:
 
 ![Brooks](img/brookslaw.png)
 
-<img align=right width=250 src="img/dna.png"> 
+<img align=right width=250 src="https://raw.githubusercontent.com/txt/mase/master/img/dna.png"> 
 MASE changes the nature and focus and role of
 software engineering changes:
 

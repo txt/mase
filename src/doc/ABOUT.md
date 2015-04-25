@@ -2,7 +2,7 @@
 
 # MASE:  (Model-based) Automated   Software Engineering
 
-<img align=left src="img/mace.png">
+<img align=left src="__IMG/mace.png">
 Welcome to MASE (rhymes with "base", pronounced like "mace").
 
 MASE is about
@@ -13,7 +13,7 @@ the wide wild   world of _Research Programming_:
 
 ![Brooks](img/brookslaw.png)
 
-<img align=right width=250 src="img/dna.png"> 
+<img align=right width=250 src="__IMG/dna.png"> 
 MASE changes the nature and focus and role of
 software engineering changes:
 

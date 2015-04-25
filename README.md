@@ -8,7 +8,7 @@ _Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](http
 
 # What's new at MASE
 
-<img src="img/dna.png" align=right>
+<img src="https://raw.githubusercontent.com/txt/mase/master/img/dna.png" align=right>
 
 
 
