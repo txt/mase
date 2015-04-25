@@ -2,7 +2,7 @@
 
 # MASE:  (Model-based) Automated   Software Engineering
 
-<img align=left src="__IMG/mace.png">
+<img align=right src="__IMG/mace.png">
 Welcome to MASE (rhymes with "base", pronounced like "mace").
 
 MASE is about
