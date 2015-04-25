@@ -1,0 +1,15 @@
+outlook,$temp,$humid,windy,>play
+sunny,85,85,FALSE,10
+sunny,80,90,TRUE,10
+overcast,83,86,FALSE,100
+rainy,70,96,FALSE,100
+rainy,68,80,FALSE,100
+rainy,65,70,TRUE,10
+overcast,64,65,TRUE,100
+sunny,72,95,FALSE,10
+sunny,69,70,FALSE,100
+rainy,75,80,FALSE,100
+sunny,75,70,TRUE,100
+overcast,72,90,TRUE,100
+overcast,81,75,FALSE,100
+rainy,71,91,TRUE,10
