@@ -1,7 +1,7 @@
 
 
 [<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](https://github.com/txt/mase/blob/master/README.md)    
-_Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](https://github.com/txt/mase/blob/master/ABOUT.md) | [Contents](https://github.com/txt/mase/blob/master/TOC.md) | [Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md)_
+_Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](https://github.com/txt/mase/blob/master/ABOUT.md) | [Contents](https://github.com/txt/mase/blob/master/TOC.md) | [Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) | [Code](https://github.com/txt/mase/tree/master/src)_
 
 
 
@@ -94,7 +94,8 @@ class Cache:
 __________
 
 
-<img  align=right src="https://raw.githubusercontent.com/txt/mase/master/img/license.png">
+![lic](img/license.png)
+
 Copyright © 2015 [Tim Menzies](http://menzies.us), email: <tim.menzies@gmail.com>.
 
 This is free and unencumbered software released into the public domain.
