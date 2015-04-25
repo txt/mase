@@ -16,7 +16,10 @@ status : ;cd ..; $(Make) status
 gitting: ;cd ..; $(Make) gitting
 timm   : ;cd ..; $(Make) timm
 
-ready: dirs gitting
+ready: dirs gitting chmods
+
+chmods:
+	chmod +x *ok.py
 
 define p2md
   BEGIN	   {  

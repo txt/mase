@@ -11,8 +11,9 @@ def ANY() return o(
 def anywhere(f):
   t = readcsv(f)
   n = len(t.rows)
-  anywhere1(t,
-            10 if n < 50 else the.ANY.poles)
+  anywhere1(
+    t,
+    10 if n < 50 else the.ANY.poles)
 
 def anywhere1(t,n):
   t.rows = shuffle(t.rows)
@@ -23,29 +24,28 @@ def anywhere1(t,n):
     c  = e - w
     se = e.fromHell()
     sw = w.fromHell()
-    for j in t.rows[n:]:
+    for i in t.rows[n:]:
       if se > sw:
-        here(t,j,c,  e,w,se,sw)
+        here(t,i,c,n,  e,w,se,sw)
       if sw > se:
-        here(t,j,c,  w,e,sw,se)
+        here(t,i,c,n,  w,e,sw,se)
 
-def here(t,j,c,  e,w,se,sw):
-  a   = e - j
-  b   = w - j
+def here(t,i,c,n,  e,w,se,sw):
+  a   = e - i
+  b   = w - i
   x   = (a**2 + c**2 - b**2) / (2*c)
   cols= len(t.indep)
   r   = the.ANY.poles
   if 0 <= x <= c:
     y   = (a**2 - x**2)**0.5
-    inc = (a/b) * (se - sw)/(y**2) / cols / r
+    inc = (a/b) * (se - sw)/(y**2) / cols / n
     for hdr in t.indep:
       col = hdr.pos
-      j[col] = nudge(t,hdr,inc,
-                     j[col], e[col])
+      i[col] = nudge(t,hdr,inc,
+                     i[col], e[col])
 
-def nudge(t,hdr,inc,jx,ex):
+def nudge(t,hdr,inc,ix,ex):
   if hdr.pos in t.nums:
-    mutation = inc*(ex - jx)
-    return hdr.wrap(ex + mutation)
+    return hdr.wrap(ex + inc*(ex - ix))
   else:
-    return ex if inc < r() else jx
+    return ex if inc < r() else ix
