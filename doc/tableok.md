@@ -1,5 +1,4 @@
-[<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](https://github.com/txt/mase/blob/master/README.md)
-
+[<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](https://github.com/txt/mase/blob/master/README.md)    
 _Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [Sitemap](https://github.com/txt/mase/blob/master/TOC.md)_
 
 

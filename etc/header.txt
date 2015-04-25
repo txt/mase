@@ -1,4 +1,3 @@
-[<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](_PREFIX/README.md)
-
+[<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](_PREFIX/README.md)    
 _Go to: [Home](_PREFIX/README.md) | [Sitemap](_PREFIX/TOC.md)_
 
