@@ -1,5 +1,5 @@
 [<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](https://github.com/txt/mase/blob/master/README.md)    
-_Go to: [Home](https://github.com/txt/mase/blob/master/README.md) | [About](https://github.com/txt/mase/blob/master/about.md)_ | [Sitemap](https://github.com/txt/mase/blob/master/TOC.md)_
+Go to: _[Home](https://github.com/txt/mase/blob/master/README.md) | [About](https://github.com/txt/mase/blob/master/about.md) | [Sitemap](https://github.com/txt/mase/blob/master/TOC.md)_
 
 
 # anywhere.py
