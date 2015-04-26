@@ -11,7 +11,7 @@
 <p>MASE (rhymes with "base", pronounced like "mace") is a
 tutorial introduction to search-based optimization methods for exploring models.
 <p>All coding examples are written in Pyton (and most of the larger model examples come from software engineering).
-<p>To explore this site, work through the  _Lectures_ (below), in the order ``0,1,2...''.
+<p>To explore this site, work through the  <em>Lectures></em> (listed, at right), in the order ``0,1,2...''.
 </td>
 <td><b>Lectures</b>
 </td><td><b>Homework</b>
