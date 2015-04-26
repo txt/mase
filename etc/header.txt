@@ -1,5 +1,5 @@
 
-<em>[![Home](img/home.png) Home](__PRE/README.md)   
+<em>[![Home](__IMG/home.png) Home](__PRE/README.md)   
 [<img width=900 src="__IMG/banner.png">](__PRE/README.md)
 [Contents](__PRE/TOC.md) | [About](__PRE/ABOUT.md) | [Syllabus](__PRE/SYLLABUS.md) | [Code](https://github.com/txt/mase/tree/master/src) | [Contact](http://menzies.us)</em>
 
