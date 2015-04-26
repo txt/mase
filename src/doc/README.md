@@ -1,9 +1,9 @@
 
 
-MASE (rhymes with "base", is pronounced like "mace") is a
+MASE (rhymes with "base", pronounced like "mace") is a
 tutorial introduction to search-based optimization methods for exploring models.
 
-All coding examples are written in Pyton.
+All coding examples are written in Pyton (and most of the larger model examples come from software engineering).
 
 To explore this site, work through the  _Lectures_ (below), in the order ``0,1,2...''.
 
