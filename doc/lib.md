@@ -33,6 +33,9 @@ r     = random.random
 any   = random.choice
 seed = random.seed
 
+def first(lst): return lst[0]
+def last(lst): return lst[-1]
+                          
 def shuffle(lst):
   random.shuffle(lst)
   return lst
@@ -45,6 +48,8 @@ def say(*lst):
   sys.stdout.write(', '.join(map(str,lst)))
   sys.stdout.flush()
 
+def g(lst,f=3):
+  return map(lambda x: round(x,f),lst)
 #-------------------------------------------------
 def show(x, indent=None, width=None):  
   print(pprint.pformat(has(x),
@@ -125,7 +130,7 @@ def study(what,*usings):
 __________
 
 
-![lic](img/license.png)
+![lic](https://raw.githubusercontent.com/txt/mase/master/img/license.png)
 
 Copyright © 2015 [Tim Menzies](http://menzies.us), email: <tim.menzies@gmail.com>.
 

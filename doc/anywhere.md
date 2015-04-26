@@ -24,6 +24,7 @@ def anywhere(f):
     10 if n < 50 else the.ANY.poles)
 
 def anywhere1(t,n):
+  log = Num()
   t.rows= shuffle(t.rows)
   poles = t.rows[:n]
   rows  = t.rows[n:]
@@ -33,45 +34,67 @@ def anywhere1(t,n):
     c   = e - w
     se  = e.fromHell()
     sw  = w.fromHell()
-    cells= [here(t,row,c,n,  e,w,se,sw)
-            for row in t1.rows]
-    Row(cells,t1)
+    if sw > se:
+      e,se,w,sw = w,sw,e,se
+    least = sorted([row.xy(e,w,c) for row in rows],
+                   key = lambda row : row.x)
+    least = [x for x in least
+             if 0 <= x.x <= c][0].it
+    most = dist(least,e,t)
+    maybe = sorted([place(pole,e,t) for pole in poles])
+    if maybe:
+      maybe = maybe[-1][-1]
+      print(maybe.id,
+            e.id,
+            dist(maybe,e,t),
+            c)
+    #exit()
+    #for b in best:
+     # print(b)
+   
+#       for (i,pole) in enumerate(poles)
     
-def here(t,row,c,n,  e,w,se,sw):
-  if se > sw:
-    return here1(t,row,c,n,  e,w,se,sw)
-  else:
-    return here1(t,row,c,n,  w,e,sw,se)
+#        return here1(t,c,n,e,w,se,sw,rows,poles)
+#     else:
+#       return here1(t,c,n,w,e,sw,se,rows,poles)
+    
+#     for one in rows:
+#       asIs = one
+#       toBe = here(t,c,n,e,w,se,sw,poles)
+#       log +=   dist(asIs,toBe,t)
+#   print(g(log.ntiles([0.1,0.2,0.3,0.4,
+#                       0.5,0.6,0.7,0.8,0.9])))
 
-def here1(t,row,c,n,  e,w,se,sw):
-  a   = e - row
-  b   = w - row
-  x   = (a**2 + c**2 - b**2) / (2*c)
-  print(">",x,c)
-  if 0 <= x <= c:
-    cols= len(t.indep)
-    r   = the.ANY.poles
-    y   = (a**2 - x**2)**0.5
-    inc = (a/b) * (se - sw)/(y**2) / cols / n
-    old = i.cells
-    new = old[:]
-    for hdr in t.indep.values():
-      j = hdr.pos
-      if j in t.num:
-        new[j] = hdr.wrap(row[j] + inc*(e[j] - row[j]))
-      else:
-        new[j] = e[j] if inc < r() else row[j]
-    print("")
-    print(">",old)
-    print(">",new)
-     += new 
+def place(pole,i,t):
+  w = pole.fromHell()
+  d = dist(i,pole,t)
+  return w / d**2, d,pole
+  
+# def here(t,c,n,e,w,se,sw,rows,poles):
+  
+
+# def here1(t,one,c,n,e,w,se,sw,poles):
+#   a   = e - one
+#   b   = w - one + 0.0001
+#   x   = (a**2 + c**2 - b**2) / (2*c)
+#   new = one.cells[:]
+#   if 0 <= x <= c:
+#     y   = (a**2 - x**2)**0.5 + 0.0001
+#     inc = (a/b)*(se - sw)/(y**2) / n 
+#     for hdr in t.indep.values():
+#       j = hdr.pos
+#       if j in t.num:
+#         new[j] = hdr.wrap(one[j] + inc*(e[j] - one[j]))
+#       else:
+#         new[j] = e[j] if inc < r() else one[j]
+#   return new
     
 ````
 
 __________
 
 
-![lic](img/license.png)
+![lic](https://raw.githubusercontent.com/txt/mase/master/img/license.png)
 
 Copyright © 2015 [Tim Menzies](http://menzies.us), email: <tim.menzies@gmail.com>.
 

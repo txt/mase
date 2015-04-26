@@ -37,11 +37,12 @@ class Num:
     i.ordered = False
     map(i.__iadd__,inits)
   def __iadd__(i,x):
+    assert isinstance(x,(float,int))
     i.ordered = False
     i.lo = min(x,i.lo)
     i.hi = max(x,i.hi)
     i._cache += x
-    return x
+    return i
   def all(i):
     if not i.ordered:
       i._cache.all = sorted(i._cache.all)
@@ -51,6 +52,8 @@ class Num:
     return (x - i.lo) / (i.hi - i.lo + 0.00001)
   def trim(i,x):
     return max(i.lo, min(x, i.hi))
+  def ntiles(i,t=[0.1,0.3,0.5,0.7,0.9]):
+    return ntiles(i.all(),t)
   def fromHell(i,x,norm, want):
     if want:
       hell =  0 if norm else i.lo
@@ -94,7 +97,7 @@ class Cache:
 __________
 
 
-![lic](img/license.png)
+![lic](https://raw.githubusercontent.com/txt/mase/master/img/license.png)
 
 Copyright © 2015 [Tim Menzies](http://menzies.us), email: <tim.menzies@gmail.com>.
 

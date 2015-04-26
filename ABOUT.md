@@ -276,7 +276,7 @@ killed seven American astronauts](http://spaceflightnow.com/columbia/report/infl
 __________
 
 
-![lic](img/license.png)
+![lic](https://raw.githubusercontent.com/txt/mase/master/img/license.png)
 
 Copyright © 2015 [Tim Menzies](http://menzies.us), email: <tim.menzies@gmail.com>.
 

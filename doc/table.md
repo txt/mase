@@ -97,6 +97,14 @@ class Row:
   def __sub__(i,j)    : return dist(i,j,i.table)
   def __hash__(i)     : return i.id
   def __repr__(i)     : return '<'+str(i.cells)+'>'
+  def xy(i,e,w,c):
+    a = i - e
+    b = i - w
+    x = (a**2 + c**2 - b**2) / (2*c)
+    h = a if a**2 >= x**2 else b
+    y = (h**2 - x**2)
+    return o(a=a, b=b, c=c,
+             x=x, y=y, it=i)
   @cache
   def fromHell(i) :
     n = inc = 0
@@ -109,6 +117,7 @@ class Row:
       x    = i[hdr.pos]
       inc += hdr.fromHell(x,the.TBL.norm,False)
     return inc**0.5 / n**0.5
+
 
 def furthest(i,rows=None,t=None):
   return closest(i,rows,t, last=-10**32, better=gt)
@@ -137,7 +146,7 @@ def dist(i,j,t):
       inc += 0 if x==y else 1
     else:
       lo, hi = hdr.lo, hdr.hi
-      mid    = (hdr.hi - hdr.lo)/2
+      mid    = (hi - lo)/2
       if the.TBL.norm:
         if x != skip: x = hdr.norm(x)
         if y != skip: y = hdr.norm(y)
@@ -151,7 +160,7 @@ def dist(i,j,t):
 __________
 
 
-![lic](img/license.png)
+![lic](https://raw.githubusercontent.com/txt/mase/master/img/license.png)
 
 Copyright © 2015 [Tim Menzies](http://menzies.us), email: <tim.menzies@gmail.com>.
 
