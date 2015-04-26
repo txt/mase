@@ -64,7 +64,14 @@ def table0(cells):
     if not i in t.goal: t.indep[i]= hdr
   return t
 
-def clone(t): return table0(t.fields) 
+def clone(t):
+  return table0(t.fields)
+def rows2Table(t,rows):
+  return cells2Table(t,[row.cells for row in rows])
+def cells2Table(t,lstOfCells):
+  t1 = clone(t)
+  for cells in lstOfCells: Row(cells,t1)
+  return t1
 
 class Row:
   id=0

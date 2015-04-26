@@ -2,7 +2,6 @@
 
 # MASE:  (Model-based) Automated   Software Engineering
 
-<img align=right src="__IMG/mace.png">
 Welcome to MASE (rhymes with "base", pronounced like "mace").
 
 MASE is about
@@ -15,9 +14,9 @@ the wide wild   world of _Research Programming_:
 
 <img align=right width=250 src="__IMG/dna.png"> 
 MASE changes the nature and focus and role of
-software engineering changes:
+software engineering:
 
-+ Elsewhere, software engineering is about services
++ Traditionally, software engineering is about services
   that meet requirements.
 + But with MASE, software engineering is less about
   service than about search. MASE's goal is discovery 

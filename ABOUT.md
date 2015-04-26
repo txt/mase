@@ -1,5 +1,5 @@
 
-<em>[Home](https://github.com/txt/mase/blob/master/README.md)   
+<em>[![Home](img/home.png) Home](https://github.com/txt/mase/blob/master/README.md)   
 [<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](https://github.com/txt/mase/blob/master/README.md)
 [Contents](https://github.com/txt/mase/blob/master/TOC.md) | [About](https://github.com/txt/mase/blob/master/ABOUT.md) | [Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) | [Code](https://github.com/txt/mase/tree/master/src) | [Contact](http://menzies.us)</em>
 
@@ -8,7 +8,6 @@
 
 # MASE:  (Model-based) Automated   Software Engineering
 
-<img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/mace.png">
 Welcome to MASE (rhymes with "base", pronounced like "mace").
 
 MASE is about
@@ -21,9 +20,9 @@ the wide wild   world of _Research Programming_:
 
 <img align=right width=250 src="https://raw.githubusercontent.com/txt/mase/master/img/dna.png"> 
 MASE changes the nature and focus and role of
-software engineering changes:
+software engineering:
 
-+ Elsewhere, software engineering is about services
++ Traditionally, software engineering is about services
   that meet requirements.
 + But with MASE, software engineering is less about
   service than about search. MASE's goal is discovery 

@@ -1,10 +1,12 @@
 
-<em>[Home](https://github.com/txt/mase/blob/master/README.md)   
+<em>[![Home](img/home.png) Home](https://github.com/txt/mase/blob/master/README.md)   
 [<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner.png">](https://github.com/txt/mase/blob/master/README.md)
 [Contents](https://github.com/txt/mase/blob/master/TOC.md) | [About](https://github.com/txt/mase/blob/master/ABOUT.md) | [Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) | [Code](https://github.com/txt/mase/tree/master/src) | [Contact](http://menzies.us)</em>
 
 
 
+
+MASE rhymes with "base", is pronounced like "mace".
 
 This site is about concepts and code to support learning and evolving
 models used in software engineering
