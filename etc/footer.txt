@@ -2,7 +2,7 @@
 __________
 
 
-![lic](img/license.png)
+![lic](__IMG/license.png)
 
 Copyright © 2015 [Tim Menzies](http://menzies.us), email: <tim.menzies@gmail.com>.
 
