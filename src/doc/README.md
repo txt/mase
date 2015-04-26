@@ -11,12 +11,14 @@ To explore this site, work through the  _Lectures_ (below), in the order ``0,1,2
 
 
 <table align=center>
-<tr>
+<tr><td rowspan=3>
+asdasd
+</td>
 <td><b>Lectures</b>
 </td><td><b>Homework</b>
 </td><td><b>Review</b>
 </td> </tr>
-<tr><
+<tr>
 </td><td align=center><img src="img/lectures.gif">
 </td><td align=center><img src="img/homework.png">
 </td><td align=center><img src="img/review.gif">
