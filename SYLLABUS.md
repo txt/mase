@@ -6,7 +6,6 @@
 # Syllabus: Things to see
 
 sad
-__________
 
 
 ![lic](https://raw.githubusercontent.com/txt/mase/master/img/license.png)

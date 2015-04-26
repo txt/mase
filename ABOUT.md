@@ -271,7 +271,6 @@ killed seven American astronauts](http://spaceflightnow.com/columbia/report/infl
 
 
 
-__________
 
 
 ![lic](https://raw.githubusercontent.com/txt/mase/master/img/license.png)

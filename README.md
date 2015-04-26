@@ -40,7 +40,6 @@ tutorial introduction to search-based optimization methods for exploring models.
 </td> 
 </tr></table>
 
-__________
 
 
 ![lic](https://raw.githubusercontent.com/txt/mase/master/img/license.png)
