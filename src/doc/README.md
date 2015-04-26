@@ -1,9 +1,9 @@
 
 
-MASE rhymes with "base", is pronounced like "mace".
+MASE (rhymes with "base", is pronounced like "mace") is a
+tutorial introduction to search-based optimization methods for exploring models.
 
-This site is about concepts and code to support learning and evolving
-models used in software engineering
+To explore this site, work through the  _Lectures_ (below), in the order ``0,1,2...''.
 
 ## What's new at MASE
 
