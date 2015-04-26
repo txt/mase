@@ -15,22 +15,18 @@ To explore this site, work through the  _Lectures_ (below), in the order ``0,1,2
 
 
 <table>
-<tr><td ><b>Admin</b>
-</td><td><b>Lectures</b>
+<tr>
+<td><b>Lectures</b>
 </td><td><b>Homework</b>
 </td><td><b>Review</b>
 </td> </tr>
-<tr><td  align=center><img src="img/admin.jpg">
+<tr><
 </td><td align=center><img src="img/lectures.gif">
 </td><td align=center><img src="img/homework.png">
 </td><td align=center><img src="img/review.gif">
 </td> </tr>
-<tr><td valign=top>
-<ul>
-<li><a href="SYLLABUS.md">Syllabus</a></lu1>
-
-</ul>
-</td><td valign=top>
+<tr>
+<td valign=top>
 
 1. <a href="Sa">sa.md</a>   <br>
 
