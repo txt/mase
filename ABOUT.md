@@ -277,5 +277,5 @@ killed seven American astronauts](http://spaceflightnow.com/columbia/report/infl
 Copyright © 2015 [Tim Menzies](http://menzies.us).
 
 This is free and unencumbered software released into the public domain.
-For more details, see the [https://github.com/txt/mase/blob/master/LICENSE](license).
+For more details, see the [license](https://github.com/txt/mase/blob/master/LICENSE).
 
