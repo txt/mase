@@ -14,7 +14,7 @@ To explore this site, work through the  _Lectures_ (below), in the order ``0,1,2
 ## What's new at MASE
 
 
-<table>
+<table align=center>
 <tr>
 <td><b>Lectures</b>
 </td><td><b>Homework</b>
