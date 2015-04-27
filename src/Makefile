@@ -8,7 +8,7 @@ pys  = $(subst .py,.md,$(shell ls *.py;))#
 mds  = $(out)/$(subst .md ,.md $(out)/,$(pys))#
 Make = $(MAKE) --no-print-directory #
 
-publish: dirs $(mds) $(root)/toc.md uppers typo
+publish: dirs zaps $(mds) $(root)/toc.md uppers typo
 
 typo   : ;cd ..; $(Make) typo
 commit : ;cd ..; $(Make) commit
@@ -18,6 +18,9 @@ gitting: ;cd ..; $(Make) gitting
 timm   : ;cd ..; $(Make) timm
 
 ready: dirs gitting chmods
+
+zaps:
+	find . -name '*.pyc'
 
 chmods:
 	chmod +x *ok.py
