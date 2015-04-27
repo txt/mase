@@ -20,7 +20,7 @@ timm   : ;cd ..; $(Make) timm
 ready: dirs gitting chmods
 
 zaps:
-	find . -name '*.pyc'
+	find . -name '*.pyc' | xargs -n 25 rm 
 
 chmods:
 	chmod +x *ok.py
