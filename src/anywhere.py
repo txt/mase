@@ -15,12 +15,9 @@ def ANY(): return o(
 )
 
 def anywhere(f):
-  t = readcsv(f)
-  anywhere1(t,
-    10 if len(t.rows) < 50 else the.ANY.poles)
-
-def anywhere1(t,n):
+  t      = readcsv(f)
   t.rows = shuffle(t.rows)
+  n      = the.ANY.poles
   m      = min(len(t.rows) - n, 64)
   rows   = t.rows[-1*m:]
   poles  = t.rows[:n]
