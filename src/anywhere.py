@@ -11,7 +11,7 @@ from table import *
 
 @setting
 def ANY(): return o(
-    poles=20
+    poles=10
 )
 
 def anywhere(f):
@@ -23,11 +23,11 @@ def anywhere(f):
 def anywhere1(t,n):
   log   = Num()
   t.rows = shuffle(t.rows)
-  rows  = t.rows[n:]
-  poles = sorted(t.rows[:n],
-                 key=lambda x:x.fromHell())
+  rows  = t.rows[-64:]
+  poles = t.rows[:n]
+  poles = sorted(poles, key=lambda x:x.fromHell())
   w = poles[0]
-  v = {}
+  v={}
   for e in poles[1:]:
     c  = e - w
     se = e.fromHell()
@@ -37,8 +37,7 @@ def anywhere1(t,n):
     for row in rows:
       v[row.id] = v.get(row.id,0) + \
                   row.xy(e,w,c,score=True).s
-  tiles=[0.1,0.2,0.4,0.8,0.9,0.95,0.99]
   print(g(ntiles(sorted(v.values()),
-                 tiles=tiles,
+                 tiles=[0.5,0.9,0.95,0.99],
                  norm=True)))
   #print(sorted(v.values()))
