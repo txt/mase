@@ -102,7 +102,7 @@ class Row:
     y = (h**2 - x**2)**0.5
     s = 0
     if score:
-      if x < 0 or x > c:
+      if 0 <= x  <= c:
         s = b/a*(e.fromHell() - w.fromHell())/c/y
     return o(it=i, a=a, b=b, c=c, x=x, y=y, s=s)
   @cache
