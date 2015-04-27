@@ -103,7 +103,7 @@ class Row:
     s = 0
     if score:
       if 0 <= x  <= c:
-        s = b/a*(e.fromHell() - w.fromHell())/c/y
+        s = (b/a)*(e.fromHell() - w.fromHell())/c/y
     return o(it=i, a=a, b=b, c=c, x=x, y=y, s=s)
   @cache
   def fromHell(i) :
