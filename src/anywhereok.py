@@ -4,5 +4,7 @@ from __future__ import print_function,division
 
 from anywhere import *
 
+
 seed(1)
-anywhere("../data/housing.csv")
+for _ in range(10):
+  anywhere("../data/housing.csv")

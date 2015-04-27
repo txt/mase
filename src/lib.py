@@ -37,9 +37,14 @@ def shuffle(lst):
   random.shuffle(lst)
   return lst
 
-def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
+def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9],norm=False,f=3):
+  if norm:
+    lo,hi = lst[0], lst[-1]
+    lst = g([(x - lo)/(hi-lo+0.000001) for x in lst],f)
   at = lambda x: lst[ int(len(lst)*x) ]
-  return [ at(tile) for tile in tiles ]
+  lst = [ at(tile) for tile in tiles ]
+  
+  return lst
 
 def say(*lst):
   sys.stdout.write(', '.join(map(str,lst)))

@@ -22,13 +22,13 @@ def anywhere(f):
 
 def anywhere1(t,n):
   log   = Num()
-  t.rows= shuffle(t.rows)
-  poles = t.rows[:n]
+  t.rows = shuffle(t.rows)
   rows  = t.rows[n:]
+  poles = sorted(t.rows[:n],
+                 key=lambda x:x.fromHell())
+  w = poles[0]
   v = {}
-  while poles:
-    e  = poles.pop()
-    w  = poles.pop()
+  for e in poles[1:]:
     c  = e - w
     se = e.fromHell()
     sw = w.fromHell()
@@ -36,7 +36,9 @@ def anywhere1(t,n):
       e,se,w,sw = w,sw,e,se
     for row in rows:
       v[row.id] = v.get(row.id,0) + \
-                  row.xy(e,w,c).s  
-  lst = sorted(v.values())
-  for z in lst: log += z
-  print([int(100*log.norm(z)) for z in lst])
+                  row.xy(e,w,c,score=True).s
+  tiles=[0.1,0.2,0.4,0.8,0.9,0.95,0.99]
+  print(g(ntiles(sorted(v.values()),
+                 tiles=tiles,
+                 norm=True)))
+  #print(sorted(v.values()))
