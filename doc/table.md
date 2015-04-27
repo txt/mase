@@ -95,14 +95,17 @@ class Row:
   def __sub__(i,j)    : return dist(i,j,i.table)
   def __hash__(i)     : return i.id
   def __repr__(i)     : return '<'+str(i.cells)+'>'
-  def xy(i,e,w,c):
+  def xy(i,e,w,c,score=False):
     a = i - e
     b = i - w
-    x = (a**2 + c**2 - b**2) / (2*c)
+    x = (a**2 + c**2 - b**2) / (2*c+0.00001)
     h = a if a**2 >= x**2 else b
-    y = (h**2 - x**2)
-    return o(a=a, b=b, c=c,
-             x=x, y=y, it=i)
+    y = (h**2 - x**2)**0.5
+    s = 0
+    if score:
+      if x < 0 or x > c:
+        s = b/a*(e.fromHell() - w.fromHell())/c/y
+    return o(it=i, a=a, b=b, c=c, x=x, y=y, s=s)
   @cache
   def fromHell(i) :
     n = inc = 0
