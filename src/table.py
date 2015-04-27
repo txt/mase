@@ -99,9 +99,11 @@ class Row:
     b = i - w
     x = (a**2 + c**2 - b**2) / (2*c)
     h = a if a**2 >= x**2 else b
-    y = (h**2 - x**2)
-    return o(a=a, b=b, c=c,
-             x=x, y=y, it=i)
+    y = (h**2 - x**2)**0.5
+    s = b/a*(e.fromHell() - w.fromHell())/c/y**2
+    if x < 0 or x > c:
+      s = 0
+    return o(it=i, a=a, b=b, c=c, x=x, y=y, s=s)
   @cache
   def fromHell(i) :
     n = inc = 0
