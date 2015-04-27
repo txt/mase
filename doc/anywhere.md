@@ -21,8 +21,8 @@ def anywhere(f):
   n      = the.ANY.poles
   m      = min(len(t.rows) - n, 64)
   rows   = t.rows[-1*m:]
-  poles  = t.rows[:n]
-  poles  = sorted(poles, key=lambda x:x.fromHell())
+  poles  = sorted(t.rows[:n],
+                  key=lambda x:x.fromHell())
   w      = poles[0]
   v      = {}
   for e in poles[1:]:
