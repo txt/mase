@@ -11,7 +11,9 @@ commit:  ready
 update:; @- git pull origin master
 status:; @- git status
 
-ready: gitting
+ready: gitting zaps
+zaps:
+	find . -name '*.pyc' | xargs -n 50 rm
 
 gitting:
 	@git config --global credential.helper cache

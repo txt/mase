@@ -27,8 +27,9 @@ def anywhere(f):
   for e in poles[1:]:
     c  = e - w
     for row in rows:
-      v[row.id] = v.get(row.id,0) + \
-                  row.xy(e,w,c,score=True).s
+      old = v.get(row.id,0)
+      new = row.xy(e,w,c,score=True).s
+      v[row.id] = max(old,new)
   print(g(ntiles(sorted(v.values()),
                  norm=True)))
   #print(sorted(v.values()))
