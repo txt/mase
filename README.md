@@ -8,7 +8,7 @@
 
 
 
-<table align=center>
+<table border=0 align=center>
 <tr><td rowspan=3>
 <p>This is MASE, rhymes with "base", pronounced like "mace".
 <p>MASE = "why" + "how"
