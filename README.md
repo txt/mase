@@ -9,8 +9,10 @@
 
 
 
-MASE (rhymes with "base", pronounced like "mace") is a
-tutorial introduction to search-based optimization methods for exploring models.
+This is MASE, rhymes with "base", pronounced like "mace".
+
+MASE is the "why" and "how"
+of search-based optimization for exploring models.
 
 <center><table align=center>
 <tr>
