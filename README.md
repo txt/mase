@@ -45,7 +45,7 @@ of search-based optimization for exploring models.
 
 
 </td>
-<td width="100px">
+<td xwidth="100px">
 <p>
 All code xwritten in Python.
 <p>Larger model  come (mostly) from SE.  
