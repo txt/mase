@@ -54,7 +54,7 @@ All code written in Python.
 
 
 
-<img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/pd-icon.png">  
+<img src="https://raw.githubusercontent.com/txt/mase/master/img/pd-icon.png">  
 
 Copyright © 2015 [Tim Menzies](http://menzies.us).
 

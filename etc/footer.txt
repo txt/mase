@@ -1,7 +1,7 @@
 
 
 
-<img align=right src="__IMG/pd-icon.png">  
+<img src="__IMG/pd-icon.png">  
 
 Copyright © 2015 [Tim Menzies](http://menzies.us).
 
