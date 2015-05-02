@@ -21,7 +21,7 @@ of search-based optimization for exploring models.
 <tr>
 <td valign=top xwidth="100px">
 
-1. <a href="Sa">sa.md</a>   <br>
+1. <a href="Sa">sa.md</a>   
 
 0.<a href="aa">History</a><br>
 <hr><em>To explore MASE, read in the order 0,1,2...</em> 
