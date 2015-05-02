@@ -9,7 +9,12 @@
 
 
 <table align=center>
-<tr>
+<tr><td rowspan=3>
+<p>This is MASE, rhymes with "base", pronounced like "mace".
+<p>MASE = "why" + "how"
+of search-based optimization for exploring models.
+<p>Coding examples in Python 2.7+.
+</td>
 <td align=center><b>Lectures
 <img width=75 src="img/200x1.png"></b>
 </td><td align=center><b>Homework
@@ -33,12 +38,7 @@
 </td>
 </tr></table>
 
-This is MASE, rhymes with "base", pronounced like "mace".
 
-MASE = "why" + "how"
-of search-based optimization for exploring models.
-
-Coding examples in Python 2.7+.
 
 
 _________
