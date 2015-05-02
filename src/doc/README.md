@@ -3,11 +3,11 @@
 <table align=center>
 <tr>
 <td align=center><b>Lectures
-<img width=100 src="img/200x1.png"></b>
+<img width=75 src="img/200x1.png"></b>
 </td><td align=center><b>Homework
-<img width=100 src="img/200x1.png"></b>
+<img width=75 src="img/200x1.png"></b>
 </td><td align=center><b>Review
-<img width=100 src="img/200x1.png"></b>
+<img width=75 src="img/200x1.png"></b>
 </td> </tr>
 <tr>
 </td><td align=center><img src="img/lectures.gif">
