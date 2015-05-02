@@ -58,12 +58,8 @@ class unittest:
 
 _________
 
-<img src="https://raw.githubusercontent.com/txt/mase/master/img/pd-icon.png">  
-
+<img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/pd-icon.png">  
 Copyright © 2015 [Tim Menzies](http://menzies.us).
-
-
 This is free and unencumbered software released into the public domain.
-
 For more details, see the [license](https://github.com/txt/mase/blob/master/LICENSE).
 
