@@ -4,5 +4,5 @@
 [Models](__PRE/MODELS.md) |
 [Code](https://github.com/txt/mase/tree/master/src) |
 [Contact](http://menzies.us) |
-[Syllabus](__PRE/SYLLABUS.md)  (for NcState students)
+[Syllabus](__PRE/SYLLABUS.md)  (cs\[57]91 students)
 
