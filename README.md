@@ -27,7 +27,7 @@ Coding examples in Python 2.7+.
 </td><td align=center><img src="img/review.gif">
 </td> </tr>
 <tr>
-<td valign=top xwidth="100px">
+<td valign=top align=right xwidth="100px">
 1. <a href="Sa">SA</a><br>
 0. <a href="aa">History</a><br>
 </td><td valign=top xwidth="100px">
