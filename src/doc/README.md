@@ -17,7 +17,7 @@ tutorial introduction to search-based optimization methods for exploring models.
 </td><td align=center><img src="img/python.jpg">
 </td> </tr>
 <tr>
-<td valign=top zwidth="100px">
+<td valign=top width="100px">
 
 1. <a href="Sa">sa.md</a>   <br>
 
@@ -27,15 +27,15 @@ tutorial introduction to search-based optimization methods for exploring models.
 </td><td valign=topz width="100px">
 0. <a href="HomeWork0">hw0.md</a> <br>
 
-</td><td valign=top zwidth="100px">
+</td><td valign=top width="100px">
 
 1. <a href="Review1">review1.md</a><br>
 
 
 </td>
-<td zwidth="100px">
+<td width="100px">
 <p>
 All code written in Python.
-<p>Larger model examples come (mostly) from software engineering.
+<p>Larger model  come (mostly) from SE.
 </td>
 </tr></table>
