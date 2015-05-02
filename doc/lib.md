@@ -3,8 +3,8 @@
 [About](https://github.com/txt/mase/blob/master/ABOUT.md) |
 [Models](https://github.com/txt/mase/blob/master/MODELS.md) |
 [Code](https://github.com/txt/mase/tree/master/src) |
-[Contact](http://menzies.us) |
-for NcState students: [Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) 
+[Contact](http://menzies.us)  
+For NcState students: [Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) 
 
 
 # Lib: Standard library routines
