@@ -8,14 +8,8 @@
 
 
 
-This is MASE, rhymes with "base", pronounced like "mace".
 
-MASE = "why" + "how"
-of search-based optimization for exploring models.
-
-Coding examples in Python 2.7+.
-
-<center><table align=center>
+<img src="img/200x1.gif"><table align=center>
 <tr>
 <td align=center><b>Lectures</b>
 </td><td align=center><b>Homework</b>
@@ -27,7 +21,7 @@ Coding examples in Python 2.7+.
 </td><td align=center><img src="img/review.gif">
 </td> </tr>
 <tr>
-<td valign=top align=right xwidth="100px">
+<td valign=top  xwidth="100px">
 1. <a href="Sa">SA</a><br>
 0. <a href="aa">History</a><br>
 </td><td valign=top xwidth="100px">
@@ -36,7 +30,13 @@ Coding examples in Python 2.7+.
 0. <a href="Review1">Review0</a><br>  
 </td>
 </tr></table>
-</center>
+
+This is MASE, rhymes with "base", pronounced like "mace".
+
+MASE = "why" + "how"
+of search-based optimization for exploring models.
+
+Coding examples in Python 2.7+.
 
 
 _________
