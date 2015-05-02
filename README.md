@@ -11,9 +11,12 @@
 
 <img src="img/200x1.png"><table align=center>
 <tr>
-<td align=center><b>Lectures</b>
-</td><td align=center><b>Homework</b>
-</td><td align=center><b>Review</b>
+<td align=center><b>Lectures
+<img src="img/200x1.png"></b>
+</td><td align=center><b>Homework
+<img src="img/200x1.png"></b>
+</td><td align=center><b>Review
+<img src="img/200x1.png"></b>
 </td> </tr>
 <tr>
 </td><td align=center><img src="img/lectures.gif">
