@@ -4,5 +4,5 @@
 [Models](__PRE/MODELS.md) |
 [Code](https://github.com/txt/mase/tree/master/src) |
 [Contact](http://menzies.us) |
-[Syllabus](__PRE/SYLLABUS.md)  (4 my grad class)
+[Syllabus](__PRE/SYLLABUS.md) 
 
