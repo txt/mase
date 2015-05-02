@@ -2,8 +2,7 @@
 [Contents](__PRE/TOC.md) |
 [About](__PRE/ABOUT.md) |
 [Models](__PRE/MODELS.md) |
-[Syllabus](__PRE/SYLLABUS.md) |
 [Code](https://github.com/txt/mase/tree/master/src) |
-[Contact](http://menzies.us)
-
+[Contact](http://menzies.us) |
+for NcState students: [Syllabus](__PRE/SYLLABUS.md) 
 
