@@ -12,8 +12,8 @@ tutorial introduction to search-based optimization methods for exploring models.
 <td><b>Lectures</b>
 </td><td><b>Homework</b>
 </td><td><b>Review</b>
-</td><td><b>Review</b>
-</td>Coding </tr>
+</td><td><b>Coding</b>
+</td> </tr>
 <tr>
 </td><td align=center><img src="img/lectures.gif">
 </td><td align=center><img src="img/homework.png">
@@ -26,7 +26,7 @@ tutorial introduction to search-based optimization methods for exploring models.
 1. <a href="Sa">sa.md</a>   <br>
 
 0.<a href="aa">History</a><br>
-<em><tiny>To explore this site, read these in the order 0,1,2...</tiny></em>
+<hr><em>To explore this site, read these lectures in the order 0,1,2...</em>
 
 </td><td valign=top>
 0. <a href="HomeWork0">hw0.md</a> <br>
@@ -37,8 +37,10 @@ tutorial introduction to search-based optimization methods for exploring models.
 
 
 </td>
-<td>
-All coding examples are written in Python-- and most of the larger model examples come from software engineering.
+<td width=64>
+<p>
+All code written in Python.
+<p>Larger model examples come (mostly) from software engineering.
 </td>
 </tr></table>
 
