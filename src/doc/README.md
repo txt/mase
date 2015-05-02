@@ -42,7 +42,7 @@ of search-based optimization for exploring models.
 <p>
 All code written in Python.
 <p>Larger model  come (mostly) from SE.  
-<img width=100 height=1 src="img/white.png">
+<img width=100 height=1 src="img/200x1.png">
 </td>
 </tr></table>
 </center>
