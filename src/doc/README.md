@@ -5,10 +5,10 @@ tutorial introduction to search-based optimization methods for exploring models.
 
 <center><table align=center>
 <tr>
-<td><b>Lectures</b>
-</td><td><b>Homework</b>
-</td><td><b>Review</b>
-</td><td><b>Code</b>
+<td align=center><b>Lectures</b>
+</td><td align=center><b>Homework</b>
+</td><td align=center><b>Review</b>
+</td><td align=center><b>Code</b>
 </td> </tr>
 <tr>
 </td><td align=center><img src="img/lectures.gif">
