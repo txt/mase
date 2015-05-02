@@ -24,7 +24,7 @@ of search-based optimization for exploring models.
 1. <a href="Sa">sa.md</a>   <br>
 
 0.<a href="aa">History</a><br>
-<hr><em>To explore this site, read these lectures in the order 0,1,2...</em> 
+<hr><em>To explore MASE, read these in the order 0,1,2...</em> 
 
 </td><td valign=top width="100px">
 0. <a href="HomeWork0">hw0.md</a><br>    
