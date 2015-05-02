@@ -10,7 +10,7 @@
 
 <table border=0 align=center>
 <tr><td rowspan=3>
-<p>This is MASE, rhymes with "base", pronounced like "mace".
+<p>This is MASE, rhymes with "base", pronounced  "mace".
 <p>MASE = "why" + "how"
 of search-based optimization for exploring models.
 <p>Coding examples in Python 2.7+.
