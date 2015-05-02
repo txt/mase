@@ -11,7 +11,7 @@
 
 This is MASE, rhymes with "base", pronounced like "mace".
 
-MASE is the "why" and "how"
+MASE = "why" + "how"
 of search-based optimization for exploring models.
 
 <center><table align=center>
