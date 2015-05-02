@@ -7,7 +7,7 @@
 MASE (rhymes with "base", pronounced like "mace") is a
 tutorial introduction to search-based optimization methods for exploring models.
 
-<table align=center>
+<center><table align=center>
 <tr>
 <td><b>Lectures</b>
 </td><td><b>Homework</b>
@@ -43,6 +43,7 @@ All code written in Python.
 <p>Larger model  come (mostly) from SE.
 </td>
 </tr></table>
+</center>
 
 
 
