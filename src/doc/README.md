@@ -1,7 +1,7 @@
 
 
 
-<img src="img/200x1.gif"><table align=center>
+<img src="img/200x1.png"><table align=center>
 <tr>
 <td align=center><b>Lectures</b>
 </td><td align=center><b>Homework</b>
