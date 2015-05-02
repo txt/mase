@@ -1,5 +1,10 @@
-[<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner1.png">](https://github.com/txt/mase/blob/master/README.md)
-[Contents](https://github.com/txt/mase/blob/master/TOC.md) | [About](https://github.com/txt/mase/blob/master/ABOUT.md) | [Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) | [Code](https://github.com/txt/mase/tree/master/src) | [Contact](http://menzies.us)</em>
+[<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner1.png">](https://github.com/txt/mase/blob/master/README.md)   
+[Contents](https://github.com/txt/mase/blob/master/TOC.md) |
+[About](https://github.com/txt/mase/blob/master/ABOUT.md) |
+[Models](https://github.com/txt/mase/blob/master/MODELS.md) |
+[Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) |
+[Code](https://github.com/txt/mase/tree/master/src) |
+[Contact](http://menzies.us)
 
 
 
@@ -28,7 +33,7 @@ tutorial introduction to search-based optimization methods for exploring models.
 0.<a href="aa">History</a><br>
 <hr><em>To explore this site, read these lectures in the order 0,1,2...</em>
 
-</td><td valign=topz width="100px">
+</td><td valign=top width="100px">
 0. <a href="HomeWork0">hw0.md</a> <br>
 
 </td><td valign=top width="100px">

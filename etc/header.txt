@@ -1,4 +1,9 @@
-[<img width=900 src="__IMG/banner1.png">](__PRE/README.md)
-[Contents](__PRE/TOC.md) | [About](__PRE/ABOUT.md) | [Syllabus](__PRE/SYLLABUS.md) | [Code](https://github.com/txt/mase/tree/master/src) | [Contact](http://menzies.us)</em>
+[<img width=900 src="__IMG/banner1.png">](__PRE/README.md)   
+[Contents](__PRE/TOC.md) |
+[About](__PRE/ABOUT.md) |
+[Models](__PRE/MODELS.md) |
+[Syllabus](__PRE/SYLLABUS.md) |
+[Code](https://github.com/txt/mase/tree/master/src) |
+[Contact](http://menzies.us)
 
 
