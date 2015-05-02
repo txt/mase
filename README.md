@@ -30,15 +30,15 @@ of search-based optimization for exploring models.
 <tr>
 <td valign=top xwidth="100px">
 
-1. <a href="Sa">sa.md</a><br>
+1. <a href="Sa">SA</a><br>
 0. <a href="aa">History</a><br>
 </td><td valign=top xwidth="100px">
-0. <a href="HomeWork0">hw0.md</a><br>    
+0. <a href="HomeWork0">Hw0</a><br>    
 <img width=100 height=1 src="img/white.png"> 
 
 </td><td valign=top xwidth="100px">
 
-1. <a href="Review1">review1.md</a><br>  
+1. <a href="Review1">Review1</a><br>  
 
 
 </td>
