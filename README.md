@@ -21,23 +21,23 @@ tutorial introduction to search-based optimization methods for exploring models.
 </td><td align=center><img src="img/python.jpg">
 </td> </tr>
 <tr>
-<td valign=top>
+<td valign=top width=100>
 
 1. <a href="Sa">sa.md</a>   <br>
 
 0.<a href="aa">History</a><br>
 <hr><em>To explore this site, read these lectures in the order 0,1,2...</em>
 
-</td><td valign=top>
+</td><td valign=top width=100>
 0. <a href="HomeWork0">hw0.md</a> <br>
 
-</td><td valign=top>
+</td><td valign=top width=100>
 
 1. <a href="Review1">review1.md</a><br>
 
 
 </td>
-<td width=64>
+<td width=100>
 <p>
 All code written in Python.
 <p>Larger model examples come (mostly) from software engineering.
