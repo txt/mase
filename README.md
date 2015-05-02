@@ -8,11 +8,10 @@
 
 
 
-
-<img src="img/200x1.png"><table align=center>
+<table align=center>
 <tr>
 <td align=center><b>Lectures
-<img src="img/200x1.png"></b>
+<img width=100 src="img/200x1.png"></b>
 </td><td align=center><b>Homework
 <img src="img/200x1.png"></b>
 </td><td align=center><b>Review
