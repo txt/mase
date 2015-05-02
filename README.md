@@ -19,7 +19,7 @@ of search-based optimization for exploring models.
 <td align=center><b>Lectures</b>
 </td><td align=center><b>Homework</b>
 </td><td align=center><b>Review</b>
-</td><td align=center><b>Code</b>
+</td><td align=center><b>Code (in Python)</b>
 </td> </tr>
 <tr>
 </td><td align=center><img src="img/lectures.gif">
@@ -36,10 +36,7 @@ of search-based optimization for exploring models.
 </td><td valign=top xwidth="100px">
 0. <a href="Review1">Review0</a><br>  
 </td>
-<td xwidth="100px">
-<p>
-All code  in Python.
-<p>Larger model  come (mostly) from SE.  
+<td xwidth="100px">Larger model  come (mostly) from SE.  
 <img width=100 height=1 src="img/200x1.png"> 
 </td>
 </tr></table>
