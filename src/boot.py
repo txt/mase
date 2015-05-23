@@ -1,4 +1,5 @@
 from __future__ import print_function,division
+from functools import wraps
 
 """
 
@@ -19,6 +20,7 @@ the = o()
 
 def setting(f):
   name = f.__name__
+  @wraps(f)
   def wrapper(**d):
     tmp = the[name] = f().add(**d)
     return tmp
@@ -47,4 +49,3 @@ class unittest:
   def report(i,e,test):
     print(traceback.format_exc())
     print(unittest.score(),':',test.__name__, e)
-    
