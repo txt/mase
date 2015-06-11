@@ -1,9 +1,11 @@
-#  Evil Code for Wicked Problems (or, how to take over the world, part5)
+#  Evil Code for Wicked Problems (or, how to take over the world, stage5)
 
 + <img width=200 align=right src="http://d364y98vz4769w.cloudfront.net/drawings/images/000/081/152/full/image-392503509.jpg?1370810709"> _"The world is a dangerous place to live, not because of the people who are evil, but because of the people who don't do anything about it."_     
 ― Albert Einstein
 
-This book offers notes on part 5 of the programmer's guide to world domination. 
+Programmers of the world unite.  Well, we all know that quote is a little out-dated. The programmers' evil plan to take over the world is now decades 
+
+This book offers an update on the world's programmers evil plan to take over the world. 
 
 As you will recall, that plan is in several parts, many of which have already been accomplished.
 Stage one was to adopt a meek and mild persona (possibly even boring and dull). 
@@ -28,7 +30,4 @@ Note the truly evil, very wicked and distrubring part of this plan:
 
 Some details: 
 
-+ 
-
-  
-  
++
