@@ -1,16 +1,14 @@
-# Evil code (to take over the world, part4)
+#  Evil Code for Wicked Problems (or, how to take over the world, part5)
 
 + <img width=200 align=right src="http://d364y98vz4769w.cloudfront.net/drawings/images/000/081/152/full/image-392503509.jpg?1370810709"> _"The world is a dangerous place to live, not because of the people who are evil, but because of the people who don't do anything about it."_     
 ― Albert Einstein
 
 This book offers notes on part 5 of the programmer's guide to world domination. 
 
-
-
 As you will recall, that plan is in several parts, many of which have already been accomplished.
 Stage one was to adopt a meek and mild persona (possibly even boring and dull). 
 
-Stage two was, using that person, make your work essential to their day to day opertion of   government and all industries (education, mining, manufacturing, etc etc). Looking around the world today, it is very clear that this task has certainly been accomplished.
+Stage two was, using that persona, make your work essential to their day to day opertion of   government and all industries (education, mining, manufacturing, etc etc). Looking around the world today, it is very clear that this task has certainly been accomplished.
 
 The next stage was to open up the whole world to our inspection and manipluation. To this end, we connected the entire
 planet into a digital network that gives us unprecendented access to petabytes of information. Also, by carefully seeding a few high flying examples (Bill Gates, Steve Jobs, Mark Zuckerburg), we made programming very popular to the general population. Sure, they were not very good at it but they did write a million little models to control this or that. Thise models are now scattered across the planet so we in any domain, we can often just soop up a couple, without having to through some tedious model construction phase.
