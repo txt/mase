@@ -1,9 +1,10 @@
 # Evil code (to take over the world, part4)
 
-This book offers notes on part 4 of the programmer's guide to world domination. 
+This book offers notes on part 5 of the programmer's guide to world domination. 
+
 As you will recall, that plan is in 6 parts:
 
-1. Adopt a meek and mild persona Hints and tips (optional, but highly recommended):
+1. Adopt a meek and mild persona. Hints and tips (optional, but highly recommended):
    + Make that persona boring or dull. 
    + Make others shun you by obsessing on millions of tiny details that seem obscure and arcane to
      others, but are actually key to build large and complex devices.
@@ -23,7 +24,9 @@ As you will recall, that plan is in 6 parts:
    your own goals. 
 6. Deploy those changes, thus taking over the world.
 
-Note the truly evil, very wicked and distrubring part of this plan. If you have the power to change the world then that means  (evil laugh) you also  have the guilt if you do not use that power to right the wrongs in this world. 
+Note the truly evil, very wicked and distrubring part of this plan. If you have the power to change the world then that also means  (evil laugh) you    have the guilt if you do not use that power to right the wrongs in this world.  So my gift to you is discontent and struggle and the occasional (possibly fleeting) success against vast problems. 
+
+That's it. The rest of the book is details. Get reading. Get doing.  
 
 
   
