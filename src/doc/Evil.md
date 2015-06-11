@@ -1,6 +1,6 @@
 # Evil code (to take over the world, part4)
 
-+"The world is a dangerous place to live, not because of the people who are evil, but because of the people who don't do anything about it."_     
++ "The world is a dangerous place to live, not because of the people who are evil, but because of the people who don't do anything about it."_     
 ― Albert Einstein
 
 This book offers notes on part 5 of the programmer's guide to world domination. 
