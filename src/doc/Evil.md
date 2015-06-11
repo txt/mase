@@ -3,12 +3,9 @@
 + <img width=200 align=right src="http://d364y98vz4769w.cloudfront.net/drawings/images/000/081/152/full/image-392503509.jpg?1370810709"> _"The world is a dangerous place to live, not because of the people who are evil, but because of the people who don't do anything about it."_     
 ― Albert Einstein
 
-Programmers of the world unite.  Well, we all know that quote is a little out-dated. The programmers' evil plan to take over the world is now decades 
+FYI- the evil plan (by programmers) to take over the world is progressing nicely.  This book offers some programming details on that plan.
 
-This book offers an update on the world's programmers evil plan to take over the world. 
-
-As you will recall, that plan is in several parts, many of which have already been accomplished.
-Stage one was to adopt a meek and mild persona (possibly even boring and dull). 
+As all programmers know, the initial stages of the plan were completed years ago. Stage one was to adopt a meek and mild persona (possibly even boring and dull). 
 
 Stage two was, using that persona, make your work essential to their day to day opertion of   government and all industries (education, mining, manufacturing, etc etc). Looking around the world today, it is very clear that this task has certainly been accomplished.
 
