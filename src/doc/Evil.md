@@ -7,10 +7,9 @@ FYI- the evil plan (by programmers) to take over the world is progressing nicely
 
 As all programmers know, the initial stages of the plan were completed years ago. Stage one was to adopt a meek and mild persona (possibly even boring and dull). 
 
-Stage two was, using that persona, make your work essential to their day to day opertion of   government and all industries (education, mining, manufacturing, etc etc). Looking around the world today, it is very clear that this task has certainly been accomplished.
+Stage two was, using that persona, make our work essential to their day to day opertion of government and all industries (education, mining, manufacturing, etc etc). Looking around the world today, it is clear that stage two was very successful.
 
-The next stage was to open up the whole world to our inspection and manipluation. To this end, we connected the entire
-planet into a digital network that gives us unprecendented access to petabytes of information. Also, by carefully seeding a few high flying examples (Bill Gates, Steve Jobs, Mark Zuckerburg), we made programming very popular to the general population. Sure, they were not very good at it but they did write a million little models to control this or that. Thise models are now scattered across the planet so we in any domain, we can often just soop up a couple, without having to through some tedious model construction phase.
+Of course, stage three was  to open up the whole world to our inspection and manipluation. To this end, we connected the entire planet into a digital network that gives us unprecendented access to petabytes of information. Also, by carefully seeding a few high flying examples (Bill Gates, Steve Jobs, Mark Zuckerburg), we made programming very popular to the general population. Sure, they were not very good at it but they did write a million little models to control this or that. Thise models are now scattered across the planet so we in any domain, we can often just soop up a couple, without having to through some tedious model construction phase.
 
    to information sources, updated every millisecond, from around the world.
 4. Use those connections, and your centrailzed position within government and industry,  
