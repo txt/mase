@@ -3,9 +3,9 @@
 + <img width=200 align=right src="http://d364y98vz4769w.cloudfront.net/drawings/images/000/081/152/full/image-392503509.jpg?1370810709"> _"The world is a dangerous place to live, not because of the people who are evil, but because of the people who don't do anything about it."_     
 ― Albert Einstein
 
-FYI- the evil plan (by programmers) to take over the world is progressing nicely.  This book offers some programming details on part 4 of that plan.
+The evil plan (by programmers) to take over the world is progressing nicely.  Certain parts of that plan were initially somewhat  undefined (specifically, part4). However, given recent results, this book can now fill in the details.
 
-As all programmers know, the initial parts of the plan were completed years ago. Part one was to adopt a meek and mild persona (possibly even boring and dull). 
+But first, a little history.  As all programmers know, the initial parts of the plan were completed years ago. Part one was to adopt a meek and mild persona (possibly even boring and dull). 
 
 Part two was, under the guise of that persona, ingratiated ourselves to government and indistrial agenices (education, mining, manufacturing, etc etc). Once there, make our work essential to their day to day opertion. Looking around the world today, it it is plain to see that part two was very successful.
 
