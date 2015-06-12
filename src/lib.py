@@ -1,15 +1,60 @@
-from __future__ import print_function,division
-
-"""
-
-# Lib: Standard library routines
-
-"""
+from __future__ import print_function, unicode_literals
+from __future__ import absolute_import, division
 
 import random, pprint, re, datetime, time
 from contextlib import contextmanager
 import pprint,sys
-from boot import *
+
+def ok(*lst):
+  for one in lst: unittest(one)
+  return one
+
+class unittest:
+  tries = fails = 0  #  tracks the record so far
+  @staticmethod
+  def score():
+    t = unittest.tries
+    f = unittest.fails
+    return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
+      t,f,int(round(t*100/(t+f+0.001))))
+  def __init__(i,test):
+    unittest.tries += 1
+    try:
+      test()
+    except Exception,e:
+      unittest.fails += 1
+      i.report(e,test)
+  def report(i,e,test):
+    print(traceback.format_exc())
+    print(unittest.score(),':',test.__name__, e)
+
+isa  = isinstance
+
+
+class o:
+  def __init__(i,**d)    : i.__dict__.update(**d)
+  def __setitem__(i,k,v) : i.__dict__[k] = v
+  def __getitem__(i,k)   : return i.__dict__[k]
+  def __repr__(i)        : return str(i.items())
+  def items(i,x=None)    :
+    x = x or i
+    if isa(x,o): return [k,i.items(v) for
+                        k,v in x.__dict__.values()]
+    else: return x
+  
+the = o()
+
+def setting(f):
+  name = f.__name__
+  @wraps(f)
+  def wrapper(**d):
+    tmp = f()
+    tmp.update(**d)
+    the[name] = tmp
+    return tmp
+  wrapper()
+  return wrapper
+
 
 @setting
 def LIB(): return o(
@@ -21,15 +66,12 @@ def LIB(): return o(
              width=80)
 )
 #-------------------------------------------------
-def lt(x,y): return x < y
-def gt(x,y): return x > y
-
-isa   = isinstance
-fun   = lambda x:x.__class__.__name__ == 'function'
-r     = random.random
-any   = random.choice
+r    = random.random
+any  = random.choice
 seed = random.seed
 
+def lt(x,y): return x < y
+def gt(x,y): return x > y
 def first(lst): return lst[0]
 def last(lst): return lst[-1]
                           
@@ -58,29 +100,6 @@ def show(x, indent=None, width=None):
             indent= indent or the.LIB.show.indent,
             width = width  or the.LIB.show.width))
 
-def has(x,  decs=None, wicked=None, skip=None) :
-  if decs   is None:
-    decs = the.LIB.has.decs
-  if wicked is None:
-    wicked = the.LIB.has.wicked
-  if skip   is None:
-    skip = the.LIB.has.skip
-  if   isa(x, o):
-    return has({x.__class__.__name__: x.d()})
-  elif isa(x,list):
-    return map(has,x)
-  elif isa(x,float):
-    return round(x,decs)
-  elif fun(x):
-    return x.__name__+'()'
-  elif wicked and hasattr(x,"__dict__"):
-      return has({x.__class__.__name__ : x.__dict__})
-  elif isa(x, dict):
-    return {k:has(v)
-            for k,v in x.items()
-            if skip != str(k)[0]}
-  else:
-    return x
 
 def cache(f):
   name = f.__name__

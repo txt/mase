@@ -1,5 +1,6 @@
 from __future__ import print_function,division
 from functools import wraps
+import traceback
 
 """
 
@@ -7,12 +8,8 @@ from functools import wraps
 
 """
 
-import traceback
-
 class o:
-  def __init__(i,**d)    : i.add(**d)
-  def d(i)               : return i.__dict__
-  def add(i,**d)         : i.d().update(d);return i
+  def __init__(i,**d)    : i.__dict__.update(**d)
   def __setitem__(i,k,v) : i.__dict__[k] = v
   def __getitem__(i,k)   : return i.__dict__[k] 
 
@@ -22,7 +19,9 @@ def setting(f):
   name = f.__name__
   @wraps(f)
   def wrapper(**d):
-    tmp = the[name] = f().add(**d)
+    tmp = f()
+    tmp.update(**d)
+    the[name] = tmp
     return tmp
   wrapper()
   return wrapper
