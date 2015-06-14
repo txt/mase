@@ -45,26 +45,20 @@ SRC=$(wildcard *.md)
 TEX=$(SRC:.md=.tex)
 
 
-$(HOME)/tmp/$(Src).pdf : *.md
-	echo 33
-    pdflatex --shell-escape -output-directory=$(HOME)/tmp $(Src).tex	
+%.md : ../%.py
+	./p2md $< > $@	
 
-tex : $(TEX) $(HOME)/tmp/$(Src).pdf
-	echo 22
-
+texs: lib.md $(TEX) 
+tex : texs 
+	@echo $(HOME)/tmp/$(Src).pdf
+	 @pdflatex --shell-escape -output-directory=$(HOME)/tmp $(Src).tex		
 
 %.tex:	%.md
-	echo 44
 	pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block \
 	       -w latex \
-		-V classoption=twocolumn \
-               -s -S --latex-engine=pdflatex \
-               --template=template.tex --filter pandoc-citeproc \
+                --filter pandoc-citeproc \
                --csl=ieee.csl --bibliography=$(Bib) \
-               -o $@ $<
-
-
-
+               -o - $< | sed 's/{verbatim}/{lstlisting}/' > $@
 
 embedfonts:
 	@ gs -q -dNOPAUSE -dBATCH -dPDFSETTINGS=/prepress -sDEVICE=pdfwrite \

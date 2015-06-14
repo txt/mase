@@ -1,35 +1,34 @@
-from __future__ import print_function, unicode_literals
-from __future__ import absolute_import, division
-
-"""
-# Lib: Standard Utilities
+\section{Lib: Standard Utilities}\label{lib-standard-utilities}
 
 Standard imports: used everywhere.
 
-## Code Standards
+\subsection{Code Standards}\label{code-standards}
 
-Narrow code (52 chars, max); use ``i'', not ``self'', set indent to two characters, 
+Narrow code (52 chars, max); use
+\texttt{i\textquotesingle{}\textquotesingle{},\ not}self'', set indent
+to two characters,
 
 Not Python3, but use Python3 headers.
 
 Environemnt that supports matplotlib, scikitlearn. Easy to get there.
 
-Old school: install linux. New school: install virtualbox. Newer school: work online.
+Old school: install linux. New school: install virtualbox. Newer school:
+work online.
 
-To checn if you ahve a suseful envorunment, try the following (isntall pip, matpolotlib, scikitlearn)
+To checn if you ahve a suseful envorunment, try the following (isntall
+pip, matpolotlib, scikitlearn)
 
 Learn Python.
 
-
-"""
+\begin{lstlisting}
 import random, pprint, re, datetime, time
 from contextlib import contextmanager
 import pprint,sys
-"""
+\end{lstlisting}
 
 Unit test engine, inspired by Kent Beck.
 
-"""
+\begin{lstlisting}
 def ok(*lst):
   for one in lst: unittest(one)
   return one
@@ -52,11 +51,11 @@ class unittest:
   def report(i,e,test):
     print(traceback.format_exc())
     print(unittest.score(),':',test.__name__, e)
-"""
+\end{lstlisting}
 
 Simple container class (offers simple initialization).
 
-"""
+\begin{lstlisting}
 class o:
   def __init__(i,**d)    : i.__dict__.update(**d)
   def __setitem__(i,k,v) : i.__dict__[k] = v
@@ -69,11 +68,11 @@ class o:
               k,v in x.__dict__.values()
               if not k[0] === "_" ]
     else: return x
-"""
+\end{lstlisting}
 
 The settings system.
 
-"""
+\begin{lstlisting}
 the = o()
 
 def setting(f):
@@ -180,3 +179,4 @@ def study(what,*usings):
     yield
   for (using,_) in usings:
     using()               
+\end{lstlisting}

@@ -142,8 +142,10 @@ $endif$
 $for(header-includes)$
 $header-includes$
 $endfor$
-
-\begin{document}
+\usepackage{times}
+\usepackage[margin=0.5in]{geometry}
+\begin{document} 
+\small
 $if(title)$
 \maketitle
 $endif$
@@ -157,13 +159,11 @@ $for(include-before)$
 $include-before$
 
 $endfor$
-$if(toc)$
-{
+
 \hypersetup{linkcolor=black}
 \setcounter{tocdepth}{$toc-depth$}
 \tableofcontents
-}
-$endif$
+
 $if(lot)$
 \listoftables
 $endif$

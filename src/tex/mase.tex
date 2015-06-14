@@ -1,4 +1,4 @@
-\documentclass[twocolumn]{article}
+\documentclass[9pt,twocolumn]{article}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -29,7 +29,8 @@
               xetex]{hyperref}
 \else
   \usepackage[unicode=true]{hyperref}
-\fi
+  \fi
+\usepackage[dvipsnames]{xcolor}
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={},
@@ -46,8 +47,56 @@
 \setcounter{secnumdepth}{0}
 
 \date{}
+\usepackage{times}
+\usepackage[margin=0.5in]{geometry}
 
-\begin{document}
+\makeatletter
+\newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
+\makeatother
+\usepackage{fancyvrb}
+
+
+\DefineVerbatimEnvironment%
+  {MyVerbatim}{Verbatim}
+  {numbers=right,numbersep=2mm,firstnumber=last,stepnumber=1,xleftmargin=12pt,xrightmargin=24pt,
+   frame=lines,framerule=0.1mm,fontsize=\scriptsize,rulecolor=\color{Gray}}
+
+  \definecolor{britishracinggreen}{rgb}{0.0, 0.26, 0.15}
+  
+  \definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
+  \definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+  \usepackage{listings}
+  
+  \lstset{% general command to set parameter(s)
+    language=Python,
+    firstnumber=last,
+    xleftmargin=12pt,
+    xrightmargin=24pt,
+    numberblanklines=false, 
+    numbers=right, stepnumber=1, numberstyle=\tiny, numbersep=10pt,
+    basicstyle=\linespread{0.75}\scriptsize\ttfamily, % print whole listing small
+    keywordstyle=\color{coolblack}\bfseries,
+    emphstyle=\ttb\color{bulgarianrose},    % Custom highlighting style
+    stringstyle=\color{britishracinggreen},
+    frame=tb,         
+    % underlined bold black keywords
+    identifierstyle=, % nothing happens
+    commentstyle=\color{white}, % white comments
+    stringstyle=\ttfamily, % typewriter type for strings
+    showstringspaces=false} % no special string spaces
+  
+\begin{document} 
+\small
+
+\verbatimfont{\ttfamily\scriptsize}
+
+%\renewcommand{\verbatim@font}{\ttfamily\small}
+
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{3}
+\tableofcontents
+
+\input{lib}
 
 \section{Pandoc with citeproc-hs}\label{pandoc-with-citeproc-hs}
 
@@ -83,8 +132,9 @@
   With some markup {[}1, p. 32{]}.
 \end{itemize}
 
-\section*{References}\label{references}
-\addcontentsline{toc}{section}{References}
+\section{References}\label{references}
+
+\input{lib.tex}
 
 {[}1{]}J. Doe, \emph{First book}. Cambridge: Cambridge University Press,
 2005.

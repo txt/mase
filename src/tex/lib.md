@@ -1,7 +1,3 @@
-from __future__ import print_function, unicode_literals
-from __future__ import absolute_import, division
-
-"""
 # Lib: Standard Utilities
 
 Standard imports: used everywhere.
@@ -21,15 +17,15 @@ To checn if you ahve a suseful envorunment, try the following (isntall pip, matp
 Learn Python.
 
 
-"""
+```
 import random, pprint, re, datetime, time
 from contextlib import contextmanager
 import pprint,sys
-"""
+```
 
 Unit test engine, inspired by Kent Beck.
 
-"""
+```
 def ok(*lst):
   for one in lst: unittest(one)
   return one
@@ -52,11 +48,11 @@ class unittest:
   def report(i,e,test):
     print(traceback.format_exc())
     print(unittest.score(),':',test.__name__, e)
-"""
+```
 
 Simple container class (offers simple initialization).
 
-"""
+```
 class o:
   def __init__(i,**d)    : i.__dict__.update(**d)
   def __setitem__(i,k,v) : i.__dict__[k] = v
@@ -69,11 +65,11 @@ class o:
               k,v in x.__dict__.values()
               if not k[0] === "_" ]
     else: return x
-"""
+```
 
 The settings system.
 
-"""
+```
 the = o()
 
 def setting(f):
@@ -180,3 +176,4 @@ def study(what,*usings):
     yield
   for (using,_) in usings:
     using()               
+```
