@@ -17,6 +17,8 @@ several catches).
 Firstly, models have to be written and it can be quite a task to create and validate a model
 of some complex phenomenon.
 
+see also list in sbse14
+
 Secondly, many models related to
 \emph{wicked problems}; i.e.~problems for which there is no clear best
 solution. Tittel XXXWorse still, some models relate to \_wicked there is
@@ -58,6 +60,13 @@ consider the complexity of real-world phenomonem. Many of these models
 are so complex that
 we cannot predict what happens when the parts of
 that model interact. 
+
+### Parts
+
++ Domain specifc langauges (representation)
++ execution (nuktu-objective ootiization)
++ evaluation (statistical methods for experimental sciencetists in SE)
++ Philophsopy (about what it means to know, and to doubt)
 
 ### Implications for Software Engineering
 
