@@ -1,4 +1,12 @@
 \documentclass[9pt,twocolumn]{article}
+
+
+
+
+
+\usepackage{graphicx}
+\usepackage{natbib}
+\bibliographystyle{unsrtnat}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -15,7 +23,8 @@
   \fi
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \newcommand{\euro}{€}
-\fi
+  \fi
+  \usepackage{wrapfig}
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
@@ -30,6 +39,14 @@
 \else
   \usepackage[unicode=true]{hyperref}
   \fi
+
+%  \usepackage[T1]{fontenc}
+\renewcommand{\rmdefault}{ptm}
+\usepackage{fourier}
+
+\usepackage[scaled=0.875]{helvet} % ss
+\renewcommand{\ttdefault}{pcr} %tt
+
 \usepackage[dvipsnames]{xcolor}
 \hypersetup{breaklinks=true,
             bookmarks=true,
@@ -44,16 +61,30 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
-\setcounter{secnumdepth}{0}
+
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
+\fancyfoot[LE,RO]{page~\thepage~of~\pageref{LastPage}}
+\cfoot{}
+\fancyfoot[LO,RE]{\rotatebox[origin=c]{180}{\copyright} 2015, Tim Menzies, sort of.}
+
+
+
+  \renewcommand{\footrulewidth}{0.4pt}
 
 \date{}
-\usepackage{times}
-\usepackage[margin=0.5in]{geometry}
+%\usepackage{times}
+\usepackage[margin=0.75in]{geometry}
 
 \makeatletter
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
 \makeatother
 \usepackage{fancyvrb}
+
 
 
 \DefineVerbatimEnvironment%
@@ -62,87 +93,148 @@
    frame=lines,framerule=0.1mm,fontsize=\scriptsize,rulecolor=\color{Gray}}
 
   \definecolor{britishracinggreen}{rgb}{0.0, 0.26, 0.15}
-  
   \definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
   \definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
-  \usepackage{listings}
+  \definecolor{mygreen}{rgb}{0,0.6,0}
+  \definecolor{mymauve}{rgb}{0.58,0,0.82}
   
+  \usepackage{listings}
+
+  \colorlet{shadecolor}{gray!8}
   \lstset{% general command to set parameter(s)
     language=Python,
     firstnumber=last,
-    xleftmargin=12pt,
-    xrightmargin=24pt,
-    numberblanklines=false, 
-    numbers=right, stepnumber=1, numberstyle=\tiny, numbersep=10pt,
-    basicstyle=\linespread{0.75}\scriptsize\ttfamily, % print whole listing small
+    xleftmargin=6pt,
+    xrightmargin=12pt,
+    numberblanklines=false,
+    backgroundcolor = \color{shadecolor},
+    numbers=right, stepnumber=1, numberstyle=\tiny, numbersep=1pt,
+    basicstyle=\linespread{0.90}\scriptsize\ttfamily, % print whole listing small
     keywordstyle=\color{coolblack}\bfseries,
     emphstyle=\ttb\color{bulgarianrose},    % Custom highlighting style
     stringstyle=\color{britishracinggreen},
-    frame=tb,         
-    % underlined bold black keywords
-    identifierstyle=, % nothing happens
-    commentstyle=\color{white}, % white comments
-    stringstyle=\ttfamily, % typewriter type for strings
-    showstringspaces=false} % no special string spaces
-  
-\begin{document} 
-\small
+    commentstyle=\color{red},
+    stringstyle=\color{mygreen},
+    frame=tb,framerule=0.5pt,rulecolor=\color{Gray},
+      showstringspaces=false,
+    } % no special string spaces
 
-\verbatimfont{\ttfamily\scriptsize}
+ \newcommand{\said}[1]{\citet*{#1}}
+
+
+ \hypersetup{linkcolor=black}
+\setcounter{tocdepth}{3}
+
+\newcommand{\eq}[1]{Equation~\ref{eq:#1}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\tion}[1]{\textsection\ref{sec:#1}}
+\newcommand{\fig}[1]{Figure~\ref{fig:#1}}
+
+\setlength{\columnsep}{5mm}
+\setlength{\columnseprule}{0.1pt}
+
+\renewcommand{\headwidth}{7in}
+%% \makeatletter
+%%     \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+%%         \hrule\@height\headrulewidth\@width 7in \vskip-\headrulewidth}}
+%% \makeatother
+
+%% \makeatletter
+%%     \def\footrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+%%         \hrule\@height\headrulewidth\@width 7in \vskip-\headrulewidth}}
+%% \makeatother
+\begin{document} 
 
 %\renewcommand{\verbatim@font}{\ttfamily\small}
 
-\hypersetup{linkcolor=black}
-\setcounter{tocdepth}{3}
+\onecolumn
+\title{{\bf Evil Code for Wicked Problems:\\
+  (part 4 of the Programmer's Guide to World Domination)}\\
+\vspace{5mm} \includegraphics[width=4in]{img/six.jpg}}
+\author{Tim Menzies \#attentionDeficitSquirrel\\(a taxi driver, failed diplomat, and
+  mad computer scientist)\\
+  North Carolina State University\\tim.menzies{@}gmail.com\\http://menzies.us}
+
+\maketitle
+\begin{center}
+ 
+
+
+(Also known as {\em Lecture Notes, Automated
+  Software Engineering}, CS, NcState, Fall, 2015.)
+
+
+  This is a ``how to guide'' on how to write search-based tools for many tasks such as automated
+  reasoning about SE projects. Starting
+  from scratch, this notes guide the newbie
+  through the wonderful world of search and
+  non-parametric optimization.
+
+  Along the way,
+  they'll learn the tricks of the
+  trade for advanced Python programming
+  tricks as well as something called {\em research programming}
+  (tools for exploring the world by building software models
+  of it).
+  
+
+  \end{center}
+\clearpage
+\twocolumn
+
 \tableofcontents
+
+\newpage
+
+
+
+\section*{Source Code Availability and Copyleft}
+The software associated with this book
+is free and unencumbered and released into the public domain. To download this code, see http://github.com/txt/mase.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+
+For more information, please refer to http://unlicense.org
+
+
+\newpage
+
+
+
+\input{evil}
+
+\input{reprog}
+
+
+\subsection*{The GREAT SECRET}
 
 \input{lib}
 
 \section{Pandoc with citeproc-hs}\label{pandoc-with-citeproc-hs}
 
-\begin{itemize}
-\item
-  \textbf{???}
-\item
-  \textbf{???}
-\item
-  {[}Reference 1{]} says blah.
-\item
-  {[}Reference 1{]} says blah.
-\item
-  {[}Reference 1{]} says blah.
-\item
-  {[}Reference 1{]} {[}p. 30{]}, {[}3{]} says blah.
-\item
-  In a note.\footnote{A citation without locators 3.}
-\item
-  A citation group {[}1, pp. 34--35{]}, {[}3{]}.
-\item
-  Another one {[}1, pp. 34--35{]}.
-\item
-  And another one in a note.\footnote{Some citations 1--3.}
-\item
-  Citation with a suffix and locator {[}1, pp. 33, 35--37{]}.
-\item
-  Citation with suffix only 1.
-\item
-  Now some modifiers.\footnote{Like a citation without author: 1, and
-    now Doe with a locator {[}2, p. 44{]}.}
-\item
-  With some markup {[}1, p. 32{]}.
-\end{itemize}
+\said{item3}
 
-\section{References}\label{references}
-
-\input{lib.tex}
-
-{[}1{]}J. Doe, \emph{First book}. Cambridge: Cambridge University Press,
-2005.
-
-{[}2{]}J. Doe, ``Article,'' \emph{Journal of Generic Studies}, vol. 6,
-pp. 33--34, 2006.
-
-{[}3{]}J. Doe and J. Roe, ``Why water is wet,'' in \emph{Third book}, S.
-Smith, Ed. Oxford: Oxford University Press, 2007.
-
+\bibliography{refs.bib}
 \end{document}

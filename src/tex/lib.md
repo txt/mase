@@ -6,7 +6,14 @@ Standard imports: used everywhere.
 
 Narrow code (52 chars, max); use ``i'', not ``self'', set indent to two characters, 
 
+In a repo (or course). Markdown comments (which means we can do tricks like auto-generating this
+documentation from comments in the file).
+
 Not Python3, but use Python3 headers.
+
+good reseraoiuces for advance people: Norving's infrenqencly asked questions
+
+David Isaacon's Pything tips, tricks, and Hacks.http://www.siafoo.net/article/52
 
 Environemnt that supports matplotlib, scikitlearn. Easy to get there.
 
@@ -15,6 +22,10 @@ Old school: install linux. New school: install virtualbox. Newer school: work on
 To checn if you ahve a suseful envorunment, try the following (isntall pip, matpolotlib, scikitlearn)
 
 Learn Python.
+
+Learn tdd
+
+Attitude to coding. not code byt"set yourself up to et rapid feedback on some issue"
 
 
 ```
@@ -112,7 +123,7 @@ def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9],
                 norm=False, f=3):
   if norm:
     lo,hi = lst[0], lst[-1]
-    lst = g([(x - lo)/(hi-lo+0.000001) for x in lst],f)
+    lst= g([(x - lo)/(hi-lo+0.0001) for x in lst],f)
   at = lambda x: lst[ int(len(lst)*x) ]
   lst = [ at(tile) for tile in tiles ]
   
