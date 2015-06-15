@@ -146,44 +146,64 @@
 %%     \def\footrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
 %%         \hrule\@height\headrulewidth\@width 7in \vskip-\headrulewidth}}
 %% \makeatother
+
+
+\catcode`\_=11\relax
+    \newcommand\email[1]{\_email #1\q_nil}
+    \def\_email#1@#2\q_nil{%
+      \href{mailto:#1@#2}{{\emailfont #1\emailampersat #2}}
+    }
+    \newcommand\emailfont{\sffamily}
+    \newcommand\emailampersat{{@}}
+    \catcode`\_=8\relax    
+
+
+
+
 \begin{document} 
 
 %\renewcommand{\verbatim@font}{\ttfamily\small}
 
 \onecolumn
 \title{{\bf Evil Code for Wicked Problems, part 4:\\
-    A Programmer's Guide to World Domination-- in Python\\
+    The Research Programmer's Guide to World Domination-- in Python\\
   (a.k.a. {\em Lecture Notes, Automated
   SE}, CS, NcState, Fall'15)}\\
-\vspace{5mm} \includegraphics[width=4in]{img/six.jpg}}
-\author{Tim Menzies \#attentionDeficitSquirrel\\(a taxi driver, failed diplomat, and
-  mad computer scientist)\\
-  North Carolina State University\\tim.menzies{@}gmail.com\\http://menzies.us}
+ \includegraphics[width=3.2in]{img/six.jpg}}
+\author{by \#attentionDeficitSquirrel (a.k.a. Tim Menzies)
+  \\Taxi driver, failed diplomat, mad computer scientist }
 
 \maketitle
+
 \begin{center}
- 
-
-
-
-
-
-  This is a ``how to guide'' on how to write search-based tools for many tasks such as automated
-  reasoning about SE projects. Starting
-  from scratch, this notes guide the newbie
-  through the wonderful world of search and
-  non-parametric optimization.
-
-  Along the way,
-  they'll learn the tricks of the
-  trade for advanced Python programming
-  tricks as well as something called {\em research programming}
-  (tools for exploring the world by building software models
-  of it).
+ \begin{minipage}{.8\linewidth}
+  {\bf SYNOPSIS:} This book is a  ``how to guide'' on model-based reasoning using
+  search-based tools (with examples taken from software engineering).\vspace{3mm}
   
+  The book builds, from the ground up, numerous
+  tiny tools that can tame seemingly complex
+  tasks. The tools include methods for
+  (a)~representing models; (b) reasoning about the
+  many goals of those models using state-of-the-art
+  algorithms; (c) discovering new tools are better than
+  the state-of-the-art. \vspace{3mm}
+  
+  
+  The audience for this book are (a)~graduate  students taking
+  a one semester subject in advanced programming methods; and
+  (b)~researchers developing the next generation
+  of model-based reasoning tools.
+   \vspace{3mm}
+  
+  The code base for the book is very small and is written
+  in Python 2.7. The code  would simple to
+  port to many other languages.
+
+  \end{minipage}
 
   \end{center}
 \clearpage
+\small
 \twocolumn
 
 \tableofcontents
@@ -191,6 +211,23 @@
 \newpage
 
 
+\section*{Content Advisory }
+\begin{wrapfigure}{r}{1.5in}
+  \includegraphics[width=1.5in]{img/shark.jpg}
+  \end{wrapfigure}
+This book contains strong language, weakly typed (and tapped with glee).
+
+This book may contain execessive or gratutious fun--
+as well as ideas that some readers may find disturbing.
+This book does not necessarily 
+believed or endorse those ideas- but it does jump in and play with them
+(and asks you to do the same).
+
+This book may include heresies, not suitable for established wisdom. It is
+intended for mature audiences only; i.e.  those
+old enough to know there is much left to know. 
+
+Batteries not included.
 
 \section*{Source Code Availability and Copyleft}
 The software associated with this book
