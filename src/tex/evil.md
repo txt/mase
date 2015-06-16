@@ -16,18 +16,21 @@ Part two was, under the guise of that persona,
 ingratiated ourselves to government and indistrial
 agenices (education, mining, manufacturing, etc
 etc). Once there, make our work essential to their
-day to day opertion. Looking around the world today,
-it it is plain to see that part two was very
-successful.
+day to day opertion. 
+Software is now a prime driven in innovation and all aspects of economic development.
+Software mediates most aspects of our daily lives such as the
+stock market models that control
+the economy; the probablistic models that recommend what books to read;
+and the pacemakers that govern the beating of our heart.
 
-After that, part three was to make much more
+
+After that, part three was to make  more
 material available for our inspection and
-manipluation. To this end, the entire planet was
-enclosed a digital network- thus giving us
+manipluation. To this end, the planet was
+enclosed a digital network that grants us
 unprecendented access to petabytes of sensors and
 effectors. Also, by carefully seeding a few
-promienet examples of successful programmers (Bill
-Gates, Steve Jobs, Mark Zuckerburg), we convinced a
+promienet examples of successful programmers (Gates,  Jobs, Zuckerburg, thanks guys!), we convinced a
 lot of people to write lots of little tools, each of
 which represent or control some thing, somewhere.
 

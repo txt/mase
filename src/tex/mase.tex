@@ -147,10 +147,33 @@
 %%         \hrule\@height\headrulewidth\@width 7in \vskip-\headrulewidth}}
 %% \makeatother
 
+\usepackage{tocloft}
+
+\setlength{\cftbeforesecskip}{6pt}
 
 \usepackage{moresize}
 
 
+
+\newcommand{\parting}[2]{\newpage
+\onecolumn
+\clearpage
+\fancyhead[LE,RO]{}
+\fancyhead[LO,RE]{}
+\vspace*{\fill}
+\begin{center}
+  \addcontentsline{toc}{section}{#1~~~#2}
+  \begin{minipage}{.6\textwidth}
+    \begin{center}
+      { \fontsize{450}{450} \selectfont {\bf #1}}\\~\\ \LARGE{(#2)}\end{center}
+\end{minipage}
+\end{center}
+\vfill % equivalent to \vspace{\fill}
+\clearpage
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
+\twocolumn
+}
 
 \begin{document} 
 
@@ -158,8 +181,8 @@
 
 \onecolumn
 \title{
-  {\bf \HUGE{Evil Code for Wicked Problems, part 4}\\~\\
-    \includegraphics[width=6in]{img/herGoggles.png}\\
+  \vspace{-1cm}{\bf \HUGE{Evil Code for Wicked Problems, part 4}\\~\\
+    \includegraphics[width=5.5in]{img/herGoggles.png}\\
     \Large{A Research Programmer's Guide to World Domination-- in Python.}\\
     \vspace{-2mm}
     \Large{a.k.a. {\em Lecture Notes, Automated
@@ -175,26 +198,27 @@
    ~\hrule~
 
    {\bf SYNOPSIS:} This book is a  ``how to guide'' on model-based reasoning using
-  search-based tools (with examples taken from software engineering).\vspace{3mm}
-  
-  The book builds, from the ground up, numerous
-  tiny tools that can tame seemingly complex
-  tasks. The tools include methods for
-  representing models; reasoning about the
-  many goals of those models using state-of-the-art
-  algorithms; and discovering new tools are better than
-  the state-of-the-art. \vspace{3mm}
-  
-  
-  The audience for this book are graduate  students taking
+   data mining and search-based tools (with examples taken from software engineering).
+   It is intended for graduate  students taking
   a one semester subject in advanced programming methods as
   well as researchers developing the next generation
-  of model-based reasoning tools.
-   \vspace{3mm}
-  
-  The code base for the book is very small and written
-  in Python 2.7.
+  of model-based reasoning tools.  
 
+  \vspace{2mm}Using Python 2.7, the book builds (from the ground up) numerous
+  tiny tools that can tame seemingly complex
+  tasks. The combined toolkit, called RINSE, 
+  {\em \underline{r}epresents}  models using domain-specific languages.  It also supports
+    {\em \underline{in}ference} across the multiple goals of those models using multi-objective optimization.
+    Further, it can 
+    succinctly {\em \underline{s}ummarize} that inference  using data miners.
+    Finally, RINSE contains many tools for the
+   {\em \underline{e}valuation} of different inference methods. 
+
+   \vspace{2mm}RINSE is a not some shiny  end-user click-and-point GUI package.
+   Rather, it is a starter-kit that demonstrates an novel  model-based approach to problem solving where programmers
+   mix and match and extend data miners and multi-objective optimizers.
+
+  
   ~\hrule~
   
   \end{minipage}
@@ -205,13 +229,18 @@
 \small
 \twocolumn
 
+
+
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
+
 \tableofcontents
 
 \vfill
 
 \section*{Content Advisory }
-\begin{wrapfigure}{r}{1.2in}
-  \includegraphics[width=1.2in]{img/shark.jpg}
+\begin{wrapfigure}{r}{1.5in}
+  \includegraphics[width=1.5in]{img/shark.jpg}
   \end{wrapfigure}
 This book contains strong language, weakly typed (and tapped with glee).
 This book may contain excessive or gratutious fun--
@@ -219,7 +248,8 @@ as well as ideas that some readers may (or may not) find disturbing.
 This book does not necessarily 
 believed or endorse those ideas- but plays with them anyway
 (and asks you to do the same).
-This book may include heresies, not suitable for established wisdom. It is
+This book may include heresies, not suitable for anyone  who believes in established wisdom, without
+adequate experimentation. It is
 intended for mature audiences only; i.e.  those
 old enough to know there is much left to know. 
 This book may (or may not) contain peanuts or tree nut products.
@@ -228,8 +258,9 @@ Batteries not included.
 \newpage
 
 \section*{Source Code Availability and Copyleft}
+To download this code, see http://github.com/txt/mase.
 The software associated with this book
-is free and unencumbered and released into the public domain. To download this code, see http://github.com/txt/mase.
+is free and unencumbered and released into the public domain. 
 
 Anyone is free to copy, modify, publish, use, compile, sell, or
 distribute this software, either in source code form or as a compiled
@@ -281,24 +312,8 @@ Prof. Menzies can be contacted at \verb!tim.menzies@gmail.com!.
 
 
 
-\newpage
-\onecolumn
-\clearpage
-\vspace*{\fill}
-\begin{center}
-  \begin{minipage}{.6\textwidth}
-    { \fontsize{450}{450} \selectfont {\bf I}}\hspace{-4mm}\LARGE{ntroduction}
-\end{minipage}
-\end{center}
-\vfill % equivalent to \vspace{\fill}
-\clearpage
 
-
-\fancyhead[LE,RO]{\slshape \rightmark}
-\fancyhead[LO,RE]{\slshape \leftmark}
-
-\twocolumn
-
+\parting{A}{An Introduction}
 \input{evil}
 \newpage
 \input{reprog}
@@ -306,6 +321,13 @@ Prof. Menzies can be contacted at \verb!tim.menzies@gmail.com!.
 
 \subsection*{The GREAT SECRET}
 
+\subsection*{Example}
+
+brook's law.  DSL in python of CM. data mining.
+
+\parting{B}{Before we begin}
+
+\input{settingup}
 \input{lib}
 
 \section{Pandoc with citeproc-hs}\label{pandoc-with-citeproc-hs}

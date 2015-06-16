@@ -4,6 +4,8 @@ BibDir=.
 Bib=  $(BibDir)/refs.bib
 PdfOut=../../img
 
+.PHONY: all typo commit update status gitting timm publish one view open publocal done dirs clean tex texs one embedfonts bib
+
 all : dirs tex bib  tex tex embedfonts done publocal
 
 typo   : ;cd ..; $(Make) typo
@@ -48,10 +50,13 @@ TEX=$(SRC:.md=.tex)
 %.md : ../%.py
 	./p2md $< > $@	
 
-texs: lib.md $(TEX) 
-tex : texs one bib one
+clean:
+	rm $(HOME)/tmp/$(Src)*
 
-one:
+texs: lib.md $(TEX) 
+tex : texs tmptex bib tmptex
+
+tmptex :
 	@pdflatex --shell-escape -output-directory=$(HOME)/tmp $(Src).tex		
 
 %.tex:	%.md
