@@ -31,31 +31,38 @@ Gates, Steve Jobs, Mark Zuckerburg), we convinced a
 lot of people to write lots of little tools, each of
 which represent or control some thing, somewhere.
 
-Part four was a little tricky but, as shown in this book, it turned out not to be too hard.
-Having access to many models and much data can be overwhelming-- unless some GREAT SECRET can be
-used to significantly simply all that information. For the longest
-time, that
-GREAT SECRET was unknown. However, recent advances have revealed the GREAT
-that
- SECRET-- if we describe something in _N_ dimensions, then there is usually a much smaller
-set of _M_ dimensions that
-contain most of the signal. The GREAT SECRET is that
-is it very
-easy (and fast) to find, then exploit, those few number of _M_ dimensions.  
+Part four was a little tricky but, as shown in this
+book, it turned out not to be too hard.  Having
+access to many models and much data can be
+overwhelming-- unless some GREAT SECRET can be used
+to significantly simply all that information. For
+the longest time, that GREAT SECRET was
+unknown. However, recent advances have revealed that
+if we describe something in _N_ dimensions, then
+there is usually a much smaller set of _M_
+dimensions that contain most of the signal. So
+GREAT SECRET is that is it very easy (and very fast) to
+find then exploit those few number of _M_
+dimensions for solving seemingly complex problems.
 
 \begin{wrapfigure}{r}{1.3in}
 \includegraphics[width=1.3in]{img/evillaugh.jpg}
 \end{wrapfigure}With those controllers in hand, we
 are now free to move to part five; i.e. taking over
 the world.  In fact, the truly evil part of this
-work is that know you know you have the power to
-change the world. Which also means (evil laugh) you
-have the guilt if you do not use that power to right
-the wrongs of the world.
+work is this:
+_now you know you have the power to change the world_.
+This also means that (evil laugh)
+_now you have the guilt if you do not use that power to right the wrongs of the world_.
 So welcome to a lifetime of discontent (punctuated by the occasionaly, perhaps fleerting, truimphs) as you struggle to solve a very large number of pressing
 problems facing humanity.
 
-'Nough said. Good luck taking over the world. Remember: if you don't try then you won't be able to sleep
-at night, 
-ever again (final evil laugh).
+'Nough said. Good luck with that whole
+world domination thing. One tip: if at first you cannot dominate the whole
+thing, start out with something smaller.
+Find some people who have problems, then work with them to
+make changes that help them.
+Remember: if you don't try then you won't be able to sleep
+at night.
+Ever again (evil laugh).
 

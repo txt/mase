@@ -66,10 +66,10 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
-\fancyhead[LE,RO]{\slshape \rightmark}
-\fancyhead[LO,RE]{\slshape \leftmark}
-\fancyfoot[LE,RO]{page~\thepage~of~\pageref{LastPage}}
+\rhead{} \chead{}\lhead{}
 \cfoot{}
+
+\fancyfoot[LE,RO]{page~\thepage~of~\pageref{LastPage}}
 \fancyfoot[LO,RE]{\rotatebox[origin=c]{180}{\copyright} 2015, Tim Menzies, sort of.}
 
 
@@ -148,15 +148,7 @@
 %% \makeatother
 
 
-\catcode`\_=11\relax
-    \newcommand\email[1]{\_email #1\q_nil}
-    \def\_email#1@#2\q_nil{%
-      \href{mailto:#1@#2}{{\emailfont #1\emailampersat #2}}
-    }
-    \newcommand\emailfont{\sffamily}
-    \newcommand\emailampersat{{@}}
-    \catcode`\_=8\relax    
-
+\usepackage{moresize}
 
 
 
@@ -165,19 +157,24 @@
 %\renewcommand{\verbatim@font}{\ttfamily\small}
 
 \onecolumn
-\title{{\bf Evil Code for Wicked Problems, part 4:\\
-    The Research Programmer's Guide to World Domination-- in Python\\
-  (a.k.a. {\em Lecture Notes, Automated
-  SE}, CS, NcState, Fall'15)}\\
- \includegraphics[width=3.2in]{img/six.jpg}}
-\author{by \#attentionDeficitSquirrel (a.k.a. Tim Menzies)
-  \\Taxi driver, failed diplomat, mad computer scientist }
+\title{
+  {\bf \HUGE{Evil Code for Wicked Problems, part 4}\\~\\
+    \includegraphics[width=6in]{img/herGoggles.png}\\
+    \Large{A Research Programmer's Guide to World Domination-- in Python.}\\
+    \vspace{-2mm}
+    \Large{a.k.a. {\em Lecture Notes, Automated
+  SE}, CS, NC State, Fall'15}}}
+\author{by Tim Menzies \\\#attentionDeficitSquirrel\\\date{\today}
+   }
 
 \maketitle
 
 \begin{center}
- \begin{minipage}{.8\linewidth}
-  {\bf SYNOPSIS:} This book is a  ``how to guide'' on model-based reasoning using
+
+ \begin{minipage}{.7\linewidth}
+   ~\hrule~
+
+   {\bf SYNOPSIS:} This book is a  ``how to guide'' on model-based reasoning using
   search-based tools (with examples taken from software engineering).\vspace{3mm}
   
   The book builds, from the ground up, numerous
@@ -185,12 +182,12 @@
   tasks. The tools include methods for
   representing models; reasoning about the
   many goals of those models using state-of-the-art
-  algorithms; discovering new tools are better than
+  algorithms; and discovering new tools are better than
   the state-of-the-art. \vspace{3mm}
   
   
   The audience for this book are graduate  students taking
-  a one semester subject in advanced programming methods; as
+  a one semester subject in advanced programming methods as
   well as researchers developing the next generation
   of model-based reasoning tools.
    \vspace{3mm}
@@ -198,35 +195,37 @@
   The code base for the book is very small and written
   in Python 2.7.
 
+  ~\hrule~
+  
   \end{minipage}
 
   \end{center}
+\thispagestyle{empty}
 \clearpage
 \small
 \twocolumn
 
 \tableofcontents
 
-\newpage
-
+\vfill
 
 \section*{Content Advisory }
-\begin{wrapfigure}{r}{1.5in}
-  \includegraphics[width=1.5in]{img/shark.jpg}
+\begin{wrapfigure}{r}{1.2in}
+  \includegraphics[width=1.2in]{img/shark.jpg}
   \end{wrapfigure}
 This book contains strong language, weakly typed (and tapped with glee).
-
 This book may contain excessive or gratutious fun--
-as well as ideas that some readers may find disturbing.
+as well as ideas that some readers may (or may not) find disturbing.
 This book does not necessarily 
-believed or endorse those ideas- but jumps in and play with them
+believed or endorse those ideas- but plays with them anyway
 (and asks you to do the same).
-
 This book may include heresies, not suitable for established wisdom. It is
 intended for mature audiences only; i.e.  those
 old enough to know there is much left to know. 
-
+This book may (or may not) contain peanuts or tree nut products.
 Batteries not included.
+
+\newpage
 
 \section*{Source Code Availability and Copyleft}
 The software associated with this book
@@ -256,9 +255,49 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to http://unlicense.org
 
 
+\section*{About the Author}
+
+\begin{wrapfigure}{r}{1.5in}
+\includegraphics[width=1.5in]{img/tim.png}
+\end{wrapfigure}
+Tim Menzies (Ph.D., UNSW, 1995, http://menzies.us) is a full Professor in CS at North Carolina State University where he teaches software engineering and automated software engineering. His research relates to synergies between human and artificial intelligence, with particular application to data mining for software engineering.
+
+In his career, he has been a lead researcher on projects for NSF, NIJ, DoD, NASA, USDA, as well as joint research work with private companies.
+He is the author of over 230 referred publications; and is one of the 100 most cited authors in software engineering out of over 80,000 researchers.
+
+Prof. Menzies is an associate editor of IEEE
+Transactions on Software Engineering, Empirical
+Software Engineering and the Automated Software
+Engineering Journal. His community service includes
+co-founder of the PROMISE project (storing data for repeatable SE
+experiments);
+co-program chair for the 2012 conference on Automated SE and the 2015
+New Ideas and Emerging Research track at the International Conference on SE;
+and 
+co-general chair for 2016 International Conference on Software Maintenance and Evolution.
+
+Prof. Menzies can be contacted at \verb!tim.menzies@gmail.com!.
+
+
+
+
 \newpage
+\onecolumn
+\clearpage
+\vspace*{\fill}
+\begin{center}
+  \begin{minipage}{.6\textwidth}
+    { \fontsize{450}{450} \selectfont {\bf I}}\hspace{-4mm}\LARGE{ntroduction}
+\end{minipage}
+\end{center}
+\vfill % equivalent to \vspace{\fill}
+\clearpage
 
 
+\fancyhead[LE,RO]{\slshape \rightmark}
+\fancyhead[LO,RE]{\slshape \leftmark}
+
+\twocolumn
 
 \input{evil}
 \newpage
