@@ -49,6 +49,10 @@ For more information, go to:
 
      http://github.com
 
+The good news about Github is that it is very easy to setup and configure. The bad news is that each Github
+repository has a 1GB size limit. But that is certainly enough to get us started.
+
+
 For Linux/Unix/Mac users, I add the following tip.
 In each of your repository directories,
 add a `Makefile` with the following contents. 
@@ -123,7 +127,14 @@ are now backed up outside of Cloud9, over at `Github.com`.
 
 ![The Cloud9 on-line IDE.](img/c9400.png)
 
+The good news about Cloud9 is that it is very easy to setup and configure. The bad news is that each Cloud9
+workspace has the same limits as Github- a 1GB size limit. Also, for CPU-intensive applications, shared
+on-line resources like Cloud9 can be a little slow. That said, for the newbie,
+Cloud9 is a very useful tool to jump start the learning process.
+
 ##  Python101
+
+tutorial mater
 
 ### Why Python?
 
@@ -146,6 +157,21 @@ the on-line community for Python is very active and very helpful; e.g. see stack
 
 This textbook uses Python 2.7 for its code base. Of course, it is tempting to use Python3 but there
 are still too many Python packages out there t
+
+## Mantras
+
+
+### "Do go coding, go for feedback"
+
+### "Red, Green, Refactor"
+
+### "Write Less Code"
+
+Holzmann. true
+
+### "Stop writing classes"
+
+Jack Diederich
 
 ## Homework
 
