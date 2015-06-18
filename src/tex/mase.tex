@@ -78,7 +78,7 @@
 
 \date{}
 %\usepackage{times}
-\usepackage[margin=0.75in]{geometry}
+\usepackage[margin=0.65in,landscape]{geometry}
 
 \makeatletter
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
@@ -86,6 +86,8 @@
 \usepackage{fancyvrb}
 
 
+\usepackage[shortlabels]{enumitem}
+\setlist{nosep}
 
 \DefineVerbatimEnvironment%
   {MyVerbatim}{Verbatim}
@@ -123,7 +125,7 @@
 
 
  \hypersetup{linkcolor=black}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{2}
 
 \newcommand{\eq}[1]{Equation~\ref{eq:#1}}
 \newcommand{\bi}{\begin{itemize}}
@@ -133,10 +135,10 @@
 \newcommand{\tion}[1]{\textsection\ref{sec:#1}}
 \newcommand{\fig}[1]{Figure~\ref{fig:#1}}
 
-\setlength{\columnsep}{5mm}
+\setlength{\columnsep}{10mm}
 \setlength{\columnseprule}{0.1pt}
 
-\renewcommand{\headwidth}{7in}
+\renewcommand{\headwidth}{10in}
 %% \makeatletter
 %%     \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
 %%         \hrule\@height\headrulewidth\@width 7in \vskip-\headrulewidth}}
@@ -174,91 +176,72 @@
 \fancyhead[LO,RE]{\slshape \leftmark}
 \twocolumn
 }
-
+  
+  
 \begin{document} 
 
 %\renewcommand{\verbatim@font}{\ttfamily\small}
 
 \onecolumn
 \title{
-  \vspace{-1cm}{\bf \HUGE{Evil Code for Wicked Problems, part 4}\\~\\
-    \fcolorbox{red}{yellow}{\includegraphics[width=5.5in]{img/herGoggles.png}}\\
+  {\bf \HUGE{Evil Code for Wicked Problems, part 4}}\\~\\~\\
+    \fcolorbox{red}{white}{\includegraphics[width=6.5in]{img/herGoggles.png}}\\
     \Large{A Research Programmer's Guide to World Domination-- in Python.}\\
-    \vspace{-2mm}
     \Large{a.k.a. {\em Lecture Notes, Automated
-  SE}, CS, NC State, Fall'15}}}
-\author{by Tim Menzies \\\#attentionDeficitSquirrel\\\date{\today}
-   }
+  SE}, CS, NC State, Fall'15}}
+\author{by Tim Menzies \\\#attentionDeficitSquirrel\\\today}
+   
 
 \maketitle
+\thispagestyle{empty}
 
-\begin{center}
+\clearpage
+\small
+\twocolumn
 
- \begin{minipage}{.7\linewidth}
-   ~\hrule~
+\pagestyle{fancy}
 
-   {\bf SYNOPSIS:} This book is a  ``how to'' guide about model-based reasoning using
+
+
+\tableofcontents
+
+\newpage
+
+
+ \subsection*{About this book} This book is a  ``how to'' guide about model-based reasoning using
    data mining and search-based tools (with examples taken from software engineering).
    It is intended for graduate  students taking
   a one semester subject in advanced programming methods as
   well as researchers developing the next generation
   of model-based reasoning tools.  
 
-  \vspace{2mm}Using Python 2.7, the book builds (from the ground up) numerous
+  Using Python 2.7, the book builds (from the ground up) numerous
   tiny tools that can tame seemingly complex
-  tasks. The combined toolkit, called RINSE, 
-  {\em \underline{r}epresents}  models using domain-specific languages.  It also supports
+  tasks. The combined toolkit, called RINSE, offers four kinds of functionality:
+  \be
+  \item
+    It {\em \underline{r}epresents}  models using domain-specific languages;
+    \item It supports
     {\em \underline{in}ference} across the multiple goals of those models using multi-objective optimization.
-    Further, it can 
-    succinctly {\em \underline{s}ummarize} that inference  using data miners.
-    Finally, RINSE contains many tools for the
+    \item It shows how to succinctly {\em \underline{s}ummarize} that inference  using data miners;
+    \item It has  many tools for the
    {\em \underline{e}valuation} of different inference methods. 
-
-   \vspace{2mm}RINSE is a not some shiny  end-user click-and-point GUI package.
+   \ee
+   
+   RINSE is a not some shiny  end-user click-and-point GUI package.
    Rather, it is a starter-kit that demonstrates an novel  model-based approach to problem solving where programmers
    mix and match and extend data miners and multi-objective optimizers.
 
-  
-  ~\hrule~
-  
-  \end{minipage}
-
-  \end{center}
-\thispagestyle{empty}
-\clearpage
-\small
-\twocolumn
+   RINSE was written using the mantra ``less is more''. Whenever it was found that small parts of the
+   the code handled most 
+   of the functionality, then the extra functionality was ejected. This resulted in a (very) small code base
+   which can be readily browsed, learned, taught, and changed.
+   \vfill
 
 
-
-\fancyhead[LE,RO]{\slshape \rightmark}
-\fancyhead[LO,RE]{\slshape \leftmark}
-
-\tableofcontents
-
-\vfill
-
-\section*{Content Advisory }
-\begin{wrapfigure}{r}{1.5in}
-  \includegraphics[width=1.5in]{img/shark.jpg}
-  \end{wrapfigure}
-This book contains strong language, weakly typed (and tapped with glee).
-This book may contain excessive or gratutious fun--
-as well as ideas that some readers may (or may not) find disturbing.
-This book does not necessarily 
-believed or endorse those ideas- but plays with them anyway
-(and asks you to do the same).
-This book may include heresies, not suitable for anyone  who believes in established wisdom, without
-adequate experimentation. It is
-intended for mature audiences only; i.e.  those
-old enough to know there is much left to know. 
-This book may (or may not) contain peanuts or tree nut products.
-Batteries not included.
-
-\newpage
-
-\section*{Source Code Availability and Copyleft}
-To download this code, see http://github.com/txt/mase.
+   
+\subsection*{Source Code Availability and Copyleft}
+To download the RINSE code, see http://github.com/txt/mase.
 The software associated with this book
 is free and unencumbered and released into the public domain. 
 
@@ -286,7 +269,34 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to http://unlicense.org
 
 
-\section*{About the Author}
+\newpage
+
+\subsection*{Content Advisory }
+\begin{wrapfigure}{r}{1.5in}
+  \includegraphics[width=1.5in]{img/shark.jpg}
+  \end{wrapfigure}
+This book contains strong language, weakly typed (and tapped with glee).
+
+This book may contain excessive or gratutious fun--
+as well as ideas that some readers may (or may not) find disturbing.
+This book does not necessarily 
+believed or endorse those ideas- but plays with them anyway
+(and asks you to do the same).
+
+This book may include heresies, not suitable for anyone  who believes in established wisdom, without
+adequate experimentation. It is
+intended for mature audiences only; i.e.  those
+old enough to know there is much left to know. 
+
+This book may (or may not) contain peanuts or tree nut products.
+
+Batteries not included.
+
+\vfill
+
+
+
+   \subsection*{About the Author}
 
 \begin{wrapfigure}{r}{1.5in}
 \includegraphics[width=1.5in]{img/tim.png}
@@ -310,6 +320,14 @@ co-general chair for 2016 International Conference on Software Maintenance and E
 Prof. Menzies can be contacted at \verb!tim.menzies@gmail.com!.
 
 
+
+
+\newpage
+
+
+
+
+%\renewcommand\contentsname{}
 
 
 

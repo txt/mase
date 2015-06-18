@@ -52,7 +52,7 @@ dimensions for solving seemingly complex problems.
 \includegraphics[width=1.3in]{img/evillaugh.jpg}
 \end{wrapfigure}With those controllers in hand, we
 are now free to move to part five; i.e. taking over
-the world.  In fact, the truly evil part of this
+the world.  The truly evil part of this
 work is this:
 _now you know you have the power to change the world_.
 This also means that (evil laugh)

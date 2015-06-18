@@ -25,6 +25,12 @@ The rest of this chapter offers:
 
 ## Useful On-Line Tools
 
+This book was written using the following on-line tools.
+There exists  many other great,  readily available,  tools.
+So if you know of better ones, then please let me know
+(then maybe I'll switched to your tool stack).
+
+
 ### Stackoverflow
 
 To find answers to nearly any question you'll ever want to ask about Python, go browse:
@@ -51,7 +57,6 @@ For more information, go to:
 
 The good news about Github is that it is very easy to setup and configure. The bad news is that each Github
 repository has a 1GB size limit. But that is certainly enough to get us started.
-
 
 For Linux/Unix/Mac users, I add the following tip.
 In each of your repository directories,
@@ -82,13 +87,15 @@ ready:
 timm:  # <== change to your name
         @git config --global user.name "Tim Menzies"
         @git config --global user.email \
-		                       tim.menzies@gmail.com
+		              tim.menzies@gmail.com
+
 ```
 
 This `Makefile` implements some handy shortcuts:
 
 + `make typo` is a quick safety save-- do this many times per day;
-+ `make commit` is for making commented commits-- use this to comment any improvements .// degradation of functionality.
++ `make commit` is for making commented commits-- use this to comment any improvements and/or
+   degradation of functionality.
 + `make update` is for grabbing the latest version off the server-- do this at least at the start of each day.
 + `make status` is for finding files that are not currently known to Github.
 + `make ready` remembers your Github password for one hour-- use this if you use `make typo` a lot and you want
@@ -96,6 +103,10 @@ to save some keystrokes.
 + `make timm` should be used if Github complains that it does not know who you are.
   Before running this one, edit this rule
   to include your name and email.
+
+Tip:
+
++ IMPORTANT: When writing a `Makefile`, all indentations have to be made using the tab character, not 8 spaces.
 
 Of course, there are 1000 other things you can do with a `Makefile`. For example, this book is auto-generated
 by a `Makefile` that automatically extracts comments and code from my Python source code, then compiles
@@ -107,7 +118,7 @@ the Latex to a `.pdf` file. Which is all interesting stuff-- but beyond the scop
 If you do not want to install code locally on your machine, then there are many readily-available
 on-line integrated development environments. 
 
-For example, to have root access to a fully-configured Unix installation, you can go to
+For example, to have root access to a fully-configured Unix installation, you could go to
 
      http://c9.io
 
@@ -121,33 +132,196 @@ One tip is to host your Cloud9 workspace on Github. As of June 2015, the procedu
 	+ Wait ten seconds for the screen to change.
 	+ Hit the green _START EDITING_ button. 
 
-This will drop you into the wonderful Cloud9 integrated development environment. Here, is my editting the above
-Makefile and some Python code at Cloud9.  I've just run `make typo` so all the changes to the Python file
-are now backed up outside of Cloud9, over at `Github.com`.
-
-![The Cloud9 on-line IDE.](img/c9400.png)
+This will drop you into the wonderful Cloud9 integrated development environment. Here, you can
+edit code and (using the above `Makefile`)  run `make typo` to backed up your code
+outside Cloud9, over at `Github.com` (which means that if ever Cloud9 goes away, you will still have your code).
 
 The good news about Cloud9 is that it is very easy to setup and configure. The bad news is that each Cloud9
 workspace has the same limits as Github- a 1GB size limit. Also, for CPU-intensive applications, shared
 on-line resources like Cloud9 can be a little slow. That said, for the newbie,
 Cloud9 is a very useful tool to jump start the learning process.
 
-##  Python101
-
-tutorial mater
+##  Learning Python
 
 ### Why Python?
 
 I use Python for two reasons: readability and support.
 Like any computer scientist, I yearn to use more powerful languages
-like LISP or Javascript or Haskell. That said,  it has to be said that good looking Python is
-reads pretty
+like LISP or Javascript or Haskell (Have you tried them? They are _great_ languages!).
+That said,  it has to be said that good looking Python 
+_reads_ pretty
 good-- no ugly brackets, indentation standards enforced by the compiler, simple keywords, etc.
 
 Ah, you might reply, but what about other beautiful languages like CoffeeScipt or Scala or insert
 yourFavoriteLanguageHere? It turns out that, at the time of this writing, that there is more tutorial
 support for Python that any other language I know. Apart from the many excellent Python textbooks,
 the on-line community for Python is very active and very helpful; e.g. see stackoverlow.com.
+
+### Which Python?
+
+This book uses Python 2.7, rather than the latest-and-greatest version, which is called Python3.
+Why?
+
+The problems with Python3 are well-documented and being actively addressed by the Python community.
+In short, many large and useful Python libraries are not yet unavailable in Python3 so many developers
+are sticking with the older version.
+
+This situation may change in the near future so, in the coding standards discussed below, we discuss
+how to use Python3 idioms while coding in Python2. This will make our eventual jump to Python3 much easier.
+
+### Installing
+
+To get going on Python, you will need a _good_ Python environment. You may already have a favorite
+platform or interactive development environment, in which case you can use that (and if not, you might
+consider using the Cloud9 environment discussed above).
+To check if your Python environment is _good_, try changing and installing some things.
+
+Note that I use Mac/Linux/Unix so all the examples in this book will be from a Unix-ish command-line
+prompt. For Windows users, you can
+
++ Use Google to find equivalent instructions for your platform;
++ Use Cloud9 (simple!).
++ Install a Linux in a virtual environment on top of Windows; e.g. using VirtualBox and Ubuntu (warning:
+  not so simple).
+
+#### Code Indentation
+
+Firstly, change the code indent to 2 spaces. Many editors have this option.
+
++ For the editor I use (EMACS),
+  that magic setting can be found  the `add-hock 'python-model-hook` of  `.emacs`  (available
+  on-line at `https://github.com/timm/timmnix` in the `dotemacs` file).
++ For the ACE editor (used in Cloud9), hit the settings button (little wheel, top right) 
+#### Get the Package Managers
+
+Secondly, make sure you have installed the `pip` and `easy_install` tools (these are tricks for quickly
+compiling Python code). Try running
+
+    pip -h
+    easy_install -h
+
+Tips:
+
++ If these are not installed them Google for installation instructions. See also
+`https://pypi.python.org/pypi/setuptools` (which has hints for Windows users as well as those using
+Linix/Unix/Mac).
++ If you ever run this code and you get permission errors or some notice that you cannot update some
+directories, then run as superuser (by the way, one nice thing about Cloud9 is that you have superuser
+permission on your workspaces). To run code as superuser, in Linux/Unix/Mac, preface with `sudo`; e.g.
+`sudo pip` or `sudo pip_install`
+
+    sudo pip
+    sudo easy_install
+
+
+#### Use the Package Managers
+
+Thirdly, do some installs of various packages. Note that we will make extensive use of all of the following.
+
+Package1: enable a _watcher_ on files that are being edited.
+Every time you save the _watched_ file, it is re-executed (so you get rapid feedback on your progress):
+
+    sudo pip install rerun
+
+Example: establish a _watch_ on `lib.py`:
+
+    rerun "python lib.py"
+
+Package2: 2D plotting with `matplotlib`
+
+    sudo pip install matplotlib
+
+Example: the code, from the `rinse` repo, shows how to generate a plot within Cloud9
+using `matplotlib`. To check if you have have a _good_ Python environment, check you can
+run this code.
+
+```
+# demoMatplot.py                           TRICKS
+import matplotlib
+matplotlib.use('Agg')     #.................... 1
+import matplotlib.pyplot as plt 
+
+def lines(xlabel, ylabel, title,
+          f="lines.png",   #................... 2
+          xsize=5,ysize=5,lines=[]): 
+  width = len(lines[0][1:])
+  xs = [x for x in xrange(1,width+1)] 
+  plt.figure(figsize=(xsize,ysize))  #......... 3
+  plt.xlabel(xlabel)
+  plt.ylabel(ylabel) 
+  for line in lines: 
+    plt.plot(xs,  line[1:],  #................. 4a
+                 label = line[0])   #.......... 4b
+   
+  plt.locator_params(nbins=len(xs)) #.......... 5
+  plt.title(title)
+  plt.legend()
+  plt.tight_layout()                #.......... 6
+  plt.savefig(f)
+
+lines("days","production",  #.................. 7
+      "Fruit output",
+      xsize=3,ysize=3,lines=[
+      ["apples",4,3,2,1],
+      ["oranges",9,4,1,0.5]])
+```
+
+If the code works you should see the following file `lines.out`:
+
+![Example, 2d plotting from Python, using `matplotlib`](img/matplotlib101.png).
+
+The comments in this code list seven  tricks for this kind of  plotting:
+
+1. Add this line _right after_ importing `matplotlib`. If absent,
+   then when used in a non-X-server environment (e.g. Cloud9), the code crashes.
+2. Note the use of default parameters. By default, this function writes to `lines.png`
+   but this can be changed when the function is called.
+3. Here we can change the default size of a plot (which defaults to five inches square-- do
+   you know why? hint: look at the default parameters of the function).
+4. The line label and the line data is pulled from the data passed to the function.
+   To see that, have a look at the last like of the code where `orange` is the first item
+   in the list and the rest is data.
+5. This is a hack to stop `matplotlib` adding in ticks like "1.5". With this hack, the
+   number of ticks is equal to the number of items in each line to be plotted.
+6. Another hack. Once we resize a plot, sometimes the label text gets cut off. The fix
+   is to use a `tight\_layout`.
+7. A sample call to this function.
+
+
+If you've got `matplotlib` working, then the next test is to install a more complex package like `scikit-learn`.
+This is a nice collection of very useful data mining tools. On most Unix sites, the following will perform
+that installation:
+
+    pip install --user --install-option="--prefix=" -U scikit-learn	 
+
+(On Cloud9, this took about 5 minutes to complete, during which time, hundreds of warnings were
+printed to the screen, all of which I ignored).
+
+For sites other than Cloud9, 
+	
+### Python 101
+
+There are many great tools for learning Python, including all the on-line tools listed above.
+
+In terms of a textbook, I highly recommend _How to Think Like a Computer Scientist_ by Allen Downey,
+which can be purchased as a paper book or viewed or downloaded from `www.greenteapress.com/thinkpython`.
+All the source code from that book is available on-line at:
+
+     https://github.com/AllenDowney/ThinkPython
+
+If you liked that book, it would be good manners to make a small donation to Prof. Downey
+at that website-- but that is entirely up to you.
+
+Note that there are Python3 versions of this code, available on the web. Try to avoid those.
+
+In terms of a three week teach yourself program, I recommend the following.
+
++ **Week1** Read chapters one to four. _Do_ exercises 3.1,3.2,3.3,3.4,3.5.
+  _Do_ install `Swampy`
+  _Do_ exercise 4.2,4.3 (but makeIn terms of a three-week teach-= yoAt the time of this writing, at 
+
+tutorial mater
+
 
 
 ### Installing a ``Good'' Python Environment
@@ -178,5 +352,7 @@ Jack Diederich
 ### Homework1
 
 + Do: get an account at `http://github.com`. Hand-in: your Github id.
++ Show that you have a _good_ Python environment by installing
+
 
 
