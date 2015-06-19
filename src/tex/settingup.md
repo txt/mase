@@ -74,31 +74,33 @@ add a `Makefile` with the following contents.
 # File:  setup/Makefile (from github.com/txt/evil)
 # Usage: make
 typo:   ready
-        @- git status
-        @- git commit -am "saving"
-        @- git push origin master # update as needed
+	@- git status
+	@- git commit -am "saving"
+	@- git push origin master # update as needed
 
 commit: ready
-        @- git status
-        @- git commit -a
-        @- git push origin master
+	@- git status
+	@- git commit -a
+	@- git push origin master
 
 update: ready
-        @- git pull origin master
+	@- git pull origin master
 
 status: ready
-        @- git status
+	@- git status
 
 ready:
-        @git config --global credential.helper cache
-        @git config credential.helper \
-		     'cache --timeout=3600'
+	@git config --global credential.helper cache
+	@git config credential.helper 'cache --timeout=3600'
 
 timm:  # <== change to your name
-        @git config --global user.name "Tim Menzies"
-        @git config --global user.email \
-		              tim.menzies@gmail.com
+	@git config --global user.name "Tim Menzies" #<== your name
+	@git config --global user.email tim.menzies@gmail.com #<== your email
 
+tests: *ok.py
+	@$(foreach f,$^,\
+             printf "\n========= $f =========\n\n";\
+             python $f;)
 ```
 
 This `Makefile` implements some handy shortcuts:
@@ -113,7 +115,8 @@ to save some keystrokes.
 + `make timm` should be used if Github complains that it does not know who you are.
   Before running this one, edit this rule
   to include your name and email.
-
++ `make tests` is a little unit test engine, discussed later.
+  
 Tip:
 
 + IMPORTANT: When writing a `Makefile`, all indentations have to be made using the tab character, not 8 spaces.
