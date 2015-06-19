@@ -44,7 +44,7 @@ should store their code in repositories that let them fork a branch, work separa
 check back their changes into the main trunk.
 
 There are many freely-available repository tools. Github is one such service that supports
-the `git` repository tool.
+the `git` repository tool. Others include SourceForge, BitBucket, and many more besides.
 Github has some special advantages:
 
 + It is the center of vast social network of programmers;
@@ -58,11 +58,21 @@ For more information, go to:
 The good news about Github is that it is very easy to setup and configure. The bad news is that each Github
 repository has a 1GB size limit. But that is certainly enough to get us started.
 
+Regardless of whether or not you are using Github, you can use it to access the source code used
+in this paper:
+
+    # If you used "git":
+    git clone https://github.com/txt/evil
+	# If you just want the files:
+    wget https://github.com/txt/evil/archive/master.zip 
+
 For Linux/Unix/Mac users, I add the following tip.
 In each of your repository directories,
 add a `Makefile` with the following contents. 
 
 ```
+# File:  setup/Makefile (from github.com/txt/evil)
+# Usage: make
 typo:   ready
         @- git status
         @- git commit -am "saving"
@@ -113,6 +123,7 @@ by a `Makefile` that automatically extracts comments and code from my Python sou
 the comments as Markdown, then used the wonderful `pandoc` tool to compile the Markdown into Latex, then converts
 the Latex to a `.pdf` file. Which is all interesting stuff-- but beyond the scope of this book.
 
+
 ### Cloud9
 
 If you do not want to install code locally on your machine, then there are many readily-available
@@ -140,6 +151,8 @@ The good news about Cloud9 is that it is very easy to setup and configure. The b
 workspace has the same limits as Github- a 1GB size limit. Also, for CPU-intensive applications, shared
 on-line resources like Cloud9 can be a little slow. That said, for the newbie,
 Cloud9 is a very useful tool to jump start the learning process.
+
+For sites other than Cloud9, see Koding, Nitrous.IO and many more besides.
 
 ##  Learning Python
 
@@ -180,7 +193,7 @@ Note that I use Mac/Linux/Unix so all the examples in this book will be from a U
 prompt. For Windows users, you can
 
 + Use Google to find equivalent instructions for your platform;
-+ Use Cloud9 (simple!).
++ Use some on-line IDE like Cloud9 (simple!).
 + Install a Linux in a virtual environment on top of Windows; e.g. using VirtualBox and Ubuntu (warning:
   not so simple).
 
@@ -192,6 +205,7 @@ Firstly, change the code indent to 2 spaces. Many editors have this option.
   that magic setting can be found  the `add-hock 'python-model-hook` of  `.emacs`  (available
   on-line at `https://github.com/timm/timmnix` in the `dotemacs` file).
 + For the ACE editor (used in Cloud9), hit the settings button (little wheel, top right) 
+
 #### Get the Package Managers
 
 Secondly, make sure you have installed the `pip` and `easy_install` tools (these are tricks for quickly
@@ -218,7 +232,7 @@ permission on your workspaces). To run code as superuser, in Linux/Unix/Mac, pre
 
 Thirdly, do some installs of various packages. Note that we will make extensive use of all of the following.
 
-Package1: enable a _watcher_ on files that are being edited.
+**Package1: watcher.** Enable a _watcher_ on files that are being edited.
 Every time you save the _watched_ file, it is re-executed (so you get rapid feedback on your progress):
 
     sudo pip install rerun
@@ -227,16 +241,20 @@ Example: establish a _watch_ on `lib.py`:
 
     rerun "python lib.py"
 
-Package2: 2D plotting with `matplotlib`
+**Package2: 2D plotting with `matplotlib`.**
+
+Run this code. 
 
     sudo pip install matplotlib
 
-Example: the code, from the `rinse` repo, shows how to generate a plot within Cloud9
+Example: The following code, shows how to generate a plot within Cloud9
 using `matplotlib`. To check if you have have a _good_ Python environment, check you can
-run this code.
+run this code using `python demoMatplot.py`. If you do not know Python yet, do not try to understand the code (just download it and run it).
 
 ```
-# demoMatplot.py                           TRICKS
+# File : setup/demoMatplot.py (from github.com/evil)
+# Usage: python demoMatplot.py              
+#                                           TRICKS
 import matplotlib
 matplotlib.use('Agg')     #.................... 1
 import matplotlib.pyplot as plt 
@@ -270,7 +288,8 @@ If the code works you should see the following file `lines.out`:
 
 ![Example, 2d plotting from Python, using `matplotlib`](img/matplotlib101.png).
 
-The comments in this code list seven  tricks for this kind of  plotting:
+If you do know Python, they I add notes
+on seven little tricks in the above code:
 
 1. Add this line _right after_ importing `matplotlib`. If absent,
    then when used in a non-X-server environment (e.g. Cloud9), the code crashes.
@@ -288,17 +307,81 @@ The comments in this code list seven  tricks for this kind of  plotting:
 7. A sample call to this function.
 
 
-If you've got `matplotlib` working, then the next test is to install a more complex package like `scikit-learn`.
-This is a nice collection of very useful data mining tools. On most Unix sites, the following will perform
-that installation:
+If you've got `matplotlib` working, then the next
+test is to install a more complex package like
+`scikit-learn`.  This is a nice collection of very
+useful data mining tools.  The following code will
+install `scikit-learn` on Cloud9 (and for install
+instructions for other platforms, Google _sklearn_). If you do not know
+bash scripting, don't try to understand the code, just run it using
+`bash sk.sh`. 
 
-    pip install --user --install-option="--prefix=" -U scikit-learn	 
+```
+# File    : setup/sk.sh (from github.com/txt/evil)
+# Usage   : bash sk.sh
+installingBuildDependencies() {
+  sudo apt-get install \
+    build-essential python-dev python-setuptools \
+    python-numpy python-scipy \
+    libatlas-dev libatlas3gf-base
+}
 
-(On Cloud9, this took about 5 minutes to complete, during which time, hundreds of warnings were
-printed to the screen, all of which I ignored).
+BLASandLAPACK() { 
+ sudo update-alternatives --set libblas.so.3 \
+    /usr/lib/atlas-base/atlas/libblas.so.3
+ sudo update-alternatives --set liblapack.so.3 \
+    /usr/lib/atlas-base/atlas/liblapack.so.3
+}
 
-For sites other than Cloud9, 
-	
+matplotlib() { # just incase you have not done matplotlib yet
+  sudo apt-get install python-matplotlib
+}
+
+sklearn() {
+  pip install --user  --install-option="--prefix=" -U scikit-learn
+}
+
+installingBuildDependencies
+BLASandLAPACK
+matplotlib
+sklearn
+```
+
+To check if this all works, then run the following code and look for a generated image
+file called `sk.png`. Once again, if you do not know Python yet, don't try to understand
+this code; just run it using `python sk.py`
+
+```
+# File:  setup/sk.py (from github.com/txt/evil)
+# Usage: python sk.py
+from sklearn import datasets
+from sklearn.cross_validation import cross_val_predict
+from sklearn import linear_model
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+lr = linear_model.LinearRegression()
+boston = datasets.load_boston()
+y = boston.target
+
+# cross_val_predict returns an array of the same size as `y` where each entry
+# is a prediction obtained by cross validated:
+predicted = cross_val_predict(lr, boston.data, y, cv=10)
+
+fig,ax = plt.subplots()
+ax.scatter(y, predicted)
+ax.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=4)
+ax.set_xlabel('Measured')
+ax.set_ylabel('Predicted')
+fig.savefig('sk.png')
+```
+
+If that works, then the file `sk.png` should look like this:
+
+
+![Predictions generated by a machine learner.](img/sk.png)
+
 ### Python 101
 
 There are many great tools for learning Python, including all the on-line tools listed above.
@@ -346,6 +429,10 @@ Holzmann. true
 ### "Stop writing classes"
 
 Jack Diederich
+
+### "That needs a DSL"
+
+Domain specific languages
 
 ## Homework
 

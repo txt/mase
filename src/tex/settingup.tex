@@ -52,8 +52,9 @@ that let them fork a branch, work separately, then check back their
 changes into the main trunk.
 
 There are many freely-available repository tools. Github is one such
-service that supports the \texttt{git} repository tool. Github has some
-special advantages:
+service that supports the \texttt{git} repository tool. Others include
+SourceForge, BitBucket, and many more besides. Github has some special
+advantages:
 
 \begin{itemize}
 \itemsep1pt\parskip0pt\parsep0pt
@@ -76,6 +77,16 @@ For more information, go to:
 The good news about Github is that it is very easy to setup and
 configure. The bad news is that each Github repository has a 1GB size
 limit. But that is certainly enough to get us started.
+
+Regardless of whether or not you are using Github, you can use it to
+access the source code used in this paper:
+
+\begin{lstlisting}
+# If you used "git":
+git clone https://github.com/txt/evil
+# If you just want the files:
+wget https://github.com/txt/evil/archive/master.zip 
+\end{lstlisting}
 
 For Linux/Unix/Mac users, I add the following tip. In each of your
 repository directories, add a \texttt{Makefile} with the following
@@ -204,6 +215,9 @@ applications, shared on-line resources like Cloud9 can be a little slow.
 That said, for the newbie, Cloud9 is a very useful tool to jump start
 the learning process.
 
+For sites other than Cloud9, see Koding, Nitrous.IO and many more
+besides.
+
 \subsection{Learning Python}\label{learning-python}
 
 \subsubsection{Why Python?}\label{why-python}
@@ -253,7 +267,7 @@ from a Unix-ish command-line prompt. For Windows users, you can
 \item
   Use Google to find equivalent instructions for your platform;
 \item
-  Use Cloud9 (simple!).
+  Use some on-line IDE like Cloud9 (simple!).
 \item
   Install a Linux in a virtual environment on top of Windows; e.g.~using
   VirtualBox and Ubuntu (warning: not so simple).
@@ -274,8 +288,10 @@ option.
   file).
 \item
   For the ACE editor (used in Cloud9), hit the settings button (little
-  wheel, top right) \#\#\#\# Get the Package Managers
+  wheel, top right)
 \end{itemize}
+
+\paragraph{Get the Package Managers}\label{get-the-package-managers}
 
 Secondly, make sure you have installed the \texttt{pip} and
 \texttt{easy\_install} tools (these are tricks for quickly compiling
@@ -309,9 +325,9 @@ Tips:
 Thirdly, do some installs of various packages. Note that we will make
 extensive use of all of the following.
 
-Package1: enable a \emph{watcher} on files that are being edited. Every
-time you save the \emph{watched} file, it is re-executed (so you get
-rapid feedback on your progress):
+\textbf{Package1: watcher.} Enable a \emph{watcher} on files that are
+being edited. Every time you save the \emph{watched} file, it is
+re-executed (so you get rapid feedback on your progress):
 
 \begin{lstlisting}
 sudo pip install rerun
@@ -323,17 +339,24 @@ Example: establish a \emph{watch} on \texttt{lib.py}:
 rerun "python lib.py"
 \end{lstlisting}
 
-Package2: 2D plotting with \texttt{matplotlib}
+\textbf{Package2: 2D plotting with \texttt{matplotlib}.}
+
+Run this code.
 
 \begin{lstlisting}
 sudo pip install matplotlib
 \end{lstlisting}
 
-Example: the code, from the \texttt{rinse} repo, shows how to generate a
-plot within Cloud9 using \texttt{matplotlib}.
+Example: The following code, shows how to generate a plot within Cloud9
+using \texttt{matplotlib}. To check if you have have a \emph{good}
+Python environment, check you can run this code using
+\texttt{python\ demoMatplot.py}. If you do not know Python yet, do not
+try to understand the code (just download it and run it).
 
 \begin{lstlisting}
-# demoMatplot.py                           TRICKS
+# File : setup/demoMatplot.py (from github.com/evil)
+# Usage: python demoMatplot.py              
+#                                           TRICKS
 import matplotlib
 matplotlib.use('Agg')     #.................... 1
 import matplotlib.pyplot as plt 
@@ -367,7 +390,8 @@ If the code works you should see the following file \texttt{lines.out}:
 
 \includegraphics{img/matplotlib101.png}.
 
-The comments in this code show several tricks for such plotting:
+If you do know Python, they I add notes on seven little tricks in the
+above code:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -398,6 +422,84 @@ The comments in this code show several tricks for such plotting:
 \item
   A sample call to this function.
 \end{enumerate}
+
+If you've got \texttt{matplotlib} working, then the next test is to
+install a more complex package like \texttt{scikit-learn}. This is a
+nice collection of very useful data mining tools. The following code
+will install \texttt{scikit-learn} on Cloud9 (and for install
+instructions for other platforms, Google \emph{sklearn}). If you do not
+know bash scripting, don't try to understand the code, just run it using
+\texttt{bash\ sk.sh}.
+
+\begin{lstlisting}
+# File    : setup/sk.sh (from github.com/txt/evil)
+# Usage   : bash sk.sh
+installingBuildDependencies() {
+  sudo apt-get install \
+    build-essential python-dev python-setuptools \
+    python-numpy python-scipy \
+    libatlas-dev libatlas3gf-base
+}
+
+BLASandLAPACK() { 
+ sudo update-alternatives --set libblas.so.3 \
+    /usr/lib/atlas-base/atlas/libblas.so.3
+ sudo update-alternatives --set liblapack.so.3 \
+    /usr/lib/atlas-base/atlas/liblapack.so.3
+}
+
+matplotlib() { # just incase you have not done matplotlib yet
+  sudo apt-get install python-matplotlib
+}
+
+sklearn() {
+  pip install --user  --install-option="--prefix=" -U scikit-learn
+}
+
+installingBuildDependencies
+BLASandLAPACK
+matplotlib
+sklearn
+\end{lstlisting}
+
+To check if this all works, then run the following code and look for a
+generated image file called \texttt{sk.png}. Once again, if you do not
+know Python yet, don't try to understand this code; just run it using
+\texttt{python\ sk.py}
+
+\begin{lstlisting}
+# File:  setup/sk.py (from github.com/txt/evil)
+# Usage: python sk.py
+from sklearn import datasets
+from sklearn.cross_validation import cross_val_predict
+from sklearn import linear_model
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+lr = linear_model.LinearRegression()
+boston = datasets.load_boston()
+y = boston.target
+
+# cross_val_predict returns an array of the same size as `y` where each entry
+# is a prediction obtained by cross validated:
+predicted = cross_val_predict(lr, boston.data, y, cv=10)
+
+fig,ax = plt.subplots()
+ax.scatter(y, predicted)
+ax.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=4)
+ax.set_xlabel('Measured')
+ax.set_ylabel('Predicted')
+fig.savefig('sk.png')
+\end{lstlisting}
+
+If that works, then the file \texttt{sk.png} should look like this:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{img/sk.png}
+\caption{Predictions generated by a machine learner.}
+\end{figure}
 
 \subsubsection{Python 101}\label{python-101}
 
@@ -461,6 +563,11 @@ Holzmann. true
 classes''}{Stop writing classes}}\label{stop-writing-classes}
 
 Jack Diederich
+
+\subsubsection{\texorpdfstring{``That needs a
+DSL''}{That needs a DSL}}\label{that-needs-a-dsl}
+
+Domain specific languages
 
 \subsection{Homework}\label{homework}
 
