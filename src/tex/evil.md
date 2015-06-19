@@ -8,8 +8,8 @@ plan were initially somewhat undefined. However, given recent
 results, this book can now fill in the missing details from part4 of that plan.
 
 But first, a little history. As all programmers
-know, the initial parts of the plan were completed
-years ago. Part one was was programmers to adopt a meek and mild
+know, this plan is now decades old.
+Part one was for programmers to adopt a meek and mild
 persona (possibly even boring and dull).
 
 Part two was, under the guise of that persona,

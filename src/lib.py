@@ -33,7 +33,7 @@ Attitude to coding. not code byt"set yourself up to et rapid feedback on some is
 
 
 """
-import random, pprint, re, datetime, time
+import random, pprint, re, datetime, time,traceback
 from contextlib import contextmanager
 import pprint,sys
 """
@@ -69,16 +69,17 @@ Simple container class (offers simple initialization).
 
 """
 class o:
-  def __init__(i,**d)    : i.__dict__.update(**d)
+  def __init__(i,**d)    : i + d
+  def __add__(i,d)       : i.__dict__.update(d)
   def __setitem__(i,k,v) : i.__dict__[k] = v
   def __getitem__(i,k)   : return i.__dict__[k]
   def __repr__(i)        : return str(i.items())
   def items(i,x=None)    :
     x = x or i
     if isinstance(x,o):
-      return [k,i.items(v) for
+      return [(k,i.items(v)) for
               k,v in x.__dict__.values()
-              if not k[0] === "_" ]
+              if not k[0] == "_" ]
     else: return x
 """
 
@@ -89,10 +90,9 @@ the = o()
 
 def setting(f):
   name = f.__name__
-  @wraps(f)
   def wrapper(**d):
     tmp = f()
-    tmp.update(**d)
+    tmp + d
     the[name] = tmp
     return tmp
   wrapper()

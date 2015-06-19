@@ -26,9 +26,9 @@ The rest of this chapter offers:
 ## Useful On-Line Tools
 
 This book was written using the following on-line tools.
-There exists  many other great,  readily available,  tools.
-So if you know of better ones, then please let me know
-(then maybe I'll switched to your tool stack).
+There exists  many other great,  readily available,  tools
+(and  if you know of better ones, then please let me know
+(then maybe I'll switched over).
 
 
 ### Stackoverflow
@@ -36,6 +36,46 @@ So if you know of better ones, then please let me know
 To find answers to nearly any question you'll ever want to ask about Python, go browse:
 
      http://stackoverflow.com/questions/tagged/python
+
+
+### Cloud9
+
+If you do not want to install code locally on your machine, then there are many readily-available
+on-line integrated development environments. 
+
+For example, to have root access to a fully-configured Unix installation, you could go to
+
+     http://c9.io
+
+One tip is to host your Cloud9 workspace files
+on Github. As of June 2015, the procedure for doing that was:
+
++ Go to Github and create an empty repository.
++ Log in to Cloud9 using your GitHub username (at `http://c9.io`, there is a button for that, top right).
++ Hit the green _CREATE NEW WORKSPACE_ button
+    + Select _Clone from URL_;
+    + Find _Source URL_ and enter in `http://github.com/you/yourRepo`
+	+ Wait ten seconds for the screen to change.
+	+ Hit the green _START EDITING_ button. 
+
+This will drop you into the wonderful Cloud9
+integrated development environment. Here, you can
+edit code and (using the above `Makefile`) run `make
+typo` to backed up your code outside Cloud9, over at
+`Github.com` (which means that if ever Cloud9 goes
+away, you will still have your code).
+
+The good news about Cloud9 is that it is very easy
+to setup and configure. The bad news is that each
+Cloud9 workspace has the same limits as Github- a
+1GB size limit. Also, for CPU-intensive
+applications, shared on-line resources like Cloud9
+can be a little slow. That said, for the newbie,
+Cloud9 is a very useful tool to jump start the
+learning process.
+
+For sites other than Cloud9, see Koding, Nitrous.IO and many more besides.
+
 
 ### Github
 
@@ -76,7 +116,7 @@ add a `Makefile` with the following contents.
 typo:   ready
 	@- git status
 	@- git commit -am "saving"
-	@- git push origin master # update as needed
+	@- git push origin master # insert your branch names here
 
 commit: ready
 	@- git status
@@ -127,36 +167,6 @@ the comments as Markdown, then used the wonderful `pandoc` tool to compile the M
 the Latex to a `.pdf` file. Which is all interesting stuff-- but beyond the scope of this book.
 
 
-### Cloud9
-
-If you do not want to install code locally on your machine, then there are many readily-available
-on-line integrated development environments. 
-
-For example, to have root access to a fully-configured Unix installation, you could go to
-
-     http://c9.io
-
-One tip is to host your Cloud9 workspace on Github. As of June 2015, the procedure for doing that was:
-
-+ Go to Github and create an empty repository.
-+ Log in to Cloud9 using your GitHub username (at `http://c9.io`, there is a button for that, top right).
-+ Hit the green _CREATE NEW WORKSPACE_ button
-    + Select _Clone from URL_;
-    + Find _Source URL_ and enter in `http://github.com/you/yourRepo`
-	+ Wait ten seconds for the screen to change.
-	+ Hit the green _START EDITING_ button. 
-
-This will drop you into the wonderful Cloud9 integrated development environment. Here, you can
-edit code and (using the above `Makefile`)  run `make typo` to backed up your code
-outside Cloud9, over at `Github.com` (which means that if ever Cloud9 goes away, you will still have your code).
-
-The good news about Cloud9 is that it is very easy to setup and configure. The bad news is that each Cloud9
-workspace has the same limits as Github- a 1GB size limit. Also, for CPU-intensive applications, shared
-on-line resources like Cloud9 can be a little slow. That said, for the newbie,
-Cloud9 is a very useful tool to jump start the learning process.
-
-For sites other than Cloud9, see Koding, Nitrous.IO and many more besides.
-
 ##  Learning Python
 
 ### Why Python?
@@ -203,11 +213,9 @@ prompt. For Windows users, you can
 #### Code Indentation
 
 Firstly, change the code indent to 2 spaces. Many editors have this option.
-
-+ For the editor I use (EMACS),
-  that magic setting can be found  the `add-hock 'python-model-hook` of  `.emacs`  (available
+For example, for the editor I use (EMACS),
+  those magic setting can be found  the `add-hock 'python-model-hook` of  `.emacs`  (available
   on-line at `https://github.com/timm/timmnix` in the `dotemacs` file).
-+ For the ACE editor (used in Cloud9), hit the settings button (little wheel, top right) 
 
 #### Get the Package Managers
 
@@ -226,11 +234,7 @@ Linix/Unix/Mac).
 directories, then run as superuser (by the way, one nice thing about Cloud9 is that you have superuser
 permission on your workspaces). To run code as superuser, in Linux/Unix/Mac, preface with `sudo`; e.g.
 `sudo pip` or `sudo pip_install`
-
-    sudo pip
-    sudo easy_install
-
-
+	  
 #### Use the Package Managers
 
 Thirdly, do some installs of various packages. Note that we will make extensive use of all of the following.
@@ -244,6 +248,9 @@ Example: establish a _watch_ on `lib.py`:
 
     rerun "python lib.py"
 
+Now, if ever we change any files in this directory, then this code will rerun `python lib.py`-- which
+is a nice trick for getting very fast feedback on code.
+
 **Package2: 2D plotting with `matplotlib`.**
 
 Run this code. 
@@ -253,6 +260,8 @@ Run this code.
 Example: The following code, shows how to generate a plot within Cloud9
 using `matplotlib`. To check if you have have a _good_ Python environment, check you can
 run this code using `python demoMatplot.py`. If you do not know Python yet, do not try to understand the code (just download it and run it).
+
+\newpage
 
 ```
 # File : setup/demoMatplot.py (from github.com/evil)
@@ -289,7 +298,7 @@ lines("days","production",  #.................. 7
 
 If the code works you should see the following file `lines.out`:
 
-![Example, 2d plotting from Python, using `matplotlib`](img/matplotlib101.png).
+![Example, 2d plotting from Python, using `matplotlib`](img/matplotlib101.png)
 
 If you do know Python, they I add notes
 on seven little tricks in the above code:
@@ -310,7 +319,7 @@ on seven little tricks in the above code:
 7. A sample call to this function.
 
 
-If you've got `matplotlib` working, then the next
+**Package3: some data miners.** If you've got `matplotlib` working, then the next
 test is to install a more complex package like
 `scikit-learn`.  This is a nice collection of very
 useful data mining tools.  The following code will
@@ -328,22 +337,18 @@ installingBuildDependencies() {
     python-numpy python-scipy \
     libatlas-dev libatlas3gf-base
 }
-
 BLASandLAPACK() { 
  sudo update-alternatives --set libblas.so.3 \
     /usr/lib/atlas-base/atlas/libblas.so.3
  sudo update-alternatives --set liblapack.so.3 \
     /usr/lib/atlas-base/atlas/liblapack.so.3
 }
-
 matplotlib() { # just incase you have not done matplotlib yet
   sudo apt-get install python-matplotlib
 }
-
 sklearn() {
   pip install --user  --install-option="--prefix=" -U scikit-learn
 }
-
 installingBuildDependencies
 BLASandLAPACK
 matplotlib
@@ -367,11 +372,7 @@ import matplotlib.pyplot as plt
 lr = linear_model.LinearRegression()
 boston = datasets.load_boston()
 y = boston.target
-
-# cross_val_predict returns an array of the same size as `y` where each entry
-# is a prediction obtained by cross validated:
 predicted = cross_val_predict(lr, boston.data, y, cv=10)
-
 fig,ax = plt.subplots()
 ax.scatter(y, predicted)
 ax.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=4)
@@ -444,5 +445,6 @@ Domain specific languages
 + Do: get an account at `http://github.com`. Hand-in: your Github id.
 + Show that you have a _good_ Python environment by installing
 
++ Generate some pretty print python (2 space indent)
 
 

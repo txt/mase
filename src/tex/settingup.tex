@@ -31,9 +31,8 @@ Python programmers. The rest of this chapter offers:
 \subsection{Useful On-Line Tools}\label{useful-on-line-tools}
 
 This book was written using the following on-line tools. There exists
-many other great, readily available, tools. So if you know of better
-ones, then please let me know (then maybe I'll switched to your tool
-stack).
+many other great, readily available, tools (and if you know of better
+ones, then please let me know (then maybe I'll switched over).
 
 \subsubsection{Stackoverflow}\label{stackoverflow}
 
@@ -43,6 +42,61 @@ Python, go browse:
 \begin{lstlisting}
  http://stackoverflow.com/questions/tagged/python
 \end{lstlisting}
+
+\subsubsection{Cloud9}\label{cloud9}
+
+If you do not want to install code locally on your machine, then there
+are many readily-available on-line integrated development environments.
+
+For example, to have root access to a fully-configured Unix
+installation, you could go to
+
+\begin{lstlisting}
+ http://c9.io
+\end{lstlisting}
+
+One tip is to host your Cloud9 workspace files on Github. As of June
+2015, the procedure for doing that was:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Go to Github and create an empty repository.
+\item
+  Log in to Cloud9 using your GitHub username (at \texttt{http://c9.io},
+  there is a button for that, top right).
+\item
+  Hit the green \emph{CREATE NEW WORKSPACE} button
+
+  \begin{itemize}
+  \itemsep1pt\parskip0pt\parsep0pt
+  \item
+    Select \emph{Clone from URL};
+  \item
+    Find \emph{Source URL} and enter in
+    \texttt{http://github.com/you/yourRepo}
+  \item
+    Wait ten seconds for the screen to change.
+  \item
+    Hit the green \emph{START EDITING} button.
+  \end{itemize}
+\end{itemize}
+
+This will drop you into the wonderful Cloud9 integrated development
+environment. Here, you can edit code and (using the above
+\texttt{Makefile}) run \texttt{make\ typo} to backed up your code
+outside Cloud9, over at \texttt{Github.com} (which means that if ever
+Cloud9 goes away, you will still have your code).
+
+The good news about Cloud9 is that it is very easy to setup and
+configure. The bad news is that each Cloud9 workspace has the same
+limits as Github- a 1GB size limit. Also, for CPU-intensive
+applications, shared on-line resources like Cloud9 can be a little slow.
+That said, for the newbie, Cloud9 is a very useful tool to jump start
+the learning process.
+
+For sites other than Cloud9, see Koding, Nitrous.IO and many more
+besides.
 
 \subsubsection{Github}\label{github}
 
@@ -93,31 +147,36 @@ repository directories, add a \texttt{Makefile} with the following
 contents.
 
 \begin{lstlisting}
+# File:  setup/Makefile (from github.com/txt/evil)
+# Usage: make
 typo:   ready
-        @- git status
-        @- git commit -am "saving"
-        @- git push origin master # update as needed
+    @- git status
+    @- git commit -am "saving"
+    @- git push origin master # insert your branch names here
 
 commit: ready
-        @- git status
-        @- git commit -a
-        @- git push origin master
+    @- git status
+    @- git commit -a
+    @- git push origin master
 
 update: ready
-        @- git pull origin master
+    @- git pull origin master
 
 status: ready
-        @- git status
+    @- git status
 
 ready:
-        @git config --global credential.helper cache
-        @git config credential.helper \
-             'cache --timeout=3600'
+    @git config --global credential.helper cache
+    @git config credential.helper 'cache --timeout=3600'
 
 timm:  # <== change to your name
-        @git config --global user.name "Tim Menzies"
-        @git config --global user.email \
-                      tim.menzies@gmail.com
+    @git config --global user.name "Tim Menzies" #<== your name
+    @git config --global user.email tim.menzies@gmail.com #<== your email
+
+tests: *ok.py
+    @$(foreach f,$^,\
+             printf "\n========= $f =========\n\n";\
+             python $f;)
 \end{lstlisting}
 
 This \texttt{Makefile} implements some handy shortcuts:
@@ -144,6 +203,8 @@ This \texttt{Makefile} implements some handy shortcuts:
   \texttt{make\ timm} should be used if Github complains that it does
   not know who you are. Before running this one, edit this rule to
   include your name and email.
+\item
+  \texttt{make\ tests} is a little unit test engine, discussed later.
 \end{itemize}
 
 Tip:
@@ -162,61 +223,6 @@ Python source code, then compiles the comments as Markdown, then used
 the wonderful \texttt{pandoc} tool to compile the Markdown into Latex,
 then converts the Latex to a \texttt{.pdf} file. Which is all
 interesting stuff-- but beyond the scope of this book.
-
-\subsubsection{Cloud9}\label{cloud9}
-
-If you do not want to install code locally on your machine, then there
-are many readily-available on-line integrated development environments.
-
-For example, to have root access to a fully-configured Unix
-installation, you could go to
-
-\begin{lstlisting}
- http://c9.io
-\end{lstlisting}
-
-One tip is to host your Cloud9 workspace on Github. As of June 2015, the
-procedure for doing that was:
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Go to Github and create an empty repository.
-\item
-  Log in to Cloud9 using your GitHub username (at \texttt{http://c9.io},
-  there is a button for that, top right).
-\item
-  Hit the green \emph{CREATE NEW WORKSPACE} button
-
-  \begin{itemize}
-  \itemsep1pt\parskip0pt\parsep0pt
-  \item
-    Select \emph{Clone from URL};
-  \item
-    Find \emph{Source URL} and enter in
-    \texttt{http://github.com/you/yourRepo}
-  \item
-    Wait ten seconds for the screen to change.
-  \item
-    Hit the green \emph{START EDITING} button.
-  \end{itemize}
-\end{itemize}
-
-This will drop you into the wonderful Cloud9 integrated development
-environment. Here, you can edit code and (using the above
-\texttt{Makefile}) run \texttt{make\ typo} to backed up your code
-outside Cloud9, over at \texttt{Github.com} (which means that if ever
-Cloud9 goes away, you will still have your code).
-
-The good news about Cloud9 is that it is very easy to setup and
-configure. The bad news is that each Cloud9 workspace has the same
-limits as Github- a 1GB size limit. Also, for CPU-intensive
-applications, shared on-line resources like Cloud9 can be a little slow.
-That said, for the newbie, Cloud9 is a very useful tool to jump start
-the learning process.
-
-For sites other than Cloud9, see Koding, Nitrous.IO and many more
-besides.
 
 \subsection{Learning Python}\label{learning-python}
 
@@ -276,20 +282,10 @@ from a Unix-ish command-line prompt. For Windows users, you can
 \paragraph{Code Indentation}\label{code-indentation}
 
 Firstly, change the code indent to 2 spaces. Many editors have this
-option.
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  For the editor I use (EMACS), that magic setting can be found the
-  \texttt{add-hock\ \textquotesingle{}python-model-hook} of
-  \texttt{.emacs} (available on-line at
-  \texttt{https://github.com/timm/timmnix} in the \texttt{dotemacs}
-  file).
-\item
-  For the ACE editor (used in Cloud9), hit the settings button (little
-  wheel, top right)
-\end{itemize}
+option. For example, for the editor I use (EMACS), those magic setting
+can be found the \texttt{add-hock\ \textquotesingle{}python-model-hook}
+of \texttt{.emacs} (available on-line at
+\texttt{https://github.com/timm/timmnix} in the \texttt{dotemacs} file).
 
 \paragraph{Get the Package Managers}\label{get-the-package-managers}
 
@@ -305,6 +301,7 @@ easy_install -h
 Tips:
 
 \begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
 \item
   If these are not installed them Google for installation instructions.
   See also \texttt{https://pypi.python.org/pypi/setuptools} (which has
@@ -316,8 +313,6 @@ Tips:
   on your workspaces). To run code as superuser, in Linux/Unix/Mac,
   preface with \texttt{sudo}; e.g. \texttt{sudo\ pip} or
   \texttt{sudo\ pip\_install}
-
-  sudo pip sudo easy\_install
 \end{itemize}
 
 \paragraph{Use the Package Managers}\label{use-the-package-managers}
@@ -339,6 +334,10 @@ Example: establish a \emph{watch} on \texttt{lib.py}:
 rerun "python lib.py"
 \end{lstlisting}
 
+Now, if ever we change any files in this directory, then this code will
+rerun \texttt{python\ lib.py}-- which is a nice trick for getting very
+fast feedback on code.
+
 \textbf{Package2: 2D plotting with \texttt{matplotlib}.}
 
 Run this code.
@@ -352,6 +351,8 @@ using \texttt{matplotlib}. To check if you have have a \emph{good}
 Python environment, check you can run this code using
 \texttt{python\ demoMatplot.py}. If you do not know Python yet, do not
 try to understand the code (just download it and run it).
+
+\newpage
 
 \begin{lstlisting}
 # File : setup/demoMatplot.py (from github.com/evil)
@@ -388,7 +389,11 @@ lines("days","production",  #.................. 7
 
 If the code works you should see the following file \texttt{lines.out}:
 
-\includegraphics{img/matplotlib101.png}.
+\begin{figure}[htbp]
+\centering
+\includegraphics{img/matplotlib101.png}
+\caption{Example, 2d plotting from Python, using \texttt{matplotlib}}
+\end{figure}
 
 If you do know Python, they I add notes on seven little tricks in the
 above code:
@@ -423,13 +428,13 @@ above code:
   A sample call to this function.
 \end{enumerate}
 
-If you've got \texttt{matplotlib} working, then the next test is to
-install a more complex package like \texttt{scikit-learn}. This is a
-nice collection of very useful data mining tools. The following code
-will install \texttt{scikit-learn} on Cloud9 (and for install
-instructions for other platforms, Google \emph{sklearn}). If you do not
-know bash scripting, don't try to understand the code, just run it using
-\texttt{bash\ sk.sh}.
+\textbf{Package3: some data miners.} If you've got \texttt{matplotlib}
+working, then the next test is to install a more complex package like
+\texttt{scikit-learn}. This is a nice collection of very useful data
+mining tools. The following code will install \texttt{scikit-learn} on
+Cloud9 (and for install instructions for other platforms, Google
+\emph{sklearn}). If you do not know bash scripting, don't try to
+understand the code, just run it using \texttt{bash\ sk.sh}.
 
 \begin{lstlisting}
 # File    : setup/sk.sh (from github.com/txt/evil)
@@ -440,22 +445,18 @@ installingBuildDependencies() {
     python-numpy python-scipy \
     libatlas-dev libatlas3gf-base
 }
-
 BLASandLAPACK() { 
  sudo update-alternatives --set libblas.so.3 \
     /usr/lib/atlas-base/atlas/libblas.so.3
  sudo update-alternatives --set liblapack.so.3 \
     /usr/lib/atlas-base/atlas/liblapack.so.3
 }
-
 matplotlib() { # just incase you have not done matplotlib yet
   sudo apt-get install python-matplotlib
 }
-
 sklearn() {
   pip install --user  --install-option="--prefix=" -U scikit-learn
 }
-
 installingBuildDependencies
 BLASandLAPACK
 matplotlib
@@ -480,11 +481,7 @@ import matplotlib.pyplot as plt
 lr = linear_model.LinearRegression()
 boston = datasets.load_boston()
 y = boston.target
-
-# cross_val_predict returns an array of the same size as `y` where each entry
-# is a prediction obtained by cross validated:
 predicted = cross_val_predict(lr, boston.data, y, cv=10)
-
 fig,ax = plt.subplots()
 ax.scatter(y, predicted)
 ax.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=4)
@@ -574,10 +571,11 @@ Domain specific languages
 \subsubsection{Homework1}\label{homework1}
 
 \begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
 \item
   Do: get an account at \texttt{http://github.com}. Hand-in: your Github
   id.
 \item
   Show that you have a \emph{good} Python environment by installing
+\item
+  Generate some pretty print python (2 space indent)
 \end{itemize}
