@@ -12,7 +12,7 @@ EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 
 **Synopsis:** What is the next "big thing" after "big data"? Well, after "data collection" comes "model construction" so the next big thing after big data will be "big modeling". In this subject, students will learn how to represent, execute, and reason about models. Our case studies will come from software engineering but the principles of this subject could be applied to models in general.
 
-** Objectives: ** By the end of the course, students should be able to:
+**Objectives:** By the end of the course, students should be able to:
  
 + Read and understand the state of the art in research on Automated Software Engineering
 + Analyze and critique core principles of software engineering.
@@ -25,21 +25,18 @@ EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 
 **Project:** Students will implement and reason about a large model of their own choosing (ideally, some model relating to software engineering).
 
-**Prerequisite:**
-Note that this is a **programming-intensive** subject.  
-A programming background is required in a contemporary language such as Java or C/C++ or Python. Hence,he prerequisite for this class is 510, Software Engineering. Significant software industry experience may be substituted, at the instructor’s discretion. 
+**Prerequisite:** Note that this is a **programming-intensive** subject. A programming background is required in a contemporary language such as Java or C/C++ or Python. Hence,he prerequisite for this class is 510, Software Engineering. Significant software industry experience may be substituted, at the instructor’s discretion. 
 Students in this class will work in Python, but no background knowledge of that language will be assumed.
 
-
-** Suggested texts:** (optional) [Think Python: How to Think Like a Computer Scientist](http://www.greenteapress.com/thinkpython/html/index.html)
+**Suggested texts:** (optional) [Think Python: How to Think Like a Computer Scientist](http://www.greenteapress.com/thinkpython/html/index.html)
 
 + Note: for low-level systems reasons, we will use Python 2.7 for this subject. So do not get the absolute latest version of this book.
 
-** Expected Workload: ** This is 
+**Expected Workload:** This is 
 tools-based subject and it is required that students learn and use those tools (Python, repositories, etc).
 Students  MUST be prepared to dedicate AT LEAST 5-8 working hours a week to this class (excluding the time spent in the classroom). Laboratory instruction is not included in this subject. 
 
-** Grading: ** The following grade scale will be used: 
+**Grading:** The following grade scale will be used: 
 
 + A+  (97-100), A (93-96), A-(90-92)
 + B+ (87-89), B (83-86), B-(80-82)
@@ -54,11 +51,11 @@ Grades will be added together using:
 + Paper (on the ASE literature): 15
 + Big programming project (on model-based SE): 20
 
-** Group mailing list:** During term time, a group mailing list will be established: [csx91](csx91@googlegroups.com). Students are strongly encouraged to contribute their questions and answers to that shared resource.
+**Group mailing list:** During term time, a group mailing list will be established: [csx91](csx91@googlegroups.com). Students are strongly encouraged to contribute their questions and answers to that shared resource.
 Note that, for communication of a more private nature, contact the lecturer on the email shown
 below.
 
-** Lecturer **: Tim Menzies
+**Lecturer:** Tim Menzies
 
 + E-Mail: tim.menzies@gmail.com
 + Phone: 304-376-2859
