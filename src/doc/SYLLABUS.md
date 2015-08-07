@@ -1,9 +1,9 @@
 
 # Syllabus: T
 
-This course is two parts:
+This course is three parts:
 
-<table><tr><td colspan=2>
+<table><tr><td colspan=2 valign=top>
 <h3>1. Overview Automated SE</h3>
 <ul>
 <li>
@@ -22,7 +22,7 @@ End-of-term essay (due, December);
 
 
 </td>
-<td>
+<td valign=top>
 
 <h3>3. Model-Based SE for programmers</h3>
 <ul>
@@ -34,4 +34,27 @@ End-of-term essay (due, December);
 
 </td></tr></table>
 
-OK?
+## Timetable
+
+### Overview
+
++ August to October: small weekly exercises
++ November: large project
++ December: term paper
+
+### More details
+
++ August 
+    + Python 101
+    + Training in how to read research papers
++ September 
+    + Model-based programming 101
+    + Reading exercises
++ October 
+    + Advanced model-based methods
+    + Advanced methods in empirical methods
++ November
+    + Large coding project (model-based ASE)
++ December
+    + Term paper (general ASE)
+	 
