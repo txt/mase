@@ -4,7 +4,7 @@
 This course is two parts:
 
 <table><tr><td colspan=2>
-<h3>1. General Automated SE</h3>
+<h3>1. Overview Automated SE</h3>
 <ul>
 <li>
 A general review of the state-of-the art in automated SE;
@@ -14,17 +14,17 @@ Very small weekly reading assignments;
 End-of-term essay (due, December);
 </ul>
 </td><td>
-<h3>3. How to be a great Python Programmer</h3>
+<h3>2. How to be a great Python Programmer</h3>
 <ul>
 <li>3 weeks of intro to Python (Aug);
 <li>Support tools for programming for Model-based SE;
 </ul>
 
 
-</td></tr>
+</td>
 <td>
 
-<h3>2. Model-Based SE for programmers</h3>
+<h3>3. Model-Based SE for programmers</h3>
 <ul>
 <li>Programming for Model-based SE;
 <li> Weekly coding assignments (Sept, Oct);
