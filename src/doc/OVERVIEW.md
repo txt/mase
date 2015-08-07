@@ -1,7 +1,38 @@
 
 # At a glance...
 
-## Timetable
+
+
+<table><tr><td colspan=2 valign=top>
+<h3>1. Overview Automated SE</h3>
+<ul>
+<li>
+A general review of the state-of-the art in automated SE;
+<li>
+Very small weekly reading assignments;
+<li>
+End-of-term essay;
+</ul>
+</td><td valign=top>
+<h3>2. How to be a great Python Programmer</h3>
+<ul>
+<li>Three weeks of intro to Python;
+<li>Support tools for programming for Model-based SE;
+</ul>
+
+
+</td>
+<td valign=top>
+
+<h3>3. Model-Based SE for programmers</h3>
+<ul>
+<li>Programming for Model-based SE;
+<li> Weekly coding assignments;
+<li> Large coding project;
+</ul>
+</td></tr></table>
+
+
 
 ```
     Tues  Thurs                       Grade
@@ -36,38 +67,6 @@ Dec                                  |
 	                                   100	
 ```
 	  
-## Parts
-
-
-<table><tr><td colspan=2 valign=top>
-<h3>1. Overview Automated SE</h3>
-<ul>
-<li>
-A general review of the state-of-the art in automated SE;
-<li>
-Very small weekly reading assignments;
-<li>
-End-of-term essay;
-</ul>
-</td><td valign=top>
-<h3>2. How to be a great Python Programmer</h3>
-<ul>
-<li>Three weeks of intro to Python;
-<li>Support tools for programming for Model-based SE;
-</ul>
-
-
-</td>
-<td valign=top>
-
-<h3>3. Model-Based SE for programmers</h3>
-<ul>
-<li>Programming for Model-based SE;
-<li> Weekly coding assignments;
-<li> Large coding project;
-</ul>
-</td></tr></table>
-
 
 
 <img width=500 align=right src="img/overview.png">
