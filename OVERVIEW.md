@@ -13,7 +13,7 @@
 
 This subject:
 
-+ August to October: small weekly exercises-
++ August to October: small weekly exercises,    
   programming, research methods
 + November: large project
 + December: term paper
