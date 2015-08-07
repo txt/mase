@@ -46,7 +46,7 @@ End-of-term essay (due, December);
 
 
 
-<img width=400 align=right src="img/overview.png">
+<img width=500 align=right src="img/overview.png">
 
 This subject:
 
