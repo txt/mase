@@ -34,7 +34,7 @@ End-of-term essay;
 
 
 </td>
-<td valign=top>
+<td valign=top bgcolor=red>
 
 <h3>3. Model-Based SE for programmers</h3>
 <ul>
