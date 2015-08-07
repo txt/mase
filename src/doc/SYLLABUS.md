@@ -8,7 +8,7 @@ Fall 2015
 
 EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 
-## Overview
+### Overview
 
 **Synopsis:** What is the next "big thing" after "big data"? Well, after "data collection" comes "model construction" so the next big thing after big data will be "big modeling". In this subject, students will learn how to represent, execute, and reason about models. Our case studies will come from software engineering but the principles of this subject could be applied to models in general.
 
@@ -65,7 +65,7 @@ below.
 + Location of Office Hours: EE II room 3298 
 
 
-## Homeworks 
+### Homeworks 
 
 + Homeworks are due Tuesday before start of class.
 + Homeworks will be written into a public Github repo which students will create.
@@ -83,7 +83,7 @@ experience in this class. Once you reach three
 unexcused absences, each additional absence will
 reduce your attendance grade by 10%.
 
-## Academic Integrity
+### Academic Integrity
 
 Cheating will be punished to the full extent permitted. Cheating
 includes plagerism of other people's work. All students will be working
@@ -112,7 +112,7 @@ Conduct.
  
 The  exams will be done individually.  Academic integrity is important.  Do not work together on the exams: cheating on either will be punished to the full extent permitted.  
 
-## Disabilities
+### Disabilities
 
 Reasonable accommodations will be made for students
 with verifiable disabilities. In order to take
@@ -136,7 +136,7 @@ Diversity),http://policies.ncsu.edu/policy/pol-11-35-01
 http://policies.ncsu.edu/regulation/reg-02-50-03
 (Grades and Grade Point Average).
 
-## Non-Discrimination Policy
+### Non-Discrimination Policy
 
 NC State University provides equality of opportunity
 in education and employment for all students and
@@ -167,7 +167,7 @@ discrimination, harassment, or retaliation should
 contact the Office for Equal Opportunity (OEO) at
 919-515-3148.
 
-## Other Information
+### Other Information
 
 Non-scheduled class time for field trips or
 out-of-class activities are NOT required for this
