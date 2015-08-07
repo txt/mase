@@ -13,7 +13,7 @@ Very small weekly reading assignments;
 <li>
 End-of-term essay (due, December);
 </ul>
-</td><td>
+</td><td valign=top>
 <h3>2. How to be a great Python Programmer</h3>
 <ul>
 <li>3 weeks of intro to Python (Aug);
