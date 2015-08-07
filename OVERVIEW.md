@@ -22,8 +22,8 @@ More details
 
 + August 
     + Python 101
-    + Research methods 101 training:    
-	  how to read research papers
+    + Research methods 101 training:
+	      + How to read research papers
 + September 
     + Model-based programming 101
     + Reading exercises
