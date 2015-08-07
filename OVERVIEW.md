@@ -9,36 +9,9 @@
 
 # Overview
 
-<img width=400 align=right src="img/overview.png">
-
-This subject:
-
-+ August to October: small weekly exercises
-      +  Programming, research methods
-+ November: large project
-+ December: term paper
-
-More details
-
-+ August 
-    + Python 101
-    + Research methods 101 training:
-	      + How to read research papers
-+ September 
-    + Model-based programming 101
-    + Reading exercises
-+ October 
-    + Advanced model-based methods
-    + Advanced methods in empirical methods
-+ November
-    + Large coding project (model-based ASE)
-+ December
-    + Term paper (general ASE)
 
 
-_____
-
-This course is three parts:
+This subject is three parts:
 
 <table><tr><td colspan=2 valign=top>
 <h3>1. Overview Automated SE</h3>
@@ -68,6 +41,35 @@ End-of-term essay (due, December);
 <li> Large coding project (Nov);
 </ul>
 </td></tr></table>
+
+
+
+<img width=400 align=right src="img/overview.png">
+
+This subject:
+
++ August to October: small weekly exercises
+      +  Programming, research methods
++ November: large project
++ December: term paper
+
+More details
+
++ August 
+    + Python 101
+    + Research methods 101 training:
+	      + How to read research papers
++ September 
+    + Model-based programming 101
+    + Reading exercises
++ October 
+    + Advanced model-based methods
+    + Advanced methods in empirical methods
++ November
+    + Large coding project (model-based ASE)
++ December
+    + Term paper (general ASE)
+
 
 
 
