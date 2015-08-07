@@ -5,8 +5,8 @@
 
 This subject:
 
-+ August to October: small weekly exercises,    
-  programming, research methods
++ August to October: small weekly exercises
+      +  Programming, research methods
 + November: large project
 + December: term paper
 
