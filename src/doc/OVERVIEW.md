@@ -3,7 +3,10 @@
 
 <img width=400 align=right src="img/overview.png">
 
-+ August to October: small weekly exercises
+This subject:
+
++ August to October: small weekly exercises-
+  programming, research methods
 + November: large project
 + December: term paper
 
@@ -11,7 +14,8 @@ More details
 
 + August 
     + Python 101
-    + Research methods 101 training:  how to read research papers
+    + Research methods 101 training:    
+	  how to read research papers
 + September 
     + Model-based programming 101
     + Reading exercises
