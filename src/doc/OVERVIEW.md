@@ -32,7 +32,7 @@ End-of-term essay (due, December);
 
 # Overview
 
-<img width=200 align=right src="img/overview"></b>
+<img width=200 align=right src="img/overview">
 
 + August to October: small weekly exercises
 + November: large project
