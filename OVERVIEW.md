@@ -9,7 +9,7 @@
 
 # Overview
 
-<img width=200 align=right src="img/overview">
+<img width=200 align=right src="img/overview.png">
 
 + August to October: small weekly exercises
 + November: large project
