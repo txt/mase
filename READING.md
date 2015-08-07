@@ -32,16 +32,16 @@ paper into the context of other work.
     + Rather, they hunt and peek looking for certain key features.
 
 
-To put that another way,  papers are not read for _repeatability_ (of the whole paper) but for _reusability_ of their parts.
+<img src="img/sboard.png" width=400 align=right>
+To put that another way,  papers are not read for _repeatability_ (of the whole paper) but for _reusability_ of their parts. 
+Technical papers are really a
+  presentation of many connected technical concepts,
+some of which the reader will extract and apply to their own work.
+So  we should not read papers so we can paint them again as beautiful complete works of art.
+Rather, we should treat them as a design of some complex product...
 
-
-+ <img src="img/sboard.png" width=400 align=right>Technical papers are really a
-  presentation of many connected technical concepts...
-+ .... Some of which the reader will extract and apply to their own work.
-+ So  we should not read papers so we can paint them again as beautiful complete works of art.
-     + Rather, we treat them as a design of some complex product...
-     + Which can be exploded into various parts...
-     + ... each of which might be repurposed in other areas.
++ Which can be exploded into various parts...
++ ... any of which might be repurposed in other areas.
 
 To put that another way, we should not _read_ papers but we should _survey_ them, to
 
