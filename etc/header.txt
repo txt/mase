@@ -1,10 +1,10 @@
 [<img width=900 src="__IMG/banner1.png">](__PRE/README.md)   
 [Contents](__PRE/TOC.md) |
-[Syllabus](__PRE/SYLLABUS.md)
+[Syllabus](__PRE/SYLLABUS.md) |
 [At a glance...](__PRE/OVERVIEW.md) |
 [Overview](__PRE/ABOUT.md) |
 [Models](__PRE/MODELS.md) |
 [Code](https://github.com/txt/mase/tree/master/src) |
-[Lecturer](http://menzies.us) |
+[Lecturer](http://menzies.us) 
 
 
