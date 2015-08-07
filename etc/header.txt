@@ -1,6 +1,6 @@
 [<img width=900 src="__IMG/banner1.png">](__PRE/README.md)   
 [Contents](__PRE/TOC.md) |
-[Overview](__PRE/OVERVIEW.md) |
+[At a glance](__PRE/OVERVIEW.md) |
 [About](__PRE/ABOUT.md) |
 [Models](__PRE/MODELS.md) |
 [Code](https://github.com/txt/mase/tree/master/src) |
