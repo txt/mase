@@ -25,7 +25,7 @@ paper into the context of other work.
 To put that another way,  papers are not read for _repeatability_ (of the whole paper) but for _reusability_ of their parts.
 
 
-+ <img src="img/sboard.jpg" width=400 align=right>Technical papers are really a
++ <img src="img/sboard.png" width=400 align=right>Technical papers are really a
   presentation of many connected technical concepts...
 + .... Some of which the reader will extract and apply to their own work.
 + So  we should not read papers so we can paint them again as beautiful complete works of art.
