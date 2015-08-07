@@ -1,7 +1,7 @@
 [<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner1.png">](https://github.com/txt/mase/blob/master/README.md)   
-[Contents](https://github.com/txt/mase/blob/master/TOC.md) |
-[Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) |
+[TOC](https://github.com/txt/mase/blob/master/TOC.md) |
 [At a glance...](https://github.com/txt/mase/blob/master/OVERVIEW.md) |
+[Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) |
 [Overview](https://github.com/txt/mase/blob/master/ABOUT.md) |
 [Models](https://github.com/txt/mase/blob/master/MODELS.md) |
 [Code](https://github.com/txt/mase/tree/master/src) |
