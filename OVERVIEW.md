@@ -23,12 +23,12 @@ A general review of the state-of-the art in automated SE;
 <li>
 Very small weekly reading assignments;
 <li>
-End-of-term essay (due, December);
+End-of-term essay;
 </ul>
 </td><td valign=top>
 <h3>2. How to be a great Python Programmer</h3>
 <ul>
-<li>Three weeks of intro to Python (Aug);
+<li>Three weeks of intro to Python;
 <li>Support tools for programming for Model-based SE;
 </ul>
 
@@ -39,8 +39,8 @@ End-of-term essay (due, December);
 <h3>3. Model-Based SE for programmers</h3>
 <ul>
 <li>Programming for Model-based SE;
-<li> Weekly coding assignments (Sept, Oct);
-<li> Large coding project (Nov);
+<li> Weekly coding assignments;
+<li> Large coding project;
 </ul>
 </td></tr></table>
 
