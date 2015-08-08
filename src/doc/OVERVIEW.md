@@ -1,7 +1,8 @@
 
-<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png">[Click to enlarge] <img width=200  align=middle src="img/learning.png"> </a>
 
 # At a glance...
+<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png">[Click to enlarge] <img width=200  align=middle src="img/learning.png"> </a>
+
 
 <img width=400 align=right src="img/overview.png">
 
