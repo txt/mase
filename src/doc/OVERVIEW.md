@@ -111,5 +111,4 @@ More details
 
 
 
-
-<center><a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png"><img width=300  src="img/learning.png"></a></center>
+<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png"><img width=300  src="img/learning.png"> [Enlarge]</a>
