@@ -22,6 +22,7 @@ Ph.d. students will each develop a   large model-based  SE application.
 Masters students will work in groups of three and may either do a large SE model-based app or
 three not-so-small mini-projects.
 
+
 ### Parts of this subject
 
 <table><tr><td colspan=2 valign=top>
@@ -118,6 +119,9 @@ More details
     + Term paper (general ASE)
 
 
+
+
+<a href="img/learning.png"><img width=400 align=center src="img/learning.png"></a>
 
 
 _________
