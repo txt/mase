@@ -10,7 +10,7 @@
 
 
 # At a glance...
-<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png"><img width=400  align=right src="img/learning.png"> </a>
+<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png"><img width=300  align=right src="img/learning.png"> </a>
 
 
 
@@ -59,6 +59,7 @@ End-of-term essay;
 ### Timetable
 
 
+
 ```
     Tues  Thurs                       Grade
 --- ====  ===== --------------------- =====
@@ -95,6 +96,7 @@ Dec                                  |
 ### Kinds of Work
 
 
+<img width=400 align=right src="img/overview.png">
 
 This subject:
 
