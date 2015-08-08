@@ -15,7 +15,7 @@ For example, if you ask new graduate students to read ten papers in a particular
 
 There are two keys to reading papers faster:
 
-+ _Context:_Experts can read papers faster when they know of other work in the field and can place this new
++ _Context:_ Experts can read papers faster when they know of other work in the field and can place this new
 paper into the context of other work. 
 + _Feature extraction:_  Experts are experts at anything since they know what to look for, and what can be skipped over. This is true for many tasks, including reading:
     + Experts do not read entire papers, word for word.
