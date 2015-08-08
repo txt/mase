@@ -297,7 +297,7 @@ Initially  at k=0, (t=0):
 
 Subsequently k=0.5*kmax (t=0.5):
 
-![satdot5](etc/img/satdot5.jpg)
+![satdot5](img/satdot5.jpg)
 
 Finally at k=kmax (t=1):
 
