@@ -116,7 +116,7 @@ So to understand search, understand the landscape.
 If you know the landscape, you can see  where it can trap and where it can help us out. One such trap is the _saddle_
 which, in the above diagram is the flat space between the mountain (called a _pole_) and the _hole_ next to it.
 
-<img width=500 src="etc/img/landscape/holespoles.png">
+<img width=500 src="img/holespoles.png">
 
  Note that if walk along the saddle, you might think you
 are in a stable space of solutions. But be warned, one slip to the left or right and the landscape changes dramatically. In the above
