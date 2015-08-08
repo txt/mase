@@ -112,4 +112,4 @@ More details
 
 
 
-<a href="img/learning.png"><img width=400 align=center src="img/learning.png"></a>
+<center><a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png"><img width=300  src="img/learning.png"></a></center>
