@@ -9,6 +9,9 @@
 
 
 
+Q: What is the next "big thing" after "big data"?
+
+A: Well, after "data collection" comes "model construction" so the next big thing after big data will be "big modeling". In this subject, students will learn how to represent, execute, and reason about models. Our case studies will come from software engineering but the principles of this subject could be applied to models in general.
 
 <table border=0 align=center>
 <tr><td rowspan=3>
