@@ -72,9 +72,9 @@ Nov                                  |
 	  24  26   no lecture (Tu,T)     |
 -------------------------------------+-----
 Dec                                  |
-       1   3   big project tue (Tu)  |  20
+       1   3   big project  (Tu)     |  20
        8  10   final exam (Th)       |  25
-	   15       final paper due (Tu) |  15
+	   15      final paper due (Tu)  |  15
 	                                 + ---
 	                                   100	
 ```
