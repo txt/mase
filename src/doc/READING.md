@@ -48,36 +48,16 @@ up dramatically. So do not be discouraged if, at first, this is ridiculously slo
 
 ### Part1 (nine small tasks)
 
+In the following, anything shown _in italics_ is explained below.
+
 + Week1: Find a highly cited paper from the automated software engineering literature
      + Go  [here](https://goo.gl/HqOVJ1)
      + Pick any 2011 paper and _summarize some of its parts_.
-
-By _summarize parts_ we mean write 500 to 1000 words  on text:
-
-+ Starting with  a clear reference to the paper
-+ Followed by brief notes on any half dozen of the items listed  [here](READINGrubric.md).
-+ For weeks2,3,4,5,6,7,8 also comment on the connection to the other papers.
-
-Do you know how long 1000 words is? About as long as this page.
-
 + Week2,3,4,5: Walk backwards
      + Find four papers in the week1's reference list
           + That date 2008 to 2010
 	      + That are _highest cited_ (Note that recent papers have less cites than older papers).
 	  + Walk them backwards in time, one per week, _summarizing some of there parts_
-
-To find _highest cited papers_, look up items from the reference list in the week1 paper paper in scholar.google.com (or dl.acm.org/ or
-ieeexplore.ieee.org) and count their citations.  For example, looking up
-"Mining metrics to predict component failures" in scholar.google.com produces:
-
-<img src="img/cite1.png" width=500>
-
-Looking bottom, you can see _Cited by 527_. If you click there, you find many others published since the first paper:
-
-<img src="img/cite2.png" width=500 >
-
-Google scholar sorts these top-to-bottom most-to-least cited (so the most cited papers are shown at top).
-
 + Week6,7,8: Walk forwards
       + Find four papers that cite the week1 paper
           + That date 2012 to 2015
@@ -85,13 +65,26 @@ Google scholar sorts these top-to-bottom most-to-least cited (so the most cited 
       + Walk them forwards in time, one per week, _summarizing some of there parts_
 + Week9: For any paper in the above sequence, _report any reusable data_.
 
-To find the _highest cited papers_ that cite the week1 paper, look up your week1 paper in scholar.google.com (or dl.acm.org/ or
-ieeexplore.ieee.org) and count their citations.
+Notes:
 
-To _report any reusable data_, try to fill in the form [here](http://openscience.us/repo/contribute/donate). Hand in either:
-
-- A page shown what you entered from those fields
-- Or an explanation why your kind of papers do not generated data of the kind that can be entered here.
++ By _summarize parts_ we mean write 500 to 1000 words  on text:
+    + Starting with  a clear reference to the paper
+    + Followed by brief notes on any half dozen of the items listed  [here](READINGrubric.md).
+    + For weeks2,3,4,5,6,7,8 also comment on the connection to the other papers.
+    + Do you know how long 1000 words is? About as long as this page. How you
+  want to write something half this size.
++ To find _highest cited papers_, look up items from the reference list in the week1 paper paper in scholar.google.com (or dl.acm.org/ or
+  ieeexplore.ieee.org) and count their citations.  For example, looking up
+  "Mining metrics to predict component failures" in scholar.google.com produces:<br>
+  <img src="img/cite1.png" width=500><br>
+  Looking bottom, you can see _Cited by 527_. If you click there, you find many others published since the first paper:<br>
+  <img src="img/cite2.png" width=500 ><br>
+  Google scholar sorts these top-to-bottom most-to-least cited (so the most cited papers are shown at top). So,
++ To find the _highest cited papers_ that cite the week1 paper, look up your week1 paper in scholar.google.com (or dl.acm.org/ or
+  ieeexplore.ieee.org) and count their citations.
++ To _report any reusable data_, try to fill in the form [here](http://openscience.us/repo/contribute/donate). Hand in either:
+      - A page shown what you entered from those fields
+       - Or an explanation why your kind of papers do not generated data of the kind that can be entered here.
 
 ### Part2 (one big essay)
 
