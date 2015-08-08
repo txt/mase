@@ -74,7 +74,7 @@ ieeexplore.ieee.org) and count their citations.  For example, looking up
 
 Looking bottom, you can see _Cited by 527_. If you click there, you find many others published since the first paper:
 
-<center><img src="img/cite2.pdf" width=400 ></center>
+<center><img src="img/cite2.png" width=400 ></center>
 
 Google scholar sorts these top-to-bottom most-to-least cited (so the most cited papers are shown at top).
 
