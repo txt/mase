@@ -25,7 +25,7 @@ three not-so-small mini-projects.
 ### Parts of this subject
 
 <table><tr><td colspan=2 valign=top>
-<h3>1. Overview Automated SE</h3>
+<h4>1. Overview Automated SE</h4>
 <ul>
 <li>
 A general review of the state-of-the art in automated SE;
@@ -35,7 +35,7 @@ Very small weekly reading assignments;
 End-of-term essay;
 </ul>
 </td><td valign=top>
-<h3>2. How to be a great Python Programmer</h3>
+<h4>2. How to be a great Python Programmer</h4>
 <ul>
 <li>Three weeks of intro to Python;
 <li>Support tools for programming for Model-based SE;
@@ -45,7 +45,7 @@ End-of-term essay;
 </td>
 <td valign=top>
 
-<h3>3. Model-Based SE for programmers</h3>
+<h4>3. Model-Based SE for programmers</h4>
 <ul>
 <li>Programming for Model-based SE;
 <li> Weekly coding assignments;
