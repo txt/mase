@@ -11,7 +11,13 @@
 
 # At a glance...
 
-Ph.d. student will each develop a   large model-based  SE application.
+
+CSC 591-001 (13007)   
+CSC 791-001 (7046)   
+Fall 2015   
+EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
+
+Ph.d. students will each develop a   large model-based  SE application.
 
 Masters students will work in groups of three and may either do a large SE model-based app or
 three not-so-small mini-projects.
