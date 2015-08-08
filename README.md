@@ -20,11 +20,13 @@ of search-based optimization for exploring models.
 <p>Coding examples in Python 2.7+.
 </td>
 <td align=center><b>Lectures
+
 <img width=75 src="img/200x1.png"></b>
 </td><td align=center><b>Homework
 <img width=75 src="img/200x1.png"></b>
 </td><td align=center><b>Review
-<img width=75 src="img/200x1.png"></b>
+<img width=75 src="img/200x1.png">
+
 </td> </tr>
 <tr>
 </td><td align=center><img src="img/lectures.gif">
@@ -33,12 +35,20 @@ of search-based optimization for exploring models.
 </td> </tr>
 <tr>
 <td valign=top  xwidth="100px">
+
 1. <a href="Sa">SA</a><br>
-0. <a href="aa">History</a><br>
+0. <a href="aa">History</a>
+
+0. <a href="aa">About</a>
+
 </td><td valign=top xwidth="100px">
-0. <a href="READING.md">Reading</a><br>    
+
+0. <a href="READING.md">Reading</a>
+
 </td><td valign=top xwidth="100px">
+
 0. <a href="Review1">Review0</a><br>  
+
 </td>
 </tr></table>
 
