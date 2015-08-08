@@ -1,7 +1,7 @@
 
 # At a glance...
 
-<img width=500 align=right src="img/overview.png">
+<img width=400 align=right src="img/overview.png">
 
 CSC 591-001 (13007)   
 CSC 791-001 (7046)   
