@@ -33,6 +33,29 @@ EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 
 **Topics:** Overview, state of the research, automated software engineering; AI and software engineering; principles of model-based reasoning with a heavy focus on models about software engineering; search-based and evolutionary inference; representing and reasoning about models; handling uncertainty; decision making and model-based reasoning.
 
+**Group mailing list:** During term time, a group
+mailing list will be established:
+[csx91](csx91@googlegroups.com). Students are
+strongly encouraged to contribute their questions
+and answers to that shared resource.  Note that, for
+communication of a more private nature, contact the
+lecturer on the email shown below.
+
+**Lecturer:** Tim Menzies
+
++ E-Mail: tim.menzies@gmail.com
++ Phone: 304-376-2859
+       + **Do not use** this number, except in the most dire of 
+          circumstances (best way to contact me is via email).
++ Office Hours: Thursday, 3:30-5:00 and by request
++ Location of Office Hours: EE II room 3298 
+
+**GTA:** Rahul Krishna
+
++ E-mail: rkrish11@ncsu.edu
++ Office mours: Friday 12pm to 2pm
++ Office location: rm 3231, EE II
+
 **Project:** Students will implement and reason about a large model of their own choosing (ideally, some model relating to software engineering). Note that:
 
 + CSC 791 Ph.d. student will each develop a   large model-based  SE application.
@@ -83,22 +106,6 @@ Grades will be added together using:
 + Paper (on the ASE literature): 15
 + Big programming project (on model-based SE): 20
 
-**Group mailing list:** During term time, a group
-mailing list will be established:
-[csx91](csx91@googlegroups.com). Students are
-strongly encouraged to contribute their questions
-and answers to that shared resource.  Note that, for
-communication of a more private nature, contact the
-lecturer on the email shown below.
-
-**Lecturer:** Tim Menzies
-
-+ E-Mail: tim.menzies@gmail.com
-+ Phone: 304-376-2859
-       + **Do not use** this number, except in the most dire of 
-          circumstances (best way to contact me is via email).
-+ Office Hours: Thursday, 3:30-5:00 and by request
-+ Location of Office Hours: EE II room 3298 
 
 
 ### Homeworks 
