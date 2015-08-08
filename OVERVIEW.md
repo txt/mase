@@ -10,10 +10,9 @@
 
 
 # At a glance...
-<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png">[Click to enlarge] <img width=200  align=middle src="img/learning.png"> </a>
+<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png"><img width=400  align=right src="img/learning.png"> </a>
 
 
-<img width=400 align=right src="img/overview.png">
 
 CSC 591-001 (13007)   
 CSC 791-001 (7046)   
