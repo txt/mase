@@ -12,6 +12,8 @@ Ph.d. students will each develop a   large model-based  SE application.
 Masters students will work in groups of three and may either do a large SE model-based app or
 three not-so-small mini-projects.
 
+### Parts of this subject
+
 <table><tr><td colspan=2 valign=top>
 <h3>1. Overview Automated SE</h3>
 <ul>
@@ -41,6 +43,7 @@ End-of-term essay;
 </ul>
 </td></tr></table>
 
+### Timetable
 
 
 ```
@@ -76,7 +79,7 @@ Dec                                  |
 	                                   100	
 ```
 	  
-
+### Kinds of Work
 
 <img width=500 align=right src="img/overview.png">
 
