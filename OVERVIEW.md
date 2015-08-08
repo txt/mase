@@ -8,6 +8,8 @@
 
 
 
+<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png">[Click to enlarge] <img width=200  align=middle src="img/learning.png"> </a>
+
 # At a glance...
 
 <img width=400 align=right src="img/overview.png">
@@ -120,7 +122,7 @@ More details
 
 
 
-<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png">[Enlarge] <img width=300  align=middle src="img/learning.png"> </a>
+
 
 
 _________
