@@ -21,7 +21,9 @@ When reading a researech paper, it is possible extract certain information from 
 <tr><td>
 1. Motivational statements   </td><td>reports or challenge statements or lists of open issues that prompt an analysis;</td></tr>
 <tr><td>2. Hypotheses </td><td>Expected effects in some area;.</td></tr>
-<tr><td>3. Checklists </td><td>Used to design the analysis (see also, the [Checklist Manifesto](http://atulgawande.com/book/the-checklist-manifesto/);.</td></tr>
+<tr><td>3. Checklists </td><td>Used to design the analysis (see also, the
+<a href="http://atulgawande.com/book/the-checklist-manifesto/">Checklist Manifesto]</a>
+;.</td></tr>
 <tr><td>4. Related Work </td><td> Comprehensive, annotated, and insightful (e.g. showing the development or open areas in a field);.</td></tr>
 <tr><td>5. Study instruments </td><td>e.g. surveys interview scripts, etc;.</td></tr>
 <tr><td>6. Statistical tests </td><td> Mathematical tools  to analyze results (along with some notes explaining why or when this test is necessary);.</td></tr>
@@ -45,7 +47,9 @@ When reading a researech paper, it is possible extract certain information from 
 or some derived product.</td></tr>
 
 <tr><td>
-17. Scripts   </td><td> used to perform the analysis (the main analysis or the subsequent statistical tests or visualizations; e.g.    the  [Python Sparklines generator](https://pypi.python.org/pypi/pysparklines)). Scripts can also implement some of the patterns
+17. Scripts   </td><td> used to perform the analysis (the main analysis or the subsequent statistical tests or visualizations; e.g.    the
+<a href="https://pypi.python.org/pypi/pysparklines">Python Sparklines generator</a>
+or code for a fast <a href="https://gist.github.com/timm/a6e759eb7d9b5f05b468">a12</a> test. Scripts can also implement some of the patterns
   identified by the paper.</td></tr>
   <tr><td>18. Sample  models </td><td>Can generate exemplar data;  or which offer an executable form of current hypotheses. Or, these models could be a set of standard problems everyone shares
   (e.g. the verification comminity and optimization community have
