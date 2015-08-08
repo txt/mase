@@ -8,7 +8,7 @@
 
 
 
-# Simulated Annealing
+# Simulated Annealing 101
 
 Our task in this subject is to walk over decades of work, understanding
 the successes and limitations of various tools.
