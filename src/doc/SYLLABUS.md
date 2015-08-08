@@ -25,8 +25,8 @@ EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 
 **Project:** Students will implement and reason about a large model of their own choosing (ideally, some model relating to software engineering). Note that:
 
-+ Ph.d. student will each develop a   large model-based  SE application.
-+ Masters students will work in groups of three and may either do a large SE model-based app or
++ CSC 791 Ph.d. student will each develop a   large model-based  SE application.
++ CSC 591 masters students will work in groups of three and may either do a large SE model-based app or
   three not-so-small mini-projects.
 
 **Prerequisite:** Note that this is a **programming-intensive** subject. A programming background is required in a contemporary language such as Java or C/C++ or Python. Hence,he prerequisite for this class is 510, Software Engineering. Significant software industry experience may be substituted, at the instructor’s discretion. 
@@ -38,7 +38,9 @@ Students in this class will work in Python, but no background knowledge of that 
 
 **Expected Workload:** This is 
 tools-based subject and it is required that students learn and use those tools (Python, repositories, etc).
-Students  MUST be prepared to dedicate AT LEAST 5-8 working hours a week to this class (excluding the time spent in the classroom). Laboratory instruction is not included in this subject. 
+Students  MUST be prepared to dedicate AT LEAST 5-8 working hours a week to this class (excluding the time spent in the classroom). Laboratory instruction is not included in this subject (but the first three weeks
+will be spent on some in-depth programming tutorials). Note that the workload for masters and Ph.D. students
+will be different (see above).
 
 **Grading:** The following grade scale will be used: 
 
