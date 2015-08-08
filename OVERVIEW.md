@@ -120,7 +120,7 @@ More details
 
 
 
-<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png"><img width=300  align=middle src="img/learning.png"> [Enlarge]</a>
+<a href="https://raw.githubusercontent.com/txt/mase/master/img/learning.png">[Enlarge] <img width=300  align=middle src="img/learning.png"> </a>
 
 
 _________
