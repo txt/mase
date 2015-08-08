@@ -1,5 +1,12 @@
 
-# Search Space
+# Engineering and Search
+
+There is a field, called search-based software engineering,
+that is undergoing an explosion in papers.
+
+![sbse](img/trends.png)
+
+What is this field all about?
 
 
 ## Questions of Balance
