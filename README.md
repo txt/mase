@@ -36,6 +36,7 @@ of search-based optimization for exploring models.
 <tr>
 <td valign=top  xwidth="100px">
 
+3. <a href="MWS.md">MaxWalkSat</a><br>
 2. <a href="SA.md">SA 101</a><br>
 1. <a href="SBSE101.md">SBSE 101</a><br>
 0. <a href="ABOUT.md">About</a>
