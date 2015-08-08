@@ -23,7 +23,11 @@ EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 
 **Topics:** Overview, state of the research, automated software engineering; AI and software engineering; principles of model-based reasoning with a heavy focus on models about software engineering; search-based and evolutionary inference; representing and reasoning about models; handling uncertainty; decision making and model-based reasoning.
 
-**Project:** Students will implement and reason about a large model of their own choosing (ideally, some model relating to software engineering).
+**Project:** Students will implement and reason about a large model of their own choosing (ideally, some model relating to software engineering). Note that:
+
++ Ph.d. student will each develop a   large model-based  SE application.
++ Masters students will work in groups of three and may either do a large SE model-based app or
+  three not-so-small mini-projects.
 
 **Prerequisite:** Note that this is a **programming-intensive** subject. A programming background is required in a contemporary language such as Java or C/C++ or Python. Hence,he prerequisite for this class is 510, Software Engineering. Significant software industry experience may be substituted, at the instructor’s discretion. 
 Students in this class will work in Python, but no background knowledge of that language will be assumed.

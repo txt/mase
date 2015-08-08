@@ -1,8 +1,9 @@
 # Reading Rubrix
 
-When reading a researech paper, it is possible extract certain information from a paper
+When reading a research paper, it is possible extract certain information from a paper
 
-## Background Data
+## About the Paper
+
 
 
 ## Parts Within a Paper
@@ -30,6 +31,9 @@ When reading a researech paper, it is possible extract certain information from 
 </td></tr></table>
 
 ## Parts that papers might point too
+
+The follow are usually too large to be included  in a paper. However, a paper can point to some external
+resource that includes...
 
 <table>
 <tr><td>

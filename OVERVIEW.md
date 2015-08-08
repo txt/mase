@@ -11,7 +11,10 @@
 
 # At a glance...
 
+Ph.d. student will each develop a   large model-based  SE application.
 
+Masters students will work in groups of three and may either do a large SE model-based app or
+three not-so-small mini-projects.
 
 <table><tr><td colspan=2 valign=top>
 <h3>1. Overview Automated SE</h3>
