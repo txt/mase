@@ -4,6 +4,7 @@
 CSC 591-001 (13007)   
 CSC 791-001 (7046)
 
+NcState, ComSci
 Fall 2015
 
 EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.

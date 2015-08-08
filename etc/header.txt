@@ -2,7 +2,6 @@
 [TOC](__PRE/TOC.md) |
 [At a glance...](__PRE/OVERVIEW.md) |
 [Syllabus](__PRE/SYLLABUS.md) |
-[Overview](__PRE/ABOUT.md) |
 [Models](__PRE/MODELS.md) |
 [Code](https://github.com/txt/mase/tree/master/src) |
 [Lecturer](http://menzies.us) 
