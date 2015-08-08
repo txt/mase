@@ -86,7 +86,7 @@ then that search can get trapped and tricked by ideas that are locally promising
 not globally optimal:
 
 
-[[http://janmonschke.com/Genetic-Algorithms/presentation/images/local_maximum.png]]
+![local](http://janmonschke.com/Genetic-Algorithms/presentation/images/local_maximum.png)
 
 Q: What to do?
 
