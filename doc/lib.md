@@ -1,20 +1,109 @@
 [<img width=900 src="https://raw.githubusercontent.com/txt/mase/master/img/banner1.png">](https://github.com/txt/mase/blob/master/README.md)   
-[Contents](https://github.com/txt/mase/blob/master/TOC.md) |
-[About](https://github.com/txt/mase/blob/master/ABOUT.md) |
+[TOC](https://github.com/txt/mase/blob/master/TOC.md) |
+[At a glance...](https://github.com/txt/mase/blob/master/OVERVIEW.md) |
+[Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) |
+[Overview](https://github.com/txt/mase/blob/master/ABOUT.md) |
 [Models](https://github.com/txt/mase/blob/master/MODELS.md) |
 [Code](https://github.com/txt/mase/tree/master/src) |
-[Contact](http://menzies.us) |
-[Syllabus](https://github.com/txt/mase/blob/master/SYLLABUS.md) 
+[Lecturer](http://menzies.us) 
 
 
-# Lib: Standard library routines
+# Lib: Standard Utilities
+
+Standard imports: used everywhere.
+
+## Code Standards
+
+Narrow code (52 chars, max); use ``i'', not ``self'', set indent to two characters, 
+
+In a repo (or course). Markdown comments (which means we can do tricks like auto-generating this
+documentation from comments in the file).
+
+Not Python3, but use Python3 headers.
+
+good reseraoiuces for advance people: Norving's infrenqencly asked questions
+
+David Isaacon's Pything tips, tricks, and Hacks.http://www.siafoo.net/article/52
+
+Environemnt that supports matplotlib, scikitlearn. Easy to get there.
+
+Old school: install linux. New school: install virtualbox. Newer school: work online.
+
+To checn if you ahve a suseful envorunment, try the following (isntall pip, matpolotlib, scikitlearn)
+
+Learn Python.
+
+Learn tdd
+
+Attitude to coding. not code byt"set yourself up to et rapid feedback on some issue"
+
 
 ````python
-
-import random, pprint, re, datetime, time
+import random, pprint, re, datetime, time,traceback
 from contextlib import contextmanager
 import pprint,sys
-from boot import *
+````
+
+Unit test engine, inspired by Kent Beck.
+
+````python
+def ok(*lst):
+  for one in lst: unittest(one)
+  return one
+
+class unittest:
+  tries = fails = 0  #  tracks the record so far
+  @staticmethod
+  def score():
+    t = unittest.tries
+    f = unittest.fails
+    return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
+      t,f,int(round(t*100/(t+f+0.001))))
+  def __init__(i,test):
+    unittest.tries += 1
+    try:
+      test()
+    except Exception,e:
+      unittest.fails += 1
+      i.report(e,test)
+  def report(i,e,test):
+    print(traceback.format_exc())
+    print(unittest.score(),':',test.__name__, e)
+````
+
+Simple container class (offers simple initialization).
+
+````python
+class o:
+  def __init__(i,**d)    : i + d
+  def __add__(i,d)       : i.__dict__.update(d)
+  def __setitem__(i,k,v) : i.__dict__[k] = v
+  def __getitem__(i,k)   : return i.__dict__[k]
+  def __repr__(i)        : return str(i.items())
+  def items(i,x=None)    :
+    x = x or i
+    if isinstance(x,o):
+      return [(k,i.items(v)) for
+              k,v in x.__dict__.values()
+              if not k[0] == "_" ]
+    else: return x
+````
+
+The settings system.
+
+````python
+the = o()
+
+def setting(f):
+  name = f.__name__
+  def wrapper(**d):
+    tmp = f()
+    tmp + d
+    the[name] = tmp
+    return tmp
+  wrapper()
+  return wrapper
+
 
 @setting
 def LIB(): return o(
@@ -26,15 +115,13 @@ def LIB(): return o(
              width=80)
 )
 #-------------------------------------------------
+r    = random.random
+any  = random.choice
+seed = random.seed
+isa  = isinstance
+
 def lt(x,y): return x < y
 def gt(x,y): return x > y
-
-isa   = isinstance
-fun   = lambda x:x.__class__.__name__ == 'function'
-r     = random.random
-any   = random.choice
-seed = random.seed
-
 def first(lst): return lst[0]
 def last(lst): return lst[-1]
                           
@@ -42,10 +129,11 @@ def shuffle(lst):
   random.shuffle(lst)
   return lst
 
-def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9],norm=False,f=3):
+def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9],
+                norm=False, f=3):
   if norm:
     lo,hi = lst[0], lst[-1]
-    lst = g([(x - lo)/(hi-lo+0.000001) for x in lst],f)
+    lst= g([(x - lo)/(hi-lo+0.0001) for x in lst],f)
   at = lambda x: lst[ int(len(lst)*x) ]
   lst = [ at(tile) for tile in tiles ]
   
@@ -63,29 +151,6 @@ def show(x, indent=None, width=None):
             indent= indent or the.LIB.show.indent,
             width = width  or the.LIB.show.width))
 
-def has(x,  decs=None, wicked=None, skip=None) :
-  if decs   is None:
-    decs = the.LIB.has.decs
-  if wicked is None:
-    wicked = the.LIB.has.wicked
-  if skip   is None:
-    skip = the.LIB.has.skip
-  if   isa(x, o):
-    return has({x.__class__.__name__: x.d()})
-  elif isa(x,list):
-    return map(has,x)
-  elif isa(x,float):
-    return round(x,decs)
-  elif fun(x):
-    return x.__name__+'()'
-  elif wicked and hasattr(x,"__dict__"):
-      return has({x.__class__.__name__ : x.__dict__})
-  elif isa(x, dict):
-    return {k:has(v)
-            for k,v in x.items()
-            if skip != str(k)[0]}
-  else:
-    return x
 
 def cache(f):
   name = f.__name__

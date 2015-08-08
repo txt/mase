@@ -80,7 +80,7 @@ To find _highest cited papers_, look up items from the reference list in the wee
 ieeexplore.ieee.org) and count their citations.  For example, looking up
 "Mining metrics to predict component failures" in scholar.google.com produces:
 
-<center><img src="img/cite1.pdf" width=400></center>
+<center><img src="img/cite1.png" width=400></center>
 
 Looking bottom, you can see _Cited by 527_. If you click there, you find many others published since the first paper:
 
