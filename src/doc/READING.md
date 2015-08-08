@@ -43,8 +43,6 @@ to understand those (small) parts. But otherwise, we need to read _over_ papers,
 
 ## Exercises In Reading Faster
 
-In the following, anything in italics will be explained later.
-
 Note that, at first, it will take _hours_ to read one paper. However, after a couple your reading will speed
 up dramatically. So do not be discouraged if, at first, this is ridiculously slow.
 
@@ -53,29 +51,65 @@ up dramatically. So do not be discouraged if, at first, this is ridiculously slo
 + Week1: Find a highly cited paper from the automated software engineering literature
      + Go  [here](https://goo.gl/HqOVJ1)
      + Pick any 2011 paper and _summarize some of its parts_.
+
+By _summarize parts_ we mean write 500 to 1000 words  on text:
+
++ Starting with  a clear reference to the paper
++ Followed by brief notes on any half dozen of the items listed  [here](READINGrubric.md).
++ For weeks2,3,4,5,6,7,8 also comment on the connection to the other papers.
+
+Do you know how long 1000 words is? About as long as this page.
+
 + Week2,3,4,5: Walk backwards
      + Find four papers in the week1's reference list
           + That date 2008 to 2010
-	      + That are _highly cited_
+	      + That are _highest cited_ (Note that recent papers have less cites than older papers).
 	  + Walk them backwards in time, one per week, _summarizing some of there parts_
-+ Week6,7,8,9: Walk forwards
+
+To find _highest cited papers_, look up items from the reference list in the week1 paper paper in scholar.google.com (or dl.acm.org/ or
+ieeexplore.ieee.org) and count their citations.  For example, looking up
+"Mining metrics to predict component failures" in scholar.google.com produces:
+
+<center><img src="img/cite1.pdf" width=400></center>
+
+Looking bottom, you can see _Cited by 527_. If you click there, you find many others published since the first paper:
+
+<center><img src="img/cite2.pdf" width=400 ></center>
+
+Google scholar sorts these top-to-bottom most-to-least cited (so the most cited papers are shown at top).
+
++ Week6,7,8: Walk forwards
       + Find four papers that cite the week1 paper
           + That date 2012 to 2015
-	      + That are _highly cited_.
+	      + That are _highly cited_ (Note that recent papers have less cites than older papers)..
       + Walk them forwards in time, one per week, _summarizing some of there parts_
++ Week9: For any paper in the above sequence, _report any reusable data_.
+
+To find the _highest cited papers_ that cite the week1 paper, look up your week1 paper in scholar.google.com (or dl.acm.org/ or
+ieeexplore.ieee.org) and count their citations.
+
+To _report any reusable data_, try to fill in the form [here](http://openscience.us/repo/contribute/donate). Hand in either:
+
+- A page shown what you entered from those fields
+- Or an explanation why your kind of papers do not generated data of the kind that can be entered here.
 
 ### Part2 (one big essay)
 
 Take all the above and summarize the procession of research 2008 to 2015 of some automated software
 engineering issue.
 
-+ For full marks,
 + 10 pages, 2 columns,  using the Word or Latex formats shown in [this page](https://www.acm.org/sigs/publications/proceedings-templates).
 + Include at least 18 references, nine of which are the nine shown above
++ Mention as many as possible of items listed [here]READINGrubric.md).
+
+For full marks,
+
++ Through out your text,
+       comment on how eight of these nine papers improved (failed to improve, ignored, extended, refined) the issues
+       mentioned in an early paper.
++ End with your own recommendations of the path from here. Mention the issues that are now retired, that no one has retired,
+	     that someone should retire, or that no one should even try to retire.
 
 Note: if your Part1 nine papers proved to be dull, fell free to start again with some other 2011 paper from
 [here](https://goo.gl/HqOVJ1).
 
-
-
-Staring with the proceedings of the 
