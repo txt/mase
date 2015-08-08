@@ -21,15 +21,6 @@ EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 + Build and evaluate SBSE tools.
 + Analyze, critique, and communicate clearly the core theory and algorithms of multi-objective optimization
 
-**Topics:** Overview, state of the research, automated software engineering; AI and software engineering; principles of model-based reasoning with a heavy focus on models about software engineering; search-based and evolutionary inference; representing and reasoning about models; handling uncertainty; decision making and model-based reasoning.
-
-**Group mailing list:** During term time, a group
-mailing list will be established:
-[csx91](csx91@googlegroups.com). Students are
-strongly encouraged to contribute their questions
-and answers to that shared resource.  Note that, for
-communication of a more private nature, contact the
-lecturer on the email shown below.
 
 **Lecturer:** Tim Menzies
 
@@ -45,6 +36,19 @@ lecturer on the email shown below.
 + E-mail: rkrish11@ncsu.edu
 + Office mours: Friday 12pm to 2pm
 + Office location: rm 3231, EE II
+
+
+**Group mailing list:** During term time, a group
+mailing list will be established:
+[csx91](csx91@googlegroups.com). Students are
+strongly encouraged to contribute their questions
+and answers to that shared resource.  Note that, for
+communication of a more private nature, contact the
+lecturer on the email shown above.
+
+**Topics:** Overview, state of the research, automated software engineering; AI and software engineering; principles of model-based reasoning with a heavy focus on models about software engineering; search-based and evolutionary inference; representing and reasoning about models; handling uncertainty; decision making and model-based reasoning.
+
+
 
 **Project:** Students will implement and reason about a large model of their own choosing (ideally, some model relating to software engineering). Note that:
 
