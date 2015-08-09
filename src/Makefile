@@ -1,5 +1,5 @@
 root   = ..#
-out    = ../doc#
+out    = .#
 etc    = ../etc#
 prefix = https://github.com/txt/mase/blob/master#
 img=https://raw.githubusercontent.com/txt/mase/master/img#
