@@ -31,7 +31,10 @@ EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 + Analyze, critique, and communicate clearly the core theory and algorithms of multi-objective optimization
 
 
-**Lecturer:** Tim Menzies
+**Lecturer:** Tim Menzies <img
+src="http://www.csc.ncsu.edu/enews/images/1770.jpg"
+align=right
+width=200>
 
 + E-Mail: tim.menzies@gmail.com
 + Phone: 304-376-2859
@@ -40,7 +43,10 @@ EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 + Office Hours: Thursday, 3:30-5:00 and by request
 + Location of Office Hours: EE II room 3298 
 
-**GTA:** Rahul Krishna
+**GTA:** Rahul Krishna <img
+src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/0a4/3d6/04b9ea9.jpg"
+align=right
+width=200>
 
 + E-mail: rkrish11@ncsu.edu
 + Office mours: Friday 12pm to 2pm
