@@ -1,5 +1,4 @@
 [<img width=900 src="__IMG/banner1.png">](__PRE/README.md)   
-[TOC](__PRE/TOC.md) |
 [At a glance...](__PRE/OVERVIEW.md) |
 [Syllabus](__PRE/SYLLABUS.md) |
 [Models](__PRE/MODELS.md) |
