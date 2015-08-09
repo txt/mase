@@ -20,7 +20,7 @@ and paste into [the submission page](https://goo.gl/lZEmEm).
 
 # Basic Simulated Annealing
 
-Read the [lecture](SA) on simulated annealing.
+Read the [lecture](SA.md) on simulated annealing.
 
 Hack up a simulated annealer for the
 [Schaffer](models/moeaProblems.pdf) model.
@@ -32,7 +32,7 @@ To create neighbors, just mutate the single
 independent variable at each run.
 
 To compute energy, add the sum of the two _f1_, _f2_
- variables. Note that for the [lecture](SA) code to
+ variables. Note that for the [lecture](SA.md) code to
  work, that sum has to be normalized 0..1. So
  conduct a _baseline_ study where you run the
  [Schaffer](models/moeaProblems.pdf) 100 times to
