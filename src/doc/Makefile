@@ -7,7 +7,7 @@ mds=$(shell ls *.md)
 outs=$(root)/$(subst .md ,.md $(root)/,$(mds))
 Make = $(MAKE) --no-print-directory #
 
-all: publish typo
+all: publish parts typo
 
 publish: $(outs) 
 
@@ -18,6 +18,7 @@ $(root)/%.md : %.md $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
         | sed 's?__IMG?$(img)?g' > $@;
 	@git add $@
 
+parts  : ;cd ..; $(MAKE) parts
 typo   : ;cd ..; $(Make) typo
 commit : ;cd ..; $(Make) commit
 update : ;cd ..; $(Make) update

@@ -10,7 +10,7 @@ Make = $(MAKE) --no-print-directory #
 
 publish: parts typo
 
-parts: dirs zaps $(mds) $(root)/toc.md uppers 
+parts: dirs zaps $(mds) $(root)/toc.md 
 
 typo   : ;cd ..; $(Make) typo
 commit : ;cd ..; $(Make) commit
@@ -70,8 +70,6 @@ export toc
 
 tocs : $(root)/TOC.md
 
-uppers:
-	cd doc; $(Make) all
 
 dirs:
 	@ - mkdir -p $(out) $(etc)
