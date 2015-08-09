@@ -34,19 +34,19 @@ EE I, Roon 1007, Tuesday, Thursday, 5:20 to 6:35.
 **Lecturer:** Tim Menzies <img
 src="http://www.csc.ncsu.edu/enews/images/1770.jpg"
 align=right
-width=200>
+width=150>
 
 + E-Mail: tim.menzies@gmail.com
 + Phone: 304-376-2859
        + **Do not use** this number, except in the most dire of 
           circumstances (best way to contact me is via email).
 + Office Hours: Thursday, 3:30-5:00 and by request
-+ Location of Office Hours: EE II room 3298 
++ Location of Office Hours: EE II room 3298 <br clear=all>
 
 **GTA:** Rahul Krishna <img
 src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/0a4/3d6/04b9ea9.jpg"
 align=right
-width=200>
+width=150>
 
 + E-mail: rkrish11@ncsu.edu
 + Office mours: Friday 12pm to 2pm
