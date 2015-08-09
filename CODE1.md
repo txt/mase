@@ -27,7 +27,7 @@ and paste into [the submission page](https://goo.gl/lZEmEm).
 
 + Create a public Github repository for all your work for this subject.
       + The name of that repo should be `x9115xxx` where `xxx` is anything you like.
-+ Invite `timm` and ``rahink`` to that repo.
++ Invite `timm` and ``rahlk`` to that repo.
 + Add directories to that repo
       + project
       + paper
