@@ -34,6 +34,8 @@ of search-based optimization for exploring models.
 
 </td><td valign=top xwidth="100px">
 
+4. <a href="CODE4.md">CODE 4</a><br>
+3. <a href="CODE3.md">CODE 3</a><br>
 2. <a href="CODE2.md">CODE 2</a><br>
 1. <a href="CODE1.md">CODE 1</a><br>
 0. <a href="READING.md">Reading</a>

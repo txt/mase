@@ -1,5 +1,5 @@
 
-# Coding Homework 1
+# Coding Homework 2
 
 ## What to Hand in
 
@@ -16,7 +16,8 @@ Read chapters one to four of [Think like a Computer Scientist](http://www.greent
 
 + The way of the program
 + Variables, expressions and statements
-+ Functions Case study: interface design
++ Functions
++ Case study: interface design
 
 Then do:
 
