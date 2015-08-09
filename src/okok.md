@@ -10,8 +10,10 @@
 # Examples of Unit tests  in Python
 
 ````python
-
+import time
 from ok import *
+
+print time.strftime("%H:%M:%S\n")
 
 @ok
 def _ok1():
@@ -23,13 +25,13 @@ def _ok2():
 
 @ok
 def _ok3():
-  assert 3==3
+  assert 3==3 
 
 @ok
 def _ok4():
   assert unittest.tries==4
   assert unittest.fails==1
-  print unittest.score()
+  print unittest.score() 
 ````
 
 
