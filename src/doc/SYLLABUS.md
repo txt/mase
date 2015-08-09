@@ -105,7 +105,7 @@ Grades will be added together using:
 
 ### Homeworks 
 
-+ Homeworks are due Tuesday before start of class.
+
 + Homeworks will be written into a public Github repo which students will create.
 + Students will shorten the url (using something like goo.gl) of the the main file of each homework submission
     + That url wull be pasted into the spreadsheet https://goo.gl/qj3Akp. 
@@ -113,6 +113,8 @@ Grades will be added together using:
 + Students cannot do homework <em>i+1</em> till  homework <em>i</em> gets at least a ``1''.
 + Homeworks can be submitted multiple times;
 + We will not mark more than four homeworks per month.
++ It is recommended that you submit the homeworks before class starts
+  on Tuesday.
 
 ### Attendance
 
@@ -128,15 +130,16 @@ includes plagerism of other people's work. All students will be working
 on public code repositories and **informed reuse** is encouraged where
 someone else's product is:
 
-+ imported and clearly acknowledged (as to where it came from)
-+ the imported project is understood, and
-+ the imported project is significantly extended.
++ Imported and clearly acknowledged (as to where it came from);
++ The imported project is understood, and
++ The imported project is significantly extended.
 
-Students are encouraged to read each others code and if **uninformed reuse**
-is detected, the lecturer will investigate. Cheating will be reported,
-and marks will be deducted, If the person who is doing the reuse
+Students are encouraged to read each others code and repor **uninformed reuse**
+to the lecturer. The issue will be explored and, if uncovered,
+cheating will be reported to the university
+and marks will be deducted if the person who is doing the reuse:
 
-+ Does not acknowledge the source of the product:
++ Does not acknowledge the source of the product;
 + Does not exhibit comprehension of the product when asked about it;
 + Does not significantly extend the product.
 

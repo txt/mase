@@ -11,12 +11,15 @@
 ## What to Hand in
 
 After doing all the following, you should 
-be able to write one file hw/code/1/README.md in your repo showing:
+be able to write one file `hw/code/1/README.md` in your repo showing:
 
 + A screen snap of the top level of your repo
 + Output of the commands `python --version`, `pip help`, `easy_install -h`      
 + A screen shot of what it looks like to write code in your preferred Python IDE (hint: need to see syntax highlighting).
 + A screenshot of output of your `okok.py` test (defined below).
+
+Using some URL shortener (e.g. goo.gl), shorten the URL to `hw/code/1/README.md`
+and paste into [the submission page](https://goo.gl/lZEmEm).
 
 ## Instructions
 
