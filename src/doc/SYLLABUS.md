@@ -33,7 +33,7 @@ width=100>
        + **Do not use** this number, except in the most dire of 
           circumstances (best way to contact me is via email).
 + Office Hours: Thursday, 3:30-5:00 and by request
-+ Location of Office Hours: EE II room 3298 <br clear=all>
++ Location of Office Hours: EE II room 3298 
 
 **GTA:** Rahul Krishna <img
 src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/0a4/3d6/04b9ea9.jpg"
