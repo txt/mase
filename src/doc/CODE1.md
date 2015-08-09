@@ -35,7 +35,8 @@ For this subject, the lecturer and support will support your Python code on the 
 You can use any other platform you like, of course, but any systems issues (e.g. installing of important packages)
 are your responsibility.
 
-To show us that you have a _power platform_,
+While you do not need to use Cloud9, you do need
+to show that you have a _power platform_ for Python development:
 
 + Check you have `pip` installed
 + Check you have `easy_install` install
@@ -46,11 +47,19 @@ To show us that you have a _power platform_,
 1. Watch the great [Kent Beck video on how to write a test engine in just a few lines of code](https://www.youtube.com/watch?v=nIonZ6-4nuU). Note
 that that example is in CoffeeScript. For the equivalent Python code, see
 [ok.py](src/ok.md).
+2. Get the Python equivalent of the watch command used by Beck. Specifically, run the command
+   `sudo pip install rerun`
 2. Download the files
      + [ok.py](src/ok.md).
      + [okok.py](src/okok.md)
+3. Get two windows open:
+	 + One editting okok.py
+	 + One in a shell
+4. In the shell, type `rerun "python -B okok.py`
 3. Change one unittest in `okok.py`.
-4. Run `python -B okok.py`, catch the output to a file.
+4. Your screen should now look something like this:
+
+![utest](img/unittest.pdf)
 
 
 ## Hints
