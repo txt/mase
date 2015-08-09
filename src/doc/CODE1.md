@@ -59,7 +59,7 @@ that that example is in CoffeeScript. For the equivalent Python code, see
 3. Change one unittest in `okok.py`.
 4. Your screen should now look something like this:
 
-![utest](img/unittest.pdf)
+![utest](img/unittest.png)
 
 
 ## Hints
