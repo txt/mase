@@ -8,6 +8,7 @@ be able to write one file hw/code/1/README.md in your repo showing:
 + A screen snap of the top level of your repo
 + Output of the commands `python --version`, `pip help`, `easy_install -h`      
 + A screen shot of what it looks like to write code in your preferred Python IDE (hint: need to see syntax highlighting).
++ The output of your `okok.py` test (defined below).
 
 ## Instructions
 
@@ -42,8 +43,14 @@ To show us that you have a _power platform_,
 
 ### Get your Test-Driven Development On.
 
-Watch the great [Kent Beck video on how to write a test engine in just a few lines of code](https://www.youtube.com/watch?v=nIonZ6-4nuU). Note
-that that example is in CoffeeScript. For the equivalent Python code, see 
+1. Watch the great [Kent Beck video on how to write a test engine in just a few lines of code](https://www.youtube.com/watch?v=nIonZ6-4nuU). Note
+that that example is in CoffeeScript. For the equivalent Python code, see
+[ok.py](src/ok.md).
+2. Download the files
+     + [ok.py](src/ok.md).
+     + [okok.py](src/okok.md)
+3. Change one unittest in `okok.py`.
+4. Run `python -B okok.py`, catch the output to a file.
 
 
 ## Hints
