@@ -6,10 +6,8 @@
 [Lecturer](http://menzies.us) 
 
 
-
-# Table of Contents
-
-
+````
+```
 
 
 _________
