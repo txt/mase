@@ -1,5 +1,5 @@
 
-# Coding Homework 2
+# Code2: coding homework 
 
 ## What to Hand in
 

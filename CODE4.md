@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-# Coding Homework 4
+# Code4: coding homework 
 
 ## What to Hand in
 

@@ -7,7 +7,7 @@
 
 
 
-# Coding Homework 3
+# Code3: coding homework 
 
 ## What to Hand in
 
