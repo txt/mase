@@ -295,7 +295,6 @@ def _tableFromString(src = STRING(weather)):
 def _tableFromFile():
   _tableFromString(FILE("weather.csv"))
 
-
 def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
   "Return percentiles in a list"
   at  = lambda x: lst[ int(len(lst)*x) ]
@@ -323,13 +322,9 @@ def samples(m0=128):
       s1 += x
       s2 += x
       s3 += y
-    print(m,n, "\t",diff(s1,s2),"\t",m,"\t",diff(s1,s3))
+    print(m,"",n, "\t",diff(s1,s2),"\t",m,"\t",diff(s1,s3))
     
 @ok
-def _samples100(): samples(100)
-@ok
-def _samples150(): samples(150)
-@ok
-def _samples200(): samples(200)
-@ok
-def _samples400(): samples(400)
+def _samples():
+  for x in [64,128,256,512]:
+    samples(x)
