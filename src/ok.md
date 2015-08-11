@@ -25,6 +25,7 @@ Share and enjoy.
 ````python
 
 def ok(*lst):
+  print "### ",lst[0].__name__
   for one in lst: unittest(one)
   return one
 
