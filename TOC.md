@@ -9,6 +9,7 @@
 
 # Table of Contents
 
++ [Abstraction (Advanced Python Coding)](https://github.com/txt/mase/blob/master/doc/abstract.md)
 
 
 
