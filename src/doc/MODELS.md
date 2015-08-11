@@ -1,8 +1,12 @@
 # Download sites for MOEA problems
 
+
 ## General models
 
 + Classic problems, now considered somewhat quaint, but good for debugging: [moeaProblems](models/moeaProblems.pdf),
+  + Many of these are [visualized here](https://en.wikipedia.org/wiki/Test_functions_for_optimization).
+    + e.g. Kursawe   
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Kursawe_function.pdf/page1-319px-Kursawe_function.pdf.jpg">
 + CEC 2005  Special Session on  [REal-Parameter optimization](models/2005-25problems.pdf);
      + Example of their use in  a <a href="hansen08.pdf">parametric optimizer</a>
 + DTLZ and ZDT  are widely used. See 
