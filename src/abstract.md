@@ -300,6 +300,15 @@ def _tableFromString(src = STRING(weather)):
 @ok
 def _tableFromFile():
   _tableFromString(FILE("weather.csv"))
+````
+
+## Sanity Check
+
+How much do we lose if from some sample `s1` we only keep some of the items in `s2`?
+And just to make this interesting, we'll compare this error to what happens
+if I sample that distribution twice, once to `s1` and once to `s3`.
+
+````python
 
 def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
   "Return percentiles in a list"
@@ -312,8 +321,7 @@ def diff(s1,s2):
            for most,less in
            zip(ntiles(sorted(s1.any)),
                      ntiles(sorted(s2.any))) ]
-def samples(m0=128):
-  rseed(1)
+def samples(m0=128,f=random.random):
   m = m0
   print("\n         \t    diff to all    \t    \t     diff to all")
   print("         \t -------------------\t    \t -------------------")
@@ -324,7 +332,7 @@ def samples(m0=128):
     n = min(m0,m)
     s1,s2,s3 = Some(m), Some(n),Some(m)
     for _ in xrange(m):
-      x,y = r(),r()
+      x,y = f(),f()
       s1 += x
       s2 += x
       s3 += y
@@ -332,6 +340,7 @@ def samples(m0=128):
     
 @ok
 def _samples():
+  rseed(1)
   for x in [64,128,256,512]:
     samples(x)
 ````
