@@ -94,10 +94,10 @@ class Some:
   def __iadd__(i,x):
     i.n += 1
     now = len(i.any)
-    if now < i.max:
+    if now < i.max:    # not full yet, so just keep it   
       i.any += [x]
     elif r() <= now/i.n:
-      i.any[ int(r() * now) ]= x
+      i.any[ int(r() * now) ]= x # zap some older value
     #else: forget x
     return i
 
