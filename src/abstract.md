@@ -180,13 +180,21 @@ def values(str):
     want = want or [col for col in xrange(len(lst))
                     if lst[col][0] != "?" ]
     yield [ make(lst[col]) for col in want ]
+````
 
+Helper function.
+
+````python
 def make(x):
   try   : return int(x)
   except:
     try   : return float(x)
     except: return x
+````
 
+Test function.
+
+````python
 @ok
 def _values():
   for cells in values(weather):
@@ -238,7 +246,11 @@ def klass0(header):
    tmp[n].pos  = n
    tmp[n].name = header1
  return tmp
-           
+````
+
+Test function.
+
+````python
 @ok
 def _table():
   t = table(weather)
