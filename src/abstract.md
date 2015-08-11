@@ -11,12 +11,58 @@
 
 Layers within layers within layers..
 
-## Problem
-
-Read a huge table of data and keep a sample of each column.
+In the following, we will
+divide the problem into layers of abstraction where `iterators`
+separate out the various concerns. Easier to debug! Good
+Zen Python coding.
 
 ````python
+from __future__ import print_function, division
+from ok import *
+import random,re
+````
 
+## Problem
+
+If   parsing 1,000,000
+records, in a table of data, keep  a small sample
+of that large space, without blowing memory.
+
+How?
+
++ Read a table of data and keep some sample of each column.
+  Specifically, keep up to `max` things (and if we see more than that,
+  delete older values).
+
+````python
+class Some:
+  def __init__(i, max=8): # note, usually 256 or 128 or 64 (if brave)
+    i.n, i.any, i.max = 0,[],max
+  def __iadd__(i,x):
+    i.n += 1
+    now = len(i.any)
+    if now < i.max:    # not full yet, so just keep it   
+      i.any += [x]
+    elif r() <= now/i.n:
+      i.any[ int(r() * now) ]= x # zap some older value
+    #else: forget x
+    return i
+
+@ok
+def _some():
+  rseed(1)
+  s = Some(16)
+  for i in xrange(100000):
+    s += i
+  assert sorted(s.any)== [5852, 24193, 28929, 38266,
+                          41764, 42926, 51310, 52203,
+                          54651, 56743, 59368, 60794,
+                          61888, 82586, 83018, 88462]
+````
+
+Example data
+
+````python
 weather="""
 
 outlook,
@@ -52,19 +98,15 @@ Also:
   (see last column). We want our tables to keep counts
   separately for each column.
 
-## Solution
 
-Divide the problem into layers of abstraction where `iterators`
-separate out the various concerns. Easier to debug! Good
-Zen Python coding.
 
-## Standard Header
+## Support code
+
+### Standard Header
 
 Load some standard tools.
 
 ````python
-from ok import *
-import random,re
 
 r = random.random
 rseed = random.seed
@@ -86,36 +128,32 @@ def _o():
   assert x.shoesize == 10
   assert str(x) == "o{'name': 'tim', 'shoesize': 10}"
 ````
+  
+### Serious Python JuJu
 
-## Sampling with `Some`
+Tricks to let us read from strings or files or zip files
+or anything source at all. 
 
-Keep up to `max` things (and if we see more than that,
-delete older values).
+Not for beginners.
 
 ````python
-class Some:
-  def __init__(i, max=8): # note, usually 256 or 128 or 64 (if brave)
-    i.n, i.any, i.max = 0,[],max
-  def __iadd__(i,x):
-    i.n += 1
-    now = len(i.any)
-    if now < i.max:    # not full yet, so just keep it   
-      i.any += [x]
-    elif r() <= now/i.n:
-      i.any[ int(r() * now) ]= x # zap some older value
-    #else: forget x
-    return i
+def STRING(str):
+  def wrapper():
+    for c in str: yield c
+  return wrapper
 
-@ok
-def _some():
-  rseed(1)
-  s = Some(16)
-  for i in xrange(100000):
-    s += i
-  assert sorted(s.any)== [5852, 24193, 28929, 38266,
-                          41764, 42926, 51310, 52203,
-                          54651, 56743, 59368, 60794,
-                          61888, 82586, 83018, 88462]
+def FILE(filename, buffersize=4096):
+  def chunks(filename, buffer_size=4096):
+    with open(filename, "rb") as fp:
+      chunk = fp.read(buffer_size)
+      while chunk:
+        yield chunk
+        chunk = fp.read(buffer_size)
+  def wrapper():
+    for chunk in chunks(filename, buffersize):
+      for char in chunk:
+        yield char
+  return wrapper
 ````
 
 ## Iterators
@@ -127,7 +165,7 @@ Yield each line in a string
 ````python
 def lines(src):
   tmp=''
-  for ch in src:
+  for ch in src(): # sneaky... src can evaluate to different ghings
     if ch == "\n":
       yield tmp
       tmp = ''
@@ -138,7 +176,7 @@ def lines(src):
 
 @ok
 def _line():
-  for line in lines(weather):
+  for line in lines(STRING(weather)):
     print("[",line,"]",sep="")
 ````
 
@@ -162,7 +200,7 @@ def rows(src):
       
 @ok
 def _row():
-  for row in rows(weather):
+  for row in rows(STRING(weather)):
     print("[",row,"]",sep="")
 
 ````
@@ -197,7 +235,7 @@ Test function.
 ````python
 @ok
 def _values():
-  for cells in values(weather):
+  for cells in values(STRING(weather)):
     print(cells)
 
 ````
@@ -248,25 +286,20 @@ def klass0(header):
  return tmp
 ````
 
-Test function.
+Test functions: read from strings or files.
 
 ````python
 @ok
-def _table():
-  t = table(weather)
+def _tableFromString(src = STRING(weather)):
+  t = table(src)
   for k,v in t.klasses.items():
     for some in v:
       print(":klass",k,":name",some.name,":col",some.pos,
             ":seen",some.n,"\n\t:kept",some.any)
 
-````
-
-Note that for the above data, this machinery is not
-that interesting. But consider-- if were parsing 1,000,000
-records, the above could be used to get a small sample
-of that large space, without blowing memory.
-
-````python
+@ok
+def _tableFromFile():
+  _tableFromString(FILE("weather.csv"))
 ````
 
 
