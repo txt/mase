@@ -37,10 +37,15 @@ rainy    , 71, 91, TRUE , no"""
 """
 
 Note that the table is messy- blank lines, spaces, comments,
-some lines split over multiple physical lines.  Also,
-there are some columns we just want to ignore (see `?windy`)
-and when we read these strings, we need to coerce
-these values to either strings, ints, or floats.
+some lines split over multiple physical lines.  
+Also:
+
++ there are some columns we just want to ignore (see `?windy`)
++  when we read these strings, we need to coerce
+  these values to either strings, ints, or floats.
++ This string has rows belonging to different `klass`es
+  (see last column). We want our tables to keep counts
+  separately for each column.
 
 ## Solution
 
@@ -190,13 +195,6 @@ Assumes that the string contains a `klass` column
 and keeps separate counts for each `klass`.
 
 """
-
-class Default(dict):
-  def __init__(i, default): i.default = default
-  def __getitem__(i, key):
-    if key in i: return i.get(key)
-    return i.setdefault(key, i.default())
-
 def table(str, klass= -1, keep= False):
   t = None
   for cells in values(str):
@@ -211,6 +209,20 @@ def table(str, klass= -1, keep= False):
            rows   = [],
            klasses= Default(lambda: klass0(t.header)))
   return t
+"""
+
+Helper functions:
+
++ If we reach for a klass information and we have not
+  seen that klass before, create a list of `Some` counters
+  (one for each column).
+
+"""
+class Default(dict):
+  def __init__(i, default): i.default = default
+  def __getitem__(i, key):
+    if key in i: return i.get(key)
+    return i.setdefault(key, i.default())
 
 def klass0(header):
  tmp = [Some() for _ in header]
@@ -224,5 +236,6 @@ def _table():
   t = table(weather)
   for k,v in t.klasses.items():
     for some in v:
-      print(k,some.pos,some.name,some.any)
+      print(":klass",k,":name",some.name,":col",some.pos,
+            ":seen",some.n,"\n\t:kept",some.any)
       
