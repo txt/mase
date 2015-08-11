@@ -125,9 +125,9 @@ def _some():
 Yield each line in a string
 
 ````python
-def lines(str):
+def lines(src):
   tmp=''
-  for ch in str:
+  for ch in src:
     if ch == "\n":
       yield tmp
       tmp = ''
@@ -148,9 +148,9 @@ Yield all non-blank lines,
 joining lines that end in ','.
 
 ````python
-def rows(str):
+def rows(src):
   b4 = ''
-  for line in lines(str):
+  for line in lines(src):
     line = re.sub(r"[\r\t ]*","",line)
     line = re.sub(r"#.*","",line)
     if not line: continue # skip blanks
@@ -173,9 +173,9 @@ Co-erce row values to floats, ints or strings.
 Jump over any cols we are ignoring
 
 ````python
-def values(str):
+def values(src):
   want = None
-  for row in rows(str):
+  for row in rows(src):
     lst  = row.split(',')
     want = want or [col for col in xrange(len(lst))
                     if lst[col][0] != "?" ]
@@ -211,9 +211,9 @@ Assumes that the string contains a `klass` column
 and keeps separate counts for each `klass`.
 
 ````python
-def table(str, klass= -1, keep= False):
+def table(src, klass= -1, keep= False):
   t = None
-  for cells in values(str):
+  for cells in values(src):
     if t:
       k = cells[klass]
       for cell,some in zip(cells,t.klasses[k]):
