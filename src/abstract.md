@@ -345,7 +345,7 @@ def _samples():
     samples(x)
 ````
 
-Turns out, we do not lose much:
+Turns out, we do not lose much (caveat: need to keep more than 128).
 
 ```
 $ python -B abstract.py
