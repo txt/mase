@@ -294,3 +294,42 @@ def _tableFromString(src = STRING(weather)):
 @ok
 def _tableFromFile():
   _tableFromString(FILE("weather.csv"))
+
+
+def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
+  "Return percentiles in a list"
+  at  = lambda x: lst[ int(len(lst)*x) ]
+  return [ at(tile) for tile in tiles ]
+  
+def diff(s1,s2):
+  "Return difference in the percentiles"
+  return [ abs(int(100*(most-less)))
+           for most,less in
+           zip(ntiles(sorted(s1.any)),
+                     ntiles(sorted(s2.any))) ]
+def samples(m0=128):
+  rseed(1)
+  m = m0
+  print("\n         \t    diff to all    \t    \t     diff to all")
+  print("         \t -------------------\t    \t -------------------")
+  print("all kept \t 10% 30% 50% 70% 90%\t kept\t 10% 30% 50% 70% 90%")
+  print("--- ---- \t --- --- --- --- ---\t ----\t --- --- --- --- ---")
+  for _ in xrange(7):
+    m = m * 2
+    n = min(m0,m)
+    s1,s2,s3 = Some(m), Some(n),Some(m)
+    for _ in xrange(m):
+      x,y = r(),r()
+      s1 += x
+      s2 += x
+      s3 += y
+    print(m,n, "\t",diff(s1,s2),"\t",m,"\t",diff(s1,s3))
+    
+@ok
+def _samples100(): samples(100)
+@ok
+def _samples150(): samples(150)
+@ok
+def _samples200(): samples(200)
+@ok
+def _samples400(): samples(400)
