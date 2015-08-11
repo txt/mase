@@ -107,7 +107,11 @@ def _some():
   s = Some(16)
   for i in xrange(100000):
     s += i
-  print(sorted(s.any) )
+  assert sorted(s.any)== [5852, 24193, 28929, 38266,
+                          41764, 42926, 51310, 52203,
+                          54651, 56743, 59368, 60794,
+                          61888, 82586, 83018, 88462]
+#
 """
 
 ## Iterators
@@ -238,4 +242,12 @@ def _table():
     for some in v:
       print(":klass",k,":name",some.name,":col",some.pos,
             ":seen",some.n,"\n\t:kept",some.any)
-      
+
+"""
+
+Note that for the above data, this machinery is not
+that interesting. But consider-- if were parsing 1,000,000
+records, the above could be used to get a small sample
+of that large space, without blowing memory.
+
+"""
