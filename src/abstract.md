@@ -8,7 +8,7 @@
 
 <a href="abstract.py"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
-[[ http://www.sheawong.com/wp-content/uploads/2013/08/keephatin.gif | height = 100px align = right ]]
+[[ http://www.sheawong.com/wp-content/uploads/2013/08/keephatin.gif | align = right ]]
 
 [[ http://www.sheawong.com/wp-content/uploads/2013/08/keephatin.gif | height = 100px | align = right ]]
 
