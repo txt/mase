@@ -6,8 +6,6 @@
 [Lecturer](http://menzies.us) 
 
 
-````
-```
 
 
 _________
