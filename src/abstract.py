@@ -242,7 +242,6 @@ Lets handle all that mess with iterators.
 Load some standard tools.
 
 """
-
 class o:
   """Emulate Javascript's uber simple objects.
   Note my convention: I use "`i`" not "`this`."""
@@ -311,7 +310,6 @@ def lines(src):
 def _line():
   for line in lines(STRING(weather)):
     print("[",line,"]",sep="")
-
 """
 
 ### Rows
@@ -371,7 +369,6 @@ Test function.
 def _values():
   for cells in values(STRING(weather)):
     print(cells)
-
 """
 
 ## Tables
@@ -445,19 +442,6 @@ if I sample that distribution twice, once to `s1` and once to `s3`.
 For the results of the following code, see the top of this file.
 
 """
-
-def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
-  "Return percentiles in a list"
-  at  = lambda x: lst[ int(len(lst)*x) ]
-  return [ at(tile) for tile in tiles ]
-  
-def diff(s1,s2):
-  "Return difference in the percentiles"
-  return [ abs(int(100*(most-less)))
-           for most,less in
-           zip(ntiles(sorted(s1.any)),
-                     ntiles(sorted(s2.any))) ]
-
 def samples(m0=128,f=random.random):
   print("\n         \t    diff to all    \t    \t     diff to all")
   print("         \t -------------------\t    \t -------------------")
@@ -474,7 +458,19 @@ def samples(m0=128,f=random.random):
       s2 += x
       s3 += y
     print(m,"",n, "\t",diff(s1,s2),"\t",m,"\t",diff(s1,s3))
-    
+
+def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
+  "Return percentiles in a list"
+  at  = lambda x: lst[ int(len(lst)*x) ]
+  return [ at(tile) for tile in tiles ]
+  
+def diff(s1,s2):
+  "Return difference in the percentiles"
+  return [ abs(int(100*(most-less)))
+           for most,less in
+           zip(ntiles(sorted(s1.any)),
+                     ntiles(sorted(s2.any))) ]
+
 @ok
 def _samples():
   rseed(1)

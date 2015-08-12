@@ -245,23 +245,22 @@ Lets handle all that mess with iterators.
 Load some standard tools.
 
 ````python
-  56:   
-  57:   class o:
-  58:     """Emulate Javascript's uber simple objects.
-  59:     Note my convention: I use "`i`" not "`this`."""
-  60:     def __init__(i,**d)    : i.__dict__.update(d)
-  61:     def __setitem__(i,k,v) : i.__dict__[k] = v
-  62:     def __getitem__(i,k)   : return i.__dict__[k]
-  63:     def __repr__(i)        : return 'o'+str(i.__dict__)
-  64:   
-  65:   @ok
-  66:   def _o():
-  67:     x = o(name='tim',shoesize=9)
-  68:     assert x.name     == 'tim'
-  69:     assert x["name"]  == 'tim'
-  70:     x.shoesize += 1
-  71:     assert x.shoesize == 10
-  72:     assert str(x) == "o{'name': 'tim', 'shoesize': 10}"
+  56:   class o:
+  57:     """Emulate Javascript's uber simple objects.
+  58:     Note my convention: I use "`i`" not "`this`."""
+  59:     def __init__(i,**d)    : i.__dict__.update(d)
+  60:     def __setitem__(i,k,v) : i.__dict__[k] = v
+  61:     def __getitem__(i,k)   : return i.__dict__[k]
+  62:     def __repr__(i)        : return 'o'+str(i.__dict__)
+  63:   
+  64:   @ok
+  65:   def _o():
+  66:     x = o(name='tim',shoesize=9)
+  67:     assert x.name     == 'tim'
+  68:     assert x["name"]  == 'tim'
+  69:     x.shoesize += 1
+  70:     assert x.shoesize == 10
+  71:     assert str(x) == "o{'name': 'tim', 'shoesize': 10}"
 ````
   
 ### Serious Python JuJu
@@ -272,23 +271,23 @@ or anything source at all.
 Not for beginners.
 
 ````python
-  73:   def STRING(str):
-  74:     def wrapper():
-  75:       for c in str: yield c
-  76:     return wrapper
-  77:   
-  78:   def FILE(filename, buffer_size=4096):
-  79:     def chunks(filename):
-  80:       with open(filename, "rb") as fp:
-  81:         chunk = fp.read(buffer_size)
-  82:         while chunk:
-  83:           yield chunk
-  84:           chunk = fp.read(buffer_size)
-  85:     def wrapper():
-  86:       for chunk in chunks(filename):
-  87:         for char in chunk:
-  88:           yield char
-  89:     return wrapper
+  72:   def STRING(str):
+  73:     def wrapper():
+  74:       for c in str: yield c
+  75:     return wrapper
+  76:   
+  77:   def FILE(filename, buffer_size=4096):
+  78:     def chunks(filename):
+  79:       with open(filename, "rb") as fp:
+  80:         chunk = fp.read(buffer_size)
+  81:         while chunk:
+  82:           yield chunk
+  83:           chunk = fp.read(buffer_size)
+  84:     def wrapper():
+  85:       for chunk in chunks(filename):
+  86:         for char in chunk:
+  87:           yield char
+  88:     return wrapper
 ````
 
 ## Iterators
@@ -298,23 +297,22 @@ Not for beginners.
 Yield each line in a string
 
 ````python
-  90:   def lines(src):
-  91:     tmp=''
-  92:     for ch in src(): # sneaky... src can evaluate to different ghings
-  93:       if ch == "\n":
-  94:         yield tmp
-  95:         tmp = ''
-  96:       else:
-  97:         tmp += ch # for a (slightly) faster method,
-  98:                   # in Python3, see http://goo.gl/LvgGx3
-  99:     if tmp:
- 100:       yield tmp
- 101:   
- 102:   @ok
- 103:   def _line():
- 104:     for line in lines(STRING(weather)):
- 105:       print("[",line,"]",sep="")
- 106:   
+  89:   def lines(src):
+  90:     tmp=''
+  91:     for ch in src(): # sneaky... src can evaluate to different ghings
+  92:       if ch == "\n":
+  93:         yield tmp
+  94:         tmp = ''
+  95:       else:
+  96:         tmp += ch # for a (slightly) faster method,
+  97:                   # in Python3, see http://goo.gl/LvgGx3
+  98:     if tmp:
+  99:       yield tmp
+ 100:   
+ 101:   @ok
+ 102:   def _line():
+ 103:     for line in lines(STRING(weather)):
+ 104:       print("[",line,"]",sep="")
 ````
 
 ### Rows
@@ -323,23 +321,23 @@ Yield all non-blank lines,
 joining lines that end in ','.
 
 ````python
- 107:   def rows(src):
- 108:     b4 = ''
- 109:     for line in lines(src):
- 110:       line = re.sub(r"[\r\t ]*","",line)
- 111:       line = re.sub(r"#.*","",line)
- 112:       if not line: continue # skip blanks
- 113:       if line[-1] == ',':   # maybe, continue lines
- 114:         b4 += line
- 115:       else:
- 116:         yield b4 + line
- 117:         b4 = ''
- 118:         
- 119:   @ok
- 120:   def _row():
- 121:     for row in rows(STRING(weather)):
- 122:       print("[",row,"]",sep="")
- 123:   
+ 105:   def rows(src):
+ 106:     b4 = ''
+ 107:     for line in lines(src):
+ 108:       line = re.sub(r"[\r\t ]*","",line)
+ 109:       line = re.sub(r"#.*","",line)
+ 110:       if not line: continue # skip blanks
+ 111:       if line[-1] == ',':   # maybe, continue lines
+ 112:         b4 += line
+ 113:       else:
+ 114:         yield b4 + line
+ 115:         b4 = ''
+ 116:         
+ 117:   @ok
+ 118:   def _row():
+ 119:     for row in rows(STRING(weather)):
+ 120:       print("[",row,"]",sep="")
+ 121:   
 ````
 
 ### Values
@@ -348,33 +346,32 @@ Coerce row values to floats, ints or strings.
 Jump over any cols we are ignoring
 
 ````python
- 124:   def values(src):
- 125:     want = None
- 126:     for row in rows(src):
- 127:       lst  = row.split(',')
- 128:       want = want or [col for col in xrange(len(lst))
- 129:                       if lst[col][0] != "?" ]
- 130:       yield [ make(lst[col]) for col in want ]
+ 122:   def values(src):
+ 123:     want = None
+ 124:     for row in rows(src):
+ 125:       lst  = row.split(',')
+ 126:       want = want or [col for col in xrange(len(lst))
+ 127:                       if lst[col][0] != "?" ]
+ 128:       yield [ make(lst[col]) for col in want ]
 ````
 
 Helper function.
 
 ````python
- 131:   def make(x):
- 132:     try   : return int(x)
- 133:     except:
- 134:       try   : return float(x)
- 135:       except: return x
+ 129:   def make(x):
+ 130:     try   : return int(x)
+ 131:     except:
+ 132:       try   : return float(x)
+ 133:       except: return x
 ````
 
 Test function.
 
 ````python
- 136:   @ok
- 137:   def _values():
- 138:     for cells in values(STRING(weather)):
- 139:       print(cells)
- 140:   
+ 134:   @ok
+ 135:   def _values():
+ 136:     for cells in values(STRING(weather)):
+ 137:       print(cells)
 ````
 
 ## Tables
@@ -386,20 +383,20 @@ Assumes that the string contains a `klass` column
 and keeps separate counts for each `klass`.
 
 ````python
- 141:   def table(src, klass= -1, keep= False):
- 142:     t = None
- 143:     for cells in values(src):
- 144:       if t:
- 145:         k = cells[klass]
- 146:         for cell,some in zip(cells,t.klasses[k]):
- 147:           some += cell
- 148:         if keep:
- 149:           t.rows += [cells]
- 150:       else:
- 151:        t = o(header = cells,
- 152:              rows   = [],
- 153:              klasses= Default(lambda: klass0(t.header)))
- 154:     return t
+ 138:   def table(src, klass= -1, keep= False):
+ 139:     t = None
+ 140:     for cells in values(src):
+ 141:       if t:
+ 142:         k = cells[klass]
+ 143:         for cell,some in zip(cells,t.klasses[k]):
+ 144:           some += cell
+ 145:         if keep:
+ 146:           t.rows += [cells]
+ 147:       else:
+ 148:        t = o(header = cells,
+ 149:              rows   = [],
+ 150:              klasses= Default(lambda: klass0(t.header)))
+ 151:     return t
 ````
 
 Helper functions:
@@ -409,34 +406,34 @@ Helper functions:
   (one for each column).
 
 ````python
- 155:   class Default(dict):
- 156:     def __init__(i, default): i.default = default
- 157:     def __getitem__(i, key):
- 158:       if key in i: return i.get(key)
- 159:       return i.setdefault(key, i.default())
- 160:   
- 161:   def klass0(header):
- 162:    tmp = [Some() for _ in header]
- 163:    for n,header1 in enumerate(header):
- 164:      tmp[n].pos  = n
- 165:      tmp[n].name = header1
- 166:    return tmp
+ 152:   class Default(dict):
+ 153:     def __init__(i, default): i.default = default
+ 154:     def __getitem__(i, key):
+ 155:       if key in i: return i.get(key)
+ 156:       return i.setdefault(key, i.default())
+ 157:   
+ 158:   def klass0(header):
+ 159:    tmp = [Some() for _ in header]
+ 160:    for n,header1 in enumerate(header):
+ 161:      tmp[n].pos  = n
+ 162:      tmp[n].name = header1
+ 163:    return tmp
 ````
 
 Test functions: read from strings or files.
 
 ````python
- 167:   @ok
- 168:   def _tableFromString(src = STRING(weather)):
- 169:     t = table(src)
- 170:     for k,v in t.klasses.items():
- 171:       for some in v:
- 172:         print(":klass",k,":name",some.name,":col",some.pos,
- 173:               ":seen",some.n,"\n\t:kept",some.any)
- 174:   
- 175:   @ok
- 176:   def _tableFromFile():
- 177:     _tableFromString(FILE("weather.csv"))
+ 164:   @ok
+ 165:   def _tableFromString(src = STRING(weather)):
+ 166:     t = table(src)
+ 167:     for k,v in t.klasses.items():
+ 168:       for some in v:
+ 169:         print(":klass",k,":name",some.name,":col",some.pos,
+ 170:               ":seen",some.n,"\n\t:kept",some.any)
+ 171:   
+ 172:   @ok
+ 173:   def _tableFromFile():
+ 174:     _tableFromString(FILE("weather.csv"))
 ````
 
 ## Sanity Check
@@ -448,41 +445,40 @@ if I sample that distribution twice, once to `s1` and once to `s3`.
 For the results of the following code, see the top of this file.
 
 ````python
- 178:   
- 179:   def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
- 180:     "Return percentiles in a list"
- 181:     at  = lambda x: lst[ int(len(lst)*x) ]
- 182:     return [ at(tile) for tile in tiles ]
- 183:     
- 184:   def diff(s1,s2):
- 185:     "Return difference in the percentiles"
- 186:     return [ abs(int(100*(most-less)))
- 187:              for most,less in
- 188:              zip(ntiles(sorted(s1.any)),
- 189:                        ntiles(sorted(s2.any))) ]
- 190:   
- 191:   def samples(m0=128,f=random.random):
- 192:     print("\n         \t    diff to all    \t    \t     diff to all")
- 193:     print("         \t -------------------\t    \t -------------------")
- 194:     print("all kept \t 10% 30% 50% 70% 90%\t kept\t 10% 30% 50% 70% 90%")
- 195:     print("--- ---- \t --- --- --- --- ---\t ----\t --- --- --- --- ---")
- 196:     m = m0
- 197:     for _ in xrange(7):
- 198:       m = m * 2
- 199:       n = min(m0,m)
- 200:       s1,s2,s3 = Some(m), Some(n),Some(m)
- 201:       for _ in xrange(m):
- 202:         x,y = f(),f()
- 203:         s1 += x
- 204:         s2 += x
- 205:         s3 += y
- 206:       print(m,"",n, "\t",diff(s1,s2),"\t",m,"\t",diff(s1,s3))
- 207:       
- 208:   @ok
- 209:   def _samples():
- 210:     rseed(1)
- 211:     for x in [64,128,256,512]:
- 212:       samples(x)
+ 175:   def samples(m0=128,f=random.random):
+ 176:     print("\n         \t    diff to all    \t    \t     diff to all")
+ 177:     print("         \t -------------------\t    \t -------------------")
+ 178:     print("all kept \t 10% 30% 50% 70% 90%\t kept\t 10% 30% 50% 70% 90%")
+ 179:     print("--- ---- \t --- --- --- --- ---\t ----\t --- --- --- --- ---")
+ 180:     m = m0
+ 181:     for _ in xrange(7):
+ 182:       m = m * 2
+ 183:       n = min(m0,m)
+ 184:       s1,s2,s3 = Some(m), Some(n),Some(m)
+ 185:       for _ in xrange(m):
+ 186:         x,y = f(),f()
+ 187:         s1 += x
+ 188:         s2 += x
+ 189:         s3 += y
+ 190:       print(m,"",n, "\t",diff(s1,s2),"\t",m,"\t",diff(s1,s3))
+ 191:   
+ 192:   def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
+ 193:     "Return percentiles in a list"
+ 194:     at  = lambda x: lst[ int(len(lst)*x) ]
+ 195:     return [ at(tile) for tile in tiles ]
+ 196:     
+ 197:   def diff(s1,s2):
+ 198:     "Return difference in the percentiles"
+ 199:     return [ abs(int(100*(most-less)))
+ 200:              for most,less in
+ 201:              zip(ntiles(sorted(s1.any)),
+ 202:                        ntiles(sorted(s2.any))) ]
+ 203:   
+ 204:   @ok
+ 205:   def _samples():
+ 206:     rseed(1)
+ 207:     for x in [64,128,256,512]:
+ 208:       samples(x)
 ````
 
 
