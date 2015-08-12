@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<a href="okok.py"><img align=left src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
+<a href="okok.py"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 # Examples of Unit tests  in Python
 

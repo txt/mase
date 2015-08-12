@@ -81,7 +81,7 @@ $(etc)/toc.sh   : Makefile ; @- echo "$$toc"  > $@
 $(out)/%.md: %.py $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
 	@echo "making... $<"
 	@(cat $(etc)/header.txt; \
-          echo "<a href=\"$<\"><img align=left src=\"https://raw.githubusercontent.com/txt/mase/master/img/py.png\"></a>"; \
+          echo "<a href=\"$<\"><img align=right src=\"https://raw.githubusercontent.com/txt/mase/master/img/py.png\"></a>"; \
          awk -f $(etc)/p2md.awk -v name="$<" $< ; \
          cat $(etc)/footer.txt) \
          | sed 's?__PRE?$(prefix)?g'  \

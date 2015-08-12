@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<a href="log.py"><img align=left src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
+<a href="log.py"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 Logs are places to store records of past events. There are two types of logs:
 
