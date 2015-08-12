@@ -12,11 +12,11 @@
 ### Standard Header
 
 ````python
-<font color=red>   1:</font> from __future__ import division
-<font color=red>   2:</font> import sys, random, math, datetime, time,re
-<font color=red>   3:</font> sys.dont_write_bytecode = True
-<font color=red>   4:</font> 
-<font color=red>   5:</font> from log  import *
+   1: from __future__ import division
+   2: import sys, random, math, datetime, time,re
+   3: sys.dont_write_bytecode = True
+   4: 
+   5: from log  import *
 ````
 
 
@@ -92,25 +92,25 @@ When run, this generates the following output:
 Code:
 
 ````python
-<font color=red>   6:</font> def study(f):
-<font color=red>   7:</font>   def wrapper(**lst):
-<font color=red>   8:</font>     rseed() # reset the seed to our default
-<font color=red>   9:</font>     what = f.__name__# print the function name
-<font color=red>  10:</font>     doc  = f.__doc__ # print the function doc
-<font color=red>  11:</font>     if doc:
-<font color=red>  12:</font>       doc= re.sub(r"\n[ \t]*","\n# ",doc)
-<font color=red>  13:</font>     # print when this ran
-<font color=red>  14:</font>     show = datetime.datetime.now().strftime
-<font color=red>  15:</font>     print "\n###",what,"#" * 50
-<font color=red>  16:</font>     print "#", show("%Y-%m-%d %H:%M:%S")
-<font color=red>  17:</font>     if doc: print "#",doc
-<font color=red>  18:</font>     t1 = time.time()
-<font color=red>  19:</font>     f(**lst)          # run the function
-<font color=red>  20:</font>     t2 = time.time() # show how long it took to run
-<font color=red>  21:</font>     print "\n" + ("-" * 72)
-<font color=red>  22:</font>     showd(The)       # print the options
-<font color=red>  23:</font>     print "\n# Runtime: %.3f secs" % (t2-t1)
-<font color=red>  24:</font>   return wrapper
+   6: def study(f):
+   7:   def wrapper(**lst):
+   8:     rseed() # reset the seed to our default
+   9:     what = f.__name__# print the function name
+  10:     doc  = f.__doc__ # print the function doc
+  11:     if doc:
+  12:       doc= re.sub(r"\n[ \t]*","\n# ",doc)
+  13:     # print when this ran
+  14:     show = datetime.datetime.now().strftime
+  15:     print "\n###",what,"#" * 50
+  16:     print "#", show("%Y-%m-%d %H:%M:%S")
+  17:     if doc: print "#",doc
+  18:     t1 = time.time()
+  19:     f(**lst)          # run the function
+  20:     t2 = time.time() # show how long it took to run
+  21:     print "\n" + ("-" * 72)
+  22:     showd(The)       # print the options
+  23:     print "\n# Runtime: %.3f secs" % (t2-t1)
+  24:   return wrapper
 ````
 
 ## Model Definition
@@ -162,49 +162,49 @@ So, two solutions to this:
 That said, say hello to my little friend:
 
 ````python
-<font color=red>  25:</font> class Model:
-<font color=red>  26:</font>   def name(i): 
-<font color=red>  27:</font>     return i.__class__.__name__
-<font color=red>  28:</font>   def __init__(i):
-<font color=red>  29:</font>     "Initialize the generators and loggers."
-<font color=red>  30:</font>     i.of = i.spec()
-<font color=red>  31:</font>     i.log= o(x= [of1.log() for of1 in i.of.x],
-<font color=red>  32:</font>              y= [Num()     for _   in i.of.y])
-<font color=red>  33:</font>   def better(news,olds):
-<font color=red>  34:</font>     def worsed():
-<font color=red>  35:</font>       return  ((same     and not betterIqr) or 
-<font color=red>  36:</font>                (not same and not betterMed))
-<font color=red>  37:</font>     def bettered():
-<font color=red>  38:</font>       return not same and betterMed
-<font color=red>  39:</font>     out = False
-<font color=red>  40:</font>     for new,old in zip(news.log.y, olds.log.y):
-<font color=red>  41:</font>       betterMed, same, betterIqr = new.better(old)
-<font color=red>  42:</font>       if worsed()  : return False # never any worsed
-<font color=red>  43:</font>       if bettered(): out= out or True # at least one bettered
-<font color=red>  44:</font>     return out
-<font color=red>  45:</font>   def cloneIT(i):
-<font color=red>  46:</font>     return i.__class__()
-<font color=red>  47:</font>   def indepIT(i):
-<font color=red>  48:</font>     "Make new it."
-<font color=red>  49:</font>     return o(x=[generate() for generate in i.of.x])
-<font color=red>  50:</font>   def depIT(i,it):
-<font color=red>  51:</font>     "Complete it's dep variables."
-<font color=red>  52:</font>     it.y = [generate(it) for generate in i.of.y]
-<font color=red>  53:</font>     return it
-<font color=red>  54:</font>   def logIT(i,it):
-<font color=red>  55:</font>     "Remember what we have see in it."
-<font color=red>  56:</font>     for val,log in zip(it.x, i.log.x): log += val
-<font color=red>  57:</font>     for val,log in zip(it.y, i.log.y): log += val
-<font color=red>  58:</font>   def aroundIT(i,it,p=0.5):
-<font color=red>  59:</font>     "Find some place around it."
-<font color=red>  60:</font>     def n(val,generate): 
-<font color=red>  61:</font>       return generate() if rand() < p else val
-<font color=red>  62:</font>     old = it.x
-<font color=red>  63:</font>     new = [n(x,generate) for 
-<font color=red>  64:</font>                        x,generate in zip(old,i.of.x)]
-<font color=red>  65:</font>     return o(x=new)
-<font color=red>  66:</font>   def ish(i,it):
-<font color=red>  67:</font>     return o(x= [of1.ish() for of1 in i.of.x])
+  25: class Model:
+  26:   def name(i): 
+  27:     return i.__class__.__name__
+  28:   def __init__(i):
+  29:     "Initialize the generators and loggers."
+  30:     i.of = i.spec()
+  31:     i.log= o(x= [of1.log() for of1 in i.of.x],
+  32:              y= [Num()     for _   in i.of.y])
+  33:   def better(news,olds):
+  34:     def worsed():
+  35:       return  ((same     and not betterIqr) or 
+  36:                (not same and not betterMed))
+  37:     def bettered():
+  38:       return not same and betterMed
+  39:     out = False
+  40:     for new,old in zip(news.log.y, olds.log.y):
+  41:       betterMed, same, betterIqr = new.better(old)
+  42:       if worsed()  : return False # never any worsed
+  43:       if bettered(): out= out or True # at least one bettered
+  44:     return out
+  45:   def cloneIT(i):
+  46:     return i.__class__()
+  47:   def indepIT(i):
+  48:     "Make new it."
+  49:     return o(x=[generate() for generate in i.of.x])
+  50:   def depIT(i,it):
+  51:     "Complete it's dep variables."
+  52:     it.y = [generate(it) for generate in i.of.y]
+  53:     return it
+  54:   def logIT(i,it):
+  55:     "Remember what we have see in it."
+  56:     for val,log in zip(it.x, i.log.x): log += val
+  57:     for val,log in zip(it.y, i.log.y): log += val
+  58:   def aroundIT(i,it,p=0.5):
+  59:     "Find some place around it."
+  60:     def n(val,generate): 
+  61:       return generate() if rand() < p else val
+  62:     old = it.x
+  63:     new = [n(x,generate) for 
+  64:                        x,generate in zip(old,i.of.x)]
+  65:     return o(x=new)
+  66:   def ish(i,it):
+  67:     return o(x= [of1.ish() for of1 in i.of.x])
 ````
 
 Given the above, it is now very succinct to specify
@@ -228,64 +228,64 @@ idea: _In_ is something that ranges from zero to one.
 ## Optimization Control
 
 ````python
-<font color=red>  68:</font> class Watch(object):
-<font color=red>  69:</font>   def __iter__(i): 
-<font color=red>  70:</font>     return i
-<font color=red>  71:</font>   def __init__(i,model,history=None):
-<font color=red>  72:</font>     i.early   = The.misc.early  
-<font color=red>  73:</font>     i.history = {} if history == None else history
-<font color=red>  74:</font>     i.log     = {}
-<font color=red>  75:</font>     i.most, i.model = The.sa.kmax, model
-<font color=red>  76:</font>     i.step, i.era  = 1,1
-<font color=red>  77:</font>   def logIT(i,result):
-<font color=red>  78:</font>     """ Each recorded result is one clock tick.
-<font color=red>  79:</font>         Record all results in log and history"""
-<font color=red>  80:</font>     both = [i.history, i.log]     
-<font color=red>  81:</font>     for log in both:
-<font color=red>  82:</font>       if not i.era in log:
-<font color=red>  83:</font>         log[i.era] = i.model.cloneIT()
-<font color=red>  84:</font>     i.step += 1
-<font color=red>  85:</font>     for log in both:
-<font color=red>  86:</font>       log[i.era].logIT(result)
-<font color=red>  87:</font>   def stop(i):
-<font color=red>  88:</font>     """if more than two eras, suggest
-<font color=red>  89:</font>        stopping if no improvement."""
-<font color=red>  90:</font>     if len(i.log) >= The.misc.early:
-<font color=red>  91:</font>       #print 3
-<font color=red>  92:</font>       now = i.era
-<font color=red>  93:</font>       before = now - The.misc.era
-<font color=red>  94:</font>       beforeLog = i.log[before]
-<font color=red>  95:</font>       nowLog    = i.log[now]
-<font color=red>  96:</font>       if not nowLog.better(beforeLog):
-<font color=red>  97:</font>         #print 4
-<font color=red>  98:</font>         return True
-<font color=red>  99:</font>     return False
-<font color=red> 100:</font>   def next(i):
-<font color=red> 101:</font>     "return next time tick, unless we need to halt."
-<font color=red> 102:</font>     if i.step > i.most: # end of run!
-<font color=red> 103:</font>       raise StopIteration()
-<font color=red> 104:</font>     if i.step >= i.era:   # pause to reflect
-<font color=red> 105:</font>       #print 1, i.step, i.era
-<font color=red> 106:</font>       if i.early > 0:     # maybe exit early
-<font color=red> 107:</font>         #print 2
-<font color=red> 108:</font>         if i.stop():        
-<font color=red> 109:</font>            raise StopIteration()
-<font color=red> 110:</font>       i.era += The.misc.era   # set next pause point
-<font color=red> 111:</font>     return i.step,i
-<font color=red> 112:</font> 
-<font color=red> 113:</font> def optimizeReport(m,history):
-<font color=red> 114:</font>   for z,header in enumerate(m.log.y):
-<font color=red> 115:</font>     print "\nf%s" % z
-<font color=red> 116:</font>     for era in sorted(history.keys()):
-<font color=red> 117:</font>       log = history[era].log.y[z]
-<font color=red> 118:</font>       log.has()
-<font color=red> 119:</font>       print str(era-1).rjust(7),\
-<font color=red> 120:</font>             xtile(log._cache,
-<font color=red> 121:</font>                   width=33,
-<font color=red> 122:</font>                   show="%5.2f",
-<font color=red> 123:</font>                   lo=0,hi=1)
-<font color=red> 124:</font> 
-<font color=red> 125:</font> if __name__ == "__main__": eval(cmd())
+  68: class Watch(object):
+  69:   def __iter__(i): 
+  70:     return i
+  71:   def __init__(i,model,history=None):
+  72:     i.early   = The.misc.early  
+  73:     i.history = {} if history == None else history
+  74:     i.log     = {}
+  75:     i.most, i.model = The.sa.kmax, model
+  76:     i.step, i.era  = 1,1
+  77:   def logIT(i,result):
+  78:     """ Each recorded result is one clock tick.
+  79:         Record all results in log and history"""
+  80:     both = [i.history, i.log]     
+  81:     for log in both:
+  82:       if not i.era in log:
+  83:         log[i.era] = i.model.cloneIT()
+  84:     i.step += 1
+  85:     for log in both:
+  86:       log[i.era].logIT(result)
+  87:   def stop(i):
+  88:     """if more than two eras, suggest
+  89:        stopping if no improvement."""
+  90:     if len(i.log) >= The.misc.early:
+  91:       #print 3
+  92:       now = i.era
+  93:       before = now - The.misc.era
+  94:       beforeLog = i.log[before]
+  95:       nowLog    = i.log[now]
+  96:       if not nowLog.better(beforeLog):
+  97:         #print 4
+  98:         return True
+  99:     return False
+ 100:   def next(i):
+ 101:     "return next time tick, unless we need to halt."
+ 102:     if i.step > i.most: # end of run!
+ 103:       raise StopIteration()
+ 104:     if i.step >= i.era:   # pause to reflect
+ 105:       #print 1, i.step, i.era
+ 106:       if i.early > 0:     # maybe exit early
+ 107:         #print 2
+ 108:         if i.stop():        
+ 109:            raise StopIteration()
+ 110:       i.era += The.misc.era   # set next pause point
+ 111:     return i.step,i
+ 112: 
+ 113: def optimizeReport(m,history):
+ 114:   for z,header in enumerate(m.log.y):
+ 115:     print "\nf%s" % z
+ 116:     for era in sorted(history.keys()):
+ 117:       log = history[era].log.y[z]
+ 118:       log.has()
+ 119:       print str(era-1).rjust(7),\
+ 120:             xtile(log._cache,
+ 121:                   width=33,
+ 122:                   show="%5.2f",
+ 123:                   lo=0,hi=1)
+ 124: 
+ 125: if __name__ == "__main__": eval(cmd())
 ````
 
 
