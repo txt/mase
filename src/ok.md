@@ -23,33 +23,30 @@ python okok.py
 Share and enjoy.
 
 ````python
-   1:   
-   2:   def ok(*lst):
-   3:     print "### ",lst[0].__name__
-   4:     for one in lst: unittest(one)
-   5:     return one
-   6:   
-   7:   class unittest:
-   8:     tries = fails = 0  #  tracks the record so far
-   9:     @staticmethod
-  10:     def score():
-  11:       t = unittest.tries
-  12:       f = unittest.fails
-  13:       return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
-  14:         t,f,int(round(t*100/(t+f+0.001))))
-  15:     def __init__(i,test):
-  16:       unittest.tries += 1
-  17:       try:
-  18:         test()
-  19:       except Exception,e:
-  20:         unittest.fails += 1
-  21:         i.report(test)
-  22:     def report(i,test):
-  23:       import traceback
-  24:       print traceback.format_exc()
-  25:       print unittest.score(),':',test.__name__
-  26:   
-  27:       
+   1:   def ok(*lst):
+   2:     print "### ",lst[0].__name__
+   3:     for one in lst: unittest(one)
+   4:     return one
+   5:   
+   6:   class unittest:
+   7:     tries = fails = 0  #  tracks the record so far
+   8:     @staticmethod
+   9:     def score():
+  10:       t = unittest.tries
+  11:       f = unittest.fails
+  12:       return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
+  13:         t,f,int(round(t*100/(t+f+0.001))))
+  14:     def __init__(i,test):
+  15:       unittest.tries += 1
+  16:       try:
+  17:         test()
+  18:       except Exception,e:
+  19:         unittest.fails += 1
+  20:         i.report(test)
+  21:     def report(i,test):
+  22:       import traceback
+  23:       print traceback.format_exc()
+  24:       print unittest.score(),':',test.__name__
 ````
 
 

@@ -16,7 +16,6 @@ python okok.py
 Share and enjoy.
 
 """
-
 def ok(*lst):
   print "### ",lst[0].__name__
   for one in lst: unittest(one)
@@ -41,5 +40,3 @@ class unittest:
     import traceback
     print traceback.format_exc()
     print unittest.score(),':',test.__name__
-
-    
