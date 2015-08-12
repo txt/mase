@@ -6,7 +6,34 @@
 [Lecturer](http://menzies.us) 
 
 
-<p><small><em>View <a href="okok.py">source</a></em></small></p> awk -f ../etc/p2md.awk -v name=okok.py okok.py
+<p><small><em>View <a href="okok.py">source</a></em></small></p>
+
+# Examples of Unit tests  in Python
+
+````python
+   1:   import time
+   2:   from ok import *
+   3:   
+   4:   print time.strftime("%H:%M:%S\n")
+   5:   
+   6:   @ok
+   7:   def _ok1():
+   8:     assert 1==1
+   9:   
+  10:   @ok
+  11:   def _ok2():
+  12:     assert 2==1
+  13:   
+  14:   @ok
+  15:   def _ok3():
+  16:     assert 3==3 
+  17:   
+  18:   @ok
+  19:   def _ok4():
+  20:     assert unittest.tries==4
+  21:     assert unittest.fails==1
+  22:     print unittest.score() 
+````
 
 
 _________

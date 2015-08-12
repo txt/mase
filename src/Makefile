@@ -81,7 +81,7 @@ $(etc)/toc.sh   : Makefile ; @- echo "$$toc"  > $@
 $(out)/%.md: %.py $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
 	@echo "making... $<"
 	@(cat $(etc)/header.txt; \
-          echo "<p><small><em>View <a href=\"$<\">source</a></em></small></p>"\
+          echo "<p><small><em>View <a href=\"$<\">source</a></em></small></p>"; \
          awk -f $(etc)/p2md.awk -v name="$<" $< ; \
          cat $(etc)/footer.txt) \
          | sed 's?__PRE?$(prefix)?g'  \

@@ -6,7 +6,9 @@
 [Lecturer](http://menzies.us) 
 
 
-<p><small><em>View <a href="stats.py">source</a></em></small></p> awk -f ../etc/p2md.awk -v name=stats.py stats.py
+<p><small><em>View <a href="stats.py">source</a></em></small></p>
+````
+```
 
 
 _________

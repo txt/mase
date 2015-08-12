@@ -6,7 +6,49 @@
 [Lecturer](http://menzies.us) 
 
 
-<p><small><em>View <a href="ok.py">source</a></em></small></p> awk -f ../etc/p2md.awk -v name=ok.py ok.py
+<p><small><em>View <a href="ok.py">source</a></em></small></p>
+
+# Unit tests in Python
+
+Python has some great unit testing tools. The one
+shown below is a "less-is-more" approach and is
+based on [Kent Beck video on how to write a test engine in just a 
+few lines of code](https://www.youtube.com/watch?v=nIonZ6-4nuU).
+
+For example usages, see [okok.py](okok.md) which can be loaded via
+
+```
+python okok.py
+```
+
+Share and enjoy.
+
+````python
+   1:   def ok(*lst):
+   2:     print "### ",lst[0].__name__
+   3:     for one in lst: unittest(one)
+   4:     return one
+   5:   
+   6:   class unittest:
+   7:     tries = fails = 0  #  tracks the record so far
+   8:     @staticmethod
+   9:     def score():
+  10:       t = unittest.tries
+  11:       f = unittest.fails
+  12:       return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
+  13:         t,f,int(round(t*100/(t+f+0.001))))
+  14:     def __init__(i,test):
+  15:       unittest.tries += 1
+  16:       try:
+  17:         test()
+  18:       except Exception,e:
+  19:         unittest.fails += 1
+  20:         i.report(test)
+  21:     def report(i,test):
+  22:       import traceback
+  23:       print traceback.format_exc()
+  24:       print unittest.score(),':',test.__name__
+````
 
 
 _________
