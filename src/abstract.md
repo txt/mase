@@ -111,7 +111,6 @@ How?
 r = random.random
 rseed = random.seed
 
-
 class Some:
   def __init__(i, max=8): # note, usually 256 or 128 or 64 (if brave)
     i.n, i.any, i.max = 0,[],max
@@ -300,7 +299,8 @@ def lines(src):
       yield tmp
       tmp = ''
     else:
-      tmp += ch
+      tmp += ch # for a (slightly) faster method,
+                # in Python3, see http://goo.gl/LvgGx3
   if tmp:
     yield tmp
 
