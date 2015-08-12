@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<p><em>View <a href="okok.py">source code</a>.</em></p>
+<a href="okok.py"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 # Examples of Unit tests  in Python
 

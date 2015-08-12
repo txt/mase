@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<p><em>View <a href="ok.py">source code</a>.</em></p>
+<a href="ok.py"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 # Unit tests in Python
 

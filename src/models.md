@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<p><em>View <a href="models.py">source code</a>.</em></p>
+<a href="models.py"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 ## Models
 
