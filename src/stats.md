@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<a href="stats.py"><img width=50 align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
+<a href="stats.py"><img width=100 align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
 ```
 
