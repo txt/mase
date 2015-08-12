@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<small><em>View <a href="optimize.py">source</a></em></small>
+<p><em>View <a href="optimize.py">source code</a>.</em></p>
 
 ## Optimize
 

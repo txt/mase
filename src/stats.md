@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<small><em>View <a href="stats.py">source</a></em></small>
+<p><em>View <a href="stats.py">source code</a>.</em></p>
 ````
 ```
 

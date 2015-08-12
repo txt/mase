@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<small><em>View <a href="abstract.py">source</a></em></small>
+<p><em>View <a href="abstract.py">source code</a>.</em></p>
 
 # Abstraction (Advanced Python Coding)
 
@@ -19,7 +19,6 @@ divide the problem into layers of abstraction where `iterators`
 separate out the various concerns. Easier to debug! Good
 Zen Python coding.
 
-View [source code](abstract.py).
 
 ## Background
 
