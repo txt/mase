@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<a href="abstract.py"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
+<a href="abstract.py"><img src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a><br clear=all>
 
 # Abstraction (Advanced Python Coding)
 
