@@ -6,8 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-````
-```
+<p><small><em>View <a href="rank.py">source</a></em></small></p> awk -f ../etc/p2md.awk -v name=rank.py rank.py
 
 
 _________
