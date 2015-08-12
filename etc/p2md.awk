@@ -14,7 +14,7 @@
 		       else     
 			 print "````"  
 		     next }       
-  ! First {  pre = sprintf("% 4s: ",++line) if (In) else ""
+  ! First {  pre = In ? sprintf("% 4s: ",++line) : ""
              print $0 }       
   END     { if (In ) print "````"
             if (!Once) print "```"  
