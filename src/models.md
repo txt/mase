@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<a href="models.py"><img width=50 src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a><br clear=all>
+<a href="models.py"><img width=50 align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a><br clear=all>
 
 ## Models
 
