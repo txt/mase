@@ -12,11 +12,11 @@
 ## Standard Header
 
 ````python
-from __future__ import division
-import sys
-sys.dont_write_bytecode = True
-
-from optimize import *
+   1: from __future__ import division
+   2: import sys
+   3: sys.dont_write_bytecode = True
+   4: 
+   5: from optimize import *
 ````
 
 ## Classes
@@ -38,16 +38,16 @@ For example:
 Code:
 
 ````python
-
-
-class In:
-  def __init__(i,lo=0,hi=1,txt=""):
-    i.txt,i.lo,i.hi = txt,lo,hi
-  def __call__(i): 
-    return i.lo + (i.hi - i.lo)*rand()
-  def log(i): 
-    return Num()
-
+   6: 
+   7: 
+   8: class In:
+   9:   def __init__(i,lo=0,hi=1,txt=""):
+  10:     i.txt,i.lo,i.hi = txt,lo,hi
+  11:   def __call__(i): 
+  12:     return i.lo + (i.hi - i.lo)*rand()
+  13:   def log(i): 
+  14:     return Num()
+  15: 
 ````
 
 Note the brevity of this code. Lesson:
@@ -63,26 +63,26 @@ divided into independent values (in "_x_") and
 dependent values (in "_y_").
 
 ````python
-
-class Schaffer(Model):
-  def spec(i):
-    return o(x= [In(-5,5,0)],
-             y= [i.f1,i.f2])
-  def f1(i,it):
-    x=it.x[0]; return x**2
-  def f2(i,it):
-    x=it.x[0]; return (x-2)**2
-
-class ZDT1(Model):
-  def spec(i):
-    return o(x= [In(0,1,z) for z in range(30)],
-              y= [i.f1,i.f2])
-  def f1(i,it):
-    return it.x[0]
-  def f2(i,it):
-    return 1 + 9*sum(it.x[1:]) / 29
-
-if __name__ == "__main__": eval(cmd())
+  16: 
+  17: class Schaffer(Model):
+  18:   def spec(i):
+  19:     return o(x= [In(-5,5,0)],
+  20:              y= [i.f1,i.f2])
+  21:   def f1(i,it):
+  22:     x=it.x[0]; return x**2
+  23:   def f2(i,it):
+  24:     x=it.x[0]; return (x-2)**2
+  25: 
+  26: class ZDT1(Model):
+  27:   def spec(i):
+  28:     return o(x= [In(0,1,z) for z in range(30)],
+  29:               y= [i.f1,i.f2])
+  30:   def f1(i,it):
+  31:     return it.x[0]
+  32:   def f2(i,it):
+  33:     return 1 + 9*sum(it.x[1:]) / 29
+  34: 
+  35: if __name__ == "__main__": eval(cmd())
 ````
 
 

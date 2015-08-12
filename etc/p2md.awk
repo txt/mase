@@ -15,7 +15,7 @@
 			 print "````"  
 		     next }       
   ! First {  pre = In ? sprintf("% 4s: ",++line) : ""
-             print $0 }       
+             print pre $0 }       
   END     { if (In ) print "````"
             if (!Once) print "```"  
 }

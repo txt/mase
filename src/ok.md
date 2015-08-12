@@ -23,33 +23,33 @@ python okok.py
 Share and enjoy.
 
 ````python
-
-def ok(*lst):
-  print "### ",lst[0].__name__
-  for one in lst: unittest(one)
-  return one
-
-class unittest:
-  tries = fails = 0  #  tracks the record so far
-  @staticmethod
-  def score():
-    t = unittest.tries
-    f = unittest.fails
-    return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
-      t,f,int(round(t*100/(t+f+0.001))))
-  def __init__(i,test):
-    unittest.tries += 1
-    try:
-      test()
-    except Exception,e:
-      unittest.fails += 1
-      i.report(test)
-  def report(i,test):
-    import traceback
-    print traceback.format_exc()
-    print unittest.score(),':',test.__name__
-
-    
+   1: 
+   2: def ok(*lst):
+   3:   print "### ",lst[0].__name__
+   4:   for one in lst: unittest(one)
+   5:   return one
+   6: 
+   7: class unittest:
+   8:   tries = fails = 0  #  tracks the record so far
+   9:   @staticmethod
+  10:   def score():
+  11:     t = unittest.tries
+  12:     f = unittest.fails
+  13:     return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
+  14:       t,f,int(round(t*100/(t+f+0.001))))
+  15:   def __init__(i,test):
+  16:     unittest.tries += 1
+  17:     try:
+  18:       test()
+  19:     except Exception,e:
+  20:       unittest.fails += 1
+  21:       i.report(test)
+  22:   def report(i,test):
+  23:     import traceback
+  24:     print traceback.format_exc()
+  25:     print unittest.score(),':',test.__name__
+  26: 
+  27:     
 ````
 
 
