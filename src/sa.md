@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<a href="sa.py"><img width=50 align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a><br clear=all>
+<a href="sa.py"><img width=50 align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 ## SA (plus tricks)
 
