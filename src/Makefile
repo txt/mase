@@ -44,7 +44,7 @@ define p2md
 		       else     
 			 print "````"  
 		     next }       
-  ! First {  pre = In ? sprintf("% 4s: ",++line) : ""
+  ! First {  pre = In ? sprintf("% 4s:   ",++line) : ""
              print pre $$0 }       
   END     { if (In ) print "````"
             if (!Once) print "```"  
