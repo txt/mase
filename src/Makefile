@@ -44,7 +44,8 @@ define p2md
 		       else     
 			 print "````"  
 		     next }       
-  ! First { print $$0 }       
+  ! First {  pre = In ? sprintf("% 4s:   ",++line) : ""
+             print pre $$0 }       
   END     { if (In ) print "````"
             if (!Once) print "```"  
 }
@@ -80,6 +81,7 @@ $(etc)/toc.sh   : Makefile ; @- echo "$$toc"  > $@
 $(out)/%.md: %.py $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
 	@echo "making... $<"
 	@(cat $(etc)/header.txt; \
+          echo "<a href=\"$<\"><img align=right src=\"https://raw.githubusercontent.com/txt/mase/master/img/py.png\"></a>"; \
          awk -f $(etc)/p2md.awk -v name="$<" $< ; \
          cat $(etc)/footer.txt) \
          | sed 's?__PRE?$(prefix)?g'  \

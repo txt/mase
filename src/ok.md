@@ -6,6 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
+<a href="ok.py"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 # Unit tests in Python
 
@@ -23,33 +24,30 @@ python okok.py
 Share and enjoy.
 
 ````python
-
-def ok(*lst):
-  print "### ",lst[0].__name__
-  for one in lst: unittest(one)
-  return one
-
-class unittest:
-  tries = fails = 0  #  tracks the record so far
-  @staticmethod
-  def score():
-    t = unittest.tries
-    f = unittest.fails
-    return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
-      t,f,int(round(t*100/(t+f+0.001))))
-  def __init__(i,test):
-    unittest.tries += 1
-    try:
-      test()
-    except Exception,e:
-      unittest.fails += 1
-      i.report(test)
-  def report(i,test):
-    import traceback
-    print traceback.format_exc()
-    print unittest.score(),':',test.__name__
-
-    
+   1:   def ok(*lst):
+   2:     print "### ",lst[0].__name__
+   3:     for one in lst: unittest(one)
+   4:     return one
+   5:   
+   6:   class unittest:
+   7:     tries = fails = 0  #  tracks the record so far
+   8:     @staticmethod
+   9:     def score():
+  10:       t = unittest.tries
+  11:       f = unittest.fails
+  12:       return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
+  13:         t,f,int(round(t*100/(t+f+0.001))))
+  14:     def __init__(i,test):
+  15:       unittest.tries += 1
+  16:       try:
+  17:         test()
+  18:       except Exception,e:
+  19:         unittest.fails += 1
+  20:         i.report(test)
+  21:     def report(i,test):
+  22:       import traceback
+  23:       print traceback.format_exc()
+  24:       print unittest.score(),':',test.__name__
 ````
 
 

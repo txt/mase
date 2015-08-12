@@ -10,6 +10,7 @@
 # Table of Contents
 
 + [Abstraction (Advanced Python Coding)](https://github.com/txt/mase/blob/master/doc/abstract.md)
++ [[2.0, 1.0, 3.0, 4.0, 5.0]](https://github.com/txt/mase/blob/master/doc/rank.md)
 
 
 

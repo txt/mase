@@ -6,6 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
+<a href="log.py"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 Logs are places to store records of past events. There are two types of logs:
 
@@ -92,47 +93,47 @@ sample can offer a useful approximation to a seemingly complex process.
 
 ## Standard Header
 ````python
-from __future__ import division
-import sys, random, math, datetime, time,re
-sys.dont_write_bytecode = True
-from base  import *
-from stats import *
-from a12 import *
+   1:   from __future__ import division
+   2:   import sys, random, math, datetime, time,re
+   3:   sys.dont_write_bytecode = True
+   4:   from base  import *
+   5:   from stats import *
+   6:   from a12 import *
 ````
 ## Classes
 
 ### Base Class: "Log"
 
 ````python
-class Log():
-  "Keep a random sample of stuff seen so far."
-  def __init__(i,inits=[],label=''):
-    i.label = label
-    i._cache,i.n,i._report = [],0,None
-    i.setup()
-    map(i.__iadd__,inits)
-  def __iadd__(i,x): #  magic method for "+="
-    if x == None: return x # skip nothing
-    i.n += 1
-    changed = False
-    if len(i._cache) < The.cache.keep: # not full
-      changed = True
-      i._cache += [x]               # then add
-    else: # otherwise, maybe replace an old item
-      if rand() <= The.cache.keep/i.n:
-        changed = True
-        i._cache[int(rand()*The.cache.keep)] = x
-    if changed:      
-      i._report = None # wipe out 'what follows'
-      i.change(x)
-    return i
-  def any(i):  
-    return  any(i._cache)
-  def has(i):
-    if i._report == None: i._report =  i.report()
-    return i._report
-  def setup(i): pass
-  def change(i,x): pass
+   7:   class Log():
+   8:     "Keep a random sample of stuff seen so far."
+   9:     def __init__(i,inits=[],label=''):
+  10:       i.label = label
+  11:       i._cache,i.n,i._report = [],0,None
+  12:       i.setup()
+  13:       map(i.__iadd__,inits)
+  14:     def __iadd__(i,x): #  magic method for "+="
+  15:       if x == None: return x # skip nothing
+  16:       i.n += 1
+  17:       changed = False
+  18:       if len(i._cache) < The.cache.keep: # not full
+  19:         changed = True
+  20:         i._cache += [x]               # then add
+  21:       else: # otherwise, maybe replace an old item
+  22:         if rand() <= The.cache.keep/i.n:
+  23:           changed = True
+  24:           i._cache[int(rand()*The.cache.keep)] = x
+  25:       if changed:      
+  26:         i._report = None # wipe out 'what follows'
+  27:         i.change(x)
+  28:       return i
+  29:     def any(i):  
+  30:       return  any(i._cache)
+  31:     def has(i):
+  32:       if i._report == None: i._report =  i.report()
+  33:       return i._report
+  34:     def setup(i): pass
+  35:     def change(i,x): pass
 ````
 
 ### Num
@@ -145,52 +146,52 @@ A _Num_ is a _Log_ for numbers.
 
 
 ````python
-class Num(Log):
-  def setup(i):
-    i.lo, i.hi = 10**32, -10**32
-    i.lessp = True
-  def change(i,x): # update lo,hi
-    i.lo = min(i.lo, x)
-    i.hi = max(i.hi, x)
-  def norm(i,x): # turn "x" into 0..1
-    return (x - i.lo)/(i.hi - i.lo + 0.000001)
-  def ordered():
-    i.has()
-    return i._cache
-  def report(i): 
-    lst = i._cache = sorted(i._cache)
-    n   = len(lst)     
-    return o(
-      median= i.median(),
-      iqr   = lst[int(n*.75)] - lst[int(n*.5)],
-      lo    = i.lo, 
-      hi    = i.hi)
-  def ish(i,f=0.1): # return a num from  logged dist 
-    return i.any() + f*(i.any() - i.any())
-  def better(new,old):
-    "better if (1)less median or (2)same and less iqr"
-    t = The.misc.a12
-    betterIqr = new.has().iqr < old.has().iqr
-    if new.lessp:
-      betterMed = new.has().median >= old.has().median
-      same      = a12(old._cache, new._cache)  <= t
-    else:
-      betterMed = new.has().median <= old.has().median 
-      same      = a12(new._cache, old._cache) <= t
-    return betterMed, same, betterIqr
-  def median(i):
-    n = len(i._cache)
-    p = n // 2
-    if (n % 2):  return i._cache[p]
-    q = p + 1
-    q = max(0,(min(q,n)))
-    return (i._cache[p] + i._cache[q])/2
-
-def _num():
-  i = Num([rand()      for _ in xrange(1000)])
-  j = Num([rand()*1.25 for _ in xrange(1000)])
-  print j.same(i)
-
+  36:   class Num(Log):
+  37:     def setup(i):
+  38:       i.lo, i.hi = 10**32, -10**32
+  39:       i.lessp = True
+  40:     def change(i,x): # update lo,hi
+  41:       i.lo = min(i.lo, x)
+  42:       i.hi = max(i.hi, x)
+  43:     def norm(i,x): # turn "x" into 0..1
+  44:       return (x - i.lo)/(i.hi - i.lo + 0.000001)
+  45:     def ordered():
+  46:       i.has()
+  47:       return i._cache
+  48:     def report(i): 
+  49:       lst = i._cache = sorted(i._cache)
+  50:       n   = len(lst)     
+  51:       return o(
+  52:         median= i.median(),
+  53:         iqr   = lst[int(n*.75)] - lst[int(n*.5)],
+  54:         lo    = i.lo, 
+  55:         hi    = i.hi)
+  56:     def ish(i,f=0.1): # return a num from  logged dist 
+  57:       return i.any() + f*(i.any() - i.any())
+  58:     def better(new,old):
+  59:       "better if (1)less median or (2)same and less iqr"
+  60:       t = The.misc.a12
+  61:       betterIqr = new.has().iqr < old.has().iqr
+  62:       if new.lessp:
+  63:         betterMed = new.has().median >= old.has().median
+  64:         same      = a12(old._cache, new._cache)  <= t
+  65:       else:
+  66:         betterMed = new.has().median <= old.has().median 
+  67:         same      = a12(new._cache, old._cache) <= t
+  68:       return betterMed, same, betterIqr
+  69:     def median(i):
+  70:       n = len(i._cache)
+  71:       p = n // 2
+  72:       if (n % 2):  return i._cache[p]
+  73:       q = p + 1
+  74:       q = max(0,(min(q,n)))
+  75:       return (i._cache[p] + i._cache[q])/2
+  76:   
+  77:   def _num():
+  78:     i = Num([rand()      for _ in xrange(1000)])
+  79:     j = Num([rand()*1.25 for _ in xrange(1000)])
+  80:     print j.same(i)
+  81:   
 ````
 
 WARNING: the call to _sorted_ in _report()_ makes this code
@@ -208,34 +209,34 @@ A _Sym_ is a _Log_ for non-numerics.
 + Generated symbols from the log by returning symbols at the same probability of the frequency counts (see _ish()_).
 
 ````python
-class Sym(Log):
-  def setup(i):
-    i.counts,i.mode,i.most={},None,0
-  def report(i):
-    for x in i._cache:
-      c = i.counts[x] = i.counts.get(x,0) + 1
-      if c > i.most:
-        i.mode,i.most = x,c
-    return o(dist= i.dist(), 
-              ent = i.entropy(),
-              mode= i.mode)
-  def dist(i):
-    d = i.counts
-    n = sum(d.values())
-    return sorted([(d[k]/n, k) for k in d.keys()], 
-                  reverse=True)
-  def ish(i):
-    r,tmp = rand(),0
-    for w,x in i.has().dist:
-      tmp  += w
-      if tmp >= r: 
-        return x
-    return x
-  def entropy(i,e=0):
-    for k in i.counts:
-      p = i.counts[k]/len(i._cache)
-      e -= p*log2(p) if p else 0
-    return e    
+  82:   class Sym(Log):
+  83:     def setup(i):
+  84:       i.counts,i.mode,i.most={},None,0
+  85:     def report(i):
+  86:       for x in i._cache:
+  87:         c = i.counts[x] = i.counts.get(x,0) + 1
+  88:         if c > i.most:
+  89:           i.mode,i.most = x,c
+  90:       return o(dist= i.dist(), 
+  91:                 ent = i.entropy(),
+  92:                 mode= i.mode)
+  93:     def dist(i):
+  94:       d = i.counts
+  95:       n = sum(d.values())
+  96:       return sorted([(d[k]/n, k) for k in d.keys()], 
+  97:                     reverse=True)
+  98:     def ish(i):
+  99:       r,tmp = rand(),0
+ 100:       for w,x in i.has().dist:
+ 101:         tmp  += w
+ 102:         if tmp >= r: 
+ 103:           return x
+ 104:       return x
+ 105:     def entropy(i,e=0):
+ 106:       for k in i.counts:
+ 107:         p = i.counts[k]/len(i._cache)
+ 108:         e -= p*log2(p) if p else 0
+ 109:       return e    
 ````
 
 #### Sym, Example
@@ -249,17 +250,17 @@ From that population, we can generate another distribution that is nearly the sa
     {'plums': 64, 'grapes': 34, 'pears': 30}
 
 ````python
-def symDemo(n1=10,n2=1000):
-  rseed()
-  log= Sym((['plums']*(n1*2)) + ['grapes']*n1 + ['pears']*n1)
-  found= Sym([log.ish() for _ in xrange(n2)])
-  print found.has().dist
-  print found.counts
-  print sum(found.counts.values())
-
-if __name__ == "__main__": eval(cmd()) 
-
-
+ 110:   def symDemo(n1=10,n2=1000):
+ 111:     rseed()
+ 112:     log= Sym((['plums']*(n1*2)) + ['grapes']*n1 + ['pears']*n1)
+ 113:     found= Sym([log.ish() for _ in xrange(n2)])
+ 114:     print found.has().dist
+ 115:     print found.counts
+ 116:     print sum(found.counts.values())
+ 117:   
+ 118:   if __name__ == "__main__": eval(cmd()) 
+ 119:   
+ 120:   
 ````
 
 
