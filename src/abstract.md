@@ -9,12 +9,18 @@
 
 # Abstraction (Advanced Python Coding)
 
+
+
 Layers within layers within layers..
 
 In the following, we will
 divide the problem into layers of abstraction where `iterators`
 separate out the various concerns. Easier to debug! Good
 Zen Python coding.
+
+View [source code](abstract.py).
+
+## Background
 
 From Wikipedia:
 
