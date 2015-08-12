@@ -224,7 +224,7 @@ Also:
   (see last column). We want our tables to keep counts
   separately for each column.
 
-
+Lets handle all that mess with iterators.
 
 ## Support code
 
