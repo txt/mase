@@ -188,8 +188,8 @@ all kept   10% 30% 50% 70% 90%  kept   10% 30% 50% 70% 90%
 
 14 items: 9 examples of playing golf, 5 of not playing golf.
 
-
-weather=
+"""
+weather="""
 
 outlook,
 temperature,
@@ -209,9 +209,9 @@ rainy    , 75, 80, FALSE, yes
 sunny    , 75, 70, TRUE , yes
 overcast , 72, 90, TRUE , yes
 overcast , 81, 75, FALSE, yes
-rainy    , 71, 91, TRUE , no
+rainy    , 71, 91, TRUE , no"""
 
-
+"""
 
 Note that the table is messy- blank lines, spaces, comments,
 some lines split over multiple physical lines.  
