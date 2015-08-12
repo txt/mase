@@ -28,7 +28,7 @@ By using layers of complexity that have been created to abstract away the physic
 Abstraction can apply to control or to data: Control abstraction is the abstraction of actions while data abstraction is that of data structures.
 
 + _Data abstraction_ allows handling data bits in meaningful ways. For example, it is the basic motivation behind datatype and object-oriented programming.
-+ Control abstraction involves the use of subprograms and related concepts control flows
++ _Control abstraction_ involves the use of subprograms and related concepts control flows
 
 The rest of this page is about control abstraction, as implemented by Python's iterator. If a functions `return` statement
 is replaced with `yield` then that function becomes a _generator_, whose internal details can now be ignored.
