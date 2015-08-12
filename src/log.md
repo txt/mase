@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<p><small><em>View <a href="log.py">source</a></em></small></p>
+<small><em>View <a href="log.py">source</a></em></small>
 
 Logs are places to store records of past events. There are two types of logs:
 

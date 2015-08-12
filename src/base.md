@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<p><small><em>View <a href="base.py">source</a></em></small></p>
+<small><em>View <a href="base.py">source</a></em></small>
 
 ## Basic Stuff
 
