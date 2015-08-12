@@ -338,7 +338,7 @@ def _row():
 
 ### Values
 
-Co-erce row values to floats, ints or strings. 
+Coerce row values to floats, ints or strings. 
 Jump over any cols we are ignoring
 
 ````python
