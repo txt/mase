@@ -1,3 +1,6 @@
+from __future__ import print_function, division
+from ok import *
+import random,re
 
 """
 
@@ -10,11 +13,84 @@ divide the problem into layers of abstraction where `iterators`
 separate out the various concerns. Easier to debug! Good
 Zen Python coding.
 
+From Wikipedia:
+
++ In computer science, abstraction is a technique for managing complexity of computer systems. 
++ It works by establishing a level of complexity on which a person interacts with the system, suppressing the more complex details below the current level. 
++ The programmer works with an idealized interface (usually well defined) and can add additional levels of functionality that would otherwise be too complex to handle. 
+  + For example, a programmer writing code that involves numerical operations may not be interested in the way numbers are represented in the underlying hardware (e.g. whether they're 16 bit or 32 bit integers), and where those details have been suppressed it can be said that they were abstracted away, leaving simply numbers with which the programmer can work. 
+  + In addition, a task of sending an email message across continents would be extremely complex if you start with a piece of optic cable and basic hardware components. 
+By using layers of complexity that have been created to abstract away the physical cables, network layout and presenting the programmer with a virtual data channel, this task is manageable.
+
+Abstraction can apply to control or to data: Control abstraction is the abstraction of actions while data abstraction is that of data structures.
+
++ _Data abstraction_ allows handling data bits in meaningful ways. For example, it is the basic motivation behind datatype and object-oriented programming.
++ Control abstraction involves the use of subprograms and related concepts control flows
+
+The rest of this page is about control abstraction, as implemented by Python's iterator. If a functions `return` statement
+is replaced with `yield` then that function becomes a _generator_, whose internal details can now be ignored.
+
+For example, if you want to launch a rocket....
+
+```python
+def countdown(n):
+   while n >= 0:
+     yield n
+     n -= 1
+
+print("We are go for launch")
+for x in countdown(10):
+   print(n)
+print("lift off!")
+```
+
+And here's my favorite iterator that descends recursive lists:
+
 """
-from __future__ import print_function, division
-from ok import *
-import random,re
+def items(x, depth=-1):
+  if isinstance(x,(list,tuple)):
+    for y in x:
+      for z in items(y, depth+1):
+        yield z
+  else:
+    yield depth,x
 """
+
+This lets me do things like (a) traverse a nested structure and (b) write pretty print that structure.
+For example:
+
+```python
+for depth,x in items(  [10,
+                        [   20,
+                            30],
+                        40,
+                        [   (  50,
+                               60,
+                               70),
+                            [  80,
+                               90,
+                               100],
+                            110]]):
+  print(" |.. " *depth,x)
+```
+Output:
+
+```
+10
+ |..  20
+ |..  30
+ 40
+ |..  |..  50
+ |..  |..  60
+ |..  |..  70
+ |..  |..  80
+ |..  |..  90
+ |..  |..  100
+ |..  110
+```
+
+Anyway, lets apply this idea to a real problem. 
+
 
 ## Problem
 
@@ -112,8 +188,8 @@ all kept   10% 30% 50% 70% 90%  kept   10% 30% 50% 70% 90%
 
 14 items: 9 examples of playing golf, 5 of not playing golf.
 
-"""
-weather="""
+
+weather=
 
 outlook,
 temperature,
@@ -133,9 +209,9 @@ rainy    , 75, 80, FALSE, yes
 sunny    , 75, 70, TRUE , yes
 overcast , 72, 90, TRUE , yes
 overcast , 81, 75, FALSE, yes
-rainy    , 71, 91, TRUE , no"""
+rainy    , 71, 91, TRUE , no
 
-"""
+
 
 Note that the table is messy- blank lines, spaces, comments,
 some lines split over multiple physical lines.  
@@ -228,6 +304,7 @@ def lines(src):
 def _line():
   for line in lines(STRING(weather)):
     print("[",line,"]",sep="")
+
 """
 
 ### Rows
