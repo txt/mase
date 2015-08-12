@@ -27,11 +27,11 @@ Share and enjoy.
 
 ### Standard Headers
 ````python
-   1: from __future__ import division
-   2: import sys
-   3: sys.dont_write_bytecode = True
-   4: 
-   5: from models import *
+<font color=red>   1:</font> from __future__ import division
+<font color=red>   2:</font> import sys
+<font color=red>   3:</font> sys.dont_write_bytecode = True
+<font color=red>   4:</font> 
+<font color=red>   5:</font> from models import *
 ````
 
 ### Code
@@ -62,41 +62,41 @@ Finally, the _burp_ function prints some output- which can
 suppressed via _The.misc.verbose=False_.
 
 ````python
-   6: def sa(m):
-   7:   def more(k,e):
-   8:     if k > The.sa.patience:
-   9:       if e > 1/The.misc.epsilon:
-  10:         return False
-  11:     return True
-  12:   def energy(m,it): 
-  13:     m.depIT(it)
-  14:     return sum(it.y) 
-  15:   def maybe(old,new,temp): 
-  16:     return math.e**((new - old)/temp) < rand()  
-  17:   base = Num([energy(m, m.indepIT()) 
-  18:              for _ in xrange(The.sa.baseline)])
-  19:   sb = s = m.indepIT()
-  20:   eb = e = mron(energy(m,s), base.lo, base.hi)
-  21:   k = 0
-  22:   while k <  The.sa.kmax and more(k,eb):
-  23:     if not k % The.misc.era: 
-  24:       burp("\n", str(k).zfill(4),x(eb), ' ') 
-  25:     k += 1
-  26:     mark = "."
-  27:     sn = m.aroundIT(s,p=1)
-  28:     en = mron(energy(m,sn), base.lo, base.hi)
-  29:     if en >  (e * The.misc.epsilon):
-  30:       s,e = sn,en
-  31:       mark = "+"
-  32:     elif maybe(e,en, 
-  33:                k/The.sa.kmax**The.sa.cooling):
-  34:       s,e = sn,en
-  35:       mark = "?"
-  36:     if en > (eb * The.misc.epsilon):
-  37:       sb,eb = sn,en
-  38:       mark = "!"
-  39:     burp(mark)
-  40:   return sb,eb    
+<font color=red>   6:</font> def sa(m):
+<font color=red>   7:</font>   def more(k,e):
+<font color=red>   8:</font>     if k > The.sa.patience:
+<font color=red>   9:</font>       if e > 1/The.misc.epsilon:
+<font color=red>  10:</font>         return False
+<font color=red>  11:</font>     return True
+<font color=red>  12:</font>   def energy(m,it): 
+<font color=red>  13:</font>     m.depIT(it)
+<font color=red>  14:</font>     return sum(it.y) 
+<font color=red>  15:</font>   def maybe(old,new,temp): 
+<font color=red>  16:</font>     return math.e**((new - old)/temp) < rand()  
+<font color=red>  17:</font>   base = Num([energy(m, m.indepIT()) 
+<font color=red>  18:</font>              for _ in xrange(The.sa.baseline)])
+<font color=red>  19:</font>   sb = s = m.indepIT()
+<font color=red>  20:</font>   eb = e = mron(energy(m,s), base.lo, base.hi)
+<font color=red>  21:</font>   k = 0
+<font color=red>  22:</font>   while k <  The.sa.kmax and more(k,eb):
+<font color=red>  23:</font>     if not k % The.misc.era: 
+<font color=red>  24:</font>       burp("\n", str(k).zfill(4),x(eb), ' ') 
+<font color=red>  25:</font>     k += 1
+<font color=red>  26:</font>     mark = "."
+<font color=red>  27:</font>     sn = m.aroundIT(s,p=1)
+<font color=red>  28:</font>     en = mron(energy(m,sn), base.lo, base.hi)
+<font color=red>  29:</font>     if en >  (e * The.misc.epsilon):
+<font color=red>  30:</font>       s,e = sn,en
+<font color=red>  31:</font>       mark = "+"
+<font color=red>  32:</font>     elif maybe(e,en, 
+<font color=red>  33:</font>                k/The.sa.kmax**The.sa.cooling):
+<font color=red>  34:</font>       s,e = sn,en
+<font color=red>  35:</font>       mark = "?"
+<font color=red>  36:</font>     if en > (eb * The.misc.epsilon):
+<font color=red>  37:</font>       sb,eb = sn,en
+<font color=red>  38:</font>       mark = "!"
+<font color=red>  39:</font>     burp(mark)
+<font color=red>  40:</font>   return sb,eb    
 ````
 
 ## Example
@@ -104,18 +104,18 @@ suppressed via _The.misc.verbose=False_.
 Defining a study using _sa_.
 
 ````python
-  41: @study
-  42: def saDemo(model='Schaffer'):
-  43:   "Basic study."
-  44:   The.misc.verbose= True
-  45:   The.misc.era = 25
-  46:   print "!!!",model
-  47:   model = eval(model + '()')
-  48:   print "\n",model.name()
-  49:   sb,eb = sa(model)
-  50:   x= g3(sb.x)
-  51:   y= g3(sb.y)
-  52:   print "\n------\n:e",eb,"\n:y",y,"\n:x",x
+<font color=red>  41:</font> @study
+<font color=red>  42:</font> def saDemo(model='Schaffer'):
+<font color=red>  43:</font>   "Basic study."
+<font color=red>  44:</font>   The.misc.verbose= True
+<font color=red>  45:</font>   The.misc.era = 25
+<font color=red>  46:</font>   print "!!!",model
+<font color=red>  47:</font>   model = eval(model + '()')
+<font color=red>  48:</font>   print "\n",model.name()
+<font color=red>  49:</font>   sb,eb = sa(model)
+<font color=red>  50:</font>   x= g3(sb.x)
+<font color=red>  51:</font>   y= g3(sb.y)
+<font color=red>  52:</font>   print "\n------\n:e",eb,"\n:y",y,"\n:x",x
 ````
 
 Output from the first call:
@@ -193,8 +193,8 @@ Output from the second call:
     
     # Runtime: 0.011 secs
 ````python
-  53: 
-  54: if __name__ == "__main__": eval(cmd())
+<font color=red>  53:</font> 
+<font color=red>  54:</font> if __name__ == "__main__": eval(cmd())
 ````
 
 

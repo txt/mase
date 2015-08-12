@@ -14,7 +14,7 @@
 		       else     
 			 print "````"  
 		     next }       
-  ! First {  pre = In ? sprintf("% 4s: ",++line) : ""
+  ! First {  pre = In ? sprintf("<font color=red>% 4s:</font> ",++line) : ""
              print pre $0 }       
   END     { if (In ) print "````"
             if (!Once) print "```"  

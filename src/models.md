@@ -12,11 +12,11 @@
 ## Standard Header
 
 ````python
-   1: from __future__ import division
-   2: import sys
-   3: sys.dont_write_bytecode = True
-   4: 
-   5: from optimize import *
+<font color=red>   1:</font> from __future__ import division
+<font color=red>   2:</font> import sys
+<font color=red>   3:</font> sys.dont_write_bytecode = True
+<font color=red>   4:</font> 
+<font color=red>   5:</font> from optimize import *
 ````
 
 ## Classes
@@ -38,16 +38,16 @@ For example:
 Code:
 
 ````python
-   6: 
-   7: 
-   8: class In:
-   9:   def __init__(i,lo=0,hi=1,txt=""):
-  10:     i.txt,i.lo,i.hi = txt,lo,hi
-  11:   def __call__(i): 
-  12:     return i.lo + (i.hi - i.lo)*rand()
-  13:   def log(i): 
-  14:     return Num()
-  15: 
+<font color=red>   6:</font> 
+<font color=red>   7:</font> 
+<font color=red>   8:</font> class In:
+<font color=red>   9:</font>   def __init__(i,lo=0,hi=1,txt=""):
+<font color=red>  10:</font>     i.txt,i.lo,i.hi = txt,lo,hi
+<font color=red>  11:</font>   def __call__(i): 
+<font color=red>  12:</font>     return i.lo + (i.hi - i.lo)*rand()
+<font color=red>  13:</font>   def log(i): 
+<font color=red>  14:</font>     return Num()
+<font color=red>  15:</font> 
 ````
 
 Note the brevity of this code. Lesson:
@@ -63,26 +63,26 @@ divided into independent values (in "_x_") and
 dependent values (in "_y_").
 
 ````python
-  16: 
-  17: class Schaffer(Model):
-  18:   def spec(i):
-  19:     return o(x= [In(-5,5,0)],
-  20:              y= [i.f1,i.f2])
-  21:   def f1(i,it):
-  22:     x=it.x[0]; return x**2
-  23:   def f2(i,it):
-  24:     x=it.x[0]; return (x-2)**2
-  25: 
-  26: class ZDT1(Model):
-  27:   def spec(i):
-  28:     return o(x= [In(0,1,z) for z in range(30)],
-  29:               y= [i.f1,i.f2])
-  30:   def f1(i,it):
-  31:     return it.x[0]
-  32:   def f2(i,it):
-  33:     return 1 + 9*sum(it.x[1:]) / 29
-  34: 
-  35: if __name__ == "__main__": eval(cmd())
+<font color=red>  16:</font> 
+<font color=red>  17:</font> class Schaffer(Model):
+<font color=red>  18:</font>   def spec(i):
+<font color=red>  19:</font>     return o(x= [In(-5,5,0)],
+<font color=red>  20:</font>              y= [i.f1,i.f2])
+<font color=red>  21:</font>   def f1(i,it):
+<font color=red>  22:</font>     x=it.x[0]; return x**2
+<font color=red>  23:</font>   def f2(i,it):
+<font color=red>  24:</font>     x=it.x[0]; return (x-2)**2
+<font color=red>  25:</font> 
+<font color=red>  26:</font> class ZDT1(Model):
+<font color=red>  27:</font>   def spec(i):
+<font color=red>  28:</font>     return o(x= [In(0,1,z) for z in range(30)],
+<font color=red>  29:</font>               y= [i.f1,i.f2])
+<font color=red>  30:</font>   def f1(i,it):
+<font color=red>  31:</font>     return it.x[0]
+<font color=red>  32:</font>   def f2(i,it):
+<font color=red>  33:</font>     return 1 + 9*sum(it.x[1:]) / 29
+<font color=red>  34:</font> 
+<font color=red>  35:</font> if __name__ == "__main__": eval(cmd())
 ````
 
 

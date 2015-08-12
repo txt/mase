@@ -92,47 +92,47 @@ sample can offer a useful approximation to a seemingly complex process.
 
 ## Standard Header
 ````python
-   1: from __future__ import division
-   2: import sys, random, math, datetime, time,re
-   3: sys.dont_write_bytecode = True
-   4: from base  import *
-   5: from stats import *
-   6: from a12 import *
+<font color=red>   1:</font> from __future__ import division
+<font color=red>   2:</font> import sys, random, math, datetime, time,re
+<font color=red>   3:</font> sys.dont_write_bytecode = True
+<font color=red>   4:</font> from base  import *
+<font color=red>   5:</font> from stats import *
+<font color=red>   6:</font> from a12 import *
 ````
 ## Classes
 
 ### Base Class: "Log"
 
 ````python
-   7: class Log():
-   8:   "Keep a random sample of stuff seen so far."
-   9:   def __init__(i,inits=[],label=''):
-  10:     i.label = label
-  11:     i._cache,i.n,i._report = [],0,None
-  12:     i.setup()
-  13:     map(i.__iadd__,inits)
-  14:   def __iadd__(i,x): #  magic method for "+="
-  15:     if x == None: return x # skip nothing
-  16:     i.n += 1
-  17:     changed = False
-  18:     if len(i._cache) < The.cache.keep: # not full
-  19:       changed = True
-  20:       i._cache += [x]               # then add
-  21:     else: # otherwise, maybe replace an old item
-  22:       if rand() <= The.cache.keep/i.n:
-  23:         changed = True
-  24:         i._cache[int(rand()*The.cache.keep)] = x
-  25:     if changed:      
-  26:       i._report = None # wipe out 'what follows'
-  27:       i.change(x)
-  28:     return i
-  29:   def any(i):  
-  30:     return  any(i._cache)
-  31:   def has(i):
-  32:     if i._report == None: i._report =  i.report()
-  33:     return i._report
-  34:   def setup(i): pass
-  35:   def change(i,x): pass
+<font color=red>   7:</font> class Log():
+<font color=red>   8:</font>   "Keep a random sample of stuff seen so far."
+<font color=red>   9:</font>   def __init__(i,inits=[],label=''):
+<font color=red>  10:</font>     i.label = label
+<font color=red>  11:</font>     i._cache,i.n,i._report = [],0,None
+<font color=red>  12:</font>     i.setup()
+<font color=red>  13:</font>     map(i.__iadd__,inits)
+<font color=red>  14:</font>   def __iadd__(i,x): #  magic method for "+="
+<font color=red>  15:</font>     if x == None: return x # skip nothing
+<font color=red>  16:</font>     i.n += 1
+<font color=red>  17:</font>     changed = False
+<font color=red>  18:</font>     if len(i._cache) < The.cache.keep: # not full
+<font color=red>  19:</font>       changed = True
+<font color=red>  20:</font>       i._cache += [x]               # then add
+<font color=red>  21:</font>     else: # otherwise, maybe replace an old item
+<font color=red>  22:</font>       if rand() <= The.cache.keep/i.n:
+<font color=red>  23:</font>         changed = True
+<font color=red>  24:</font>         i._cache[int(rand()*The.cache.keep)] = x
+<font color=red>  25:</font>     if changed:      
+<font color=red>  26:</font>       i._report = None # wipe out 'what follows'
+<font color=red>  27:</font>       i.change(x)
+<font color=red>  28:</font>     return i
+<font color=red>  29:</font>   def any(i):  
+<font color=red>  30:</font>     return  any(i._cache)
+<font color=red>  31:</font>   def has(i):
+<font color=red>  32:</font>     if i._report == None: i._report =  i.report()
+<font color=red>  33:</font>     return i._report
+<font color=red>  34:</font>   def setup(i): pass
+<font color=red>  35:</font>   def change(i,x): pass
 ````
 
 ### Num
@@ -145,52 +145,52 @@ A _Num_ is a _Log_ for numbers.
 
 
 ````python
-  36: class Num(Log):
-  37:   def setup(i):
-  38:     i.lo, i.hi = 10**32, -10**32
-  39:     i.lessp = True
-  40:   def change(i,x): # update lo,hi
-  41:     i.lo = min(i.lo, x)
-  42:     i.hi = max(i.hi, x)
-  43:   def norm(i,x): # turn "x" into 0..1
-  44:     return (x - i.lo)/(i.hi - i.lo + 0.000001)
-  45:   def ordered():
-  46:     i.has()
-  47:     return i._cache
-  48:   def report(i): 
-  49:     lst = i._cache = sorted(i._cache)
-  50:     n   = len(lst)     
-  51:     return o(
-  52:       median= i.median(),
-  53:       iqr   = lst[int(n*.75)] - lst[int(n*.5)],
-  54:       lo    = i.lo, 
-  55:       hi    = i.hi)
-  56:   def ish(i,f=0.1): # return a num from  logged dist 
-  57:     return i.any() + f*(i.any() - i.any())
-  58:   def better(new,old):
-  59:     "better if (1)less median or (2)same and less iqr"
-  60:     t = The.misc.a12
-  61:     betterIqr = new.has().iqr < old.has().iqr
-  62:     if new.lessp:
-  63:       betterMed = new.has().median >= old.has().median
-  64:       same      = a12(old._cache, new._cache)  <= t
-  65:     else:
-  66:       betterMed = new.has().median <= old.has().median 
-  67:       same      = a12(new._cache, old._cache) <= t
-  68:     return betterMed, same, betterIqr
-  69:   def median(i):
-  70:     n = len(i._cache)
-  71:     p = n // 2
-  72:     if (n % 2):  return i._cache[p]
-  73:     q = p + 1
-  74:     q = max(0,(min(q,n)))
-  75:     return (i._cache[p] + i._cache[q])/2
-  76: 
-  77: def _num():
-  78:   i = Num([rand()      for _ in xrange(1000)])
-  79:   j = Num([rand()*1.25 for _ in xrange(1000)])
-  80:   print j.same(i)
-  81: 
+<font color=red>  36:</font> class Num(Log):
+<font color=red>  37:</font>   def setup(i):
+<font color=red>  38:</font>     i.lo, i.hi = 10**32, -10**32
+<font color=red>  39:</font>     i.lessp = True
+<font color=red>  40:</font>   def change(i,x): # update lo,hi
+<font color=red>  41:</font>     i.lo = min(i.lo, x)
+<font color=red>  42:</font>     i.hi = max(i.hi, x)
+<font color=red>  43:</font>   def norm(i,x): # turn "x" into 0..1
+<font color=red>  44:</font>     return (x - i.lo)/(i.hi - i.lo + 0.000001)
+<font color=red>  45:</font>   def ordered():
+<font color=red>  46:</font>     i.has()
+<font color=red>  47:</font>     return i._cache
+<font color=red>  48:</font>   def report(i): 
+<font color=red>  49:</font>     lst = i._cache = sorted(i._cache)
+<font color=red>  50:</font>     n   = len(lst)     
+<font color=red>  51:</font>     return o(
+<font color=red>  52:</font>       median= i.median(),
+<font color=red>  53:</font>       iqr   = lst[int(n*.75)] - lst[int(n*.5)],
+<font color=red>  54:</font>       lo    = i.lo, 
+<font color=red>  55:</font>       hi    = i.hi)
+<font color=red>  56:</font>   def ish(i,f=0.1): # return a num from  logged dist 
+<font color=red>  57:</font>     return i.any() + f*(i.any() - i.any())
+<font color=red>  58:</font>   def better(new,old):
+<font color=red>  59:</font>     "better if (1)less median or (2)same and less iqr"
+<font color=red>  60:</font>     t = The.misc.a12
+<font color=red>  61:</font>     betterIqr = new.has().iqr < old.has().iqr
+<font color=red>  62:</font>     if new.lessp:
+<font color=red>  63:</font>       betterMed = new.has().median >= old.has().median
+<font color=red>  64:</font>       same      = a12(old._cache, new._cache)  <= t
+<font color=red>  65:</font>     else:
+<font color=red>  66:</font>       betterMed = new.has().median <= old.has().median 
+<font color=red>  67:</font>       same      = a12(new._cache, old._cache) <= t
+<font color=red>  68:</font>     return betterMed, same, betterIqr
+<font color=red>  69:</font>   def median(i):
+<font color=red>  70:</font>     n = len(i._cache)
+<font color=red>  71:</font>     p = n // 2
+<font color=red>  72:</font>     if (n % 2):  return i._cache[p]
+<font color=red>  73:</font>     q = p + 1
+<font color=red>  74:</font>     q = max(0,(min(q,n)))
+<font color=red>  75:</font>     return (i._cache[p] + i._cache[q])/2
+<font color=red>  76:</font> 
+<font color=red>  77:</font> def _num():
+<font color=red>  78:</font>   i = Num([rand()      for _ in xrange(1000)])
+<font color=red>  79:</font>   j = Num([rand()*1.25 for _ in xrange(1000)])
+<font color=red>  80:</font>   print j.same(i)
+<font color=red>  81:</font> 
 ````
 
 WARNING: the call to _sorted_ in _report()_ makes this code
@@ -208,34 +208,34 @@ A _Sym_ is a _Log_ for non-numerics.
 + Generated symbols from the log by returning symbols at the same probability of the frequency counts (see _ish()_).
 
 ````python
-  82: class Sym(Log):
-  83:   def setup(i):
-  84:     i.counts,i.mode,i.most={},None,0
-  85:   def report(i):
-  86:     for x in i._cache:
-  87:       c = i.counts[x] = i.counts.get(x,0) + 1
-  88:       if c > i.most:
-  89:         i.mode,i.most = x,c
-  90:     return o(dist= i.dist(), 
-  91:               ent = i.entropy(),
-  92:               mode= i.mode)
-  93:   def dist(i):
-  94:     d = i.counts
-  95:     n = sum(d.values())
-  96:     return sorted([(d[k]/n, k) for k in d.keys()], 
-  97:                   reverse=True)
-  98:   def ish(i):
-  99:     r,tmp = rand(),0
- 100:     for w,x in i.has().dist:
- 101:       tmp  += w
- 102:       if tmp >= r: 
- 103:         return x
- 104:     return x
- 105:   def entropy(i,e=0):
- 106:     for k in i.counts:
- 107:       p = i.counts[k]/len(i._cache)
- 108:       e -= p*log2(p) if p else 0
- 109:     return e    
+<font color=red>  82:</font> class Sym(Log):
+<font color=red>  83:</font>   def setup(i):
+<font color=red>  84:</font>     i.counts,i.mode,i.most={},None,0
+<font color=red>  85:</font>   def report(i):
+<font color=red>  86:</font>     for x in i._cache:
+<font color=red>  87:</font>       c = i.counts[x] = i.counts.get(x,0) + 1
+<font color=red>  88:</font>       if c > i.most:
+<font color=red>  89:</font>         i.mode,i.most = x,c
+<font color=red>  90:</font>     return o(dist= i.dist(), 
+<font color=red>  91:</font>               ent = i.entropy(),
+<font color=red>  92:</font>               mode= i.mode)
+<font color=red>  93:</font>   def dist(i):
+<font color=red>  94:</font>     d = i.counts
+<font color=red>  95:</font>     n = sum(d.values())
+<font color=red>  96:</font>     return sorted([(d[k]/n, k) for k in d.keys()], 
+<font color=red>  97:</font>                   reverse=True)
+<font color=red>  98:</font>   def ish(i):
+<font color=red>  99:</font>     r,tmp = rand(),0
+<font color=red> 100:</font>     for w,x in i.has().dist:
+<font color=red> 101:</font>       tmp  += w
+<font color=red> 102:</font>       if tmp >= r: 
+<font color=red> 103:</font>         return x
+<font color=red> 104:</font>     return x
+<font color=red> 105:</font>   def entropy(i,e=0):
+<font color=red> 106:</font>     for k in i.counts:
+<font color=red> 107:</font>       p = i.counts[k]/len(i._cache)
+<font color=red> 108:</font>       e -= p*log2(p) if p else 0
+<font color=red> 109:</font>     return e    
 ````
 
 #### Sym, Example
@@ -249,17 +249,17 @@ From that population, we can generate another distribution that is nearly the sa
     {'plums': 64, 'grapes': 34, 'pears': 30}
 
 ````python
- 110: def symDemo(n1=10,n2=1000):
- 111:   rseed()
- 112:   log= Sym((['plums']*(n1*2)) + ['grapes']*n1 + ['pears']*n1)
- 113:   found= Sym([log.ish() for _ in xrange(n2)])
- 114:   print found.has().dist
- 115:   print found.counts
- 116:   print sum(found.counts.values())
- 117: 
- 118: if __name__ == "__main__": eval(cmd()) 
- 119: 
- 120: 
+<font color=red> 110:</font> def symDemo(n1=10,n2=1000):
+<font color=red> 111:</font>   rseed()
+<font color=red> 112:</font>   log= Sym((['plums']*(n1*2)) + ['grapes']*n1 + ['pears']*n1)
+<font color=red> 113:</font>   found= Sym([log.ish() for _ in xrange(n2)])
+<font color=red> 114:</font>   print found.has().dist
+<font color=red> 115:</font>   print found.counts
+<font color=red> 116:</font>   print sum(found.counts.values())
+<font color=red> 117:</font> 
+<font color=red> 118:</font> if __name__ == "__main__": eval(cmd()) 
+<font color=red> 119:</font> 
+<font color=red> 120:</font> 
 ````
 
 
