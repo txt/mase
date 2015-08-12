@@ -108,6 +108,10 @@ How?
   delete older values).
 
 ````python
+r = random.random
+rseed = random.seed
+
+
 class Some:
   def __init__(i, max=8): # note, usually 256 or 128 or 64 (if brave)
     i.n, i.any, i.max = 0,[],max
@@ -237,9 +241,6 @@ Load some standard tools.
 
 ````python
 
-r = random.random
-rseed = random.seed
-
 class o:
   """Emulate Javascript's uber simple objects.
   Note my convention: I use "`i`" not "`this`."""
@@ -271,15 +272,15 @@ def STRING(str):
     for c in str: yield c
   return wrapper
 
-def FILE(filename, buffersize=4096):
-  def chunks(filename, buffer_size=4096):
+def FILE(filename, buffer_size=4096):
+  def chunks(filename):
     with open(filename, "rb") as fp:
       chunk = fp.read(buffer_size)
       while chunk:
         yield chunk
         chunk = fp.read(buffer_size)
   def wrapper():
-    for chunk in chunks(filename, buffersize):
+    for chunk in chunks(filename):
       for char in chunk:
         yield char
   return wrapper
