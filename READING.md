@@ -83,7 +83,7 @@ Here is a list of what we might find within a paper:
 1. Motivational statements   </td><td>reports or challenge statements or lists of open issues that prompt an analysis;</td></tr>
 <tr><td>2. Hypotheses </td><td>Expected effects in some area;.</td></tr>
 <tr><td>3. Checklists </td><td>Used to design the analysis (see also, the
-<a href="http://atulgawande.com/book/the-checklist-manifesto/">Checklist Manifesto]</a>
+<a href="http://atulgawande.com/book/the-checklist-manifesto/">Checklist Manifesto</a>
 ;.</td></tr>
 <tr><td>4. Related Work </td><td> Comprehensive, annotated, and insightful (e.g. showing the development or open areas in a field);.</td></tr>
 <tr><td>5. Study instruments </td><td>e.g. surveys interview scripts, etc;.</td></tr>
