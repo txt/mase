@@ -18,8 +18,8 @@
    3:   sys.dont_write_bytecode = True
    4:   
    5:   from log  import *
+<a href="optimize.py#L8-L12"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
-<a href="optimize.py#L8-L12">src</a>
 
 
 ## @study: Simulation Experiment Control
@@ -113,8 +113,8 @@ Code:
   22:       showd(The)       # print the options
   23:       print "\n# Runtime: %.3f secs" % (t2-t1)
   24:     return wrapper
+<a href="optimize.py#L88-L106"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
-<a href="optimize.py#L88-L106">src</a>
 
 ## Model Definition
 
@@ -208,8 +208,8 @@ That said, say hello to my little friend:
   65:       return o(x=new)
   66:     def ish(i,it):
   67:       return o(x= [of1.ish() for of1 in i.of.x])
+<a href="optimize.py#L158-L200"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
-<a href="optimize.py#L158-L200">src</a>
 
 Given the above, it is now very succinct to specify
 a _Model_. For example, here's a model with 30 independent

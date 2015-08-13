@@ -33,8 +33,8 @@ Share and enjoy.
    3:   sys.dont_write_bytecode = True
    4:   
    5:   from models import *
+<a href="sa.py#L23-L27"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
-<a href="sa.py#L23-L27">src</a>
 
 ### Code
 
@@ -99,8 +99,8 @@ suppressed via _The.misc.verbose=False_.
   38:         mark = "!"
   39:       burp(mark)
   40:     return sb,eb    
+<a href="sa.py#L58-L92"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
-<a href="sa.py#L58-L92">src</a>
 
 ## Example
 
@@ -119,8 +119,8 @@ Defining a study using _sa_.
   50:     x= g3(sb.x)
   51:     y= g3(sb.y)
   52:     print "\n------\n:e",eb,"\n:y",y,"\n:x",x
+<a href="sa.py#L100-L111"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
-<a href="sa.py#L100-L111">src</a>
 
 Output from the first call:
 

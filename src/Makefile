@@ -44,8 +44,8 @@ define p2md
 		       if (First)   
 			 First = 0   
 		       else   {  
+			 print "<a href=\""name"#L"start+1"-L"NR-1"\"><img align=right src=\"https://raw.githubusercontent.com/txt/mase/master/img/py.png\"></a>"
 			 print "````"
-                         print "<a href=\""name"#L"start+1"-L"NR-1"\">src</a>"
                         }  
 		     next }       
   ! First {  pre = In ? sprintf("% 4s:   ",++line) : ""
