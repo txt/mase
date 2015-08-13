@@ -11,7 +11,7 @@ For example, if you ask new graduate students to read ten papers in a particular
 + It can take a full day to read the first paper.
 + But after reading ten papers, they can do it much faster.
 
-The rest of this page offers
+Since reading is so important, the rest of this page offers
 
 + Notes on [how to read papers, faster](#how-to-read-papers-faster)
 + A [reading assignment](#exercises-in-reading-faster_ that lets students practice their skills.
