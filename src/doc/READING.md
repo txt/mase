@@ -25,7 +25,7 @@ Since reading is so important, the rest of this page offers
 
 ____
 
-<img src="http://b.vimeocdn.com/ps/374/119/3741195_300.jpg">
+<img align=right src="http://b.vimeocdn.com/ps/374/119/3741195_300.jpg">
 
 ## How to Read Papers, Faster
 
@@ -133,7 +133,7 @@ Move 3    Occupying the niche
 
 
 ____
-<img src="http://static.wixstatic.com/media/32845c_242893cc21d949bbb6bfbb3c42c3cece.png_srz_174_246_75_22_0.50_1.20_0.00_png_srz">
+<img align=right src="http://static.wixstatic.com/media/32845c_242893cc21d949bbb6bfbb3c42c3cece.png_srz_174_246_75_22_0.50_1.20_0.00_png_srz">
 
 ## Exercises In Reading Faster
 
