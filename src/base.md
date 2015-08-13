@@ -18,8 +18,8 @@ General utils- should be useful for all Python programs.
    1:   from __future__ import division
    2:   import sys, random, math, datetime, time,re
    3:   sys.dont_write_bytecode = True
-<a href="base.py#L10-L12"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L10-L12"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ## Misc Stuff
 
 ### Everyone needs a logo
@@ -42,8 +42,8 @@ General utils- should be useful for all Python programs.
   18:             c
   19:     """
   20:     print The.misc.copyleft
-<a href="base.py#L19-L35"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L19-L35"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 ### Options Handling
 
@@ -59,8 +59,8 @@ container.
   21:   class o: 
   22:     "Peter Norvig's trick for anonymous containers."
   23:     def __init__(i,**d): i.__dict__.update(d)
-<a href="base.py#L49-L51"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L49-L51"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 For example, here are the options used in this code.
 
@@ -91,8 +91,8 @@ For example, here are the options used in this code.
   47:    (c) 2014, copyright BSD-3, Tim Menzies"""
   48:             )
   49:          )
-<a href="base.py#L57-L82"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L57-L82"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 Here's code to dump nested containers:
 
@@ -113,8 +113,8 @@ Here's code to dump nested containers:
   63:     for k in after: 
   64:         print gap + (':%s' % k)
   65:         showd(d[k],lvl+1)
-<a href="base.py#L88-L103"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L88-L103"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 The above code displays _showd(The)_ as follows:
 
@@ -133,8 +133,8 @@ The above code displays _showd(The)_ as follows:
   68:     for i in lst[1:]:
   69:       yield last,i
   70:       last = i
-<a href="base.py#L118-L122"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L118-L122"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 ### Timing Stuff
 
@@ -144,8 +144,8 @@ The above code displays _showd(The)_ as follows:
   73:     t1 = time.time()
   74:     f()
   75:     return (time.time() - t1) * 1000
-<a href="base.py#L128-L132"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L128-L132"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 ### Random Stuff
 
@@ -156,8 +156,8 @@ The above code displays _showd(The)_ as follows:
   79:   def rseed(seed = None):
   80:     seed = seed or The.misc.seed
   81:     random.seed(seed) 
-<a href="base.py#L138-L143"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L138-L143"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 The above example shows a use of a global option.
 Note that the following alternative for _rseed()_ 
@@ -184,8 +184,8 @@ seed you change at run time).
   91:   def mron(x,lo,hi):
   92:     "Generate a num 1..0 for lo..hi"
   93:     return 1 - norm(x,lo,hi)
-<a href="base.py#L159-L170"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L159-L170"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 ### Printing stuff
 
@@ -211,8 +211,8 @@ seed you change at run time).
  112:   def x(n):
  113:     "Shorthand for short floats"
  114:     return ':%3.1f' % n
-<a href="base.py#L176-L196"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L176-L196"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 The following convenience functions print a list
 of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
@@ -221,8 +221,8 @@ of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
  115:   def g0(lst): return gn(lst,0)
  116:   def g2(lst): return gn(lst,2)
  117:   def g3(lst): return gn(lst,3)
-<a href="base.py#L203-L205"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L203-L205"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 ### Printing a xtile chart.
 
@@ -256,8 +256,8 @@ of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
  144:     out[int(width/2)]    = bar
  145:     out[place(pos(0.5))] = star 
  146:     return ''.join(out) +  "," +  pretty(what)
-<a href="base.py#L211-L239"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L211-L239"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 For example, the example displays 1000 random numbers as follows:
 
@@ -269,8 +269,8 @@ For example, the example displays 1000 random numbers as follows:
  149:     random.seed(1)
  150:     nums = [random.random()**2 for _ in range(100)]
  151:     print xtile(nums,lo=0,hi=1.0,width=25,show=" %3.2f")
-<a href="base.py#L247-L251"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L247-L251"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 ## Coercion
 
@@ -281,8 +281,8 @@ For example, the example displays 1000 random numbers as follows:
  155:     except ValueError:
  156:       try : return float(x)
  157:       except ValueError: return x
-<a href="base.py#L257-L262"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L257-L262"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 
 ### Command line processing ########################
 
@@ -296,8 +296,8 @@ For example, consider the following function:
  159:   def cmdDemo(who='Tim', when=2015, where='Raleigh'):
  160:     says(':who',who,':when',when,':where',where,nl)
  161:   
-<a href="base.py#L273-L276"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 ````
+<a href="base.py#L273-L276"><img align=right src="https://raw.githubusercontent.com/txt/mase/master/img/py.png"></a>
 If this function is in a file with the last line:
 
     if __name__ == "__main__": eval(cmd())
