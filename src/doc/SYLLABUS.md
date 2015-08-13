@@ -28,13 +28,13 @@ src="http://www.csc.ncsu.edu/enews/images/1770.jpg"
 align=right
 width=100>
 
++ Office Hours: Thursday, 3:30-5:00 and by request
++ Location of Office Hours: EE II room 3298 
 + E-Mail: tim.menzies@gmail.com 
   + Only use this email for private matters. All other class communication should be via the class news group,    listed below.
 + Phone: 304-376-2859
        + **Do not use** this number, except in the most dire of 
           circumstances (best way to contact me is via email).
-+ Office Hours: Thursday, 3:30-5:00 and by request
-+ Location of Office Hours: EE II room 3298 
 
 **GTA:** Rahul Krishna <img
 src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/0a4/3d6/04b9ea9.jpg"
