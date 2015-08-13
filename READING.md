@@ -6,7 +6,6 @@
 [Lecturer](http://menzies.us) 
 
 
-<img src="img/dogreading.jpg" align=right>
 
 # Read123456789: reading research papers
 
