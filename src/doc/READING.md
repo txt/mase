@@ -14,7 +14,7 @@ For example, if you ask new graduate students to read ten papers in a particular
 Since reading is so important, the rest of this page offers
 
 + Notes on [how to read papers, faster](#how-to-read-papers-faster)
-+ A [reading assignment](#exercises-in-reading-faster_ that lets students practice their skills.
++ A [reading assignment](#exercises-in-reading-faster) that lets students practice their skills.
     + For a _fast-path_ assignment for newbies, lecturers could assign parts [one](#part1-learn-historical-context)
       and [two](#part2-identify-reusable-data) of
       that assignment, over a 2-3 week period.
