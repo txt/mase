@@ -57,6 +57,7 @@ define p2md
                lines = lines "\n" line
              else
                print line
+          }
   END     { if (In ) print "````"
             if (!Once) print "```"  
 }

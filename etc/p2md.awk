@@ -28,6 +28,7 @@
 " line
              else
                print line
+          }
   END     { if (In ) print "````"
             if (!Once) print "```"  
 }
