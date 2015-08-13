@@ -23,6 +23,10 @@ Since reading is so important, the rest of this page offers
 	  and [three](#part3-track-advances) and [four](#part4-one-big-essay), 
 	  spread over a one semester (one paper per week, essay at end-of-semester)
 
+____
+
+<img src="http://b.vimeocdn.com/ps/374/119/3741195_300.jpg">
+
 ## How to Read Papers, Faster
 
 There are four keys to reading papers faster:
@@ -127,6 +131,9 @@ Move 3    Occupying the niche
   - Step 2: State the principal findings of the essay—what the reader can expect the essay/research will have accomplished for them by the time they get to the end
   - Step 3: Indicate, roughly, the structure of the essay—what will appear in it and in what order
 
+
+____
+<img src="http://static.wixstatic.com/media/32845c_242893cc21d949bbb6bfbb3c42c3cece.png_srz_174_246_75_22_0.50_1.20_0.00_png_srz">
 
 ## Exercises In Reading Faster
 
