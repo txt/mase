@@ -6,6 +6,10 @@
 [Lecturer](http://menzies.us) 
 
 
+<a href="rank.py#L1-L45"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+
+```
 ```
 
 

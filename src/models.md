@@ -66,6 +66,30 @@ The following models return generators for attribute values
 divided into independent values (in "_x_") and
 dependent values (in "_y_").
 
+<a href="models.py#L59-L77"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+
+   1:   
+   2:   class Schaffer(Model):
+   3:     def spec(i):
+   4:       return o(x= [In(-5,5,0)],
+   5:                y= [i.f1,i.f2])
+   6:     def f1(i,it):
+   7:       x=it.x[0]; return x**2
+   8:     def f2(i,it):
+   9:       x=it.x[0]; return (x-2)**2
+  10:   
+  11:   class ZDT1(Model):
+  12:     def spec(i):
+  13:       return o(x= [In(0,1,z) for z in range(30)],
+  14:                 y= [i.f1,i.f2])
+  15:     def f1(i,it):
+  16:       return it.x[0]
+  17:     def f2(i,it):
+  18:       return 1 + 9*sum(it.x[1:]) / 29
+  19:   
+  20:   if __name__ == "__main__": eval(cmd())
+```
 
 
 _________

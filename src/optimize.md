@@ -233,6 +233,68 @@ idea: _In_ is something that ranges from zero to one.
 
 ## Optimization Control
 
+<a href="optimize.py#L224-L280"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+
+   1:   class Watch(object):
+   2:     def __iter__(i): 
+   3:       return i
+   4:     def __init__(i,model,history=None):
+   5:       i.early   = The.misc.early  
+   6:       i.history = {} if history == None else history
+   7:       i.log     = {}
+   8:       i.most, i.model = The.sa.kmax, model
+   9:       i.step, i.era  = 1,1
+  10:     def logIT(i,result):
+  11:       """ Each recorded result is one clock tick.
+  12:           Record all results in log and history"""
+  13:       both = [i.history, i.log]     
+  14:       for log in both:
+  15:         if not i.era in log:
+  16:           log[i.era] = i.model.cloneIT()
+  17:       i.step += 1
+  18:       for log in both:
+  19:         log[i.era].logIT(result)
+  20:     def stop(i):
+  21:       """if more than two eras, suggest
+  22:          stopping if no improvement."""
+  23:       if len(i.log) >= The.misc.early:
+  24:         #print 3
+  25:         now = i.era
+  26:         before = now - The.misc.era
+  27:         beforeLog = i.log[before]
+  28:         nowLog    = i.log[now]
+  29:         if not nowLog.better(beforeLog):
+  30:           #print 4
+  31:           return True
+  32:       return False
+  33:     def next(i):
+  34:       "return next time tick, unless we need to halt."
+  35:       if i.step > i.most: # end of run!
+  36:         raise StopIteration()
+  37:       if i.step >= i.era:   # pause to reflect
+  38:         #print 1, i.step, i.era
+  39:         if i.early > 0:     # maybe exit early
+  40:           #print 2
+  41:           if i.stop():        
+  42:              raise StopIteration()
+  43:         i.era += The.misc.era   # set next pause point
+  44:       return i.step,i
+  45:   
+  46:   def optimizeReport(m,history):
+  47:     for z,header in enumerate(m.log.y):
+  48:       print "\nf%s" % z
+  49:       for era in sorted(history.keys()):
+  50:         log = history[era].log.y[z]
+  51:         log.has()
+  52:         print str(era-1).rjust(7),\
+  53:               xtile(log._cache,
+  54:                     width=33,
+  55:                     show="%5.2f",
+  56:                     lo=0,hi=1)
+  57:   
+  58:   if __name__ == "__main__": eval(cmd())
+```
 
 
 _________

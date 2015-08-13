@@ -256,6 +256,21 @@ From that population, we can generate another distribution that is nearly the sa
     (0.5, 'plums'), (0.265625, 'grapes'), (0.234375, 'pears')]
     {'plums': 64, 'grapes': 34, 'pears': 30}
 
+<a href="log.py#L245-L254"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+
+   1:   def symDemo(n1=10,n2=1000):
+   2:     rseed()
+   3:     log= Sym((['plums']*(n1*2)) + ['grapes']*n1 + ['pears']*n1)
+   4:     found= Sym([log.ish() for _ in xrange(n2)])
+   5:     print found.has().dist
+   6:     print found.counts
+   7:     print sum(found.counts.values())
+   8:   
+   9:   if __name__ == "__main__": eval(cmd()) 
+  10:   
+  11:   
+```
 
 
 _________

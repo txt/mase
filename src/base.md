@@ -330,6 +330,30 @@ order to those seen in the function header.  Also,
 if you do not mention some argument, it is filled in
 from the function defaults.
 
+<a href="base.py#L297-L315"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+
+   1:   def cmd(com='logo()'):
+   2:     "Convert command line to a function call."
+   3:     if len(sys.argv) < 2: return com
+   4:     def strp(x): return isinstance(x,basestring)
+   5:     def wrap(x): return "'%s'"%x if strp(atom(x)) else str(x)  
+   6:     thing=None; chars=""; sep=""; keyp=True
+   7:     for word in sys.argv[2:]:
+   8:       if keyp:
+   9:         thing = word
+  10:       else:
+  11:         chars = chars+sep+thing+' = '+wrap(word)+' '
+  12:         sep = ","
+  13:       keyp = not keyp
+  14:     chars = sys.argv[1] + '( **dict(' + chars + '))'
+  15:     return chars
+  16:   
+  17:   def cmdDemo(who='Tim', when=2015, where='Raleigh'):
+  18:     says(':who',who,':when',when,':where',where,nl)
+  19:   
+  20:   if __name__ == "__main__": eval(cmd())
+```
 
 
 _________

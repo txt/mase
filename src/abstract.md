@@ -470,6 +470,44 @@ if I sample that distribution twice, once to `s1` and once to `s3`.
 
 For the results of the following code, see the top of this file.
 
+<a href="abstract.py#L445-L477"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+
+   1:   def samples(m0=128,f=random.random):
+   2:     print("\n         \t    diff to all    \t    \t     diff to all")
+   3:     print("         \t -------------------\t    \t -------------------")
+   4:     print("all kept \t 10% 30% 50% 70% 90%\t kept\t 10% 30% 50% 70% 90%")
+   5:     print("--- ---- \t --- --- --- --- ---\t ----\t --- --- --- --- ---")
+   6:     m = m0
+   7:     for _ in xrange(7):
+   8:       m = m * 2
+   9:       n = min(m0,m)
+  10:       s1,s2,s3 = Some(m), Some(n),Some(m)
+  11:       for _ in xrange(m):
+  12:         x,y = f(),f()
+  13:         s1 += x
+  14:         s2 += x
+  15:         s3 += y
+  16:       print(m,"",n, "\t",diff(s1,s2),"\t",m,"\t",diff(s1,s3))
+  17:   
+  18:   def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
+  19:     "Return percentiles in a list"
+  20:     at  = lambda x: lst[ int(len(lst)*x) ]
+  21:     return [ at(tile) for tile in tiles ]
+  22:     
+  23:   def diff(s1,s2):
+  24:     "Return difference in the percentiles"
+  25:     return [ abs(int(100*(most-less)))
+  26:              for most,less in
+  27:              zip(ntiles(sorted(s1.any)),
+  28:                        ntiles(sorted(s2.any))) ]
+  29:   
+  30:   @ok
+  31:   def _samples():
+  32:     rseed(1)
+  33:     for x in [64,128,256,512]:
+  34:       samples(x)
+```
 
 
 _________

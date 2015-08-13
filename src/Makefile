@@ -58,7 +58,13 @@ define p2md
              else
                print line
           }
-  END     { #if (In ) print "````"
+  END     {  if (In ) {
+                  print "<a href=\""name"#L"start+1"-L"NR-1"\"><img align=right src=\"http://www.hungarianreference.com/i/arrow_out.gif\"></a><br clear=all>"
+                         print "```python"
+                         print lines
+                         lines=""
+                         print "```"
+             }
             if (!Once) print "```"  
 }
 endef

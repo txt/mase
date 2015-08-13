@@ -198,6 +198,12 @@ Output from the second call:
         :baseline 100 :cooling 0.6 :kmax 1000 :patience 250 
     
     # Runtime: 0.011 secs
+<a href="sa.py#L189-L189"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+
+   1:   
+   2:   if __name__ == "__main__": eval(cmd())
+```
 
 
 _________
