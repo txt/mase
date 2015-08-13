@@ -45,7 +45,7 @@ taken by the authors.
 paper into the context of other work. 
 + _Feature extraction:_  Experts are experts at anything since they know what to look for, and what can be skipped over. This is true for many tasks, including reading:
     + Experts do not read entire papers, word for word.
-    + Rather, they hunt and peek looking for [certain key features](READINGrubric.md).
+    + Rather, they hunt and peek looking for certain key features (which we number below as 1 to 29).
 
 ### Feature extraction, details
 
@@ -129,22 +129,26 @@ _The following notes on "parts of a paper"  are taken from the [excellent notes 
 
 When reading a paper, take care to note:
 
-+ The thesis being investigated 
-+ The contribution 
-+ The method of investigation 
-+ The “power” of the results
-+ The applicability of the results 
-+ Summary of the technical development 
-+ Details of any examples 
++ Items 1 to 29, listed above.
++ Comments on:
+  + The thesis being investigated 
+  + The contribution 
+  + The method of investigation 
+  + The “power” of the results
+  + The applicability of the results 
+  + Summary of the technical development 
+  + Details of any examples
 
-In a _first pass_ of a paper, skim over
+
+So a _first pass_ of a paper, skim over to find
 
 + The abstract, 
 (to determine relevance
-to determine kind of paper)
+to determine kind of paper);
 + Pictures
 tables, graphs, and diagrams
-concepts (just to get the big picture)
+concepts (just to get the big picture);
++ Any of the items 1 to 29 listed above;
 + References (do you recognize them?)
 
 
@@ -219,7 +223,7 @@ Notes:
 + By _summarize parts_ we mean write 500 to 1000 words  on text:
     + Starting with  a clear reference to the paper
     + Write down the four most important keywords in the paper, plus a two line definition of each.
-    + Offer very brief notes on any half dozen of the items listed  [here](READINGrubric.md).
+    + Offer very brief notes on any half dozen of the items listed  as 1 to 29 (above).
     + For Two,Three,Four, etc also comment on the connection to the other papers.
     + Do you know how long 1000 words is? About as long as this page. So you
 	want to write something half this size.
@@ -262,7 +266,7 @@ engineering issue.
 
 + 10 pages, 2 columns,  using the Word or Latex formats shown in [this page](https://www.acm.org/sigs/publications/proceedings-templates).
 + Include at least 20 references, eight of which you studied above while the others are related work (or, indeed, far flung work that you think _should_ be connected to your eight but , so far, no one has done so).
-+ Mention as many as possible of items listed [here]READINGrubric.md).
++ Mention as many as possible of items listed 1 to 29, above.
 
 Note that, for this essay, the keyword definitions you generated above will become the core of your related work section.
 
