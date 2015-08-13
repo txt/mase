@@ -68,11 +68,10 @@ to understand those (small) parts. But otherwise, we need to read _over_ papers,
 
 ### Rhetorical Strategies: details
 
-### Parts of a Paper
+#### Parts of a Paper
 
 
-_The following notes on "parts of a paper"  are taken 
-from the [excellent notes by Tim Sheard and Todd Leen](http://web.cecs.pdx.edu/~sheard/course/SkolSkillsW06/LectureNotes/l02Read.ppt).
+_The following notes on "parts of a paper"  are taken from the [excellent notes by Tim Sheard and Todd Leen](http://web.cecs.pdx.edu/~sheard/course/SkolSkillsW06/LectureNotes/l02Read.ppt)._
 
 When reading a paper, take care to note:
 
