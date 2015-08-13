@@ -37,7 +37,6 @@ define p2md
   /^"""/	  {  Once = 1
                      In = 1 - In       
 		     if (In) {
-		       print "````python"
                        start = NR
 		     }
                      else	  
@@ -46,10 +45,18 @@ define p2md
 		       else   {  	 
 			 print "````"
 	                 print "<a href=\""name"#L"start+1"-L"NR-1"\"><img src=\"http://www.craiggiven.com/textfile_icon.gif\"></a><br clear=all>"
+                         print "```python"
+                         print lines
+                         lines=""
+                         print "```"
                         }  
 		     next }       
   ! First {  pre = In ? sprintf("% 4s:   ",++line) : ""
-             print pre $$0 }       
+             line =  pre $$0
+             if (In) 
+               lines = lines "\n" line
+             else
+               print line
   END     { if (In ) print "````"
             if (!Once) print "```"  
 }
