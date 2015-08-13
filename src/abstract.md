@@ -55,7 +55,6 @@ print("lift off!")
 
 And here's my favorite iterator that descends recursive lists:
 
-````
 <a href="abstract.py#L56-L62"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -116,7 +115,6 @@ How?
   Specifically, keep up to `max` things (and if we see more than that,
   delete older values).
 
-````
 <a href="abstract.py#L114-L139"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -206,7 +204,6 @@ all kept   10% 30% 50% 70% 90%  kept   10% 30% 50% 70% 90%
 
 14 items: 9 examples of playing golf, 5 of not playing golf.
 
-````
 <a href="abstract.py#L201-L222"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -253,7 +250,6 @@ Lets handle all that mess with iterators.
 
 Load some standard tools.
 
-````
 <a href="abstract.py#L245-L260"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -282,7 +278,6 @@ or anything source at all.
 
 Not for beginners.
 
-````
 <a href="abstract.py#L271-L287"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -311,7 +306,6 @@ Not for beginners.
 
 Yield each line in a string
 
-````
 <a href="abstract.py#L297-L312"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -338,7 +332,6 @@ Yield each line in a string
 Yield all non-blank lines,
 joining lines that end in ','.
 
-````
 <a href="abstract.py#L321-L337"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -366,7 +359,6 @@ joining lines that end in ','.
 Coerce row values to floats, ints or strings. 
 Jump over any cols we are ignoring
 
-````
 <a href="abstract.py#L346-L352"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -381,7 +373,6 @@ Jump over any cols we are ignoring
 
 Helper function.
 
-````
 <a href="abstract.py#L358-L362"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -394,7 +385,6 @@ Helper function.
 
 Test function.
 
-````
 <a href="abstract.py#L368-L371"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -412,7 +402,6 @@ Tables keep `Some` values for each column in a string.
 Assumes that the string contains a `klass` column
 and keeps separate counts for each `klass`.
 
-````
 <a href="abstract.py#L383-L396"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -438,7 +427,6 @@ Helper functions:
   seen that klass before, create a list of `Some` counters
   (one for each column).
 
-````
 <a href="abstract.py#L406-L417"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -458,7 +446,6 @@ Helper functions:
 
 Test functions: read from strings or files.
 
-````
 <a href="abstract.py#L423-L433"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 

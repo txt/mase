@@ -11,7 +11,6 @@
 
 ## Standard Header
 
-````
 <a href="models.py#L8-L12"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -40,7 +39,6 @@ For example:
 
 Code:
 
-````
 <a href="models.py#L34-L43"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 

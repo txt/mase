@@ -26,7 +26,6 @@ Share and enjoy.
 
 
 ### Standard Headers
-````
 <a href="sa.py#L23-L27"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -64,7 +63,6 @@ that _The.sa.kmax_ iterations.
 Finally, the _burp_ function prints some output- which can
 suppressed via _The.misc.verbose=False_.
 
-````
 <a href="sa.py#L58-L92"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -109,7 +107,6 @@ suppressed via _The.misc.verbose=False_.
 
 Defining a study using _sa_.
 
-````
 <a href="sa.py#L100-L111"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 

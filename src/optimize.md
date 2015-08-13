@@ -11,7 +11,6 @@
 
 ### Standard Header
 
-````
 <a href="optimize.py#L8-L12"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -94,7 +93,6 @@ When run, this generates the following output:
 
 Code:
 
-````
 <a href="optimize.py#L88-L106"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -167,7 +165,6 @@ So, two solutions to this:
 
 That said, say hello to my little friend:
 
-````
 <a href="optimize.py#L158-L200"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 

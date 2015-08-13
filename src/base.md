@@ -13,7 +13,6 @@ General utils- should be useful for all Python programs.
 
 ## Standard Header
 
-````
 <a href="base.py#L10-L12"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -25,7 +24,6 @@ General utils- should be useful for all Python programs.
 
 ### Everyone needs a logo
 
-````
 <a href="base.py#L19-L35"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -58,7 +56,6 @@ dump of the options used in that run.
 _TRICK_: store the options in a nested anonymous
 container.
 
-````
 <a href="base.py#L49-L51"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -69,7 +66,6 @@ container.
 
 For example, here are the options used in this code.
 
-````
 <a href="base.py#L57-L82"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -103,7 +99,6 @@ For example, here are the options used in this code.
 
 Here's code to dump nested containers:
 
-````
 <a href="base.py#L88-L103"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -136,7 +131,6 @@ The above code displays _showd(The)_ as follows:
 
 ### Iterators ######################################
 
-````
 <a href="base.py#L118-L122"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -149,7 +143,6 @@ The above code displays _showd(The)_ as follows:
 
 ### Timing Stuff
 
-````
 <a href="base.py#L128-L132"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -162,7 +155,6 @@ The above code displays _showd(The)_ as follows:
 
 ### Random Stuff
 
-````
 <a href="base.py#L138-L143"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -186,7 +178,6 @@ seed you change at run time).
 
 ### Maths Stuff
 
-````
 <a href="base.py#L159-L170"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -206,7 +197,6 @@ seed you change at run time).
 
 ### Printing stuff
 
-````
 <a href="base.py#L176-L196"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -236,7 +226,6 @@ seed you change at run time).
 The following convenience functions print a list
 of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
 
-````
 <a href="base.py#L203-L205"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -247,7 +236,6 @@ of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
 
 ### Printing a xtile chart.
 
-````
 <a href="base.py#L211-L239"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -286,7 +274,6 @@ For example, the example displays 1000 random numbers as follows:
 
     ---   *     |------      , 0.01,  0.15,  0.26,  0.52,  0.79
 
-````
 <a href="base.py#L247-L251"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -299,7 +286,6 @@ For example, the example displays 1000 random numbers as follows:
 
 ## Coercion
 
-````
 <a href="base.py#L257-L262"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
@@ -318,7 +304,6 @@ defaults.
 
 For example, consider the following function:
 
-````
 <a href="base.py#L273-L276"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 

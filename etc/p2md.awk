@@ -13,7 +13,7 @@
 		       if (First)   
 			 First = 0   
 		       else   {  	 
-			 print "````"
+			 
 	                 print "<a href=\""name"#L"start+1"-L"NR-1"\"><img src=\"http://www.craiggiven.com/textfile_icon.gif\"></a><br clear=all>"
                          print "```python"
                          print lines
