@@ -46,7 +46,7 @@ define p2md
 		       else   {  
 			 
 			 print "````"
-	print "<a href=\""name"#L"start+1"-L"NR-1"\"><img align=right src=\"https://raw.githubusercontent.com/txt/mase/master/img/py.png\"></a>"
+	print "<a href=\""name"#L"start+1"-L"NR-1"\"><img align=right src=\"http://www.hypercosm.com/google_code/images/source_code_icon.jpg\"></a><br clear=all>"
                         }  
 		     next }       
   ! First {  pre = In ? sprintf("% 4s:   ",++line) : ""
