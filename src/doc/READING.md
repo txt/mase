@@ -13,13 +13,14 @@ For example, if you ask new graduate students to read ten papers in a particular
 
 The rest of this page offers
 
-+ Notes on how to read papers, faster
-+ A reading assignment that lets students practice their skills.
-    + For a _fast-path_ assignment for newbies, lecturers could assign parts [one](#part1-learn-historical-context) and [two](#part2-identify-reusable-data) of
++ Notes on [how to read papers, faster](#how-to-read-papers-faster)
++ A [reading assignment](#exercises-in-reading-faster_ that lets students practice their skills.
+    + For a _fast-path_ assignment for newbies, lecturers could assign parts [one](#part1-learn-historical-context)
+      and [two](#part2-identify-reusable-data) of
       that assignment, over a 2-3 week period.
 	+ For a more _advanced_ assignment, lecturers could assign parts
-	[one](#part1-learn-historical-context) and [two](#part2-identify-reusable-data)
-	 and [three](#part3-track-advances) and [four](#part4-one-big-essay), 
+	  [one](#part1-learn-historical-context) and [two](#part2-identify-reusable-data)
+	  and [three](#part3-track-advances) and [four](#part4-one-big-essay), 
 	  spread over a one semester (one paper per week, essay at end-of-semester)
 
 ## How to Read Papers, Faster
@@ -59,7 +60,36 @@ to understand those (small) parts. But otherwise, we need to read _over_ papers,
 
 ### Rhetorical Strategies: details
 
-_The following notes of "Swales' Three-Move Model" are taken from [notes by James Luberda](http://www.sp.uconn.edu/~jbl00001/swales_cars_introductions_model.htm)._
+### Parts of a Paper
+
+
+_The following notes on "parts of a paper"  are taken 
+from the [excellent notes by Tim Sheard and Todd Leen](http://web.cecs.pdx.edu/~sheard/course/SkolSkillsW06/LectureNotes/l02Read.ppt).
+
+When reading a paper, take care to note:
+
++ The thesis being investigated 
++ The contribution 
++ The method of investigation 
++ The “power” of the results
++ The applicability of the results 
++ Summary of the technical development 
++ Details of any examples 
+
+In a _first pass_ of a paper, skim over
+
++ The abstract, 
+(to determine relevance
+to determine kind of paper)
++ Pictures
+tables, graphs, and diagrams
+concepts (just to get the big picture)
++ References (do you recognize them?)
+
+
+### Swales' Three-Move Model
+
+_The following notes on "Swales' Three-Move Model" are taken from the [excellent notes by James Luberda](http://www.sp.uconn.edu/~jbl00001/swales_cars_introductions_model.htm)._
 
 The following is based upon an empirically-derived
 model of how “real-world” research article
@@ -76,14 +106,14 @@ reading and comprehension.
 writer will make to have a particular effect on the
 reader. 
  
-#### Move 1    Establishing a territory
+Move 1    Establishing a territory
 
 - In this opening move, the writer may do one or more of the following to broadly sketch out where the  subject of his/her essay falls—the “big picture”
   - Point out the importance of the general subject
   - Make generalizations about the subject
   - Review items of previous research
 
-#### Move 2    Establishing a niche
+Move 2    Establishing a niche
 
 - In this move, the writer then indicates to the reader the particular area of the broader subject that the essay will deal with. This can be done using one or more of the following:
   -   Make a counter-claim, i.e. assert something contrary to expectations
@@ -91,7 +121,7 @@ reader.
   -  Raise a question about existing research/thinking
   -  Suggest the essay is continuing a tradition, i.e. it is following in the footsteps of previous research/thinking
 
-#### Move 3    Occupying the niche
+Move 3    Occupying the niche
 
 - In this move, the writer then sketches out exactly what this particular essay will accomplish in relation to move2, and gives the reader a sense of how the essay will proceed. In general, each of the steps below will appear in this move, in order:
   - Step 1: Outline the purpose of the essay, or state the research that was pursued
