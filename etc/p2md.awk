@@ -15,7 +15,7 @@
 			 First = 0   
 		       else   {  
 			 print "````"
-                         print "<a href=\""name":L-"start":L-"NR"\">src</a>"
+                         print "<a href=\""name"#L"start"-L"NR"\">src</a>"
                         }  
 		     next }       
   ! First {  pre = In ? sprintf("% 4s:   ",++line) : ""

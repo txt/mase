@@ -100,7 +100,7 @@ sample can offer a useful approximation to a seemingly complex process.
    5:   from stats import *
    6:   from a12 import *
 ````
-<a href="log.py:L-87:L-94">src</a>
+<a href="log.py#L87-L94">src</a>
 ## Classes
 
 ### Base Class: "Log"
@@ -136,7 +136,7 @@ sample can offer a useful approximation to a seemingly complex process.
   34:     def setup(i): pass
   35:     def change(i,x): pass
 ````
-<a href="log.py:L-99:L-129">src</a>
+<a href="log.py#L99-L129">src</a>
 
 ### Num
 
@@ -195,7 +195,7 @@ A _Num_ is a _Log_ for numbers.
   80:     print j.same(i)
   81:   
 ````
-<a href="log.py:L-140:L-187">src</a>
+<a href="log.py#L140-L187">src</a>
 
 WARNING: the call to _sorted_ in _report()_ makes this code
 a candidate for a massive CPU suck (it is always sorting newly arrived data).
@@ -241,7 +241,7 @@ A _Sym_ is a _Log_ for non-numerics.
  108:         e -= p*log2(p) if p else 0
  109:       return e    
 ````
-<a href="log.py:L-203:L-232">src</a>
+<a href="log.py#L203-L232">src</a>
 
 #### Sym, Example
 

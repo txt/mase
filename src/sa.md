@@ -34,7 +34,7 @@ Share and enjoy.
    4:   
    5:   from models import *
 ````
-<a href="sa.py:L-22:L-28">src</a>
+<a href="sa.py#L22-L28">src</a>
 
 ### Code
 
@@ -100,7 +100,7 @@ suppressed via _The.misc.verbose=False_.
   39:       burp(mark)
   40:     return sb,eb    
 ````
-<a href="sa.py:L-57:L-93">src</a>
+<a href="sa.py#L57-L93">src</a>
 
 ## Example
 
@@ -120,7 +120,7 @@ Defining a study using _sa_.
   51:     y= g3(sb.y)
   52:     print "\n------\n:e",eb,"\n:y",y,"\n:x",x
 ````
-<a href="sa.py:L-99:L-112">src</a>
+<a href="sa.py#L99-L112">src</a>
 
 Output from the first call:
 

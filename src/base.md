@@ -19,7 +19,7 @@ General utils- should be useful for all Python programs.
    2:   import sys, random, math, datetime, time,re
    3:   sys.dont_write_bytecode = True
 ````
-<a href="base.py:L-9:L-13">src</a>
+<a href="base.py#L9-L13">src</a>
 ## Misc Stuff
 
 ### Everyone needs a logo
@@ -43,7 +43,7 @@ General utils- should be useful for all Python programs.
   19:     """
   20:     print The.misc.copyleft
 ````
-<a href="base.py:L-18:L-36">src</a>
+<a href="base.py#L18-L36">src</a>
 
 ### Options Handling
 
@@ -60,7 +60,7 @@ container.
   22:     "Peter Norvig's trick for anonymous containers."
   23:     def __init__(i,**d): i.__dict__.update(d)
 ````
-<a href="base.py:L-48:L-52">src</a>
+<a href="base.py#L48-L52">src</a>
 
 For example, here are the options used in this code.
 
@@ -92,7 +92,7 @@ For example, here are the options used in this code.
   48:             )
   49:          )
 ````
-<a href="base.py:L-56:L-83">src</a>
+<a href="base.py#L56-L83">src</a>
 
 Here's code to dump nested containers:
 
@@ -114,7 +114,7 @@ Here's code to dump nested containers:
   64:         print gap + (':%s' % k)
   65:         showd(d[k],lvl+1)
 ````
-<a href="base.py:L-87:L-104">src</a>
+<a href="base.py#L87-L104">src</a>
 
 The above code displays _showd(The)_ as follows:
 
@@ -134,7 +134,7 @@ The above code displays _showd(The)_ as follows:
   69:       yield last,i
   70:       last = i
 ````
-<a href="base.py:L-117:L-123">src</a>
+<a href="base.py#L117-L123">src</a>
 
 ### Timing Stuff
 
@@ -145,7 +145,7 @@ The above code displays _showd(The)_ as follows:
   74:     f()
   75:     return (time.time() - t1) * 1000
 ````
-<a href="base.py:L-127:L-133">src</a>
+<a href="base.py#L127-L133">src</a>
 
 ### Random Stuff
 
@@ -157,7 +157,7 @@ The above code displays _showd(The)_ as follows:
   80:     seed = seed or The.misc.seed
   81:     random.seed(seed) 
 ````
-<a href="base.py:L-137:L-144">src</a>
+<a href="base.py#L137-L144">src</a>
 
 The above example shows a use of a global option.
 Note that the following alternative for _rseed()_ 
@@ -185,7 +185,7 @@ seed you change at run time).
   92:     "Generate a num 1..0 for lo..hi"
   93:     return 1 - norm(x,lo,hi)
 ````
-<a href="base.py:L-158:L-171">src</a>
+<a href="base.py#L158-L171">src</a>
 
 ### Printing stuff
 
@@ -212,7 +212,7 @@ seed you change at run time).
  113:     "Shorthand for short floats"
  114:     return ':%3.1f' % n
 ````
-<a href="base.py:L-175:L-197">src</a>
+<a href="base.py#L175-L197">src</a>
 
 The following convenience functions print a list
 of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
@@ -222,7 +222,7 @@ of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
  116:   def g2(lst): return gn(lst,2)
  117:   def g3(lst): return gn(lst,3)
 ````
-<a href="base.py:L-202:L-206">src</a>
+<a href="base.py#L202-L206">src</a>
 
 ### Printing a xtile chart.
 
@@ -257,7 +257,7 @@ of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
  145:     out[place(pos(0.5))] = star 
  146:     return ''.join(out) +  "," +  pretty(what)
 ````
-<a href="base.py:L-210:L-240">src</a>
+<a href="base.py#L210-L240">src</a>
 
 For example, the example displays 1000 random numbers as follows:
 
@@ -270,7 +270,7 @@ For example, the example displays 1000 random numbers as follows:
  150:     nums = [random.random()**2 for _ in range(100)]
  151:     print xtile(nums,lo=0,hi=1.0,width=25,show=" %3.2f")
 ````
-<a href="base.py:L-246:L-252">src</a>
+<a href="base.py#L246-L252">src</a>
 
 ## Coercion
 
@@ -282,7 +282,7 @@ For example, the example displays 1000 random numbers as follows:
  156:       try : return float(x)
  157:       except ValueError: return x
 ````
-<a href="base.py:L-256:L-263">src</a>
+<a href="base.py#L256-L263">src</a>
 
 ### Command line processing ########################
 
@@ -297,7 +297,7 @@ For example, consider the following function:
  160:     says(':who',who,':when',when,':where',where,nl)
  161:   
 ````
-<a href="base.py:L-272:L-277">src</a>
+<a href="base.py#L272-L277">src</a>
 If this function is in a file with the last line:
 
     if __name__ == "__main__": eval(cmd())
