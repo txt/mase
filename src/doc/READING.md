@@ -20,7 +20,7 @@ The rest of this page offers
 	+ For a more _advanced_ assignment, lecturers could assign parts
 	[one](#part1-learn-historical-context) and [two](#part2-identify-reusable-data)
 	 and [three](#part3-track-advances) and [four](#part4-one-big-essay), 
-	  spread over a one semester/
+	  spread over a one semester (one paper per week, essay at end-of-semester)
 
 ## How to Read Papers, Faster
 
@@ -110,16 +110,16 @@ We offer below
 
 In the following, anything shown _in italics_ is explained below.
 
-+ Week1: Find a highly cited paper from the automated software engineering literature
++ One: Find a highly cited paper from the automated software engineering literature
      + Find some source of highly cited papers
        + For students of general software engineering, start with the [International Conference on Software Engineering](https://goo.gl/1bfKUG)
 	   + For students of automated software engineering, start start with the [International Conference on Automated SE](https://goo.gl/HqOVJ1)
      + Pick any 2011 paper and _summarize some of its parts_.
-+ Week2,3,4,5: Explore context,  backwards
-     + Find four papers in the week1's reference list
++ Two,Three,Four,Five: Explore context,  backwards
+     + Find four papers in the One's reference list
           + That date 2008 to 2010
 	      + That are _highest cited_ (Note that recent papers have less cites than older papers).
-	  + Walk them backwards in time, one per week, _summarizing some of their parts_
+	  + Walk them backwards in time,  _summarizing some of their parts_
 
 Notes:
 
@@ -127,7 +127,7 @@ Notes:
     + Starting with  a clear reference to the paper
     + Write down the four most important keywords in the paper, plus a two line definition of each.
     + Offer very brief notes on any half dozen of the items listed  [here](READINGrubric.md).
-    + For weeks2,3,4,5,6,7,8 also comment on the connection to the other papers.
+    + For Two,Three,Four, etc also comment on the connection to the other papers.
     + Do you know how long 1000 words is? About as long as this page. So you
 	want to write something half this size.
 	+ You goal is being able to generate such a summary in thirty minutes:
@@ -145,7 +145,7 @@ Notes:
 ### Part2: Identify reusable data
 
 
-+ Week6: For any paper in the above sequence, _report any reusable data_.
++ Six: For any paper in the above sequence, _report any reusable data_.
 
 Notes:
 
@@ -155,11 +155,11 @@ Notes:
 
 ### Part3: Track advances.
 
-+ Week7,8,9: Explore context, forwards
-      + Find three papers that cite the week1 paper
++ Seven,Eight,Nine: Explore context, forwards
+      + Find three papers that cite the One paper
           + That date 2012 to 2015
 	      + That are _highly cited_ (Note that recent papers have less cites than older papers)..
-      + Walk them forwards in time, one per week, _summarizing some of their parts_
+      + Walk them forwards in time,  _summarizing some of their parts_
 	  
 	  
 ### Part4 (one big essay)
