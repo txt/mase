@@ -7,6 +7,23 @@
 
 
 
+# Unit tests in Python
+
+Python has some great unit testing tools. The one
+shown below is a "less-is-more" approach and is
+based on [Kent Beck video on how to write a test engine in just a 
+few lines of code](https://www.youtube.com/watch?v=nIonZ6-4nuU).
+
+For example usages, see [okok.py](okok.md) which can be loaded via
+
+```
+python okok.py
+```
+
+Share and enjoy.
+
+````
+
 
 _________
 

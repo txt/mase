@@ -54,7 +54,7 @@ define p2md
   ! First {  pre = In ? sprintf("% 4s:   ",++line) : ""
              line =  pre $$0
              if (In) 
-               lines = lines "\n" line
+               lines = lines "\\n" line
              else
                print line
           }
