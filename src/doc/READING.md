@@ -142,7 +142,7 @@ In the following, anything shown _in italics_ is explained below.
 + One: Find a highly cited paper from the automated software engineering literature
      + Find some source of highly cited papers
        + For students of general software engineering, start with the [International Conference on Software Engineering](https://goo.gl/1bfKUG)
-	   + For students of automated software engineering, start start with the [International Conference on Automated SE](https://goo.gl/HqOVJ1)
+	   + For students of automated software engineering,  start with the [International Conference on Automated SE](https://goo.gl/HqOVJ1)
      + Pick any 2011 paper and _summarize some of its parts_.
 + Two,Three,Four,Five: Explore context,  backwards
      + Find four papers in the One's reference list
