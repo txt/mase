@@ -28,7 +28,8 @@ src="http://www.csc.ncsu.edu/enews/images/1770.jpg"
 align=right
 width=100>
 
-+ E-Mail: tim.menzies@gmail.com
++ E-Mail: tim.menzies@gmail.com 
+  + Only use this email for private matters. All other class communication should be via the class news group,    listed below.
 + Phone: 304-376-2859
        + **Do not use** this number, except in the most dire of 
           circumstances (best way to contact me is via email).
@@ -41,6 +42,7 @@ align=right
 width=100>
 
 + E-mail: rkrish11@ncsu.edu
+  + Only use this email for private matters. All other class communication should be via the class news group,    listed below.
 + Office mours: Friday 12pm to 2pm
 + Office location: rm 3231, EE II
 
