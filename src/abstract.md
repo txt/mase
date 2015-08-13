@@ -65,7 +65,7 @@ And here's my favorite iterator that descends recursive lists:
    6:     else:
    7:       yield depth,x
 ````
-<a href="abstract.py#L56-L62"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L56-L62"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 This lets me do things like (a) traverse a nested structure and (b) write pretty print that structure.
 For example:
@@ -143,7 +143,7 @@ How?
   32:                             54651, 56743, 59368, 60794,
   33:                             61888, 82586, 83018, 88462]
 ````
-<a href="abstract.py#L114-L139"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L114-L139"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 Turns out, we do not lose much (caveat: need to keep more than 16... 256 seems a reasonable default).
 
 ```
@@ -227,7 +227,7 @@ all kept   10% 30% 50% 70% 90%  kept   10% 30% 50% 70% 90%
   54:   rainy    , 71, 91, TRUE , no"""
   55:   
 ````
-<a href="abstract.py#L201-L222"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L201-L222"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 Note that the table is messy- blank lines, spaces, comments,
 some lines split over multiple physical lines.  
@@ -266,7 +266,7 @@ Load some standard tools.
   70:     assert x.shoesize == 10
   71:     assert str(x) == "o{'name': 'tim', 'shoesize': 10}"
 ````
-<a href="abstract.py#L245-L260"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L245-L260"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
   
 ### Serious Python JuJu
 
@@ -294,7 +294,7 @@ Not for beginners.
   87:           yield char
   88:     return wrapper
 ````
-<a href="abstract.py#L271-L287"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L271-L287"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 ## Iterators
 
@@ -320,7 +320,7 @@ Yield each line in a string
  103:     for line in lines(STRING(weather)):
  104:       print("[",line,"]",sep="")
 ````
-<a href="abstract.py#L297-L312"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L297-L312"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 ### Rows
 
@@ -346,7 +346,7 @@ joining lines that end in ','.
  120:       print("[",row,"]",sep="")
  121:   
 ````
-<a href="abstract.py#L321-L337"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L321-L337"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 ### Values
 
@@ -362,7 +362,7 @@ Jump over any cols we are ignoring
  127:                       if lst[col][0] != "?" ]
  128:       yield [ make(lst[col]) for col in want ]
 ````
-<a href="abstract.py#L346-L352"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L346-L352"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 Helper function.
 
@@ -373,7 +373,7 @@ Helper function.
  132:       try   : return float(x)
  133:       except: return x
 ````
-<a href="abstract.py#L358-L362"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L358-L362"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 Test function.
 
@@ -383,7 +383,7 @@ Test function.
  136:     for cells in values(STRING(weather)):
  137:       print(cells)
 ````
-<a href="abstract.py#L368-L371"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L368-L371"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 ## Tables
 
@@ -409,7 +409,7 @@ and keeps separate counts for each `klass`.
  150:              klasses= Default(lambda: klass0(t.header)))
  151:     return t
 ````
-<a href="abstract.py#L383-L396"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L383-L396"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 Helper functions:
 
@@ -431,7 +431,7 @@ Helper functions:
  162:      tmp[n].name = header1
  163:    return tmp
 ````
-<a href="abstract.py#L406-L417"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L406-L417"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 Test functions: read from strings or files.
 
@@ -448,7 +448,7 @@ Test functions: read from strings or files.
  173:   def _tableFromFile():
  174:     _tableFromString(FILE("weather.csv"))
 ````
-<a href="abstract.py#L423-L433"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="abstract.py#L423-L433"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 ## Sanity Check
 

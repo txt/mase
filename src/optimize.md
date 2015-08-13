@@ -19,7 +19,7 @@
    4:   
    5:   from log  import *
 ````
-<a href="optimize.py#L8-L12"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="optimize.py#L8-L12"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 
 ## @study: Simulation Experiment Control
@@ -114,7 +114,7 @@ Code:
   23:       print "\n# Runtime: %.3f secs" % (t2-t1)
   24:     return wrapper
 ````
-<a href="optimize.py#L88-L106"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="optimize.py#L88-L106"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 ## Model Definition
 
@@ -209,7 +209,7 @@ That said, say hello to my little friend:
   66:     def ish(i,it):
   67:       return o(x= [of1.ish() for of1 in i.of.x])
 ````
-<a href="optimize.py#L158-L200"><img align=right src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a><br clear=all>
+<a href="optimize.py#L158-L200"><img src="http://www.hypercosm.com/google_code/images/source_code_icon.jpg"></a>
 
 Given the above, it is now very succinct to specify
 a _Model_. For example, here's a model with 30 independent
