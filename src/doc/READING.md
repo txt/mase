@@ -133,7 +133,6 @@ Move 3    Occupying the niche
 Note that, at first, it will take _hours_ to read one paper. However, after a couple your reading will speed
 up dramatically. So do not be discouraged if, at first, this is ridiculously slow.
 
-We offer below
 
 ### Part1: Learn Historical Context
 
