@@ -13,7 +13,7 @@ General utils- should be useful for all Python programs.
 
 ## Standard Header
 
-<a href="base.py#L10-L12"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L10-L12"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   from __future__ import division
@@ -24,7 +24,7 @@ General utils- should be useful for all Python programs.
 
 ### Everyone needs a logo
 
-<a href="base.py#L19-L35"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L19-L35"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def logo():
@@ -56,7 +56,7 @@ dump of the options used in that run.
 _TRICK_: store the options in a nested anonymous
 container.
 
-<a href="base.py#L49-L51"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L49-L51"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   class o: 
@@ -66,7 +66,7 @@ container.
 
 For example, here are the options used in this code.
 
-<a href="base.py#L57-L82"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L57-L82"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def small(l)  : return (l[0]+l[1])*0.5
@@ -99,7 +99,7 @@ For example, here are the options used in this code.
 
 Here's code to dump nested containers:
 
-<a href="base.py#L88-L103"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L88-L103"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def showd(d,lvl=0): 
@@ -131,7 +131,7 @@ The above code displays _showd(The)_ as follows:
 
 ### Iterators ######################################
 
-<a href="base.py#L118-L122"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L118-L122"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def pairs(lst):
@@ -143,7 +143,7 @@ The above code displays _showd(The)_ as follows:
 
 ### Timing Stuff
 
-<a href="base.py#L128-L132"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L128-L132"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def msecs(f):
@@ -155,7 +155,7 @@ The above code displays _showd(The)_ as follows:
 
 ### Random Stuff
 
-<a href="base.py#L138-L143"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L138-L143"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   rand=  random.random # generate nums 0..1
@@ -178,7 +178,7 @@ seed you change at run time).
 
 ### Maths Stuff
 
-<a href="base.py#L159-L170"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L159-L170"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def log2(num): 
@@ -197,7 +197,7 @@ seed you change at run time).
 
 ### Printing stuff
 
-<a href="base.py#L176-L196"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L176-L196"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def burp(*lst):  
@@ -226,7 +226,7 @@ seed you change at run time).
 The following convenience functions print a list
 of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
 
-<a href="base.py#L203-L205"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L203-L205"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def g0(lst): return gn(lst,0)
@@ -236,7 +236,7 @@ of floats to  0, 2, or 3 decimal places (useful for condensing old reports).
 
 ### Printing a xtile chart.
 
-<a href="base.py#L211-L239"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L211-L239"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def xtile(lst,lo=0,hi=0.001,width=50,
@@ -274,7 +274,7 @@ For example, the example displays 1000 random numbers as follows:
 
     ---   *     |------      , 0.01,  0.15,  0.26,  0.52,  0.79
 
-<a href="base.py#L247-L251"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L247-L251"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def _tileX() :
@@ -286,7 +286,7 @@ For example, the example displays 1000 random numbers as follows:
 
 ## Coercion
 
-<a href="base.py#L257-L262"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L257-L262"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   def atom(x):
@@ -304,7 +304,7 @@ defaults.
 
 For example, consider the following function:
 
-<a href="base.py#L273-L276"><img src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="base.py#L273-L276"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
 ```python
 
    1:   
