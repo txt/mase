@@ -34,7 +34,7 @@ Share and enjoy.
    4:   
    5:   from models import *
 ````
-<a href="sa.py#L23-L27"><img src="http://www.craiggiven.com/textfile_icon.gif"></a>
+<a href="sa.py#L23-L27"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a>
 
 ### Code
 
@@ -100,7 +100,7 @@ suppressed via _The.misc.verbose=False_.
   39:       burp(mark)
   40:     return sb,eb    
 ````
-<a href="sa.py#L58-L92"><img src="http://www.craiggiven.com/textfile_icon.gif"></a>
+<a href="sa.py#L58-L92"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a>
 
 ## Example
 
@@ -120,7 +120,7 @@ Defining a study using _sa_.
   51:     y= g3(sb.y)
   52:     print "\n------\n:e",eb,"\n:y",y,"\n:x",x
 ````
-<a href="sa.py#L100-L111"><img src="http://www.craiggiven.com/textfile_icon.gif"></a>
+<a href="sa.py#L100-L111"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a>
 
 Output from the first call:
 

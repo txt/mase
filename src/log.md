@@ -100,7 +100,7 @@ sample can offer a useful approximation to a seemingly complex process.
    5:   from stats import *
    6:   from a12 import *
 ````
-<a href="log.py#L88-L93"><img src="http://www.craiggiven.com/textfile_icon.gif"></a>
+<a href="log.py#L88-L93"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a>
 ## Classes
 
 ### Base Class: "Log"
@@ -136,7 +136,7 @@ sample can offer a useful approximation to a seemingly complex process.
   34:     def setup(i): pass
   35:     def change(i,x): pass
 ````
-<a href="log.py#L100-L128"><img src="http://www.craiggiven.com/textfile_icon.gif"></a>
+<a href="log.py#L100-L128"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a>
 
 ### Num
 
@@ -195,7 +195,7 @@ A _Num_ is a _Log_ for numbers.
   80:     print j.same(i)
   81:   
 ````
-<a href="log.py#L141-L186"><img src="http://www.craiggiven.com/textfile_icon.gif"></a>
+<a href="log.py#L141-L186"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a>
 
 WARNING: the call to _sorted_ in _report()_ makes this code
 a candidate for a massive CPU suck (it is always sorting newly arrived data).
@@ -241,7 +241,7 @@ A _Sym_ is a _Log_ for non-numerics.
  108:         e -= p*log2(p) if p else 0
  109:       return e    
 ````
-<a href="log.py#L204-L231"><img src="http://www.craiggiven.com/textfile_icon.gif"></a>
+<a href="log.py#L204-L231"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a>
 
 #### Sym, Example
 

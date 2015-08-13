@@ -19,7 +19,7 @@
    4:   
    5:   from optimize import *
 ````
-<a href="models.py#L8-L12"><img src="http://www.craiggiven.com/textfile_icon.gif"></a>
+<a href="models.py#L8-L12"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a>
 
 ## Classes
 
@@ -51,7 +51,7 @@ Code:
   14:       return Num()
   15:   
 ````
-<a href="models.py#L34-L43"><img src="http://www.craiggiven.com/textfile_icon.gif"></a>
+<a href="models.py#L34-L43"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a>
 
 Note the brevity of this code. Lesson:
 you can write your own variants of the _In_ generator
