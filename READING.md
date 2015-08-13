@@ -19,9 +19,9 @@ For example, if you ask new graduate students to read ten papers in a particular
 + It can take a full day to read the first paper.
 + But after reading ten papers, they can do it much faster.
 
-Since reading is so important, the rest of this page offers
+Since reading is so important, the rest of this page offers:
 
-<img height=75  align=middle src="http://b.vimeocdn.com/ps/374/119/3741195_300.jpg">
+<img height=75  width=100 align=middle src="http://b.vimeocdn.com/ps/374/119/3741195_300.jpg">
 Notes on [how to read papers, faster](#how-to-read-papers-faster)<br clear=all>
 
 <img  height=75 align=middle src="http://thumbs.dreamstime.com/t/tip-acronym-theory-practice-27908831.jpg">
