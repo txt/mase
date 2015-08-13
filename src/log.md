@@ -91,7 +91,7 @@ Note that we get pretty close to half a million with cache sizes at 32 or above.
 sample can offer a useful approximation to a seemingly complex process.
 
 ## Standard Header
-<a href="log.py#L88-L93"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="log.py#L88-L93"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   from __future__ import division
@@ -105,7 +105,7 @@ sample can offer a useful approximation to a seemingly complex process.
 
 ### Base Class: "Log"
 
-<a href="log.py#L100-L128"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="log.py#L100-L128"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   class Log():
@@ -148,7 +148,7 @@ A _Num_ is a _Log_ for numbers.
 + Generates numbers from the log by a three-way interpolation (see _ish()_).
 
 
-<a href="log.py#L141-L186"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="log.py#L141-L186"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   class Num(Log):
@@ -213,7 +213,7 @@ A _Sym_ is a _Log_ for non-numerics.
 + Reports the entropy of the space (a measure of diversity: lower values mean fewer rarer symbols);
 + Generated symbols from the log by returning symbols at the same probability of the frequency counts (see _ish()_).
 
-<a href="log.py#L204-L231"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="log.py#L204-L231"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   class Sym(Log):

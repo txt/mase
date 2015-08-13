@@ -26,7 +26,7 @@ Share and enjoy.
 
 
 ### Standard Headers
-<a href="sa.py#L23-L27"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="sa.py#L23-L27"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   from __future__ import division
@@ -63,7 +63,7 @@ that _The.sa.kmax_ iterations.
 Finally, the _burp_ function prints some output- which can
 suppressed via _The.misc.verbose=False_.
 
-<a href="sa.py#L58-L92"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="sa.py#L58-L92"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def sa(m):
@@ -107,7 +107,7 @@ suppressed via _The.misc.verbose=False_.
 
 Defining a study using _sa_.
 
-<a href="sa.py#L100-L111"><img align=right src="http://www.craiggiven.com/textfile_icon.gif"></a><br clear=all>
+<a href="sa.py#L100-L111"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   @study
