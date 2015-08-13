@@ -470,7 +470,7 @@ if I sample that distribution twice, once to `s1` and once to `s3`.
 
 For the results of the following code, see the top of this file.
 
-<a href="abstract.py#L445-L477"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L445-L478"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def samples(m0=128,f=random.random):

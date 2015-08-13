@@ -66,7 +66,7 @@ The following models return generators for attribute values
 divided into independent values (in "_x_") and
 dependent values (in "_y_").
 
-<a href="models.py#L59-L77"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="models.py#L59-L78"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   

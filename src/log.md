@@ -256,7 +256,7 @@ From that population, we can generate another distribution that is nearly the sa
     (0.5, 'plums'), (0.265625, 'grapes'), (0.234375, 'pears')]
     {'plums': 64, 'grapes': 34, 'pears': 30}
 
-<a href="log.py#L245-L254"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="log.py#L245-L255"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def symDemo(n1=10,n2=1000):

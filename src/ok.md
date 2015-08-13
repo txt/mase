@@ -22,7 +22,7 @@ python okok.py
 
 Share and enjoy.
 
-<a href="ok.py#L19-L41"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="ok.py#L19-L42"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def ok(*lst):

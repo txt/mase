@@ -59,7 +59,7 @@ define p2md
                print line
           }
   END     {  if (In ) {
-                  print "<a href=\""name"#L"start+1"-L"NR-1"\"><img align=right src=\"http://www.hungarianreference.com/i/arrow_out.gif\"></a><br clear=all>"
+                  print "<a href=\""name"#L"start+1"-L"NR"\"><img align=right src=\"http://www.hungarianreference.com/i/arrow_out.gif\"></a><br clear=all>"
                          print "```python"
                          print lines
                          lines=""

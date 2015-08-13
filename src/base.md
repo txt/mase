@@ -330,7 +330,7 @@ order to those seen in the function header.  Also,
 if you do not mention some argument, it is filled in
 from the function defaults.
 
-<a href="base.py#L297-L315"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="base.py#L297-L316"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def cmd(com='logo()'):

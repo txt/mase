@@ -233,7 +233,7 @@ idea: _In_ is something that ranges from zero to one.
 
 ## Optimization Control
 
-<a href="optimize.py#L224-L280"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="optimize.py#L224-L281"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   class Watch(object):
