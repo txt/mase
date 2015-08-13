@@ -80,7 +80,14 @@ will be assumed.
   Python 2.7 for this subject. So do not get the
   absolute latest version of this book.
 
-**Expected Workload:** This is tools-based subject
+**Expected Workload:** Some lectures will be pre-recorded, then discussed in the class
+room. It is the responsibility of each student to:
+
++ View those recordings;
++ Come to class with notes on
+  + The concepts in those lecturers;
+  + Plus their questions that arise from that material.
+Also, this is tools-based subject
 and it is required that students learn and use those
 tools (Python, repositories, etc).  Students MUST be
 prepared to dedicate AT LEAST 5-8 working hours a
