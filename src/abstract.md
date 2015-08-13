@@ -65,6 +65,7 @@ And here's my favorite iterator that descends recursive lists:
    6:     else:
    7:       yield depth,x
 ````
+<a href="abstract.py:L-55:L-63">src</a>
 
 This lets me do things like (a) traverse a nested structure and (b) write pretty print that structure.
 For example:
@@ -142,6 +143,7 @@ How?
   32:                             54651, 56743, 59368, 60794,
   33:                             61888, 82586, 83018, 88462]
 ````
+<a href="abstract.py:L-113:L-140">src</a>
 Turns out, we do not lose much (caveat: need to keep more than 16... 256 seems a reasonable default).
 
 ```
@@ -225,6 +227,7 @@ all kept   10% 30% 50% 70% 90%  kept   10% 30% 50% 70% 90%
   54:   rainy    , 71, 91, TRUE , no"""
   55:   
 ````
+<a href="abstract.py:L-200:L-223">src</a>
 
 Note that the table is messy- blank lines, spaces, comments,
 some lines split over multiple physical lines.  
@@ -263,6 +266,7 @@ Load some standard tools.
   70:     assert x.shoesize == 10
   71:     assert str(x) == "o{'name': 'tim', 'shoesize': 10}"
 ````
+<a href="abstract.py:L-244:L-261">src</a>
   
 ### Serious Python JuJu
 
@@ -290,6 +294,7 @@ Not for beginners.
   87:           yield char
   88:     return wrapper
 ````
+<a href="abstract.py:L-270:L-288">src</a>
 
 ## Iterators
 
@@ -315,6 +320,7 @@ Yield each line in a string
  103:     for line in lines(STRING(weather)):
  104:       print("[",line,"]",sep="")
 ````
+<a href="abstract.py:L-296:L-313">src</a>
 
 ### Rows
 
@@ -340,6 +346,7 @@ joining lines that end in ','.
  120:       print("[",row,"]",sep="")
  121:   
 ````
+<a href="abstract.py:L-320:L-338">src</a>
 
 ### Values
 
@@ -355,6 +362,7 @@ Jump over any cols we are ignoring
  127:                       if lst[col][0] != "?" ]
  128:       yield [ make(lst[col]) for col in want ]
 ````
+<a href="abstract.py:L-345:L-353">src</a>
 
 Helper function.
 
@@ -365,6 +373,7 @@ Helper function.
  132:       try   : return float(x)
  133:       except: return x
 ````
+<a href="abstract.py:L-357:L-363">src</a>
 
 Test function.
 
@@ -374,6 +383,7 @@ Test function.
  136:     for cells in values(STRING(weather)):
  137:       print(cells)
 ````
+<a href="abstract.py:L-367:L-372">src</a>
 
 ## Tables
 
@@ -399,6 +409,7 @@ and keeps separate counts for each `klass`.
  150:              klasses= Default(lambda: klass0(t.header)))
  151:     return t
 ````
+<a href="abstract.py:L-382:L-397">src</a>
 
 Helper functions:
 
@@ -420,6 +431,7 @@ Helper functions:
  162:      tmp[n].name = header1
  163:    return tmp
 ````
+<a href="abstract.py:L-405:L-418">src</a>
 
 Test functions: read from strings or files.
 
@@ -436,6 +448,7 @@ Test functions: read from strings or files.
  173:   def _tableFromFile():
  174:     _tableFromString(FILE("weather.csv"))
 ````
+<a href="abstract.py:L-422:L-434">src</a>
 
 ## Sanity Check
 

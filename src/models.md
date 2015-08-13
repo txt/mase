@@ -19,6 +19,7 @@
    4:   
    5:   from optimize import *
 ````
+<a href="models.py:L-7:L-13">src</a>
 
 ## Classes
 
@@ -50,6 +51,7 @@ Code:
   14:       return Num()
   15:   
 ````
+<a href="models.py:L-33:L-44">src</a>
 
 Note the brevity of this code. Lesson:
 you can write your own variants of the _In_ generator

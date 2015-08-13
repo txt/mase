@@ -19,6 +19,7 @@
    4:   
    5:   from log  import *
 ````
+<a href="optimize.py:L-7:L-13">src</a>
 
 
 ## @study: Simulation Experiment Control
@@ -113,6 +114,7 @@ Code:
   23:       print "\n# Runtime: %.3f secs" % (t2-t1)
   24:     return wrapper
 ````
+<a href="optimize.py:L-87:L-107">src</a>
 
 ## Model Definition
 
@@ -207,6 +209,7 @@ That said, say hello to my little friend:
   66:     def ish(i,it):
   67:       return o(x= [of1.ish() for of1 in i.of.x])
 ````
+<a href="optimize.py:L-157:L-201">src</a>
 
 Given the above, it is now very succinct to specify
 a _Model_. For example, here's a model with 30 independent

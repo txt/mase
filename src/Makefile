@@ -36,13 +36,17 @@ define p2md
   /^"""</,/^>"""/ {  next } 
   /^"""/	  {  Once = 1
                      In = 1 - In       
-		     if (In) 
+		     if (In) {
 		       print "````python"
-		     else	  
+                       start = NR
+		     }
+                     else	  
 		       if (First)   
 			 First = 0   
-		       else     
-			 print "````"  
+		       else   {  
+			 print "````"
+                         print "<a href=\""name":L-"start":L-"NR"\">src</a>"
+                        }  
 		     next }       
   ! First {  pre = In ? sprintf("% 4s:   ",++line) : ""
              print pre $$0 }       
