@@ -17,7 +17,7 @@ The rest of this page offers
 + A reading assignment that lets students practice their skills.
     + For a _fast-path_ assignment for newbies, lecturers could assign parts [one](#part1-learn-historical-context) and [two](#part2-identify-reusable-data) of
       that assignment, over a 2-3 week period.
-	  + For a more _advanced_ assignment, lecturers could assign parts
+	+ For a more _advanced_ assignment, lecturers could assign parts
 	    one, two, as well as [three](#part3-track-advances) and [four](#part4-one-big-essay), 
 	  spread over a one semester/
 
