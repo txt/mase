@@ -1,6 +1,8 @@
+<img src="img/dogreading.jpg" align=right>
+
 # Read123456789: reading research papers
 
-<img src="img/dogreading.jpg" align=right> 
+
 
 As technologies change, technologists need to
 continually update their technical knowledge.
@@ -14,7 +16,7 @@ For example, if you ask new graduate students to read ten papers in a particular
 Since reading is so important, the rest of this page offers:
 
 <img height=75  width=100 align=middle src="http://b.vimeocdn.com/ps/374/119/3741195_300.jpg">
-Notes on [how to read papers, faster](#how-to-read-papers-faster)<br clear=all>
+Notes on [how to read papers, faster](#how-to-read-papers-faster).<br clear=all>
 
 <img  height=75 width=100 align=middle src="http://thumbs.dreamstime.com/t/tip-acronym-theory-practice-27908831.jpg">
 A [reading assignment](#exercises-in-reading-faster) that lets students practice their skills.<br clear=all>
