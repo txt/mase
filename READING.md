@@ -8,7 +8,7 @@
 
 # Read123456789: reading research papers
 
-<img src="img/dogreading.jpg" align=right>
+<img src="img/dogreading.jpg" align=right> 
 
 As technologies change, technologists need to
 continually update their technical knowledge.
