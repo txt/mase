@@ -133,7 +133,7 @@ Move 3    Occupying the niche
 
 
 ____
-<img align=right src="http://thumbs.dreamstime.com/t/tip-acronym-theory-practice-27908831.jpg">
+<img  src="http://thumbs.dreamstime.com/t/tip-acronym-theory-practice-27908831.jpg">
 
 ## Exercises In Reading Faster
 
