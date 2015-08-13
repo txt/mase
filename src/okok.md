@@ -9,7 +9,6 @@
 
 # Examples of Unit tests  in Python
 
-````
 
 
 _________

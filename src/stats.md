@@ -6,7 +6,6 @@
 [Lecturer](http://menzies.us) 
 
 
-````
 ```
 
 

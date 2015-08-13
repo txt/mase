@@ -233,7 +233,6 @@ idea: _In_ is something that ranges from zero to one.
 
 ## Optimization Control
 
-````
 
 
 _________

@@ -66,7 +66,6 @@ The following models return generators for attribute values
 divided into independent values (in "_x_") and
 dependent values (in "_y_").
 
-````
 
 
 _________

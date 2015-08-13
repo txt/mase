@@ -470,7 +470,6 @@ if I sample that distribution twice, once to `s1` and once to `s3`.
 
 For the results of the following code, see the top of this file.
 
-````
 
 
 _________

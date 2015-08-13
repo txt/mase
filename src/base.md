@@ -330,7 +330,6 @@ order to those seen in the function header.  Also,
 if you do not mention some argument, it is filled in
 from the function defaults.
 
-````
 
 
 _________

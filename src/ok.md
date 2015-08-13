@@ -22,7 +22,6 @@ python okok.py
 
 Share and enjoy.
 
-````
 
 
 _________

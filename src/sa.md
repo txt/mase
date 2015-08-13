@@ -198,7 +198,6 @@ Output from the second call:
         :baseline 100 :cooling 0.6 :kmax 1000 :patience 250 
     
     # Runtime: 0.011 secs
-````
 
 
 _________
