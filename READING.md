@@ -33,7 +33,7 @@ Since reading is so important, the rest of this page offers
 
 ____
 
-<img align=right src="http://b.vimeocdn.com/ps/374/119/3741195_300.jpg">
+<img height=150  src="http://b.vimeocdn.com/ps/374/119/3741195_300.jpg">
 
 ## How to Read Papers, Faster
 
