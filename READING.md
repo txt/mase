@@ -217,6 +217,7 @@ In the following, anything shown _in italics_ is explained below.
 
 + One: Find a highly cited paper from the automated software engineering literature
      + Find some source of highly cited papers
+       + Do not review any paper from your own institution (so, fear not, you don't have to review the lecturer's paper)
        + For students of general software engineering, start with the [International Conference on Software Engineering](https://goo.gl/1bfKUG)
 	   + For students of automated software engineering,  start with the [International Conference on Automated SE](https://goo.gl/HqOVJ1)
      + Pick any 2011 paper and _summarize some of its parts_.
@@ -229,10 +230,13 @@ In the following, anything shown _in italics_ is explained below.
 Notes:
 
 + By _summarize parts_ we mean write 500 to 1000 words  on text:
-    + Starting with  a clear reference to the paper
+    + Starting with  a clear reference to the paper.
+      + e.g. Tim Menzies, Burak Turhan, Ayse Bener, Gregory Gay, Bojan Cukic, and Yue Jiang. 2008.
+	         Implications of ceiling effects in defect predictors. In Proceedings of the 4th international workshop on Predictor models in software engineering (PROMISE '08). 
     + Write down the four most important keywords in the paper, plus a two line definition of each.
-    + Offer very brief notes on any half dozen of the items listed  as 1 to 19 (above).
-    + For Two,Three,Four, etc also comment on the connection to the other papers.
+    + Offer very brief notes on any four  of the items listed  as 1 to 19 (above).
+    + Write down three ways the paper could be improved.
+	+ For Two,Three,Four, etc also comment on the connection to the other papers.
     + Do you know how long 1000 words is? About as long as this page. So you
 	want to write something half this size.
 	+ You goal is being able to generate such a summary in thirty minutes:

@@ -55,7 +55,7 @@ print("lift off!")
 
 And here's my favorite iterator that descends recursive lists:
 
-<a href="abstract.py#L56-L62"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L57-L63"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def items(x, depth=-1):
@@ -115,7 +115,7 @@ How?
   Specifically, keep up to `max` things (and if we see more than that,
   delete older values).
 
-<a href="abstract.py#L114-L139"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L115-L140"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   r = random.random
@@ -204,7 +204,7 @@ all kept   10% 30% 50% 70% 90%  kept   10% 30% 50% 70% 90%
 
 14 items: 9 examples of playing golf, 5 of not playing golf.
 
-<a href="abstract.py#L201-L222"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L202-L223"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   weather="""
@@ -250,7 +250,7 @@ Lets handle all that mess with iterators.
 
 Load some standard tools.
 
-<a href="abstract.py#L245-L260"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L246-L261"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   class o:
@@ -278,7 +278,7 @@ or anything source at all.
 
 Not for beginners.
 
-<a href="abstract.py#L271-L287"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L272-L288"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def STRING(str):
@@ -306,7 +306,7 @@ Not for beginners.
 
 Yield each line in a string
 
-<a href="abstract.py#L297-L312"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L298-L313"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def lines(src):
@@ -332,7 +332,7 @@ Yield each line in a string
 Yield all non-blank lines,
 joining lines that end in ','.
 
-<a href="abstract.py#L321-L337"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L322-L338"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def rows(src):
@@ -359,7 +359,7 @@ joining lines that end in ','.
 Coerce row values to floats, ints or strings. 
 Jump over any cols we are ignoring
 
-<a href="abstract.py#L346-L352"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L347-L353"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def values(src):
@@ -373,7 +373,7 @@ Jump over any cols we are ignoring
 
 Helper function.
 
-<a href="abstract.py#L358-L362"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L359-L363"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def make(x):
@@ -385,7 +385,7 @@ Helper function.
 
 Test function.
 
-<a href="abstract.py#L368-L371"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L369-L372"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   @ok
@@ -402,7 +402,7 @@ Tables keep `Some` values for each column in a string.
 Assumes that the string contains a `klass` column
 and keeps separate counts for each `klass`.
 
-<a href="abstract.py#L383-L396"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L384-L399"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def table(src, klass= -1, keep= False):
@@ -410,15 +410,17 @@ and keeps separate counts for each `klass`.
    3:     for cells in values(src):
    4:       if t:
    5:         k = cells[klass]
-   6:         for cell,some in zip(cells,t.klasses[k]):
+   6:         for cell,some,all in zip(cells,t.klasses[k],t.all):
    7:           some += cell
-   8:         if keep:
-   9:           t.rows += [cells]
-  10:       else:
-  11:        t = o(header = cells,
-  12:              rows   = [],
-  13:              klasses= Default(lambda: klass0(t.header)))
-  14:     return t
+   8:           all  += cell
+   9:         if keep:
+  10:           t.rows += [cells]
+  11:       else:
+  12:        t = o(header = cells,
+  13:              rows   = [],
+  14:              all    = klass0(cells),
+  15:              klasses= Default(lambda: klass0(t.header)))
+  16:     return t
 ```
 
 Helper functions:
@@ -427,7 +429,7 @@ Helper functions:
   seen that klass before, create a list of `Some` counters
   (one for each column).
 
-<a href="abstract.py#L406-L417"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L409-L420"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   class Default(dict):
@@ -446,7 +448,7 @@ Helper functions:
 
 Test functions: read from strings or files.
 
-<a href="abstract.py#L423-L433"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L426-L436"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   @ok
@@ -470,7 +472,7 @@ if I sample that distribution twice, once to `s1` and once to `s3`.
 
 For the results of the following code, see the top of this file.
 
-<a href="abstract.py#L445-L478"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="abstract.py#L448-L481"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def samples(m0=128,f=random.random):

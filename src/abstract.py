@@ -1,6 +1,7 @@
 from __future__ import print_function, division
 from ok import *
-import random,re
+import random,re,sys
+sys.dont_write_bytecode = True
 
 """
 
@@ -385,13 +386,15 @@ def table(src, klass= -1, keep= False):
   for cells in values(src):
     if t:
       k = cells[klass]
-      for cell,some in zip(cells,t.klasses[k]):
+      for cell,some,all in zip(cells,t.klasses[k],t.all):
         some += cell
+        all  += cell
       if keep:
         t.rows += [cells]
     else:
      t = o(header = cells,
            rows   = [],
+           all    = klass0(cells),
            klasses= Default(lambda: klass0(t.header)))
   return t
 """
