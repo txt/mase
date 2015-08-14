@@ -10,7 +10,7 @@ Make = $(MAKE) --no-print-directory #
 
 publish: parts typo
 
-parts: dirs zaps $(mds) $(root)/toc.md 
+parts: dirs  $(mds) $(root)/toc.md 
 
 typo   : ;cd ..; $(Make) typo
 commit : ;cd ..; $(Make) commit
@@ -21,8 +21,6 @@ timm   : ;cd ..; $(Make) timm
 
 ready: dirs gitting chmods
 
-zaps:
-	find . -name '*.pyc' | xargs -n 25 rm 
 
 chmods:
 	chmod +x *ok.py
