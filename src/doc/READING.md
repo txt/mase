@@ -222,13 +222,16 @@ In the following, anything shown _in italics_ is explained below.
 Notes:
 
 + By _summarize parts_ we mean write 500 to 1000 words  on text:
-    + Starting with  a clear reference to the paper.
+    1. Starting with  a clear reference to the paper.
       + e.g. Tim Menzies, Burak Turhan, Ayse Bener, Gregory Gay, Bojan Cukic, and Yue Jiang. 2008.
 	         Implications of ceiling effects in defect predictors. In Proceedings of the 4th international workshop on Predictor models in software engineering (PROMISE '08). 
-    + Write down the four most important keywords in the paper, plus a two line definition of each.
-    + Offer very brief notes on any four  of the items listed  as 1 to 19 (above).
-    + Write down three ways the paper could be improved.
-	+ For Two,Three,Four, etc also comment on the connection to the other papers.
+    2. Write down the four most important keywords in the paper, plus a two line definition of each.
+	   + Label them 2a, 2b, 2c,2d 		 
+    3. Offer very brief notes on any four  of the items listed  as 1 to 19 (above).
+	   + Label them 3a, 3b, 3c, 3d   
+    4. Write down three ways the paper could be improved.
+	   + Label them 4a, 4b, 4c   
+	5. For Two,Three,Four, etc also comment on the connection to the other papers.
     + Do you know how long 1000 words is? About as long as this page. So you
 	want to write something half this size.
 	+ You goal is being able to generate such a summary in thirty minutes:
