@@ -97,6 +97,10 @@ room. It is the responsibility of each student to:
 + Come to class with notes on
   + The concepts in those lecturers;
   + Plus their questions that arise from that material.
+
+Sometimes, the lecturer/tutor will require you to attend a review session during their consultation  time. There, students may be asked to review
+code, concepts, or comment on the structure of the course. Those sessions are mandatory and failure to attend will result in marks being deducted.
+
 Also, this is tools-based subject
 and it is required that students learn and use those
 tools (Python, repositories, etc).  Students MUST be
