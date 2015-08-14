@@ -94,7 +94,7 @@ will be assumed.
 room. It is the responsibility of each student to:
 
 + View those recordings;
-+ Come to class with notes on
++ Come to class with notes on 
   + The concepts in those lecturers;
   + Plus their questions that arise from that material.
 
