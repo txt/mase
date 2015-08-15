@@ -36,7 +36,7 @@ The assignment can be used two ways:
   + Over a 2-3 week period.
 + For a more _advanced_ and longer assignment, lecturers could assign parts
   + Part   [one](#part1-learn-historical-context);
-  + Then part [three](#part3-track-advances) (Note, note part two, yet);
+  + Then part [three](#part3-track-advances) (Note, not part two, yet);
   + Followed by part [two](#part2-identify-reusable-data);
   + Then  part [four](#part4-one-big-essay);
   + Spread over a one semester (one paper per week, then a month of open time till the end-of-semester essay in part four is due).
