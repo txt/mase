@@ -10,6 +10,12 @@ A: Well, after "data collection" comes "model construction" so the next big thin
 of search-based optimization for exploring models.
 <p>Coding examples in Python 2.7+.
 </td>
+
+<td align=center><b>News
+
+<img width=75 src="img/200x1.png"></b>
+</td>
+
 <td align=center><b>Lectures
 
 <img width=75 src="img/200x1.png"></b>
@@ -20,11 +26,17 @@ of search-based optimization for exploring models.
 
 </td> </tr>
 <tr>
-</td><td align=center><img src="img/lectures.gif">
+<td align=center><img src="img/news.gif">
+</td>
+<td>
+     <td align=center><img src="img/lectures.gif">
 </td><td align=center><img src="img/homework.png">
 </td><td align=center><img src="img/review.gif">
 </td> </tr>
 <tr>
+<td valign=top  xwidth="100px">
+0. Intern opportunities.
+</td>
 <td valign=top  xwidth="100px">
 
 4. <a href="MWS.md">MaxWalkSat</a><br>
