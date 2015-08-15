@@ -34,9 +34,9 @@ of search-based optimization for exploring models.
 
 </td> </tr>
 <tr>
-<td align=center><img src="img/news.gif">
+<td align=center><img src="img/news.png">
 </td>
-<td>
+
      <td align=center><img src="img/lectures.gif">
 </td><td align=center><img src="img/homework.png">
 </td><td align=center><img src="img/review.gif">
