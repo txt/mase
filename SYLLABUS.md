@@ -137,10 +137,11 @@ Grades will be added together using:
     + That url wull be pasted into the spreadsheet https://goo.gl/qj3Akp. 
 + All homeworks will be marked ``1'', or ``0'';
 + Students cannot do homework <em>i+1</em> till  homework <em>i</em> gets at least a ``1''.
-+ Homeworks can be submitted multiple times;
++ Homeworks can be submitted multiple times
+  + No late penalties
+  + No points taken off for repeat submissions
 + We will not mark more than four (coding) homeworks plus four (lit review) homeworks per month.
-+ It is recommended that you submit the homeworks before class starts
-  on Tuesday.
+
 
 ### Attendance
 
