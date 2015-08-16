@@ -1,7 +1,7 @@
 
 # Read123456789: reading research papers
 
-
+<em>(For a video lecture on this page, see <a href="https://vimeo.com/136412506">here</a>.)</em>
 
 As technologies change, technologists need to
 continually update their technical knowledge.
