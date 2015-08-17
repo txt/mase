@@ -119,10 +119,7 @@ Grades will be added together using:
 + Paper (on the ASE literature): 15
 + Big programming project (on model-based SE): 20
 
-
-
 ### Homeworks 
-
 
 + Homeworks will be written into a public Github repo which students will create.
 + Students will shorten the url (using something like goo.gl) of the the main file of each homework submission
