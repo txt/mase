@@ -220,7 +220,12 @@ environment) based on race, color, religion, creed,
 sex, national origin, age, disability, veteran
 status, or sexual orientation also is a violation of
 state and federal law and/or NC State University
-policy and will not be tolerated. Retaliation
+policy and will not be tolerated.
+
++ Note that, as a lecturer, I am legally required to
+  **report** all such acts to the campus policy.
+
+Retaliation
 against any person who complains about
 discrimination is also prohibited. NC State's
 policies and regulations covering discrimination,
