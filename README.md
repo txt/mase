@@ -56,8 +56,8 @@ of search-based optimization for exploring models
 
 </td><td valign=top xwidth="100px">
 
-6. <a href="https://www.youtube.com/watch?v=nIonZ6-4nuU">Video:TDD</a><img src="img/vid.png"><br>
-5. <a href="https://vimeo.com/136412506">Video:Read12..</a><img src="img/vid.png"><br>
+6. <img  width=16 src="img/vid.png"><a href="https://www.youtube.com/watch?v=nIonZ6-4nuU">Video:TDD</a><br>
+5. <img width=16 src="img/vid.png"><a href="https://vimeo.com/136412506">Video:Read12..</a><br>
 4. <a href="CODE4.md">Code4</a><br>
 3. <a href="CODE3.md">Code3</a><br>
 2. <a href="CODE2.md">Code2</a><br>
