@@ -34,7 +34,7 @@ of search-based optimization for exploring models
 </td> </tr>
 <tr>
 <td valign=top  xwidth="100px">
-2. <a href="https://vimeo.com/user42943646/collections"><img src="img/vid.png">New video archive</a></a><br>
+2. <a href="https://vimeo.com/user42943646/collections"><img src="img/vid.png">New video archive</a><br>
 1. <a href="https://groups.google.com/forum/#!topic/csx91/-jU10lzc11I">NASA Internship</a><br>
 0. <a href="https://groups.google.com/forum/#!forum/csx91">News archive.</a>
 </td>
