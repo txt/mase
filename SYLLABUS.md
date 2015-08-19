@@ -129,6 +129,9 @@ Grades will be added together using:
 
 ### Homeworks 
 
++ All deliverables are group-based (one deliverable per group)
+  + 591 students: groups of three
+  + 791 students: groups of one
 + Homeworks will be written into a public Github repo which students will create.
 + Students will shorten the url (using something like goo.gl) of the the main file of each homework submission
     + That url wull be pasted into the spreadsheet https://goo.gl/qj3Akp. 
