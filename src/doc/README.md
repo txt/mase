@@ -21,7 +21,7 @@ of search-based optimization for exploring models
 </td><td align=center><b>Review
 <img width=65 src="img/200x1.png">
 
-</td><td align=center><b>Misc
+</td><td align=center><b>Cool stuff
 <img width=65 src="img/200x1.png">
 
 </td>
