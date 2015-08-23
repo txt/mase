@@ -31,7 +31,12 @@ of search-based optimization for exploring models
 </td><td align=center><b>Review
 <img width=65 src="img/200x1.png">
 
-</td> </tr>
+</td><td align=center><b>Optionals
+<img width=65 src="img/200x1.png">
+
+</td>
+
+</tr>
 <tr>
 <td align=center><img src="img/news.png">
 </td>
@@ -39,6 +44,7 @@ of search-based optimization for exploring models
      <td align=center><img src="img/lectures.gif">
 </td><td align=center><img src="img/homework.png">
 </td><td align=center><img src="img/review.gif">
+</td><td align=center><img src="img/books.gif">
 </td> </tr>
 <tr>
 <td valign=top  xwidth="100px">
@@ -69,6 +75,10 @@ of search-based optimization for exploring models
 
 0. <a href="tbd">Tbd</a><br>  
 
+</td><td>
+1. <a href="http://www.cs.wm.edu/~denys/pubs/FSE15-GEMMA-CRC.pdf">Beautiful apps</a><br>
+0. Eureqa! <a href="http://creativemachines.cornell.edu/sites/default/files/Science09_Schmidt.pdf">pdf</a>;<a
+              href="http://www.radiolab.org/story/91712-limits-of-science/">podcast</a>d
 </td>
 </tr></table>
 
