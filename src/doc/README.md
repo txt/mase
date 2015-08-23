@@ -11,19 +11,17 @@ of search-based optimization for exploring models
 <table border=0 align=center>
 <tr>
 <td align=center><b>News
-
 <img width=65 src="img/200x1.png"></b>
 </td>
 
 <td align=center><b>Lectures
-
 <img width=65 src="img/200x1.png"></b>
 </td><td align=center><b>Homework
 <img width=65 src="img/200x1.png"></b>
 </td><td align=center><b>Review
 <img width=65 src="img/200x1.png">
 
-</td><td align=center><b>Optionals
+</td><td align=center><b>Misc
 <img width=65 src="img/200x1.png">
 
 </td>
