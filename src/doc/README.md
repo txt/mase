@@ -68,7 +68,7 @@ of search-based optimization for exploring models
 </td><td valign=top>
 1. <a href="http://www.cs.wm.edu/~denys/pubs/FSE15-GEMMA-CRC.pdf">Beautiful apps</a><br>
 0. Eureqa!:<a href="http://creativemachines.cornell.edu/sites/default/files/Science09_Schmidt.pdf">pdf</a>;<a
-              href="http://www.radiolab.org/story/91712-limits-of-science/">talk</a>d
+              href="http://www.radiolab.org/story/91712-limits-of-science/">talk</a>
 </td>
 </tr></table>
 
