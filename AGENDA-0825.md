@@ -10,6 +10,9 @@
 
 + Q and A
 + Coffee time
+
+## Theory
+
 + Evolutionary programs 101'
   + [Eureqa!](http://creativemachines.cornell.edu/sites/default/files/Science09_Schmidt.pdf)
   + Mitation
@@ -23,6 +26,9 @@
   + Genetic algorithms
   + Genetic programsming
 + [Beauty](http://www.cs.wm.edu/~denys/pubs/FSE15-GEMMA-CRC.pdf)
+
+## Practice
+
 + Python
   + Where is my code?
   + Git tricks
@@ -31,6 +37,9 @@
   + Cloud9
   + Rerun
   + test suites
+    + TDD
+    + ok.py
+    + okok.py
     + Classes
     + Functions
     + Decorators
