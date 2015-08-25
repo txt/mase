@@ -11,6 +11,7 @@
 
 + [Abstraction (Advanced Python Coding)](https://github.com/txt/mase/blob/master/doc/abstract.md)
 + [Hi There!](https://github.com/txt/mase/blob/master/doc/get-pip.md)
++ [demos 101](https://github.com/txt/mase/blob/master/doc/ntiles.md)
 + [[2.0, 1.0, 3.0, 4.0, 5.0]](https://github.com/txt/mase/blob/master/doc/rank.md)
 + [Smote](https://github.com/txt/mase/blob/master/doc/smote.md)
 + [Compartmental Modeling](https://github.com/txt/mase/blob/master/doc/stockflow.md)

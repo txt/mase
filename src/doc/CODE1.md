@@ -58,7 +58,7 @@ that that example is in CoffeeScript. For the equivalent Python code, see
 4. Get two windows open:
 	 + One editting okok.py
 	 + One in a shell
-5. In the shell, type `rerun "python -B okok.py`
+5. In the shell, type `rerun "python -B okok.py"`
 6. Add one more unittest to `okok.py`.
      + Important... leave behind at least one failing test.
 7. Your screen should now look something like this:

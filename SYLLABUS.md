@@ -45,7 +45,7 @@ width=100>
           circumstances (best way to contact me is via email).
 
 **GTA:** Rahul Krishna <img
-src="http://bit.ly/1MGYTj0"
+src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/0a4/3d6/04b9ea9.jpg"
 align=right
 width=100>
 
