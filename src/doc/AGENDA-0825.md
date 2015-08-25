@@ -17,9 +17,17 @@
 + [Beauty](http://www.cs.wm.edu/~denys/pubs/FSE15-GEMMA-CRC.pdf)
 + Python
   + Where is my code?
-  + Git tricks (my make)
+  + Git tricks
+    + Issues
+     + my make
   + Cloud9
   + Rerun
+  + test suites
+    + Classes
+    + Functions
+    + Decorators
+    + Static variables, functions
+    + 
   + Scope
     + nested scope
   + functions
@@ -28,5 +36,4 @@
       + variable dictionary args
       + lambda bodies
   + list comprehensions
-  + test suites
   + decorators
