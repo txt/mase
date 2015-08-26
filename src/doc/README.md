@@ -66,6 +66,7 @@ of search-based optimization for exploring models
 0. <a href="REVIEW1.md">Review1</a><br>  
 
 </td><td valign=top>
+2. <a href="https://github.com/timm/timm.github.io/blob/master/pdf/07casease.pdf">Uncertain models</a>: <a href="https://github.com/txt/mase/blob/master/SA.md">theory</a><br>
 1. <a href="http://www.cs.wm.edu/~denys/pubs/FSE15-GEMMA-CRC.pdf">Beautiful apps</a><br>
 0. Eureqa!&nbsp;<a href="http://creativemachines.cornell.edu/sites/default/files/Science09_Schmidt.pdf">pdf</a>&nbsp;|&nbsp;<a
               href="http://www.radiolab.org/story/91712-limits-of-science/">talk</a>
