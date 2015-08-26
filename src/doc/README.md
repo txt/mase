@@ -22,7 +22,7 @@ of search-based optimization for exploring models
 <img width=65 src="img/200x1.png">
 
 </td><td align=center><b>Cool stuff
-<img width=80 src="img/200x1.png">
+<img width=90 src="img/200x1.png">
 
 </td>
 
@@ -66,7 +66,9 @@ of search-based optimization for exploring models
 0. <a href="REVIEW1.md">Review1</a><br>  
 
 </td><td valign=top><small>
-2. <a href="https://github.com/timm/timm.github.io/blob/master/pdf/07casease.pdf">Doubt</a>:&nbsp;<a href="https://github.com/txt/mase/blob/master/SA.md">notes</a><br>
+2. <a href="https://github.com/timm/timm.github.io/blob/master/pdf/07casease.pdf">Doubt</a>::&nbsp;<a
+href="https://github.com/txt/mase/blob/master/SA.md">notes</a>,<a href="https://github.com/nave91/modeller">mod</a>
+<br>
 1. <a href="http://www.cs.wm.edu/~denys/pubs/FSE15-GEMMA-CRC.pdf">Beauty</a><br>
 0. Eureqa!&nbsp;<a href="http://creativemachines.cornell.edu/sites/default/files/Science09_Schmidt.pdf">pdf</a>&nbsp;|&nbsp;<a
               href="http://www.radiolab.org/story/91712-limits-of-science/">talk</a>
