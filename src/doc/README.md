@@ -22,7 +22,7 @@ of search-based optimization for exploring models
 <img width=65 src="img/200x1.png">
 
 </td><td align=center><b>Cool stuff
-<img width=65 src="img/200x1.png">
+<img width=80 src="img/200x1.png">
 
 </td>
 
