@@ -50,7 +50,7 @@ ____
 	     1. In each cluster, find a handful of most different examples and just evaluate those  	 
 	   1. _S_ reduction:
 	     1. YOur _M_ reductions have also reduced your 	  _S=M<sup>2</sup>_ effort
-	   1. _G_ remains. consider "near enough is good enough"
+	   1. _G_ remains. consider "near enough is good enough"<br clear=all>
 
 ____
 
