@@ -17,6 +17,9 @@ Can you define the following?
     1. Pareto frontier (hint a diagram is good here)
       1. spread
       1. hypervolume
+
+____
+
 1. Optimizing optimizers <img align=right width=400 src="http://snag.gy/Cdatd.jpg">
    (not examinable)	  
    1. Writing models: understanding and representing a domain. Very slow
@@ -40,7 +43,9 @@ Can you define the following?
 	   1. _S_ reduction:
 	     1. YOur _M_ reductions have also reduced your 	  _S=M<sup>2</sup>_ effort
 	   1. _G_ remains. consider "near enough is good enough"
-   
+
+____
+
 1. Simulated annealing
    1. When to use SA
    1. Why random jumps?
