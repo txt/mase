@@ -33,19 +33,20 @@ Can you define the following?
       1. _M:_ Mutation cost: making  _M_ mutants
       2. _E_: Evaluating _M_ mutants
 	     1. If any random variables in the model, then _E*20_ to _E*100*_
-	  3. _S_: Selecting cost: worst case _S=M<super>2</super>_ comparisons
+	  3. _S_: Selecting cost: worst case _S=M<sup>2</sup>_ comparisons
 	  4. _G_: Generations: _G_ times: mutate, select, crossover, repeat
    1. Verification cost:
       1. 20 (say) repeated runs, for many models,  for many optimizers
    1. Techniques (using data mining!)
       1. _M_ cost is low. just do it,
          1. Then feed into some incremental clustering algorithm ([mini-batch k-means](http://goo.gl/V8BQs),
-	        [Genic](http://papers.rgrossman.com/proc-079.pdf): [code](https://github.com/ai-se/timm/blob/ffc7071f133521014e69fc91c99aa9432510ffdb/genic.py#L5)
-		 1. Then only keep (say) 100 examples per cluster (selected randomly)
+	        [Genic](http://papers.rgrossman.com/proc-079.pdf): [code](https://github.com/ai-se/timm/blob/ffc7071f133521014e69fc91c99aa9432510ffdb/genic.py#L5))<br clear=all>
+		 1. Then only keep (say) a few examples per cluster, selected randomly,
+		    <img align=right src="http://snag.gy/41kWD.jpg" width=400>	
 	   1. _E_ reductions:
 	     1. In each cluster, find a handful of most different examples and just evaluate those  	 
 	   1. _S_ reduction:
-	     1. YOur _M_ reductions have also reduced your 	  _S=M<super>2</super>_ effort
+	     1. YOur _M_ reductions have also reduced your 	  _S=M<sup>2</sup>_ effort
 	   1. _G_ remains. consider "near enough is good enough"
    
 1. Simulated annealing
