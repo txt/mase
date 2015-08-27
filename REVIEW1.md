@@ -40,9 +40,9 @@ Can you define the following?
    1. Techniques (using data mining!)
       1. _M_ cost is low. just do it,
          1. Then feed into some incremental clustering algorithm ([mini-batch k-means](http://goo.gl/V8BQs),
-	        [Genic](http://papers.rgrossman.com/proc-079.pdf): [code](https://github.com/ai-se/timm/blob/ffc7071f133521014e69fc91c99aa9432510ffdb/genic.py#L5))<br clear=all>
-		 1. Then only keep (say) a few examples per cluster, selected randomly,
-		    <img align=right src="http://snag.gy/41kWD.jpg" width=400>	
+	        [Genic](http://papers.rgrossman.com/proc-079.pdf): [code](https://github.com/ai-se/timm/blob/ffc7071f133521014e69fc91c99aa9432510ffdb/genic.py#L5))
+		 1. <img align=right src="http://snag.gy/41kWD.jpg" width=400>	Then only keep (say) a few examples per cluster, selected randomly,
+		    
 	   1. _E_ reductions:
 	     1. In each cluster, find a handful of most different examples and just evaluate those  	 
 	   1. _S_ reduction:
