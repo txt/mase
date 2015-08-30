@@ -19,5 +19,14 @@ rseed = random.seed
 def _ntiles():
   r1  = [ r() for _ in xrange(1000)]
   r2 = [ x**2 for x in r1]
-  print(ntiles(r1))
-  print(ntiles(r2))
+  print("\nlong",ntiles(r1,ordered=False))
+  print("\nshort",ntiles(r1,tiles=[0.25,0.5,0.75]))    
+  print("\nother",ntiles(r2))
+
+@ok
+def _isSorted2():
+  assert isSorted([1,2,3])
+  assert isSorted([1,4,3]) 
+  
+  
+  
