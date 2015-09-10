@@ -78,7 +78,7 @@ Nov                                  |
 -------------------------------------+-----
 Dec                                  |
        1   3   big project  (Tu)     |  20
-       8  10   final exam (Th)       |  25
+       8  10   final exam (Tu)       |  25 <== correction
 	   15      final paper due (Tu)  |  15
 	                                 + ---
 	                                   100	
