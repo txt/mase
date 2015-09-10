@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-# Code6: coding homework:  Data Structure
+# Code6: coding homework:  Generic Experiments
 
 ## What to Hand in
 
@@ -68,7 +68,7 @@ then use a _model_ to fill in the generic candidate; e.g.
 class Model:
 def eval(i,c):
   if not c.scores:
-      c.scores = [obj(c) for obj in i.objectives] 
+      c.scores = [obj(c) for obj in i.objectives()] 
   if c.energy == None
       c.energy = i.energy(c.scores)
   return c
@@ -109,8 +109,8 @@ a method that defines the decisions and objectives.
 import random
 r = random.random
 def within(lo,hi): return lo + (hi - lo)*r()
-def lt(x,t): return x < y
-def bt(x,y_: return x > y
+def lt(x,t): return x < y # less than
+def bt(x,y_: return x > y # better than
 
 class Has(object):
   def __init__(i,name='',lo=0,hi=1e32,init=0,
