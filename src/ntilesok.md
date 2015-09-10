@@ -9,7 +9,7 @@
 
 # showing off ntiles
 
-<a href="ntilesok.py#L13-L23"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="ntilesok.py#L13-L32"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   
@@ -21,8 +21,17 @@
    7:   def _ntiles():
    8:     r1  = [ r() for _ in xrange(1000)]
    9:     r2 = [ x**2 for x in r1]
-  10:     print(ntiles(r1))
-  11:     print(ntiles(r2))
+  10:     print("\nlong",ntiles(r1,ordered=False))
+  11:     print("\nshort",ntiles(r1,tiles=[0.25,0.5,0.75]))    
+  12:     print("\nother",ntiles(r2))
+  13:   
+  14:   @ok
+  15:   def _isSorted2():
+  16:     assert isSorted([1,2,3])
+  17:     assert isSorted([1,4,3]) 
+  18:     
+  19:     
+  20:     
 ```
 
 
