@@ -3,7 +3,7 @@
 ## What to Hand in
 
 After doing all the following, you should 
-be able to write one source files into  `hw/code/3` along with
+be able to write one source files into  `hw/code/4` along with
 screen snaps of your work (if relevant).
 
 Using some URL shortener (e.g. goo.gl), shorten the URL to `hw/code/4`
