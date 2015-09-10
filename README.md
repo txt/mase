@@ -59,7 +59,8 @@ of search-based optimization for exploring models
 0. <a href="ABOUT.md">About</a>
 
 </td><td valign=top xwidth="100px">
-
+9. <a href="CODE6.md">Code6</a><br>
+8. <a href="CODE5.md">Code5</a><br>
 7. <a href="src/ok.md">Python:TDD</a><br>
 6. <img  width=16 src="img/vid.png"> <a href="https://www.youtube.com/watch?v=nIonZ6-4nuU">Video:TDD</a><br>
 5. <img width=16 src="img/vid.png"> <a href="https://vimeo.com/136412506">Video:Read12..</a><br>
