@@ -21,6 +21,8 @@ screen snaps of your work (if relevant).
 Using some URL shortener (e.g. goo.gl), shorten the URL to `hw/code/6`
 and paste into [the submission page](https://goo.gl/lZEmEm).
 
+From the following, show the output of running sa, mws on Schaffer, Osyczka2, Kursawe.
+
 
 # To Do
 
