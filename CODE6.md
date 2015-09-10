@@ -8,6 +8,10 @@
 
 # Code6: coding homework:  Generic Experiments
 
+NOTE TO STUDENTS: if this homework seems too complex, then reflect a little more on Code4 and Code5. This
+code generalizes Code45 to the point where we can quickly write many models and many optimizers. So it
+actually _simplifies_ the optimization process.... at the cost of some extra architecture.
+
 ## What to Hand in
 
 After doing all the following, you should 
