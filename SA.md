@@ -295,6 +295,8 @@ performance) that may take some time to tame.
 But what to us for the probability function "P"? This is standard function:
 
     FUNCTION P(old,new,t) = e^(-1*(new-old)/t)
+    
+    t = 1 - k/kmax
 
 Which, incidentally, looks like this (note that the volume
 where we might jump to a worse solution _shrinks_ as the temperature increases:
