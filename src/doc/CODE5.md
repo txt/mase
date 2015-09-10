@@ -14,7 +14,7 @@ and paste into [the submission page](https://goo.gl/lZEmEm).
 
 Read the [lecture](MWS.md) on Max Walk Sat.
 
-Hack up a simulated annealer for the
+Code  MaxWalkSat  for the
 [Osyczka2](models/moeaProblems.pdf) model.
 
 Do not be clever. This is throw away code. As quick
