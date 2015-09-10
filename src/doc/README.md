@@ -67,7 +67,7 @@ of search-based optimization for exploring models
 
 </td><td valign=top><small>
 4. <a href="https://docs.google.com/spreadsheets/d/1iEjjQjzyMRRDcN2VsaOIurzptvZPhCvYCwDxgAR5dTo/edit#gid=0">Brief</a><br>
-3. <a href="pdf/TheisenFSE15.pdf">Glory</a><br>
+3. <a href="img/TheisenFSE15.pdf">Glory</a><br>
 2. <a href="https://github.com/timm/timm.github.io/blob/master/pdf/07casease.pdf">Doubt</a>::&nbsp;<a
 href="https://github.com/txt/mase/blob/master/SA.md">notes</a>,<a href="https://github.com/nave91/modeller">mod</a>
 <br>
