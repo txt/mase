@@ -47,7 +47,7 @@ def countdown(n):
 
 print("We are go for launch")
 for x in countdown(10):
-   print(n)
+   print(x)
 print("lift off!")
 ```
 
