@@ -449,11 +449,11 @@ As someone  said, first we write down the intuition, then we write down the Xs a
 
 So here's a vague causal diagram:
 
-![Causal1](../img/casual1.gif)
+![Causal1](../img/causal1.gif)
 
 Which you can sort of see can get translated into:
 
-![Causal1](../img/casual1Cm.png)
+![Causal1](../img/causal1Cm.png)
 
 Now imagine a bigger example:
 
