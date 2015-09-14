@@ -3,7 +3,7 @@ import sys
 sys.dont_write_bytecode = True
 from ok import *
 
-"""# Domain-Specific Languages (in Python)
+"""# Domain-Specific Languages 1010 (in Python)
 
 This files shows an example of a small object-based DSL (domain-specific language) in Python.
 In the language, all the tedious stuff is implemented in superclasses, letting
@@ -107,8 +107,12 @@ analogous to rate or speed in this sense.
     + A person or country might have stocks of money, financial assets, liabilities, wealth, real means of production, capital, inventories, and human capital (or labor power). 
     + Flow magnitudes include income, spending, saving, debt repayment, fixed investment, inventory investment, and labor utilization.These differ in their units of measurement.
 + Formally:
-    + A stock (or "level variable") in this broader sense is some entity that is accumulated over time by inflows and/or depleted by outflows. Stocks can only be changed via flows. Mathematically a stock can be seen as an accumulation or integration of flows over time – with outflows subtracting from the stock. Stocks typically have a certain value at each moment of time – e.g. the number of population at a certain moment.
-    +  flow (or "rate") changes a stock over time. Usually we can clearly distinguish inflows (adding to the stock) and outflows (subtracting from the stock). Flows typically are measured over a certain interval of time – e.g., the number of births over a day or month.
+    + A stock (or "level variable") in this broader sense is some entity that is accumulated over time by inflows and/or depleted by outflows. Stocks can only be changed via flows. Mathematically a stock can be seen as an accumulation or integration of flows over time - with outflows subtracting from the stock. Stocks typically have a certain value at each moment of time - e.g. the number of population at a certain moment.
+    +  flow (or "rate") changes a stock over time. 
+       Usually we can clearly distinguish inflows (adding to the stock) 
+       and outflows (subtracting from the stock). Flows typically 
+       are measured over a certain interval of time - e.g., the number 
+       of births over a day or month.
 
 For practical purposes, it may be necessary to add _auxillary variables_ to handle some intermediaries (so, in the following,
 we can see _nominal productivity_).
@@ -118,7 +122,7 @@ we can see _nominal productivity_).
 So, in the following code, look for
 
 ```python
-F,A,S = Flow, Aux, Stock
+S,A,F = Stock, Aux, Flow
 ```
 
 ## Example: Diapers
@@ -137,6 +141,43 @@ q = inflow of clean diapers
 r = flow of clean diapers to dirty diapers
 s = out-flow of dirty diapers
 ```
+
+This is modeled as one `have` methods that initializes:
+
++ `C,D` as a `Stock` with initial levels 100,0;
++ `q,r,s` as a `Flow` with initial rates of 0,8,0
+
+and as a `step` method that  takes state `u`
+and computes a new state `v` at
+time `t+dt`.
+
+
+```python
+class Diapers(Model):
+  def have(i):
+    return o(C = S(100), D = S(0),
+             q = F(0),  r = F(8), s = F(0))
+  def step(i,dt,t,u,v):
+    def saturday(x): return int(x) % 7 == 6
+    v.C +=  dt*(u.q - u.r)
+    v.D +=  dt*(u.r - u.s)
+    v.q  =  70  if saturday(t) else 0 
+    v.s  =  u.D if saturday(t) else 0
+    if t == 27: # special case (the day i forget)
+      v.s = 0
+```
+
+Note that the model is just some Python code so we can
+introduce any shortcut function (e.g. `saturday`). To write the Python:
+
++ sum the  in and outflows around each stock;
++ multiply that by the time tick `dt`
++ and add the result back to the stock
++ e.g. `v.C += dt*(u.q - u.r)`
+
+## Implementation
+
+### Some set up code
 
 """
 import random
@@ -160,7 +201,16 @@ class o:
   def asList(i,keys=[]):
     keys = keys or i.keys()
     return [i[k] for k in keys]
-      
+"""
+
+### Stocks, Flows, Aux are Subclasses of `Has`
+  
+`Has` is a named thing that knows the `lo` and `hi` values
+(and 
+if values fall outside that range, this class can `restrain` them in).
+
+
+"""
 class Has:
   def __init__(i,init,lo=0,hi=100):
     i.init,i.lo,i.hi = init,lo,hi
@@ -168,6 +218,7 @@ class Has:
     return max(i.lo, 
                min(i.hi, x))
   def rank(i):
+    "Trick to sort together columns of the same type."
     if isa(i,Flow) : return 3
     if isa(i,Stock): return 1
     if isa(i,Aux)  : return 2
@@ -179,35 +230,139 @@ class Has:
 class Flow(Has) : pass
 class Stock(Has): pass
 class Aux(Has)  : pass
+"""
 
+As promised:
+
+"""
 S,A,F = Stock,Aux,Flow
+"""
 
+### `Model`s  contain `Stock`s, `Flow`s and `Aux`
+ 
+
+"""
 class Model:
-  def about(i):
+  def state(i):
+    """To create a state vector, we create 
+    one slot for each name in 'have'."""
     tmp=i.have()
     for k,v in tmp.has().items():
       v.name = k
     return tmp 
-  def run(i,dt=1,tmax=30): 
-    r()
-    t,b4, keep  = 0, o(), []
-    about = i.about()
-    keys  = sorted(about.keys(), 
-                   key=lambda z: about[z].rank())
-    for k,a in about.items(): 
+  def run(i,dt=1,tmax=30):
+    """For time up to 'tmax', increment 't' 
+       by 'dt' and 'step' the model."""
+    t,b4 = 0, o()
+    keep = []    ## 1
+    state = i.state()
+    for k,a in state.items(): 
       b4[k] = a.init
+    keys  = sorted(state.keys(),  ## 3
+                   key=lambda z: state[z].rank())
     keep = [["t"] +  keys,
             [0] + b4.asList(keys)]
     while t < tmax:
       now = b4.copy()
       i.step(dt,t,b4,now)
-      for k in about.keys(): 
-        now[k] = about[k].restrain(now[k])
-      keep += [[t] + now.asList(keys)]
+      for k in state.keys(): 
+        now[k] = state[k].restrain(now[k]) ## 4
+      keep += [[t] + now.asList(keys)] ## 2
       t += dt
       b4 = now
     return keep
+"""
 
+As to what is going on in the `run` method...
+
+1. We keep the state vectors over all times in the `keep` list;
+2. In that list, we store the values of the `Stock`s, `Flow`s, and `Aux` values;
+3. At each time tick, all values are kept in the same order
+    + Determined by the `keys` variable.
+4. Between each time tick, we `restrain` any values that have gone
+   out of scope. 
+
+### Support Utilities
+
+Here's a cool trick for printing lists of lists... but
+only showing new values if they are different to the row above.
+For example, with `printm`, our model outputs:
+
+```
+###  _diapers1
+t  | C   | D  | q  | r | s
+0  | 100 | 0  | 0  | 8 | 0
+.  | 92  | 8  | .  | . | .
+1  | 84  | 16 | .  | . | .
+2  | 76  | 24 | .  | . | .
+3  | 68  | 32 | .  | . | .
+4  | 60  | 40 | .  | . | .
+5  | 52  | 48 | .  | . | .
+6  | 44  | 56 | 70 | . | 48
+7  | 100 | 16 | 0  | . | 0
+8  | 92  | 24 | .  | . | .
+9  | 84  | 32 | .  | . | .
+10 | 76  | 40 | .  | . | .
+11 | 68  | 48 | .  | . | .
+12 | 60  | 56 | .  | . | .
+13 | 52  | 64 | 70 | . | 56
+14 | 100 | 16 | 0  | . | 0
+15 | 92  | 24 | .  | . | .
+16 | 84  | 32 | .  | . | .
+17 | 76  | 40 | .  | . | .
+18 | 68  | 48 | .  | . | .
+19 | 60  | 56 | .  | . | .
+20 | 52  | 64 | 70 | . | 56
+21 | 100 | 16 | 0  | . | 0
+22 | 92  | 24 | .  | . | .
+23 | 84  | 32 | .  | . | .
+24 | 76  | 40 | .  | . | .
+25 | 68  | 48 | .  | . | .
+26 | 60  | 56 | .  | . | .
+27 | 52  | 64 | 70 | . | .
+28 | 100 | 72 | 0  | . | .
+29 | 92  | 80 | .  | . | .
+```
+
+Otherwise, the output is a little harder to read:
+
+```
+##  _diapers1
+t  | C   | D  | q  | r | s
+0  | 100 | 0  | 0  | 8 | 0
+0  | 92  | 8  | 0  | 8 | 0
+1  | 84  | 16 | 0  | 8 | 0
+2  | 76  | 24 | 0  | 8 | 0
+3  | 68  | 32 | 0  | 8 | 0
+4  | 60  | 40 | 0  | 8 | 0
+5  | 52  | 48 | 0  | 8 | 0
+6  | 44  | 56 | 70 | 8 | 48
+7  | 100 | 16 | 0  | 8 | 0
+8  | 92  | 24 | 0  | 8 | 0
+9  | 84  | 32 | 0  | 8 | 0
+10 | 76  | 40 | 0  | 8 | 0
+11 | 68  | 48 | 0  | 8 | 0
+12 | 60  | 56 | 0  | 8 | 0
+13 | 52  | 64 | 70 | 8 | 56
+14 | 100 | 16 | 0  | 8 | 0
+15 | 92  | 24 | 0  | 8 | 0
+16 | 84  | 32 | 0  | 8 | 0
+17 | 76  | 40 | 0  | 8 | 0
+18 | 68  | 48 | 0  | 8 | 0
+19 | 60  | 56 | 0  | 8 | 0
+20 | 52  | 64 | 70 | 8 | 56
+21 | 100 | 16 | 0  | 8 | 0
+22 | 92  | 24 | 0  | 8 | 0
+23 | 84  | 32 | 0  | 8 | 0
+24 | 76  | 40 | 0  | 8 | 0
+25 | 68  | 48 | 0  | 8 | 0
+26 | 60  | 56 | 0  | 8 | 0
+27 | 52  | 64 | 70 | 8 | 0
+28 | 100 | 72 | 0  | 8 | 0
+29 | 92  | 80 | 0  | 8 | 0
+```
+
+"""
 def printm(matrix,less=True):
    """Print a list of list, only showing changes
    in each column (if less is True)."""
@@ -228,6 +383,7 @@ def printm(matrix,less=True):
    for row in [fmt.format(*row) for row in s]:
       print(row)
 
+#<      
 class Diapers(Model):
   def have(i):
     return o(C = S(100), D = S(0),
@@ -240,6 +396,12 @@ class Diapers(Model):
     v.s  =  u.D if saturday(t) else 0
     if t == 27: # special case (the day i forget)
       v.s = 0
+#>
+"""
+
+## Demo Code
+
+"""
 
 @ok
 def _diapers1():
