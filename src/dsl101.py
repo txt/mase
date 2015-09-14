@@ -202,6 +202,8 @@ Use the sub-classing trick (this works in Python, or any other OO language).
 + Users write the particulars of their domain in subclasses.
 + Example, see below.
 
+See also [Implementing Domain Specific Languages In Python](http://www.pyvideo.org/video/251/pycon-2010--implementing-domain-specific-language).
+
 ## SAF: Stock and Flow (Compartmental Modeling in Python)
 
 From Wikipedia:
@@ -599,7 +601,7 @@ _Doom!_ for the future: no matter what we do, overshoot and collapse bu 2040:
 + Widely ridiculed. 
 + [From Wikipedia](https://en.wikipedia.org/wiki/The_Limits_to_Growth#Reviews): After publication some economists, scientists and political figures criticized the Limits to Growth. 
    + Attacked the methodology, the computer, the conclusions, the rhetoric and the people behind the project.
-    + Economists Henry C. Wallich agreed that growth could not continue indefinitely, but that a natural end to growth was preferable to intervention. 
+    + Economists agreed that growth could not continue indefinitely, but that a natural end to growth was preferable to intervention. 
     + Argues stated that technology could solve all the problems the Meadows were concerned about, but only if growth continued apace. By stopping growth too soon, the world would be "consigning billions to permanent poverty".
 + My reply is that their model was written and read more than run.
     + Their reported limits are avoidable. See below.
