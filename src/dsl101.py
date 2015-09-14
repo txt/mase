@@ -140,6 +140,8 @@ class unittest:
 
 ### Context Managers
 
+Here's an idiom for writing HTML:
+
 ```Python
 from contextlib import contextmanager
 
@@ -527,10 +529,11 @@ def _diapers1():
   printm(Diapers().run())
 """
 
-## Writing Compartmental Models
+## Appendix: Writing Compartmental Models
 
+Hints and Tips
 
-### Method one: linguistic clues.
+### Method one: use linguistic clues.
 
 Talk to client. Record the session. Look for clues in that conversation. e.g
 
