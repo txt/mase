@@ -5,7 +5,7 @@ from ok import *
 
 """
 
-# Domain-Specific Languages 1010 (in Python)
+# Domain-Specific Languages 101 (in Python)
 
 This files shows an example of a small object-based DSL (domain-specific language) in Python.
 In the language, all the tedious stuff is implemented in superclasses, letting
