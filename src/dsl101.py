@@ -605,7 +605,7 @@ output, services output, and jobs).
 
 ![world](../img/world.png)
 
-Using the techniques of this class, me and Justin Geletcko
+Using the techniques of this class, me and Dustin Geletko
 found mitigations that could save the world:
 
 ![world](../img/saveTheWorld.png)
@@ -618,5 +618,9 @@ How did we do it? By capping family size and industrial output
 (Here, all values are discretized 0,1,2,3,4,5,6.)
 
 So, study ASE to save the world.
+
+Reference: Geletko, D.; Menzies, T., "Model-based software testing via incremental treatment learning," in Software Engineering Workshop, 2003. Proceedings. 28th Annual NASA Goddard , vol., no., pp.82-90, 3-4 Dec. 2003
+doi: 10.1109/SEW.2003.1270729
+URL: http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1270729&isnumber=28448
 
 """
