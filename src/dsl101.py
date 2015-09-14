@@ -340,19 +340,20 @@ class Has:
   def restrain(i,x):
     return max(i.lo, 
                min(i.hi, x))
-  def rank(i):
+  def rank(i): 
     "Trick to sort together columns of the same type."
-    if isa(i,Flow) : return 3
-    if isa(i,Stock): return 1
-    if isa(i,Aux)  : return 2
+    return 0
   def __repr__(i):
     return str(dict(what=i.__class__.__name__,
                 name= i.name,init= i.init,
                  lo  = i.lo,  hi  = i.hi))
                  
-class Flow(Has) : pass
-class Stock(Has): pass
-class Aux(Has)  : pass
+class Flow(Has) :
+  def rank(i): return 3
+class Stock(Has):
+  def rank(i): return 1
+class Aux(Has)  :
+  def rank(i): return 2
 """
 
 As promised:
@@ -591,10 +592,10 @@ URL: http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1270729&isnumber=28
 The infamous [Limits to Growth](http://www.donellameadows.org/wp-content/userfiles/Limits-to-Growth-digital-scan-version.pdf) study. 12 million copies were distributed in 37 languages. 
 
 In 1972, a team of system scientists and computer
-model- ers studied the effects of the world’s
+modelers studied the effects of the world's
 exponentially growing population and economy. A
 model was developed of the world, and it predicted
-_Doom!_ for the future: no matter what we do, overshoot and collapse bu 2040:
+_Doom!_ for the future: no matter what we do, overshoot and collapse by 2040:
 
 ![world](../img/overshoot.png)
 
