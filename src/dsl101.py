@@ -202,6 +202,8 @@ Use the sub-classing trick (this works in Python, or any other OO language).
 + Users write the particulars of their domain in subclasses.
 + Example, see below.
 
+See also [Implementing Domain Specific Languages In Python](http://www.pyvideo.org/video/251/pycon-2010--implementing-domain-specific-language) (very long!).
+
 ## SAF: Stock and Flow (Compartmental Modeling in Python)
 
 From Wikipedia:
@@ -338,19 +340,20 @@ class Has:
   def restrain(i,x):
     return max(i.lo, 
                min(i.hi, x))
-  def rank(i):
+  def rank(i): 
     "Trick to sort together columns of the same type."
-    if isa(i,Flow) : return 3
-    if isa(i,Stock): return 1
-    if isa(i,Aux)  : return 2
+    return 0
   def __repr__(i):
     return str(dict(what=i.__class__.__name__,
                 name= i.name,init= i.init,
                  lo  = i.lo,  hi  = i.hi))
                  
-class Flow(Has) : pass
-class Stock(Has): pass
-class Aux(Has)  : pass
+class Flow(Has) :
+  def rank(i): return 3
+class Stock(Has):
+  def rank(i): return 1
+class Aux(Has)  :
+  def rank(i): return 2
 """
 
 As promised:
@@ -527,13 +530,33 @@ class Diapers(Model):
 @ok
 def _diapers1():
   printm(Diapers().run())
-"""
+"""## Appendix 
 
-## Appendix: Writing Compartmental Models
+### Appendix A.: Debugging Compartmental Models
+
+Never underestimate the effort associated with commissioning a model. 
+
++ The experience is rarely "Eureka!" but more like "huh, that's odd". 
++ Repeat for  several weeks. 
+
+So start small and get experience with the parts before trying to get lessons from the whole.
+
++ Never too early to start your modeling.
+
+
+FYI: Cannot debug complex emergent behavior. 
+
++ Instead, debug the parts then trust the whole reflects the interactions of
+the parts:
+    + Write down ten micro-expectations of the simulation
+        + Little effects, involving just a few variables
+    + Check of these are happening.
+
+### Appendix B.: Writing Compartmental Models
 
 Hints and Tips
 
-### Method one: use linguistic clues.
+#### Method one: use linguistic clues.
 
 Talk to client. Record the session. Look for clues in that conversation. e.g
 
@@ -546,7 +569,7 @@ For more on these linguistic clues, see
 about Time Properties of Variables ](http://www.systemdynamics.org/conferences/2006/proceed/papers/TAKAH173.pdf)
 + [Translation from Natural Language to Stock Flow Diagrams ](http://www.systemdynamics.org/conferences/2005/proceed/papers/TAKAH137.pdf)
 
-### Method Two : Causal Model Refinement
+#### Method Two : Causal Model Refinement
 
 As someone  said, first we write down the intuition, then we write down the Xs and the Ys.
 
@@ -566,4 +589,61 @@ For more on this approach, see:
 
 + [Introduction to System Dynamics](http://unbox.org/doc/optimalML/introSystemDynamics.pdf)
 + [DEVELOPING SYSTEM DYNAMICS MODELS FROM CAUSAL LOOP DIAGRAMS](http://webmail.inb.uni-luebeck.de/inb-publications/pdfs/BiVoBeHaSv04.pdf)
+
+
+### Appendix C.: Compartmental Models Saving the Whole World
+
+
+Reference: Geletko, D.; Menzies, T., "Model-based software testing via incremental treatment learning," in Software Engineering Workshop, 2003. Proceedings. 28th Annual NASA Goddard , vol., no., pp.82-90, 3-4 Dec. 2003
+doi: 10.1109/SEW.2003.1270729
+URL: http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1270729&isnumber=28448
+
+The infamous [Limits to Growth](http://www.donellameadows.org/wp-content/userfiles/Limits-to-Growth-digital-scan-version.pdf) study. 12 million copies were distributed in 37 languages. 
+
+In 1972, a team of system scientists and computer
+modelers studied the effects of the world's
+exponentially growing population and economy. A
+model was developed of the world, and it predicted
+_Doom!_ for the future: no matter what we do, overshoot and collapse by 2040:
+
+![world](../img/overshoot.png)
+
++ Widely ridiculed. 
++ [From Wikipedia](https://en.wikipedia.org/wiki/The_Limits_to_Growth#Reviews): After publication some economists, scientists and political figures criticized the Limits to Growth. 
+   + Attacked the methodology, the computer, the conclusions, the rhetoric and the people behind the project.
+    + Economists agreed that growth could not continue indefinitely, but that a natural end to growth was preferable to intervention. 
+    + Argues stated that technology could solve all the problems the Meadows were concerned about, but only if growth continued apace. By stopping growth too soon, the world would be "consigning billions to permanent poverty".
++ My reply is that their model was written and read more than run.
+    + Their reported limits are avoidable. See below.
+
+
+Here is the compartmental model it was generated
+from.  It consists of the classes of world
+population, nonrenewable resources, food,
+industrial output, and persistent pollution index
+from the year range 1900 to 2100. The model is
+rather complex, consisting of hundreds of variables,
+comprised of the five main sectors of persistent
+pollution, non-renewable resources, population,
+agriculture(food produc-tion, land fertility, and
+land development and loss), and economy(industrial
+output, services output, and jobs).
+
+![world](../img/world.png)
+
+Using the techniques of this class, me and Dustin Geletko
+found mitigations that could save the world:
+
+![world](../img/saveTheWorld.png)
+
+How did we do it? By capping family size and industrial output
+
+1. desired completed family size normal = [0..2] 
+2. Industrial Capital Output Ratio 1 = [3..5]
+
+(Here, all values are discretized 0,1,2,3,4,5,6.)
+
+So, study ASE to save the world.
+
+
 """
