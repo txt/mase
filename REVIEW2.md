@@ -89,7 +89,9 @@ class o:
   def __repr__(i)        : return 'o'+str(i.__dict__)
 ```
 
-2b. What would happen if the _last line_ in the following `__iadd__` method
+2b. In the above, what is the magic __dict__ variable?
+
+2c. What would happen if the _last line_ in the following `__iadd__` method
 was deleted?
 
 ```python
@@ -110,7 +112,7 @@ class Some:
 ```	
 
 
-2c. In English, explain what the above `Some` class  does. Use it in a loop
+2d. In English, explain what the above `Some` class  does. Use it in a loop
 to keep `Some` numbers in the series 0,1,2,...999.
 
 
