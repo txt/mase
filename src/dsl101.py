@@ -15,8 +15,8 @@ The example here will be compartmental modeling and is
  adapted from some  excellent code from
 [Abraham Flaxman](https://gist.github.com/aflaxman/4121076#file-sdm_diaper_delivery-ipynb).
 
-Note that students of CSx91 have ready access to many compartmental models about software
-systems ranging from
+Note that students of CSx91 have ready access to many 
+[compartmental models about software systems](http://unbox.org/doc/optimalML/madachyBook.pdf) ranging from
 
 ![simple](../img/simpleCm.png)
 
@@ -426,3 +426,40 @@ class Diapers(Model):
 def _diapers1():
   printm(Diapers().run())
 """
+
+## Writing Compartmental Models
+
+
+### Method one: linguistic clues.
+
+Talk to client. Record the session. Look for clues in that conversation. e.g
+
+![nl](../img/cmNl.jpg)
+
+For more on these linguistic clues, see
+
+
++ [Stock Flow Diagram Making with Incomplete Information
+about Time Properties of Variables ](http://www.systemdynamics.org/conferences/2006/proceed/papers/TAKAH173.pdf)
++ [Translation from Natural Language to Stock Flow Diagrams ](http://www.systemdynamics.org/conferences/2005/proceed/papers/TAKAH137.pdf)
+
+### Method Two : Causal Model Refinement
+
+As someone  said, first we write down the intuition, then we write down the Xs and the Ys.
+
+So here's a vague causal diagram:
+
+![Causal1](../img/casual1.gif]
+
+Which you can sort of see can get translated into:
+
+![Causal1](../img/casual1cm.gif]
+
+Now imagine a bigger example:
+
+![Causal](../img/largeCasual.gif]
+
+For more on this approach, see:
+
++ [Introduction to System Dynamics](http://unbox.org/doc/optimalML/introSystemDynamics.pdf)
++ [DEVELOPING SYSTEM DYNAMICS MODELS FROM CAUSAL LOOP DIAGRAMS](http://webmail.inb.uni-luebeck.de/inb-publications/pdfs/BiVoBeHaSv04.pdf)
