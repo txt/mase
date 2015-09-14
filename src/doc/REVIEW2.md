@@ -69,9 +69,8 @@ def lines(string):
   
 ### 2. Dunders
 
-2a. What is a dunder method?
 
-2b. What are the dunders in the following code? For each one,
+2a. What are the dunders in the following code? For each one,
 use them in a code snippet.
 
 ```
@@ -82,7 +81,7 @@ class o:
   def __repr__(i)        : return 'o'+str(i.__dict__)
 ```
 
-2c. What would happen if the _last line_ in the following `__iadd__` method
+2b. What would happen if the _last line_ in the following `__iadd__` method
 was deleted?
 
 ```python
@@ -103,5 +102,6 @@ class Some:
 ```	
 
 
-2d. In English, explain what the above code does. 
+2c. In English, explain what the above `Some` class  does. Use it in a loop
+to keep `Some` numbers in the series 0,1,2,...999.
 
