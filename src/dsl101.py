@@ -94,12 +94,16 @@ The benefits of DSL (productivity, explanatory, ownership by the users) can be o
 
 + Full-blown YACC/LEX parser
 
+Not-so-complex:
+
++ Use (PyParsing](http://www.slideshare.net/Siddhi/creating-domain-specific-languages-in-python)
+
 Simpler:
 
++ See  decorators, context managers
 + Code the idioms in general superclasses;
-+ Leave the domain-specific stuff for subclasses/
-
-For example....
+   + Leave the domain-specific stuff for subclasses
+   + For an example of the _subclassing_ approach, see below.
 
 ## SAF: Stock and Flow (Compartmental Modeling in Python)
 
@@ -466,3 +470,53 @@ For more on this approach, see:
 
 + [Introduction to System Dynamics](http://unbox.org/doc/optimalML/introSystemDynamics.pdf)
 + [DEVELOPING SYSTEM DYNAMICS MODELS FROM CAUSAL LOOP DIAGRAMS](http://webmail.inb.uni-luebeck.de/inb-publications/pdfs/BiVoBeHaSv04.pdf)
+
+## Writing your own DSL in Python
+
++ External DSL: code is a string which is read, parsed, and executed by (say) Python.
+    + E.g. see [PyParsing](http://www.slideshare.net/Siddhi/creating-domain-specific-languages-in-python)
++ Internal DSL: using features of the language, enable people to write code that resembles domain syntax.
+    + E.g. see above.
+
+
+See also, Python decorators and context managers
+
+e.g. decorators `@ok`.
+
+e.g. contextmanagers
+
+```Python
+from contextlib import contextmanager
+
+@contextmanager
+def tag(name):
+    print "<%s>" % name
+    yield
+    print "</%s>" % name
+
+>>> with tag("h1"):
+...    print "foo"
+...
+<h1>
+foo
+</h1>
+```
+
+Another example:
+
+```python
+from contextlib import contextmanager
+from contextlib import closing
+import urllib
+
+@contextmanager
+def closing(thing):
+    try:
+        yield thing
+    finally:
+        thing.close()
+
+with closing(urllib.urlopen('http://www.python.org')) as page:
+    for line in page:
+        print line
+```
