@@ -534,14 +534,23 @@ def _diapers1():
 
 ### Appendix A.: Debugging Compartmental Models
 
-Cannot debug complex emergent behavior. 
+Never underestimate the effort associated with commissioning a model. 
 
-Instead, debug the parts then trust the whole reflects the interactions of
++ The experience is rarely "Eureka!" but more like "huh, that's odd". 
++ Repeat for  several weeks. 
+
+So start small and get experience with the parts before trying to get lessons from the whole.
+
++ Never too early to start your modeling.
+
+
+FYI: Cannot debug complex emergent behavior. 
+
++ Instead, debug the parts then trust the whole reflects the interactions of
 the parts:
-
-+ Write down ten micro-expectations of the simulation
-    + Little effects, involving just a few variables
-+ Check of these are happening.
+    + Write down ten micro-expectations of the simulation
+        + Little effects, involving just a few variables
+    + Check of these are happening.
 
 ### Appendix B.: Writing Compartmental Models
 
