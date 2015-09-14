@@ -52,6 +52,7 @@ Example DSLs:
 + SQL
 + AWK (unix text reporting language)
 
+<img align=right wdith=400 src="http://www.gigathoughts.com/wp-content/uploads/2009/11/register_domain_name_local_languages_icann_idn_cctld.gif">
 DSLs are useful since
 different representations of the same concepts can make certain inferences easier. Here's Douglas
 Hofstadter from his book _Godel, Esher, Bach:_
@@ -71,6 +72,7 @@ Here's James Martin from his book _Design of Real-time Computer Systems_:
    + The civil engineer must use the language of civil engineering.
    + When a man (sic) learns his profession he must learn the problem-oriented languages to go with that profession.
 
+<img align=right width=400 src="http://image.slidesharecdn.com/letmakeuserhappy-130613095746-phpapp01/95/let-make-user-happy-1-638.jpg?cb=1371117649">
 A DSL is a very high-level language that a user can learn and use in less than a day. Such productivity can only be achieved by tailoring the language to the special needs and skills of a particular class of users in a particular domain.
 So one way to find DSL is listen to experts in some field commenting on their processing. Often that processing
 has repeated domain-specific idioms:
