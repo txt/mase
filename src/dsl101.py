@@ -404,7 +404,7 @@ def printm(matrix,less=True):
 
 ### Model
 
-###
+"""
 class Diapers(Model):
   def have(i):
     return o(C = S(100), D = S(0),
@@ -453,7 +453,7 @@ So here's a vague causal diagram:
 
 Which you can sort of see can get translated into:
 
-![Causal1](../img/casual1cm.gif]
+![Causal1](../img/casual1Cm.png]
 
 Now imagine a bigger example:
 
