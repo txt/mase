@@ -18,11 +18,11 @@ The example here will be compartmental modeling and is
 Note that students of CSx91 have ready access to many compartmental models about software
 systems ranging from
 
-![simple](../img/simpleCM.png)
+![simple](../img/simpleCm.png)
 
 to the very complex.
 
-![complex](../img/complexCM.png)
+![complex](../img/complexCm.png)
 
 
 ## Theory
