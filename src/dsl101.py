@@ -15,6 +15,16 @@ The example here will be compartmental modeling and is
  adapted from some  excellent code from
 [Abraham Flaxman](https://gist.github.com/aflaxman/4121076#file-sdm_diaper_delivery-ipynb).
 
+Note that students of CSx91 have ready access to many compartmental models about software
+systems ranging from
+
+![simple](../img/simpleCM.png)
+
+to the very complex.
+
+![complex](../img/complexCM.png)
+
+
 ## Theory
 
 Does your language pass the _elbow test_? Do your business users elbow you of the way
@@ -120,6 +130,9 @@ For practical purposes, it may be necessary to add _auxillary variables_ to hand
 we can see _nominal productivity_).
 
 ![Brooks](../img/brookslaw.png)
+
+Note the `sources` and `sinks` in the above diagram: these are infinite stocks that can generate or receive infinite
+volumes.
 
 So, in the following code, look for
 
@@ -388,7 +401,10 @@ def printm(matrix,less=True):
    for row in [fmt.format(*row) for row in s]:
       print(row)
 """
-"""<
+
+### Model
+
+###
 class Diapers(Model):
   def have(i):
     return o(C = S(100), D = S(0),
@@ -401,7 +417,6 @@ class Diapers(Model):
     v.s  =  u.D if saturday(t) else 0
     if t == 27: # special case (the day i forget)
       v.s = 0
-""">
 """
 
 ## Demo Code
@@ -410,3 +425,4 @@ class Diapers(Model):
 @ok
 def _diapers1():
   printm(Diapers().run())
+"""
