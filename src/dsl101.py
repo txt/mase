@@ -382,8 +382,11 @@ def printm(matrix,less=True):
    fmt = ' | '.join('{{:{}}}'.format(x) for x in lens)
    for row in [fmt.format(*row) for row in s]:
       print(row)
+"""
 
-#<      
+### Model
+
+"""
 class Diapers(Model):
   def have(i):
     return o(C = S(100), D = S(0),
@@ -396,7 +399,6 @@ class Diapers(Model):
     v.s  =  u.D if saturday(t) else 0
     if t == 27: # special case (the day i forget)
       v.s = 0
-#>
 """
 
 ## Demo Code
