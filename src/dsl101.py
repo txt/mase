@@ -94,20 +94,111 @@ In a DSL-based software development process, the analyst:
 That is, instead of the analyst writing the application, the analysts writes tools that let a user community write and maintain their own knowledge.
 
 
-The benefits of DSL (productivity, explanatory, ownership by the users) can be out-weighed by the cost of building the DSL.  Most expensive way of building  a DSL:
+The benefits of DSL (productivity, explanatory, ownership by the users) can be out-weighed by the cost of building the DSL.  
 
-+ Full-blown YACC/LEX parser
+Two ways to build a DSL:
 
-Not-so-complex:
++ External DSL: code is a string which is read, parsed, and executed by (say) Python.
+    + E.g. see [PyParsing](http://www.slideshare.net/Siddhi/creating-domain-specific-languages-in-python)
++ Internal DSL: using features of the language, enable people to write code that resembles domain syntax.
+   + See  decorators, context managers
+   + Code the idioms in general superclasses;
+      + Leave the domain-specific stuff for subclasses
 
-+ Use [PyParsing](http://www.slideshare.net/Siddhi/creating-domain-specific-languages-in-python)
+## Writing your own DSL in Python
 
-Simpler:
+### Decorators
 
-+ See  decorators, context managers
-+ Code the idioms in general superclasses;
-   + Leave the domain-specific stuff for subclasses
-   + For an example of the _subclassing_ approach, see below.
+A test engine, as a Python decorator
+
+```python
+def ok(*lst):
+  print "### ",lst[0].__name__
+  for one in lst: unittest(one)
+  return one
+
+class unittest:
+  tries = fails = 0  #  tracks the record so far
+  @staticmethod
+  def score():
+    t = unittest.tries
+    f = unittest.fails
+    return "# TRIES= %s FAIL= %s %%PASS = %s%%"  % (
+      t,f,int(round(t*100/(t+f+0.001))))
+  def __init__(i,test):
+    unittest.tries += 1
+    try:
+      test()
+    except Exception,e:
+      unittest.fails += 1
+      i.report(test)
+  def report(i,test):
+    import traceback
+    print traceback.format_exc()
+    print unittest.score(),':',test.__name__
+```
+
+### Context Managers
+
+```Python
+from contextlib import contextmanager
+
+@contextmanager
+def tag(name):
+    print "<%s>" % name
+    yield
+    print "</%s>" % name
+
+>>> with tag("h1"):
+...    print "foo"
+...
+<h1>
+foo
+</h1>
+```
+
+Another example (print runtime of things):
+
+```python
+@contextmanager
+def duration():
+  t1 = time.time()
+  yield
+  t2 = time.time()
+  print("\n" + "-" * 72)
+  print("# Runtime: %.3f secs" % (t2-t1))
+
+def _durationDemo():
+  with duration():
+    ##do something
+```
+
+Yet another example (always close things):
+
+```python
+from contextlib import contextmanager
+from contextlib import closing
+import urllib
+
+@contextmanager
+def closing(thing):
+    try:
+        yield thing
+    finally:
+        thing.close()
+
+with closing(urllib.urlopen('http://www.python.org')) as page:
+    for line in page:
+        print line
+```
+
+## Other Techniques
+
+Use the sub-classing trick (this works in Python, or any other OO language).
+
++ Place the generic processing in superclasses.
++ Users write the particulars of their domain in subclasses.
++ Example, see below.
 
 ## SAF: Stock and Flow (Compartmental Modeling in Python)
 
@@ -268,6 +359,14 @@ S,A,F = Stock,Aux,Flow
 
 ### `Model`s  contain `Stock`s, `Flow`s and `Aux`
  
+When we `run` a model:
+
+1. We keep the state vectors over all times in the `keep` list;
+2. In that list, we store the values of the `Stock`s, `Flow`s, and `Aux` values;
+3. At each time tick, all values are kept in the same order
+    + Determined by the `keys` variable.
+4. Between each time tick, we `restrain` any values that have gone
+   out of scope. 
 
 """
 class Model:
@@ -278,18 +377,6 @@ class Model:
     for k,v in tmp.has().items():
       v.name = k
     return tmp 
-"""
-
-As to what is going on in the `run` method...
-
-1. We keep the state vectors over all times in the `keep` list;
-2. In that list, we store the values of the `Stock`s, `Flow`s, and `Aux` values;
-3. At each time tick, all values are kept in the same order
-    + Determined by the `keys` variable.
-4. Between each time tick, we `restrain` any values that have gone
-   out of scope. 
-
-"""
   def run(i,dt=1,tmax=30):
     """For time up to 'tmax', increment 't' 
        by 'dt' and 'step' the model."""
@@ -476,53 +563,4 @@ For more on this approach, see:
 
 + [Introduction to System Dynamics](http://unbox.org/doc/optimalML/introSystemDynamics.pdf)
 + [DEVELOPING SYSTEM DYNAMICS MODELS FROM CAUSAL LOOP DIAGRAMS](http://webmail.inb.uni-luebeck.de/inb-publications/pdfs/BiVoBeHaSv04.pdf)
-
-## Writing your own DSL in Python
-
-+ External DSL: code is a string which is read, parsed, and executed by (say) Python.
-    + E.g. see [PyParsing](http://www.slideshare.net/Siddhi/creating-domain-specific-languages-in-python)
-+ Internal DSL: using features of the language, enable people to write code that resembles domain syntax.
-    + E.g. see above.
-
-
-See also, Python decorators and context managers
-
-e.g. decorators `@ok`.
-
-e.g. contextmanagers
-
-```Python
-from contextlib import contextmanager
-
-@contextmanager
-def tag(name):
-    print "<%s>" % name
-    yield
-    print "</%s>" % name
-
->>> with tag("h1"):
-...    print "foo"
-...
-<h1>
-foo
-</h1>
-```
-
-Another example:
-
-```python
-from contextlib import contextmanager
-from contextlib import closing
-import urllib
-
-@contextmanager
-def closing(thing):
-    try:
-        yield thing
-    finally:
-        thing.close()
-
-with closing(urllib.urlopen('http://www.python.org')) as page:
-    for line in page:
-        print line
-```
+"""
