@@ -250,6 +250,18 @@ class Model:
     for k,v in tmp.has().items():
       v.name = k
     return tmp 
+"""
+
+As to what is going on in the `run` method...
+
+1. We keep the state vectors over all times in the `keep` list;
+2. In that list, we store the values of the `Stock`s, `Flow`s, and `Aux` values;
+3. At each time tick, all values are kept in the same order
+    + Determined by the `keys` variable.
+4. Between each time tick, we `restrain` any values that have gone
+   out of scope. 
+
+"""
   def run(i,dt=1,tmax=30):
     """For time up to 'tmax', increment 't' 
        by 'dt' and 'step' the model."""
@@ -271,16 +283,7 @@ class Model:
       t += dt
       b4 = now
     return keep
-"""
 
-As to what is going on in the `run` method...
-
-1. We keep the state vectors over all times in the `keep` list;
-2. In that list, we store the values of the `Stock`s, `Flow`s, and `Aux` values;
-3. At each time tick, all values are kept in the same order
-    + Determined by the `keys` variable.
-4. Between each time tick, we `restrain` any values that have gone
-   out of scope. 
 
 ### Support Utilities
 
