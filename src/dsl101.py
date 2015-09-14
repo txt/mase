@@ -30,6 +30,7 @@ to the very complex.
 
 ## Theory
 
+<img align=right width=300 src="http://www.quickmeme.com/img/23/23d727872d13ac2b652ea175ac6b63a1792688690e9eb6f7d7d0a82bc1ed94c5.jpg">
 Does your language pass the _elbow test_? Do your business users elbow you of the way
 in their haste to fix what is obviously wrong with your code?
 
@@ -51,6 +52,7 @@ Example DSLs:
 
 + SQL
 + AWK (unix text reporting language)
++ Regular expressions
 
 <img align=right wdith=400 src="http://www.gigathoughts.com/wp-content/uploads/2009/11/register_domain_name_local_languages_icann_idn_cctld.gif">
 DSLs are useful since
