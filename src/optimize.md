@@ -96,25 +96,25 @@ Code:
 <a href="optimize.py#L88-L106"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def study(f):
-   2:     def wrapper(**lst):
-   3:       rseed() # reset the seed to our default
-   4:       what = f.__name__# print the function name
-   5:       doc  = f.__doc__ # print the function doc
-   6:       if doc:
-   7:         doc= re.sub(r"\n[ \t]*","\n# ",doc)
-   8:       # print when this ran
-   9:       show = datetime.datetime.now().strftime
-  10:       print "\n###",what,"#" * 50
-  11:       print "#", show("%Y-%m-%d %H:%M:%S")
-  12:       if doc: print "#",doc
-  13:       t1 = time.time()
-  14:       f(**lst)          # run the function
-  15:       t2 = time.time() # show how long it took to run
-  16:       print "\n" + ("-" * 72)
-  17:       showd(The)       # print the options
-  18:       print "\n# Runtime: %.3f secs" % (t2-t1)
-  19:     return wrapper
+   6:   def study(f):
+   7:     def wrapper(**lst):
+   8:       rseed() # reset the seed to our default
+   9:       what = f.__name__# print the function name
+  10:       doc  = f.__doc__ # print the function doc
+  11:       if doc:
+  12:         doc= re.sub(r"\n[ \t]*","\n# ",doc)
+  13:       # print when this ran
+  14:       show = datetime.datetime.now().strftime
+  15:       print "\n###",what,"#" * 50
+  16:       print "#", show("%Y-%m-%d %H:%M:%S")
+  17:       if doc: print "#",doc
+  18:       t1 = time.time()
+  19:       f(**lst)          # run the function
+  20:       t2 = time.time() # show how long it took to run
+  21:       print "\n" + ("-" * 72)
+  22:       showd(The)       # print the options
+  23:       print "\n# Runtime: %.3f secs" % (t2-t1)
+  24:     return wrapper
 ```
 
 ## Model Definition
@@ -168,49 +168,49 @@ That said, say hello to my little friend:
 <a href="optimize.py#L158-L200"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   class Model:
-   2:     def name(i): 
-   3:       return i.__class__.__name__
-   4:     def __init__(i):
-   5:       "Initialize the generators and loggers."
-   6:       i.of = i.spec()
-   7:       i.log= o(x= [of1.log() for of1 in i.of.x],
-   8:                y= [Num()     for _   in i.of.y])
-   9:     def better(news,olds):
-  10:       def worsed():
-  11:         return  ((same     and not betterIqr) or 
-  12:                  (not same and not betterMed))
-  13:       def bettered():
-  14:         return not same and betterMed
-  15:       out = False
-  16:       for new,old in zip(news.log.y, olds.log.y):
-  17:         betterMed, same, betterIqr = new.better(old)
-  18:         if worsed()  : return False # never any worsed
-  19:         if bettered(): out= out or True # at least one bettered
-  20:       return out
-  21:     def cloneIT(i):
-  22:       return i.__class__()
-  23:     def indepIT(i):
-  24:       "Make new it."
-  25:       return o(x=[generate() for generate in i.of.x])
-  26:     def depIT(i,it):
-  27:       "Complete it's dep variables."
-  28:       it.y = [generate(it) for generate in i.of.y]
-  29:       return it
-  30:     def logIT(i,it):
-  31:       "Remember what we have see in it."
-  32:       for val,log in zip(it.x, i.log.x): log += val
-  33:       for val,log in zip(it.y, i.log.y): log += val
-  34:     def aroundIT(i,it,p=0.5):
-  35:       "Find some place around it."
-  36:       def n(val,generate): 
-  37:         return generate() if rand() < p else val
-  38:       old = it.x
-  39:       new = [n(x,generate) for 
-  40:                          x,generate in zip(old,i.of.x)]
-  41:       return o(x=new)
-  42:     def ish(i,it):
-  43:       return o(x= [of1.ish() for of1 in i.of.x])
+  25:   class Model:
+  26:     def name(i): 
+  27:       return i.__class__.__name__
+  28:     def __init__(i):
+  29:       "Initialize the generators and loggers."
+  30:       i.of = i.spec()
+  31:       i.log= o(x= [of1.log() for of1 in i.of.x],
+  32:                y= [Num()     for _   in i.of.y])
+  33:     def better(news,olds):
+  34:       def worsed():
+  35:         return  ((same     and not betterIqr) or 
+  36:                  (not same and not betterMed))
+  37:       def bettered():
+  38:         return not same and betterMed
+  39:       out = False
+  40:       for new,old in zip(news.log.y, olds.log.y):
+  41:         betterMed, same, betterIqr = new.better(old)
+  42:         if worsed()  : return False # never any worsed
+  43:         if bettered(): out= out or True # at least one bettered
+  44:       return out
+  45:     def cloneIT(i):
+  46:       return i.__class__()
+  47:     def indepIT(i):
+  48:       "Make new it."
+  49:       return o(x=[generate() for generate in i.of.x])
+  50:     def depIT(i,it):
+  51:       "Complete it's dep variables."
+  52:       it.y = [generate(it) for generate in i.of.y]
+  53:       return it
+  54:     def logIT(i,it):
+  55:       "Remember what we have see in it."
+  56:       for val,log in zip(it.x, i.log.x): log += val
+  57:       for val,log in zip(it.y, i.log.y): log += val
+  58:     def aroundIT(i,it,p=0.5):
+  59:       "Find some place around it."
+  60:       def n(val,generate): 
+  61:         return generate() if rand() < p else val
+  62:       old = it.x
+  63:       new = [n(x,generate) for 
+  64:                          x,generate in zip(old,i.of.x)]
+  65:       return o(x=new)
+  66:     def ish(i,it):
+  67:       return o(x= [of1.ish() for of1 in i.of.x])
 ```
 
 Given the above, it is now very succinct to specify
@@ -236,64 +236,64 @@ idea: _In_ is something that ranges from zero to one.
 <a href="optimize.py#L224-L281"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   class Watch(object):
-   2:     def __iter__(i): 
-   3:       return i
-   4:     def __init__(i,model,history=None):
-   5:       i.early   = The.misc.early  
-   6:       i.history = {} if history == None else history
-   7:       i.log     = {}
-   8:       i.most, i.model = The.sa.kmax, model
-   9:       i.step, i.era  = 1,1
-  10:     def logIT(i,result):
-  11:       """ Each recorded result is one clock tick.
-  12:           Record all results in log and history"""
-  13:       both = [i.history, i.log]     
-  14:       for log in both:
-  15:         if not i.era in log:
-  16:           log[i.era] = i.model.cloneIT()
-  17:       i.step += 1
-  18:       for log in both:
-  19:         log[i.era].logIT(result)
-  20:     def stop(i):
-  21:       """if more than two eras, suggest
-  22:          stopping if no improvement."""
-  23:       if len(i.log) >= The.misc.early:
-  24:         #print 3
-  25:         now = i.era
-  26:         before = now - The.misc.era
-  27:         beforeLog = i.log[before]
-  28:         nowLog    = i.log[now]
-  29:         if not nowLog.better(beforeLog):
-  30:           #print 4
-  31:           return True
-  32:       return False
-  33:     def next(i):
-  34:       "return next time tick, unless we need to halt."
-  35:       if i.step > i.most: # end of run!
-  36:         raise StopIteration()
-  37:       if i.step >= i.era:   # pause to reflect
-  38:         #print 1, i.step, i.era
-  39:         if i.early > 0:     # maybe exit early
-  40:           #print 2
-  41:           if i.stop():        
-  42:              raise StopIteration()
-  43:         i.era += The.misc.era   # set next pause point
-  44:       return i.step,i
-  45:   
-  46:   def optimizeReport(m,history):
-  47:     for z,header in enumerate(m.log.y):
-  48:       print "\nf%s" % z
-  49:       for era in sorted(history.keys()):
-  50:         log = history[era].log.y[z]
-  51:         log.has()
-  52:         print str(era-1).rjust(7),\
-  53:               xtile(log._cache,
-  54:                     width=33,
-  55:                     show="%5.2f",
-  56:                     lo=0,hi=1)
-  57:   
-  58:   if __name__ == "__main__": eval(cmd())
+  68:   class Watch(object):
+  69:     def __iter__(i): 
+  70:       return i
+  71:     def __init__(i,model,history=None):
+  72:       i.early   = The.misc.early  
+  73:       i.history = {} if history == None else history
+  74:       i.log     = {}
+  75:       i.most, i.model = The.sa.kmax, model
+  76:       i.step, i.era  = 1,1
+  77:     def logIT(i,result):
+  78:       """ Each recorded result is one clock tick.
+  79:           Record all results in log and history"""
+  80:       both = [i.history, i.log]     
+  81:       for log in both:
+  82:         if not i.era in log:
+  83:           log[i.era] = i.model.cloneIT()
+  84:       i.step += 1
+  85:       for log in both:
+  86:         log[i.era].logIT(result)
+  87:     def stop(i):
+  88:       """if more than two eras, suggest
+  89:          stopping if no improvement."""
+  90:       if len(i.log) >= The.misc.early:
+  91:         #print 3
+  92:         now = i.era
+  93:         before = now - The.misc.era
+  94:         beforeLog = i.log[before]
+  95:         nowLog    = i.log[now]
+  96:         if not nowLog.better(beforeLog):
+  97:           #print 4
+  98:           return True
+  99:       return False
+ 100:     def next(i):
+ 101:       "return next time tick, unless we need to halt."
+ 102:       if i.step > i.most: # end of run!
+ 103:         raise StopIteration()
+ 104:       if i.step >= i.era:   # pause to reflect
+ 105:         #print 1, i.step, i.era
+ 106:         if i.early > 0:     # maybe exit early
+ 107:           #print 2
+ 108:           if i.stop():        
+ 109:              raise StopIteration()
+ 110:         i.era += The.misc.era   # set next pause point
+ 111:       return i.step,i
+ 112:   
+ 113:   def optimizeReport(m,history):
+ 114:     for z,header in enumerate(m.log.y):
+ 115:       print "\nf%s" % z
+ 116:       for era in sorted(history.keys()):
+ 117:         log = history[era].log.y[z]
+ 118:         log.has()
+ 119:         print str(era-1).rjust(7),\
+ 120:               xtile(log._cache,
+ 121:                     width=33,
+ 122:                     show="%5.2f",
+ 123:                     lo=0,hi=1)
+ 124:   
+ 125:   if __name__ == "__main__": eval(cmd())
 ```
 
 

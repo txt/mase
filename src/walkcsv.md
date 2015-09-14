@@ -62,49 +62,49 @@ The function `FROM` returns iterators that can handle different kinds of data.
 <a href="walkcsv.py#L59-L101"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def lines(src):
-   2:     "Yield each line in a string"
-   3:     tmp=''
-   4:     for ch in src(): # sneaky... src can evaluate to different ghings
-   5:       if ch == "\n":
-   6:         yield tmp
-   7:         tmp = ''
-   8:       else:
-   9:         tmp += ch # for a (slightly) faster method,
-  10:                   # in Python3, see http://goo.gl/LvgGx3
-  11:     if tmp:
-  12:       yield tmp
-  13:   
-  14:   def rows(src):
-  15:     """Yield all non-blank lines,joining lines that end in ','.
-  16:      Defined using 'lines'."""
-  17:     b4 = ''
-  18:     for line in lines(src):
-  19:       line = re.sub(r"[\r\t ]*","",line)
-  20:       line = re.sub(r"#.*","",line)
-  21:       if not line: continue # skip blanks
-  22:       if line[-1] == ',':   # maybe, continue lines
-  23:         b4 += line
-  24:       else:
-  25:         yield b4 + line
-  26:         b4 = ''
-  27:         
-  28:   def values(src):
-  29:     """Coerce row values to floats, ints or strings. 
-  30:        Jump over any cols we are ignoring.
-  31:        Defined using the 'rows' function. """
-  32:     def make(x):
-  33:       try   : return int(x)
-  34:       except:
-  35:         try   : return float(x)
-  36:         except: return x
-  37:     want = None
-  38:     for row in rows(src):
-  39:       lst  = row.split(',')
-  40:       want = want or [col for col in xrange(len(lst))
-  41:                       if lst[col][0] != "?" ]
-  42:       yield [ make(lst[col]) for col in want ]
-  43:       
+  33:   def lines(src):
+  34:     "Yield each line in a string"
+  35:     tmp=''
+  36:     for ch in src(): # sneaky... src can evaluate to different ghings
+  37:       if ch == "\n":
+  38:         yield tmp
+  39:         tmp = ''
+  40:       else:
+  41:         tmp += ch # for a (slightly) faster method,
+  42:                   # in Python3, see http://goo.gl/LvgGx3
+  43:     if tmp:
+  44:       yield tmp
+  45:   
+  46:   def rows(src):
+  47:     """Yield all non-blank lines,joining lines that end in ','.
+  48:      Defined using 'lines'."""
+  49:     b4 = ''
+  50:     for line in lines(src):
+  51:       line = re.sub(r"[\r\t ]*","",line)
+  52:       line = re.sub(r"#.*","",line)
+  53:       if not line: continue # skip blanks
+  54:       if line[-1] == ',':   # maybe, continue lines
+  55:         b4 += line
+  56:       else:
+  57:         yield b4 + line
+  58:         b4 = ''
+  59:         
+  60:   def values(src):
+  61:     """Coerce row values to floats, ints or strings. 
+  62:        Jump over any cols we are ignoring.
+  63:        Defined using the 'rows' function. """
+  64:     def make(x):
+  65:       try   : return int(x)
+  66:       except:
+  67:         try   : return float(x)
+  68:         except: return x
+  69:     want = None
+  70:     for row in rows(src):
+  71:       lst  = row.split(',')
+  72:       want = want or [col for col in xrange(len(lst))
+  73:                       if lst[col][0] != "?" ]
+  74:       yield [ make(lst[col]) for col in want ]
+  75:       
 ```
 
 

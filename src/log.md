@@ -108,35 +108,35 @@ sample can offer a useful approximation to a seemingly complex process.
 <a href="log.py#L100-L128"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   class Log():
-   2:     "Keep a random sample of stuff seen so far."
-   3:     def __init__(i,inits=[],label=''):
-   4:       i.label = label
-   5:       i._cache,i.n,i._report = [],0,None
-   6:       i.setup()
-   7:       map(i.__iadd__,inits)
-   8:     def __iadd__(i,x): #  magic method for "+="
-   9:       if x == None: return x # skip nothing
-  10:       i.n += 1
-  11:       changed = False
-  12:       if len(i._cache) < The.cache.keep: # not full
-  13:         changed = True
-  14:         i._cache += [x]               # then add
-  15:       else: # otherwise, maybe replace an old item
-  16:         if rand() <= The.cache.keep/i.n:
-  17:           changed = True
-  18:           i._cache[int(rand()*The.cache.keep)] = x
-  19:       if changed:      
-  20:         i._report = None # wipe out 'what follows'
-  21:         i.change(x)
-  22:       return i
-  23:     def any(i):  
-  24:       return  any(i._cache)
-  25:     def has(i):
-  26:       if i._report == None: i._report =  i.report()
-  27:       return i._report
-  28:     def setup(i): pass
-  29:     def change(i,x): pass
+   7:   class Log():
+   8:     "Keep a random sample of stuff seen so far."
+   9:     def __init__(i,inits=[],label=''):
+  10:       i.label = label
+  11:       i._cache,i.n,i._report = [],0,None
+  12:       i.setup()
+  13:       map(i.__iadd__,inits)
+  14:     def __iadd__(i,x): #  magic method for "+="
+  15:       if x == None: return x # skip nothing
+  16:       i.n += 1
+  17:       changed = False
+  18:       if len(i._cache) < The.cache.keep: # not full
+  19:         changed = True
+  20:         i._cache += [x]               # then add
+  21:       else: # otherwise, maybe replace an old item
+  22:         if rand() <= The.cache.keep/i.n:
+  23:           changed = True
+  24:           i._cache[int(rand()*The.cache.keep)] = x
+  25:       if changed:      
+  26:         i._report = None # wipe out 'what follows'
+  27:         i.change(x)
+  28:       return i
+  29:     def any(i):  
+  30:       return  any(i._cache)
+  31:     def has(i):
+  32:       if i._report == None: i._report =  i.report()
+  33:       return i._report
+  34:     def setup(i): pass
+  35:     def change(i,x): pass
 ```
 
 ### Num
@@ -151,52 +151,52 @@ A _Num_ is a _Log_ for numbers.
 <a href="log.py#L141-L186"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   class Num(Log):
-   2:     def setup(i):
-   3:       i.lo, i.hi = 10**32, -10**32
-   4:       i.lessp = True
-   5:     def change(i,x): # update lo,hi
-   6:       i.lo = min(i.lo, x)
-   7:       i.hi = max(i.hi, x)
-   8:     def norm(i,x): # turn "x" into 0..1
-   9:       return (x - i.lo)/(i.hi - i.lo + 0.000001)
-  10:     def ordered():
-  11:       i.has()
-  12:       return i._cache
-  13:     def report(i): 
-  14:       lst = i._cache = sorted(i._cache)
-  15:       n   = len(lst)     
-  16:       return o(
-  17:         median= i.median(),
-  18:         iqr   = lst[int(n*.75)] - lst[int(n*.5)],
-  19:         lo    = i.lo, 
-  20:         hi    = i.hi)
-  21:     def ish(i,f=0.1): # return a num from  logged dist 
-  22:       return i.any() + f*(i.any() - i.any())
-  23:     def better(new,old):
-  24:       "better if (1)less median or (2)same and less iqr"
-  25:       t = The.misc.a12
-  26:       betterIqr = new.has().iqr < old.has().iqr
-  27:       if new.lessp:
-  28:         betterMed = new.has().median >= old.has().median
-  29:         same      = a12(old._cache, new._cache)  <= t
-  30:       else:
-  31:         betterMed = new.has().median <= old.has().median 
-  32:         same      = a12(new._cache, old._cache) <= t
-  33:       return betterMed, same, betterIqr
-  34:     def median(i):
-  35:       n = len(i._cache)
-  36:       p = n // 2
-  37:       if (n % 2):  return i._cache[p]
-  38:       q = p + 1
-  39:       q = max(0,(min(q,n)))
-  40:       return (i._cache[p] + i._cache[q])/2
-  41:   
-  42:   def _num():
-  43:     i = Num([rand()      for _ in xrange(1000)])
-  44:     j = Num([rand()*1.25 for _ in xrange(1000)])
-  45:     print j.same(i)
-  46:   
+  36:   class Num(Log):
+  37:     def setup(i):
+  38:       i.lo, i.hi = 10**32, -10**32
+  39:       i.lessp = True
+  40:     def change(i,x): # update lo,hi
+  41:       i.lo = min(i.lo, x)
+  42:       i.hi = max(i.hi, x)
+  43:     def norm(i,x): # turn "x" into 0..1
+  44:       return (x - i.lo)/(i.hi - i.lo + 0.000001)
+  45:     def ordered():
+  46:       i.has()
+  47:       return i._cache
+  48:     def report(i): 
+  49:       lst = i._cache = sorted(i._cache)
+  50:       n   = len(lst)     
+  51:       return o(
+  52:         median= i.median(),
+  53:         iqr   = lst[int(n*.75)] - lst[int(n*.5)],
+  54:         lo    = i.lo, 
+  55:         hi    = i.hi)
+  56:     def ish(i,f=0.1): # return a num from  logged dist 
+  57:       return i.any() + f*(i.any() - i.any())
+  58:     def better(new,old):
+  59:       "better if (1)less median or (2)same and less iqr"
+  60:       t = The.misc.a12
+  61:       betterIqr = new.has().iqr < old.has().iqr
+  62:       if new.lessp:
+  63:         betterMed = new.has().median >= old.has().median
+  64:         same      = a12(old._cache, new._cache)  <= t
+  65:       else:
+  66:         betterMed = new.has().median <= old.has().median 
+  67:         same      = a12(new._cache, old._cache) <= t
+  68:       return betterMed, same, betterIqr
+  69:     def median(i):
+  70:       n = len(i._cache)
+  71:       p = n // 2
+  72:       if (n % 2):  return i._cache[p]
+  73:       q = p + 1
+  74:       q = max(0,(min(q,n)))
+  75:       return (i._cache[p] + i._cache[q])/2
+  76:   
+  77:   def _num():
+  78:     i = Num([rand()      for _ in xrange(1000)])
+  79:     j = Num([rand()*1.25 for _ in xrange(1000)])
+  80:     print j.same(i)
+  81:   
 ```
 
 WARNING: the call to _sorted_ in _report()_ makes this code
@@ -216,34 +216,34 @@ A _Sym_ is a _Log_ for non-numerics.
 <a href="log.py#L204-L231"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   class Sym(Log):
-   2:     def setup(i):
-   3:       i.counts,i.mode,i.most={},None,0
-   4:     def report(i):
-   5:       for x in i._cache:
-   6:         c = i.counts[x] = i.counts.get(x,0) + 1
-   7:         if c > i.most:
-   8:           i.mode,i.most = x,c
-   9:       return o(dist= i.dist(), 
-  10:                 ent = i.entropy(),
-  11:                 mode= i.mode)
-  12:     def dist(i):
-  13:       d = i.counts
-  14:       n = sum(d.values())
-  15:       return sorted([(d[k]/n, k) for k in d.keys()], 
-  16:                     reverse=True)
-  17:     def ish(i):
-  18:       r,tmp = rand(),0
-  19:       for w,x in i.has().dist:
-  20:         tmp  += w
-  21:         if tmp >= r: 
-  22:           return x
-  23:       return x
-  24:     def entropy(i,e=0):
-  25:       for k in i.counts:
-  26:         p = i.counts[k]/len(i._cache)
-  27:         e -= p*log2(p) if p else 0
-  28:       return e    
+  82:   class Sym(Log):
+  83:     def setup(i):
+  84:       i.counts,i.mode,i.most={},None,0
+  85:     def report(i):
+  86:       for x in i._cache:
+  87:         c = i.counts[x] = i.counts.get(x,0) + 1
+  88:         if c > i.most:
+  89:           i.mode,i.most = x,c
+  90:       return o(dist= i.dist(), 
+  91:                 ent = i.entropy(),
+  92:                 mode= i.mode)
+  93:     def dist(i):
+  94:       d = i.counts
+  95:       n = sum(d.values())
+  96:       return sorted([(d[k]/n, k) for k in d.keys()], 
+  97:                     reverse=True)
+  98:     def ish(i):
+  99:       r,tmp = rand(),0
+ 100:       for w,x in i.has().dist:
+ 101:         tmp  += w
+ 102:         if tmp >= r: 
+ 103:           return x
+ 104:       return x
+ 105:     def entropy(i,e=0):
+ 106:       for k in i.counts:
+ 107:         p = i.counts[k]/len(i._cache)
+ 108:         e -= p*log2(p) if p else 0
+ 109:       return e    
 ```
 
 #### Sym, Example
@@ -259,17 +259,17 @@ From that population, we can generate another distribution that is nearly the sa
 <a href="log.py#L245-L255"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def symDemo(n1=10,n2=1000):
-   2:     rseed()
-   3:     log= Sym((['plums']*(n1*2)) + ['grapes']*n1 + ['pears']*n1)
-   4:     found= Sym([log.ish() for _ in xrange(n2)])
-   5:     print found.has().dist
-   6:     print found.counts
-   7:     print sum(found.counts.values())
-   8:   
-   9:   if __name__ == "__main__": eval(cmd()) 
-  10:   
-  11:   
+ 110:   def symDemo(n1=10,n2=1000):
+ 111:     rseed()
+ 112:     log= Sym((['plums']*(n1*2)) + ['grapes']*n1 + ['pears']*n1)
+ 113:     found= Sym([log.ish() for _ in xrange(n2)])
+ 114:     print found.has().dist
+ 115:     print found.counts
+ 116:     print sum(found.counts.values())
+ 117:   
+ 118:   if __name__ == "__main__": eval(cmd()) 
+ 119:   
+ 120:   
 ```
 
 

@@ -404,7 +404,6 @@ class Diapers(Model):
 ## Demo Code
 
 """
-
 @ok
 def _diapers1():
   printm(Diapers().run())

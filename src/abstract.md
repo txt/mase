@@ -118,32 +118,32 @@ How?
 <a href="abstract.py#L115-L140"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   r = random.random
-   2:   rseed = random.seed
-   3:   
-   4:   class Some:
-   5:     def __init__(i, max=8): # note, usually 256 or 128 or 64 (if brave)
-   6:       i.n, i.any, i.max = 0,[],max
-   7:     def __iadd__(i,x):
-   8:       i.n += 1
-   9:       now = len(i.any)
-  10:       if now < i.max:    # not full yet, so just keep it   
-  11:         i.any += [x]
-  12:       elif r() <= now/i.n:
-  13:         i.any[ int(r() * now) ]= x # zap some older value
-  14:       #else: forget x
-  15:       return i
-  16:   
-  17:   @ok
-  18:   def _some():
-  19:     rseed(1)
-  20:     s = Some(16)
-  21:     for i in xrange(100000):
-  22:       s += i
-  23:     assert sorted(s.any)== [ 5852, 24193, 28929, 38266,
-  24:                             41764, 42926, 51310, 52203,
-  25:                             54651, 56743, 59368, 60794,
-  26:                             61888, 82586, 83018, 88462]
+   8:   r = random.random
+   9:   rseed = random.seed
+  10:   
+  11:   class Some:
+  12:     def __init__(i, max=8): # note, usually 256 or 128 or 64 (if brave)
+  13:       i.n, i.any, i.max = 0,[],max
+  14:     def __iadd__(i,x):
+  15:       i.n += 1
+  16:       now = len(i.any)
+  17:       if now < i.max:    # not full yet, so just keep it   
+  18:         i.any += [x]
+  19:       elif r() <= now/i.n:
+  20:         i.any[ int(r() * now) ]= x # zap some older value
+  21:       #else: forget x
+  22:       return i
+  23:   
+  24:   @ok
+  25:   def _some():
+  26:     rseed(1)
+  27:     s = Some(16)
+  28:     for i in xrange(100000):
+  29:       s += i
+  30:     assert sorted(s.any)== [ 5852, 24193, 28929, 38266,
+  31:                             41764, 42926, 51310, 52203,
+  32:                             54651, 56743, 59368, 60794,
+  33:                             61888, 82586, 83018, 88462]
 ```
 Turns out, we do not lose much (caveat: need to keep more than 16... 256 seems a reasonable default).
 
@@ -207,28 +207,28 @@ all kept   10% 30% 50% 70% 90%  kept   10% 30% 50% 70% 90%
 <a href="abstract.py#L202-L223"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   weather="""
-   2:   
-   3:   outlook,
-   4:   temperature,
-   5:   humidity,?windy,play
-   6:   sunny    , 85, 85, FALSE, no  # an interesting case
-   7:   sunny    , 80, 90, TRUE , no
-   8:   overcast , 83, 86, FALSE, yes
-   9:   rainy    , 70, 96, FALSE, yes
-  10:   rainy    , 68, 80, FALSE, yes
-  11:   rainy    , 65, 70, TRUE , no
-  12:   overcast , 64, 65, TRUE , 
-  13:   yes
-  14:   sunny    , 72, 95, FALSE, no
-  15:   
-  16:   sunny    , 69, 70, FALSE, yes
-  17:   rainy    , 75, 80, FALSE, yes
-  18:   sunny    , 75, 70, TRUE , yes
-  19:   overcast , 72, 90, TRUE , yes
-  20:   overcast , 81, 75, FALSE, yes
-  21:   rainy    , 71, 91, TRUE , no"""
-  22:   
+  34:   weather="""
+  35:   
+  36:   outlook,
+  37:   temperature,
+  38:   humidity,?windy,play
+  39:   sunny    , 85, 85, FALSE, no  # an interesting case
+  40:   sunny    , 80, 90, TRUE , no
+  41:   overcast , 83, 86, FALSE, yes
+  42:   rainy    , 70, 96, FALSE, yes
+  43:   rainy    , 68, 80, FALSE, yes
+  44:   rainy    , 65, 70, TRUE , no
+  45:   overcast , 64, 65, TRUE , 
+  46:   yes
+  47:   sunny    , 72, 95, FALSE, no
+  48:   
+  49:   sunny    , 69, 70, FALSE, yes
+  50:   rainy    , 75, 80, FALSE, yes
+  51:   sunny    , 75, 70, TRUE , yes
+  52:   overcast , 72, 90, TRUE , yes
+  53:   overcast , 81, 75, FALSE, yes
+  54:   rainy    , 71, 91, TRUE , no"""
+  55:   
 ```
 
 Note that the table is messy- blank lines, spaces, comments,
@@ -253,22 +253,22 @@ Load some standard tools.
 <a href="abstract.py#L246-L261"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   class o:
-   2:     """Emulate Javascript's uber simple objects.
-   3:     Note my convention: I use "`i`" not "`this`."""
-   4:     def __init__(i,**d)    : i.__dict__.update(d)
-   5:     def __setitem__(i,k,v) : i.__dict__[k] = v
-   6:     def __getitem__(i,k)   : return i.__dict__[k]
-   7:     def __repr__(i)        : return 'o'+str(i.__dict__)
-   8:   
-   9:   @ok
-  10:   def _o():
-  11:     x = o(name='tim',shoesize=9)
-  12:     assert x.name     == 'tim'
-  13:     assert x["name"]  == 'tim'
-  14:     x.shoesize += 1
-  15:     assert x.shoesize == 10
-  16:     assert str(x) == "o{'name': 'tim', 'shoesize': 10}"
+  56:   class o:
+  57:     """Emulate Javascript's uber simple objects.
+  58:     Note my convention: I use "`i`" not "`this`."""
+  59:     def __init__(i,**d)    : i.__dict__.update(d)
+  60:     def __setitem__(i,k,v) : i.__dict__[k] = v
+  61:     def __getitem__(i,k)   : return i.__dict__[k]
+  62:     def __repr__(i)        : return 'o'+str(i.__dict__)
+  63:   
+  64:   @ok
+  65:   def _o():
+  66:     x = o(name='tim',shoesize=9)
+  67:     assert x.name     == 'tim'
+  68:     assert x["name"]  == 'tim'
+  69:     x.shoesize += 1
+  70:     assert x.shoesize == 10
+  71:     assert str(x) == "o{'name': 'tim', 'shoesize': 10}"
 ```
   
 ### Serious Python JuJu
@@ -281,23 +281,23 @@ Not for beginners.
 <a href="abstract.py#L272-L288"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def STRING(str):
-   2:     def wrapper():
-   3:       for c in str: yield c
-   4:     return wrapper
-   5:   
-   6:   def FILE(filename, buffer_size=4096):
-   7:     def chunks(filename):
-   8:       with open(filename, "rb") as fp:
-   9:         chunk = fp.read(buffer_size)
-  10:         while chunk:
-  11:           yield chunk
-  12:           chunk = fp.read(buffer_size)
-  13:     def wrapper():
-  14:       for chunk in chunks(filename):
-  15:         for char in chunk:
-  16:           yield char
-  17:     return wrapper
+  72:   def STRING(str):
+  73:     def wrapper():
+  74:       for c in str: yield c
+  75:     return wrapper
+  76:   
+  77:   def FILE(filename, buffer_size=4096):
+  78:     def chunks(filename):
+  79:       with open(filename, "rb") as fp:
+  80:         chunk = fp.read(buffer_size)
+  81:         while chunk:
+  82:           yield chunk
+  83:           chunk = fp.read(buffer_size)
+  84:     def wrapper():
+  85:       for chunk in chunks(filename):
+  86:         for char in chunk:
+  87:           yield char
+  88:     return wrapper
 ```
 
 ## Iterators
@@ -309,22 +309,22 @@ Yield each line in a string
 <a href="abstract.py#L298-L313"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def lines(src):
-   2:     tmp=''
-   3:     for ch in src(): # sneaky... src can evaluate to different ghings
-   4:       if ch == "\n":
-   5:         yield tmp
-   6:         tmp = ''
-   7:       else:
-   8:         tmp += ch # for a (slightly) faster method,
-   9:                   # in Python3, see http://goo.gl/LvgGx3
-  10:     if tmp:
-  11:       yield tmp
-  12:   
-  13:   @ok
-  14:   def _line():
-  15:     for line in lines(STRING(weather)):
-  16:       print("[",line,"]",sep="")
+  89:   def lines(src):
+  90:     tmp=''
+  91:     for ch in src(): # sneaky... src can evaluate to different ghings
+  92:       if ch == "\n":
+  93:         yield tmp
+  94:         tmp = ''
+  95:       else:
+  96:         tmp += ch # for a (slightly) faster method,
+  97:                   # in Python3, see http://goo.gl/LvgGx3
+  98:     if tmp:
+  99:       yield tmp
+ 100:   
+ 101:   @ok
+ 102:   def _line():
+ 103:     for line in lines(STRING(weather)):
+ 104:       print("[",line,"]",sep="")
 ```
 
 ### Rows
@@ -335,23 +335,23 @@ joining lines that end in ','.
 <a href="abstract.py#L322-L338"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def rows(src):
-   2:     b4 = ''
-   3:     for line in lines(src):
-   4:       line = re.sub(r"[\r\t ]*","",line)
-   5:       line = re.sub(r"#.*","",line)
-   6:       if not line: continue # skip blanks
-   7:       if line[-1] == ',':   # maybe, continue lines
-   8:         b4 += line
-   9:       else:
-  10:         yield b4 + line
-  11:         b4 = ''
-  12:         
-  13:   @ok
-  14:   def _row():
-  15:     for row in rows(STRING(weather)):
-  16:       print("[",row,"]",sep="")
-  17:   
+ 105:   def rows(src):
+ 106:     b4 = ''
+ 107:     for line in lines(src):
+ 108:       line = re.sub(r"[\r\t ]*","",line)
+ 109:       line = re.sub(r"#.*","",line)
+ 110:       if not line: continue # skip blanks
+ 111:       if line[-1] == ',':   # maybe, continue lines
+ 112:         b4 += line
+ 113:       else:
+ 114:         yield b4 + line
+ 115:         b4 = ''
+ 116:         
+ 117:   @ok
+ 118:   def _row():
+ 119:     for row in rows(STRING(weather)):
+ 120:       print("[",row,"]",sep="")
+ 121:   
 ```
 
 ### Values
@@ -362,13 +362,13 @@ Jump over any cols we are ignoring
 <a href="abstract.py#L347-L353"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def values(src):
-   2:     want = None
-   3:     for row in rows(src):
-   4:       lst  = row.split(',')
-   5:       want = want or [col for col in xrange(len(lst))
-   6:                       if lst[col][0] != "?" ]
-   7:       yield [ make(lst[col]) for col in want ]
+ 122:   def values(src):
+ 123:     want = None
+ 124:     for row in rows(src):
+ 125:       lst  = row.split(',')
+ 126:       want = want or [col for col in xrange(len(lst))
+ 127:                       if lst[col][0] != "?" ]
+ 128:       yield [ make(lst[col]) for col in want ]
 ```
 
 Helper function.
@@ -376,11 +376,11 @@ Helper function.
 <a href="abstract.py#L359-L363"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def make(x):
-   2:     try   : return int(x)
-   3:     except:
-   4:       try   : return float(x)
-   5:       except: return x
+ 129:   def make(x):
+ 130:     try   : return int(x)
+ 131:     except:
+ 132:       try   : return float(x)
+ 133:       except: return x
 ```
 
 Test function.
@@ -388,10 +388,10 @@ Test function.
 <a href="abstract.py#L369-L372"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   @ok
-   2:   def _values():
-   3:     for cells in values(STRING(weather)):
-   4:       print(cells)
+ 134:   @ok
+ 135:   def _values():
+ 136:     for cells in values(STRING(weather)):
+ 137:       print(cells)
 ```
 
 ## Tables
@@ -405,22 +405,22 @@ and keeps separate counts for each `klass`.
 <a href="abstract.py#L384-L399"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def table(src, klass= -1, keep= False):
-   2:     t = None
-   3:     for cells in values(src):
-   4:       if t:
-   5:         k = cells[klass]
-   6:         for cell,some,all in zip(cells,t.klasses[k],t.all):
-   7:           some += cell
-   8:           all  += cell
-   9:         if keep:
-  10:           t.rows += [cells]
-  11:       else:
-  12:        t = o(header = cells,
-  13:              rows   = [],
-  14:              all    = klass0(cells),
-  15:              klasses= Default(lambda: klass0(t.header)))
-  16:     return t
+ 138:   def table(src, klass= -1, keep= False):
+ 139:     t = None
+ 140:     for cells in values(src):
+ 141:       if t:
+ 142:         k = cells[klass]
+ 143:         for cell,some,all in zip(cells,t.klasses[k],t.all):
+ 144:           some += cell
+ 145:           all  += cell
+ 146:         if keep:
+ 147:           t.rows += [cells]
+ 148:       else:
+ 149:        t = o(header = cells,
+ 150:              rows   = [],
+ 151:              all    = klass0(cells),
+ 152:              klasses= Default(lambda: klass0(t.header)))
+ 153:     return t
 ```
 
 Helper functions:
@@ -432,18 +432,18 @@ Helper functions:
 <a href="abstract.py#L409-L420"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   class Default(dict):
-   2:     def __init__(i, default): i.default = default
-   3:     def __getitem__(i, key):
-   4:       if key in i: return i.get(key)
-   5:       return i.setdefault(key, i.default())
-   6:   
-   7:   def klass0(header):
-   8:    tmp = [Some() for _ in header]
-   9:    for n,header1 in enumerate(header):
-  10:      tmp[n].pos  = n
-  11:      tmp[n].name = header1
-  12:    return tmp
+ 154:   class Default(dict):
+ 155:     def __init__(i, default): i.default = default
+ 156:     def __getitem__(i, key):
+ 157:       if key in i: return i.get(key)
+ 158:       return i.setdefault(key, i.default())
+ 159:   
+ 160:   def klass0(header):
+ 161:    tmp = [Some() for _ in header]
+ 162:    for n,header1 in enumerate(header):
+ 163:      tmp[n].pos  = n
+ 164:      tmp[n].name = header1
+ 165:    return tmp
 ```
 
 Test functions: read from strings or files.
@@ -451,17 +451,17 @@ Test functions: read from strings or files.
 <a href="abstract.py#L426-L436"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   @ok
-   2:   def _tableFromString(src = STRING(weather)):
-   3:     t = table(src)
-   4:     for k,v in t.klasses.items():
-   5:       for some in v:
-   6:         print(":klass",k,":name",some.name,":col",some.pos,
-   7:               ":seen",some.n,"\n\t:kept",some.any)
-   8:   
-   9:   @ok
-  10:   def _tableFromFile():
-  11:     _tableFromString(FILE("weather.csv"))
+ 166:   @ok
+ 167:   def _tableFromString(src = STRING(weather)):
+ 168:     t = table(src)
+ 169:     for k,v in t.klasses.items():
+ 170:       for some in v:
+ 171:         print(":klass",k,":name",some.name,":col",some.pos,
+ 172:               ":seen",some.n,"\n\t:kept",some.any)
+ 173:   
+ 174:   @ok
+ 175:   def _tableFromFile():
+ 176:     _tableFromString(FILE("weather.csv"))
 ```
 
 ## Sanity Check
@@ -475,40 +475,40 @@ For the results of the following code, see the top of this file.
 <a href="abstract.py#L448-L481"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def samples(m0=128,f=random.random):
-   2:     print("\n         \t    diff to all    \t    \t     diff to all")
-   3:     print("         \t -------------------\t    \t -------------------")
-   4:     print("all kept \t 10% 30% 50% 70% 90%\t kept\t 10% 30% 50% 70% 90%")
-   5:     print("--- ---- \t --- --- --- --- ---\t ----\t --- --- --- --- ---")
-   6:     m = m0
-   7:     for _ in xrange(7):
-   8:       m = m * 2
-   9:       n = min(m0,m)
-  10:       s1,s2,s3 = Some(m), Some(n),Some(m)
-  11:       for _ in xrange(m):
-  12:         x,y = f(),f()
-  13:         s1 += x
-  14:         s2 += x
-  15:         s3 += y
-  16:       print(m,"",n, "\t",diff(s1,s2),"\t",m,"\t",diff(s1,s3))
-  17:   
-  18:   def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
-  19:     "Return percentiles in a list"
-  20:     at  = lambda x: lst[ int(len(lst)*x) ]
-  21:     return [ at(tile) for tile in tiles ]
-  22:     
-  23:   def diff(s1,s2):
-  24:     "Return difference in the percentiles"
-  25:     return [ abs(int(100*(most-less)))
-  26:              for most,less in
-  27:              zip(ntiles(sorted(s1.any)),
-  28:                        ntiles(sorted(s2.any))) ]
-  29:   
-  30:   @ok
-  31:   def _samples():
-  32:     rseed(1)
-  33:     for x in [64,128,256,512]:
-  34:       samples(x)
+ 177:   def samples(m0=128,f=random.random):
+ 178:     print("\n         \t    diff to all    \t    \t     diff to all")
+ 179:     print("         \t -------------------\t    \t -------------------")
+ 180:     print("all kept \t 10% 30% 50% 70% 90%\t kept\t 10% 30% 50% 70% 90%")
+ 181:     print("--- ---- \t --- --- --- --- ---\t ----\t --- --- --- --- ---")
+ 182:     m = m0
+ 183:     for _ in xrange(7):
+ 184:       m = m * 2
+ 185:       n = min(m0,m)
+ 186:       s1,s2,s3 = Some(m), Some(n),Some(m)
+ 187:       for _ in xrange(m):
+ 188:         x,y = f(),f()
+ 189:         s1 += x
+ 190:         s2 += x
+ 191:         s3 += y
+ 192:       print(m,"",n, "\t",diff(s1,s2),"\t",m,"\t",diff(s1,s3))
+ 193:   
+ 194:   def ntiles(lst, tiles=[0.1,0.3,0.5,0.7,0.9]):
+ 195:     "Return percentiles in a list"
+ 196:     at  = lambda x: lst[ int(len(lst)*x) ]
+ 197:     return [ at(tile) for tile in tiles ]
+ 198:     
+ 199:   def diff(s1,s2):
+ 200:     "Return difference in the percentiles"
+ 201:     return [ abs(int(100*(most-less)))
+ 202:              for most,less in
+ 203:              zip(ntiles(sorted(s1.any)),
+ 204:                        ntiles(sorted(s2.any))) ]
+ 205:   
+ 206:   @ok
+ 207:   def _samples():
+ 208:     rseed(1)
+ 209:     for x in [64,128,256,512]:
+ 210:       samples(x)
 ```
 
 

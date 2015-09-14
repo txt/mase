@@ -66,41 +66,41 @@ suppressed via _The.misc.verbose=False_.
 <a href="sa.py#L58-L92"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   def sa(m):
-   2:     def more(k,e):
-   3:       if k > The.sa.patience:
-   4:         if e > 1/The.misc.epsilon:
-   5:           return False
-   6:       return True
-   7:     def energy(m,it): 
-   8:       m.depIT(it)
-   9:       return sum(it.y) 
-  10:     def maybe(old,new,temp): 
-  11:       return math.e**((new - old)/temp) < rand()  
-  12:     base = Num([energy(m, m.indepIT()) 
-  13:                for _ in xrange(The.sa.baseline)])
-  14:     sb = s = m.indepIT()
-  15:     eb = e = mron(energy(m,s), base.lo, base.hi)
-  16:     k = 0
-  17:     while k <  The.sa.kmax and more(k,eb):
-  18:       if not k % The.misc.era: 
-  19:         burp("\n", str(k).zfill(4),x(eb), ' ') 
-  20:       k += 1
-  21:       mark = "."
-  22:       sn = m.aroundIT(s,p=1)
-  23:       en = mron(energy(m,sn), base.lo, base.hi)
-  24:       if en >  (e * The.misc.epsilon):
-  25:         s,e = sn,en
-  26:         mark = "+"
-  27:       elif maybe(e,en, 
-  28:                  k/The.sa.kmax**The.sa.cooling):
-  29:         s,e = sn,en
-  30:         mark = "?"
-  31:       if en > (eb * The.misc.epsilon):
-  32:         sb,eb = sn,en
-  33:         mark = "!"
-  34:       burp(mark)
-  35:     return sb,eb    
+   6:   def sa(m):
+   7:     def more(k,e):
+   8:       if k > The.sa.patience:
+   9:         if e > 1/The.misc.epsilon:
+  10:           return False
+  11:       return True
+  12:     def energy(m,it): 
+  13:       m.depIT(it)
+  14:       return sum(it.y) 
+  15:     def maybe(old,new,temp): 
+  16:       return math.e**((new - old)/temp) < rand()  
+  17:     base = Num([energy(m, m.indepIT()) 
+  18:                for _ in xrange(The.sa.baseline)])
+  19:     sb = s = m.indepIT()
+  20:     eb = e = mron(energy(m,s), base.lo, base.hi)
+  21:     k = 0
+  22:     while k <  The.sa.kmax and more(k,eb):
+  23:       if not k % The.misc.era: 
+  24:         burp("\n", str(k).zfill(4),x(eb), ' ') 
+  25:       k += 1
+  26:       mark = "."
+  27:       sn = m.aroundIT(s,p=1)
+  28:       en = mron(energy(m,sn), base.lo, base.hi)
+  29:       if en >  (e * The.misc.epsilon):
+  30:         s,e = sn,en
+  31:         mark = "+"
+  32:       elif maybe(e,en, 
+  33:                  k/The.sa.kmax**The.sa.cooling):
+  34:         s,e = sn,en
+  35:         mark = "?"
+  36:       if en > (eb * The.misc.epsilon):
+  37:         sb,eb = sn,en
+  38:         mark = "!"
+  39:       burp(mark)
+  40:     return sb,eb    
 ```
 
 ## Example
@@ -110,18 +110,18 @@ Defining a study using _sa_.
 <a href="sa.py#L100-L111"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   @study
-   2:   def saDemo(model='Schaffer'):
-   3:     "Basic study."
-   4:     The.misc.verbose= True
-   5:     The.misc.era = 25
-   6:     print "!!!",model
-   7:     model = eval(model + '()')
-   8:     print "\n",model.name()
-   9:     sb,eb = sa(model)
-  10:     x= g3(sb.x)
-  11:     y= g3(sb.y)
-  12:     print "\n------\n:e",eb,"\n:y",y,"\n:x",x
+  41:   @study
+  42:   def saDemo(model='Schaffer'):
+  43:     "Basic study."
+  44:     The.misc.verbose= True
+  45:     The.misc.era = 25
+  46:     print "!!!",model
+  47:     model = eval(model + '()')
+  48:     print "\n",model.name()
+  49:     sb,eb = sa(model)
+  50:     x= g3(sb.x)
+  51:     y= g3(sb.y)
+  52:     print "\n------\n:e",eb,"\n:y",y,"\n:x",x
 ```
 
 Output from the first call:
@@ -201,8 +201,8 @@ Output from the second call:
 <a href="sa.py#L189-L190"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   
-   2:   if __name__ == "__main__": eval(cmd())
+  53:   
+  54:   if __name__ == "__main__": eval(cmd())
 ```
 
 

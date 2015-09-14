@@ -49,7 +49,7 @@ define p2md
                          print "```"
                         }  
 		     next }       
-  ! First {  pre = In ? sprintf("% 4s:   ",++line) : ""
+  ! First {  pre = In ? sprintf("% 4s:   ",++code) : ""
              line =  pre $$0
              if (In) 
                lines = lines "\\n" line
