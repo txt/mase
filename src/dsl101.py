@@ -3,7 +3,9 @@ import sys
 sys.dont_write_bytecode = True
 from ok import *
 
-"""# Domain-Specific Languages 1010 (in Python)
+"""
+
+# Domain-Specific Languages 1010 (in Python)
 
 This files shows an example of a small object-based DSL (domain-specific language) in Python.
 In the language, all the tedious stuff is implemented in superclasses, letting
@@ -283,7 +285,7 @@ As to what is going on in the `run` method...
       t += dt
       b4 = now
     return keep
-
+"""
 
 ### Support Utilities
 
@@ -386,10 +388,7 @@ def printm(matrix,less=True):
    for row in [fmt.format(*row) for row in s]:
       print(row)
 """
-
-### Model
-
-"""
+"""<
 class Diapers(Model):
   def have(i):
     return o(C = S(100), D = S(0),
@@ -402,6 +401,7 @@ class Diapers(Model):
     v.s  =  u.D if saturday(t) else 0
     if t == 27: # special case (the day i forget)
       v.s = 0
+""">
 """
 
 ## Demo Code
