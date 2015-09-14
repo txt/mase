@@ -100,7 +100,7 @@ The benefits of DSL (productivity, explanatory, ownership by the users) can be o
 
 Not-so-complex:
 
-+ Use (PyParsing](http://www.slideshare.net/Siddhi/creating-domain-specific-languages-in-python)
++ Use [PyParsing](http://www.slideshare.net/Siddhi/creating-domain-specific-languages-in-python)
 
 Simpler:
 
