@@ -180,9 +180,11 @@ time `t+dt`.
 
 ```python
 class Diapers(Model):
+
   def have(i):
     return o(C = S(100), D = S(0),
              q = F(0),  r = F(8), s = F(0))
+
   def step(i,dt,t,u,v):
     def saturday(x): return int(x) % 7 == 6
     v.C +=  dt*(u.q - u.r)
