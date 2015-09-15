@@ -3,46 +3,91 @@ import sys
 sys.dont_write_bytecode = True
 from ok import *
 
+import the
 import random
 r   = random.random
 isa = isinstance
+_ = None
+
+def seed(x=None):
+  random.seed(x or the.run.seed)
 
 class o:
-  """Emulate Javascript's uber simple objects.
-  Note my convention: I use "`i`" not "`this`."""
-  def has(i)             : return i.__dict__
-  def keys(i)            : return i.has().keys()
-  def items(i)           : return i.has().items()
-  def __init__(i,**d)    : i.has().update(d)
-  def __setitem__(i,k,v) : i.has()[k] = v
-  def __getitem__(i,k)   : return i.has()[k]
-  def __repr__(i)        : return 'o'+str(i.has())
-  def copy(i): 
-      j = o()
-      for k in i.has(): j[k] = i[k]
-      return j
-  def asList(i,keys=[]):
-    keys = keys or i.keys()
-    return [i[k] for k in keys]
-
+  def __init__(i,**d)    : i.__dict__.update(d)
+  def __setitem__(i,k,v) : i.__dict__[k] = v
+  def __getitem__(i,k)   : return i.__dict__[k]
+  def __repr__(i)        : return 'o'+str(i.__dict__)
+        
 def lt(i,j): return i < j
 def gt(i,j): return i > j
 
-class Has:
-  def __init__(i,txt,init,lo=0,hi=100,):
+class log:
+  "Info on what I saw ."
+  def __init__(i):
+    i.lo, i.hi = None, None
+  def __iadd__(i,x):
+    if i.lo == None:
+      i.lo = i.hi = x
+    else:
+      if x > i.hi: i.hi = x
+      if x < i.lo: i.lo = x
+    return i
+  def norm(i,x):
+    return (x - i.lo)/(i.hi - i.lo + 10**-31)
+  
+class want:
+  "Info on what I want to see."
+  def __init__(i,txt,init,lo=0,hi=100, better=lt):
     i.txt,i.init,i.lo,i.hi = txt,init,lo,hi
-  def restrain(i,x):
-    return max(i.lo, 
-               min(i.hi, x))
+    i.better = better
   def __repr__(i):
-    return str(dict(what=i.__class__.__name__,
-                name= i.name,init= i.init,
-                 lo  = i.lo,  hi  = i.hi))
+    return 'o'+str(i.__dict__)
+  def restrain(i,x):
+    return max(i.lo, min(i.hi, x))
+  def wrap(i,x):
+    return i.lo + (x - i.lo) % (i.hi - i.lo)
+  def score(i,x):
+    best = 0 if i.better == lt else 1
+    return (best - i.was.norm(x)) ** 2
+  def guess(i,x):
+    return i.lo + r()*(i.hi - i.lo)
+  def ok(i,x):
+    return i.lo <= x <= i.hi
+
+def none(): return None
+  
+def fill(x, what=none):
+  if isinstance(x,o):
+    return o({k:fill(v,slot)
+              for k,v in x.items()})
+  elif isinstance(x,list):
+    return [slot()]* len(x)
+  else:
+    return slot()
+
+
 
 class Model:
-  def candidate():
-    return o(decs=[], objs=[],
-             scores=[], energy = None)
+  def wants():
+    return o(decs=[], objs=[])
+  def __init__(i, b4 = None):
+    i._wants = i.wants()
+    i._blank = fill(i._wants, none)
+    i.log    = fill(i._wants, log)
+    i.b4 
+  def i.objs(i,c):
+    for dec,log in zip(c.decs,i.log.decs):
+      log += dec
+    c.scores = [obj(c) for obj in i._wants.obj]
+    e=0
+    ,log,score in zip(c.objs,i.log.objs,i.log.scores):
+      
+      e   += want.score(dec)
+      n   += 1
+      
+      
+  def blank(i):
+    return fill(i._blank, none)
   def eval(i,c):
     if not c.scores:
       c.scores = [obj(c) for obj in i.objectives()] 
@@ -50,7 +95,16 @@ class Model:
       c.energy = i.energy(c.scores)
     return c
 
+  
+def complete(decs=[],objs=[]):
+  return o(dec=dec,objs=objs,
+           scores=None,
+           sum=None)
+
 class Schaffer(Models):
+  def wants(i):
+    return complete(decs=[Want("x",lo=-4,hi=4)],
+                    objs=[i.f1,i.f2])
   def f1(i,c):
     x=c.decs[0]
     return x**2
