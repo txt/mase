@@ -6,17 +6,11 @@
 [Lecturer](http://menzies.us) 
 
 
+<a href="sa2.py#L1-L130"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
 
-# Table of Contents
-
-+ [Abstraction (Advanced Python Coding)](https://github.com/txt/mase/blob/master/doc/abstract.md)
-+ [Domain-Specific Languages 101 (in Python)](https://github.com/txt/mase/blob/master/doc/dsl101.md)
-+ [Hi There!](https://github.com/txt/mase/blob/master/doc/get-pip.md)
-+ [demos 101](https://github.com/txt/mase/blob/master/doc/ntiles.md)
-+ [[2.0, 1.0, 3.0, 4.0, 5.0]](https://github.com/txt/mase/blob/master/doc/rank.md)
-+ [Smote](https://github.com/txt/mase/blob/master/doc/smote.md)
-+ [Iterators for Walking CSV Data](https://github.com/txt/mase/blob/master/doc/walkcsv.md)
-
+```
+```
 
 
 _________
