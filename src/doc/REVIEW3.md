@@ -8,3 +8,4 @@
       * Initially, SA is like a drunk, then it sobers up.
       * SA consumes lower memory.
   6. How would you terminate a stochastic algorithms such as SA sooner? (*HINT: Look at variances of epochs*)
+  7. When finding a solution, you can either mutate towards ''Heaven'' (A better spot) or you can choose to mutate away from "Hell" (A worse spot). Why would you choose one over the other? (*HINT: One of them has a better diversity of search.*)
