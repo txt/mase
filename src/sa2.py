@@ -37,19 +37,21 @@ class log:
   
 class want:
   "Info on what I want to see."
-  def __init__(i,txt,init,lo=0,hi=100, better=lt):
+  def __init__(i,txt,init,lo=-10**32,hi=10**32,
+               better=lt,maker=None):
     i.txt,i.init,i.lo,i.hi = txt,init,lo,hi
     i.better = better
+    i.maker = maker or i.guess
   def __repr__(i):
     return 'o'+str(i.__dict__)
   def restrain(i,x):
     return max(i.lo, min(i.hi, x))
   def wrap(i,x):
     return i.lo + (x - i.lo) % (i.hi - i.lo)
-  def score(i,x):
-    best = 0 if i.better == lt else 1
-    return (best - i.was.norm(x)) ** 2
-  def guess(i,x):
+  def fromHelll(i,x,log):
+    hell = 1 if i.better == lt else 0
+    return (best - log.norm(x)) ** 2
+  def guess(i):
     return i.lo + r()*(i.hi - i.lo)
   def ok(i,x):
     return i.lo <= x <= i.hi
@@ -68,63 +70,71 @@ def fill(x, what=none):
 
 
 class Model:
-  def wants():
-    return o(decs=[], objs=[])
-  def __init__(i, b4 = None):
-    i._wants = i.wants()
-    i._blank = fill(i._wants, none)
-    i.log    = fill(i._wants, log)
-    i.b4 
-  def i.objs(i,c):
-    for dec,log in zip(c.decs,i.log.decs):
-      log += dec
-    c.scores = [obj(c) for obj in i._wants.obj]
-    e=0
-    ,log,score in zip(c.objs,i.log.objs,i.log.scores):
-      
-      e   += want.score(dec)
-      n   += 1
-      
-      
-  def blank(i):
-    return fill(i._blank, none)
-  def eval(i,c):
-    if not c.scores:
-      c.scores = [obj(c) for obj in i.objectives()] 
-    if c.energy == None
-      c.energy = i.energy(c.scores)
-    return c
-
+  def __init__(i, wants,also = None):
+    i.wants  = wants
+    i.log    = fill(i.wants, log)
+    i.also   = also
+    
+  def decs(i):
+    can = i.blank()
+    can.decs = [want.maker() for want in i.wants.decs]
+    return can
   
-def complete(decs=[],objs=[]):
+  def seen(i,whats,loggers):
+    for what in whats:
+      for logs in loggers:
+        for got,log in zip(can[what],logs[what]):
+          log += got
+          
+  def evaluate(i,c):
+    can.aggregate = None:
+    can.objs = [want.maker(can) for want in i.wants.objs]
+    return can
+  
+  def aggregate(i,can):
+    if can.aggregate == None:
+      agg = n = 0
+      for obj,want,log in zip(c.objs,i.wants.objs.i.log.objs):
+        n   += 1
+        agg += want.fromHell(obj,log)
+      can.aggregate = agg ** 0.5 / n ** 0.5
+    return can.aggregate
+  
+  def blank(i):
+    return fill(i.wants, none)
+  
+  def mutate(i,can,p):
+    can1= i.blank()
+    for n,(dec,want) in enumerate(zip(can.decs,i.want.decs)):
+      can1[n] = want.maker() if p > r() else dec
+    return can1
+  
+  def baseline(i,n=100):
+    for _ in xrange(n):
+      can = i.evaluate( i.decs() )
+      i.log.aggregate  += i.aggregate(can)
+      i.also.aggregate += i.aggregate(can)
+      i.seen(can, ["decs","objs"],
+                  [i.log,i.also])
+      
+def candidate(decs=[],objs=[]):
   return o(dec=dec,objs=objs,
-           scores=None,
-           sum=None)
+           aggregate=None)
 
-class Schaffer(Models):
-  def wants(i):
-    return complete(decs=[Want("x",lo=-4,hi=4)],
-                    objs=[i.f1,i.f2])
-  def f1(i,c):
+def Schaffer():
+  def f1(c):
     x=c.decs[0]
     return x**2
-  def f2(i,c):
+  def f2(c):
     x=c.decs[0]
     return (x-2)**2
-  def objectives(i):
-    return [i.f1,i.f2]
-  
-class ZDT1(Function):
-  def f1(i,it):
-    return it[0]
-  def f2(i,it):
-    g = 1 + 9 * sum(it[x] for x in range(30))/30
-    return g * round(1- sqrt(it[0]/g))
-  def objectives(i):
-    return [i.f1,i.f2]
-  def cells(i):
-    d = dict(f1 = Has("f1",obj=i.f1,goal=lt,lo=0,hi=1),
-             f2 = Has("f2",obj=i.f2,goal=lt,lo=0,hi=10))
-    for x in xrange(30):
-      d[str(x)] =  Aux(str(x),lo=0,hi=1,touch=True)
-    return Have(**d)
+  return candidate(
+    decs=[Want("x",lo=-4,hi=4)],
+    objs=[Want("f1",maker=f1),
+          Want("f12",maker=f2)])
+
+def sa(m,
+       p=0.3, cooling=1,kmax=1000,e[silon=10.1,era=100,lives=5): # e.g. sa(Schafer())
+       k, life, e = 1,lives,1e32):
+
+
