@@ -1,7 +1,7 @@
 LICENSE
 =======
 
-<img src="http://www.stencilrevolution.com/photopost/2013/04/Whatever-Boy-by-Banksy.jpg">
+<img align=right src="http://www.stencilrevolution.com/photopost/2013/04/Whatever-Boy-by-Banksy.jpg">
 
 This is free and unencumbered software released into the public domain.
 
