@@ -70,6 +70,7 @@ of search-based optimization for exploring models
 0. <a href="REVIEW1.md">Review1</a><br>  
 
 </td><td valign=top><small>
+8. <a href="https://goo.gl/1nYBsj">SA calc</a><br>
 7. <a href="https://github.com/CSC591-MASE-ASA/x9115asa/blob/master/paper/Summary3.md">Goals</a>; <a href="img/reBad.png">history</a><br>
 6. <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=7&cad=rja&uact=8&ved=0CEMQtwIwBmoVChMIqaLAkZr-xwIVTeCACh3frQt6&url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D0lPE6qJsRfQ&usg=AFQjCNGouGu150HBTt3ccL1k6Nv2E58jUQ&sig2=00oLWW5al5HehcbfYpjAsQ">Relax</a>,
 <a href="http://www0.cs.ucl.ac.uk/staff/mharman/icse13.pdf">paper</a><br>
