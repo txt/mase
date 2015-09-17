@@ -1,9 +1,10 @@
 LICENSE
 =======
 
+This is free and unencumbered software released into the public domain.
+
 <img align=right src="http://www.stencilrevolution.com/photopost/2013/04/Whatever-Boy-by-Banksy.jpg">
 
-This is free and unencumbered software released into the public domain.
 
 Anyone is free to copy, modify, publish, use, compile, sell, or
 distribute this software, either in source code form or as a compiled
