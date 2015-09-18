@@ -9,6 +9,8 @@
 
 # GO: Timm's Generic Optimizer
 
+<img align=right src="../img/gogo.jpg">
+
 Implementation note: in the following I define a little object system based on Python:
 
 + Candidates store example instances
@@ -38,7 +40,7 @@ little messy.
 ## Standard support utils
 
 The usual 
-<a href="go.py#L39-L51"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="go.py#L41-L53"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   import random
@@ -61,7 +63,7 @@ The usual
 This class is the simplest of all.  It just remembers the range of values
 seen so far.
 
-<a href="go.py#L60-L69"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="go.py#L62-L71"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   14:   class Log:
@@ -81,7 +83,7 @@ seen so far.
 `Candidate`s have objectives, decisions and maybe some aggregate value. Note that since
 they are just containers, we define `Candidate` using the `o` container class.
 
-<a href="go.py#L78-L80"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="go.py#L80-L82"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   24:   def Candidate(decs=[],objs=[]):
@@ -91,7 +93,7 @@ they are just containers, we define `Candidate` using the `o` container class.
 
 Example model (note the use of the `want`, `less` and `more` classes... defined below).
 
-<a href="go.py#L86-L96"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="go.py#L88-L98"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   27:   def Schaffer():
@@ -113,7 +115,7 @@ Example model (note the use of the `want`, `less` and `more` classes... defined 
    + Generating logs (replace each slot with one `Log`)
    + Generating a new blank candidate (replace each slot with `None`)
 
-<a href="go.py#L106-L120"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="go.py#L108-L122"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   38:   def none(): return None
@@ -153,7 +155,7 @@ Note that `Want` is a handy place to implement some useful services:
 + `wrap`ing out of bounds value via modulo;
 
 
-<a href="go.py#L144-L159"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="go.py#L146-L161"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   53:   class Want(object):
@@ -185,7 +187,7 @@ including:
 
 Here are out `better` predicates:
 
-<a href="go.py#L174-L175"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="go.py#L176-L177"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   69:   def lt(i,j): return i < j
@@ -194,7 +196,7 @@ Here are out `better` predicates:
 
 And these control our objectives as follows:
 
-<a href="go.py#L181-L194"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="go.py#L183-L196"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   71:   class Obj(Want):
@@ -215,7 +217,7 @@ And these control our objectives as follows:
 
 ## Wants: places to store lots of `Want`s
 
-<a href="go.py#L200-L254"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="go.py#L202-L256"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   85:   class Wants:

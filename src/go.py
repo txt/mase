@@ -6,6 +6,8 @@ sys.dont_write_bytecode = True
 
 # GO: Timm's Generic Optimizer
 
+<img align=right src="../img/gogo.jpg">
+
 Implementation note: in the following I define a little object system based on Python:
 
 + Candidates store example instances
