@@ -4,7 +4,7 @@ sys.dont_write_bytecode = True
 
 """
 
-# GADGETS: Timm's Generic Optimizer Tricks
+# GADGETS: Timm's Generic Optimizer Gadgets (and Goodies)
 
 <img width=400 align=right src="../img/gogo.jpg">
 
@@ -155,6 +155,7 @@ Note that `Want` is a handy place to implement some useful services:
 + Checking if a value is `ok` (in bounds `lo..hi`);
 + `restrain`ing out of bound values back to `lo..hi`;
 + `wrap`ing out of bounds value via modulo;
++ How to compute the distance `fromHell`.
 
 """
 class Want(object):
@@ -173,14 +174,15 @@ class Want(object):
     return i.lo + (x - i.lo) % (i.hi - i.lo)
   def ok(i,x):
     return i.lo <= x <= i.hi
+  def fromHelll(i,x,log):
+    hell = 1 if i.better == lt else 0
+    return (hell - log.norm(x)) ** 2
 """
 
 ### Want Objectives?
 
-Subclasses of `Want` store information about objectives 
-including:
+Subclasses of `Want` store information about objectives; spefically:
 
-+ How to compute the distance `fromHell`.
 + When does one objective have a `better` value than another;
 
 Here are out `better` predicates:
@@ -193,20 +195,13 @@ def gt(i,j): return i > j
 And these control our objectives as follows:
 
 """
-class Obj(Want):
-  def fromHelll(i,x,log):
-    hell = 1 if i.better == lt else 0
-    return (hell - log.norm(x)) ** 2
-  
-class Less(Obj):
-  def __init__(i,txt,init,lo=-10**32,hi=10**32,maker=None):
-    super(less, i).__init__(txt,init,lo=lo,hi=hi,maker=maker)
-    i.better = lt
-    
-class More(Obj):
-  def __init__(i,txt,init,lo=-10**32,hi=10**32,maker=None):
-    super(less, i).__init__(txt,init,lo=lo,hi=hi,maker=maker)
-    i.better = gt
+def More(txt,init,better=gt,**d):
+  x = Obj(txt,init, **d)
+  x.better = better
+  return x
+
+def Less(txt,init,**d):
+  return More(txt,init,better=lt,**d)
 """
 
 ## `Gadgets`: places to store lots of `Want`s
