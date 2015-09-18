@@ -9,7 +9,7 @@
 
 # GO: Timm's Generic Optimizer Gadgets
 
-<img align=right src="../img/gogo.jpg">
+<img align=right src="http://members.modernvespa.net/jimmytwonutz/uploads/go_go_gadget_1_155.jpg">
 
 Implementation note: in the following I define a little object system based on Python:
 
