@@ -7,7 +7,7 @@
 
 
 
-# GO: Timm's Generic Optimizer
+# GO: Timm's Generic Optimizer Gadgets
 
 <img align=right src="../img/gogo.jpg">
 
