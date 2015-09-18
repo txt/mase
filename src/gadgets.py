@@ -235,13 +235,16 @@ class Gadgets:
   def keepDecs(i)     : return i.decs(True)
   def keepEval(i,can) : return i.eval(i,can,True)
   def keepAggregate(i,can) : return i.aggregate(i,can,True)
-
+  def keeps(i,logs,things)  :
+    for log,thing in zip(logs,things):
+      log + thing
+      
   def decs(i,keep=False):
     "return a new candidate, with guesses for decisions"
     can = i.blank()
     can.decs = [about.maker() for about in i.abouts.decs]
     if keep:
-      [log + dec for log,dec in zip(i.log.decs,can.decs)]
+      i.keeps(i.log.decs,can.decs)
     return can
   
   def eval(i,c,keep=False):
@@ -249,7 +252,7 @@ class Gadgets:
     can.aggregate = None:
     can.objs = [about.maker(can) for about in i.abouts.objs]
     if keep:
-      [log + obj for log,obj in zip(i.log.objs, can.objs]
+      i.keeps(i.log.objs,can.objs)
     return can
 
   def aggregate(i,can,keep=False):
@@ -266,11 +269,13 @@ class Gadgets:
          i.abouts.aggregate += can.aggregate
     return can.aggregate
        
-  def mutate(i,can,p):
+  def mutate(i,can,p,keep=False):
     "Return a new can with p% mutated"
     can1= i.blank()
     for n,(dec,about) in enumerate(zip(can.decs,i.about.decs)):
       can1.decs[n] = about.maker() if p > r() else dec
+    if keep:
+      i.keeps(i.log.decs,can1.decs)
     return can1
   
   def baseline(i,n=100):
@@ -279,7 +284,6 @@ class Gadgets:
       can = i.keepEval( i.keepDecs() )
       i.keepAggregate(can)
       return can
-
 
 def sa(m,
        p=0.3, cooling=1,kmax=1000,e[silon=10.1,era=100,lives=5): # e.g. sa(Schafer())
