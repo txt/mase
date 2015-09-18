@@ -2,7 +2,9 @@ from __future__ import print_function, division
 import sys
 sys.dont_write_bytecode = True
 
-"""# GO: Timm's Generic Optimizer
+"""
+
+# GO: Timm's Generic Optimizer
 
 Implementation note: in the following I define a little object system based on Python:
 
