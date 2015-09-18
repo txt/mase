@@ -37,15 +37,14 @@ little messy.
 
 ## Standard support utils
 
-The usual 
+The usual suspects:
 """
 import random
 r   = random.random
 isa = isinstance
-_ = None
 
-def seed(x=None):
-  random.seed(x or the.run.seed)
+def seed(x=1):
+  random.seed(x)
 
 class o:
   def __init__(i,**d)    : i.__dict__.update(d)
