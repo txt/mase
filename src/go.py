@@ -6,7 +6,8 @@ sys.dont_write_bytecode = True
 
 # GO: Timm's Generic Optimizer Gadgets
 
-<img align=right src="http://members.modernvespa.net/jimmytwonutz/uploads/go_go_gadget_1_155.jpg">
+<img width=400 align=right src="../img/gogo.jpg">
+
 
 Implementation note: in the following I define a little object system based on Python:
 
