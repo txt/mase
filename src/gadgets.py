@@ -4,12 +4,21 @@ sys.dont_write_bytecode = True
 
 """
 
-# GO: Timm's Generic Optimizer Gadgets
+# GADGETS: Timm's Generic Optimizer Tricks
 
 <img width=400 align=right src="../img/gogo.jpg">
 
+`Gadgets` is a library of utilities for working with optimization models. With `Gadgets`,
+it is possible to encode:
 
-Implementation note: in the following I define a little object system based on Python:
+```python
+for model in [Schaffer,...]:
+  for optimizer in [sa,mws...]:
+    optimizer(model())
+```
+
+`Gadgets` uses 
+a little object system based on Python:
 
 + Candidates store example instances
 + And our knowledge of candidates is stored in `Want` and `Wants` and `Log`:
@@ -17,12 +26,15 @@ Implementation note: in the following I define a little object system based on P
     + `Want` stores our expectations for single values of the candidates;
        + This will be used to (e.g.) generate values from some pre-defined range.
        + And we will run one `Log` object for every `Want` object
-    + `Wants` stores our expectations for lists of values;
-       + The slots of these `Wants` will be all `Want` instances;
-       + So many of the services of `Wants` will be define by recursive calls to `Want`
-       + E.g. to initialize a candidate, we ask a list of `Want`s for some values.
+
+`Gadgets` then uses the above to store our expectations for lists of values;
+       
++ Many of the services of `Gadgets` are define by recursive calls to `Want`
++ E.g. to initialize a candidate, we ask a list of `Want`s for some values.
     
-So Candidate is like "instance" and `Want`, `Wants` is like class. 
+So Candidate is like "instance" and `Want`  are like "class" and `Gadgets` is like
+a factory for building new Candidates, and `Log`s.
+ 
 It is insightful to ask why I wrote my own mini-class system (rather than, say, standard
 Python). The answers are that:
 
@@ -60,16 +72,22 @@ seen so far.
 
 """
 class Log:
-  def __init__(i):
-    i.lo, i.hi = None, None
-  def norm(i,x):
-    return (x - i.lo)/(i.hi - i.lo + 10**-32)
-  def __iadd__(i,x):
+  def __init__(i,also=None):
+    i.lo, i.hi, i.also = None, None, also
+  def __add__(i,x):
     if   i.lo == None : i.lo = i.hi = x # auto-initialize
     elif x > i.hi     : i.hi = x
     else x < i.lo     : i.lo = x
-    return i
+    if i.also:
+      i.also + x
+    return x
+  def norm(i,x):
+    return (x - i.lo)/(i.hi - i.lo + 10**-32)
 """
+
+Note one small detail. Sometimes we are logging information
+about one run as well as all runs. So `Log` has an `also` pointer
+which, if non-nil, is another place to repeat the same information.
 
 ## Candidates
 
@@ -95,7 +113,7 @@ def Schaffer():
   return Candidate(
           decs = [Want("x",   lo = -4, hi = 4)],
           objs = [Less("f1",  maker=f1),
-                  Less("f12", maker=f2)])
+                  Less("f2", maker=f2)])
 """
 
 ### Filling in the Candidates
@@ -105,21 +123,18 @@ def Schaffer():
    + Generating a new blank candidate (replace each slot with `None`)
 
 """
-def none(): return None
-def log():  return Log()
+def none()        : return None
+def log(also=None): return lambda: Log(also)
 
 def fill(x, what=none):
-  if isinstance(x,list):
-    return fillList(x,what)
-  elif isinstance(x,o):
-    return o( **fillDictionary(x.__dict__, what) )
-  else:
-    return slot()
+  if   isa(x,list): return fillList(x,what)
+  elif isa(x,o)   : return fillContainer(x,what)
+  else            : return what()
 
 def fillList(lst,what):
-  return [ what() for _ in lst]
-def fillDictionary(d,what):
-  return { k : what() for k in d }
+  return [ fill(x,what) for x in lst]
+def fillContainer(old,what):
+  return o( **{ k : fill(d[k], what) for k in old } )
 """
 
 ## Want
@@ -140,7 +155,6 @@ Note that `Want` is a handy place to implement some useful services:
 + Checking if a value is `ok` (in bounds `lo..hi`);
 + `restrain`ing out of bound values back to `lo..hi`;
 + `wrap`ing out of bounds value via modulo;
-
 
 """
 class Want(object):
@@ -169,7 +183,6 @@ including:
 + How to compute the distance `fromHell`.
 + When does one objective have a `better` value than another;
 
-
 Here are out `better` predicates:
 
 """
@@ -196,57 +209,76 @@ class More(Obj):
     i.better = gt
 """
 
-## Wants: places to store lots of `Want`s
+## `Gadgets`: places to store lots of `Want`s
+
+Note that the following gizmos will get mixed and matched
+any number of ways by different optimizers. So when extending the 
+following, always write
+
++ Simple primitives
++ Which can be combined together by other functions.
+    + For example, the primitive `decs` method (that generates decisions)
+      on `keeps` the decision if called by `keepDecs`.
 
 """
-class Wants:
-  def __init__(i, wants,also = None):
-    i.wants  = wants
-    i.log    = fill(i.wants, log)
-    i.also   = also
+class Gadgets:
+  def __init__(i,
+               abouts, # e.g. Schaffer()
+               also = None):
+    i.abouts = abouts
+    i.log    = fill(i.abouts, log(also))
     
-  def decs(i):
-    can = i.blank()
-    can.decs = [want.maker() for want in i.wants.decs]
-    return can
-  
-  def seen(i,whats,loggers):
-    for what in whats:
-      for logs in loggers:
-        for got,log in zip(can[what],logs[what]):
-          log += got
-          
-  def evaluate(i,c):
-    can.aggregate = None:
-    can.objs = [want.maker(can) for want in i.wants.objs]
-    return can
-  
-  def aggregate(i,can):
-    if can.aggregate == None:
-      agg = n = 0
-      for obj,want,log in zip(c.objs,i.wants.objs.i.log.objs):
-        n   += 1
-        agg += want.fromHell(obj,log)
-      can.aggregate = agg ** 0.5 / n ** 0.5
-    return can.aggregate
-  
   def blank(i):
-    return fill(i.wants, none)
+    "return a new candidate, filled with None"
+    return fill(i.abouts, none)
   
+  def keepDecs(i)     : return i.decs(True)
+  def keepEval(i,can) : return i.eval(i,can,True)
+  def keepAggregate(i,can) : return i.aggregate(i,can,True)
+
+  def decs(i,keep=False):
+    "return a new candidate, with guesses for decisions"
+    can = i.blank()
+    can.decs = [about.maker() for about in i.abouts.decs]
+    if keep:
+      [log + dec for log,dec in zip(i.log.decs,can.decs)]
+    return can
+  
+  def eval(i,c,keep=False):
+    "expire the old aggregate. make the objective scores."
+    can.aggregate = None:
+    can.objs = [about.maker(can) for about in i.abouts.objs]
+    if keep:
+      [log + obj for log,obj in zip(i.log.objs, can.objs]
+    return can
+
+  def aggregate(i,can,keep=False):
+    "Return the aggregate. Side-effect: store it in the can"
+    if can.aggregate == None:
+       agg = n = 0
+       for obj,about,log in zip(c.objs,
+                                i.abouts.objs,
+                                i.log.objs):
+         n   += 1
+         agg += about.fromHell(obj,log)
+       can.aggregate = agg ** 0.5 / n ** 0.5
+       if keep:
+         i.abouts.aggregate += can.aggregate
+    return can.aggregate
+       
   def mutate(i,can,p):
+    "Return a new can with p% mutated"
     can1= i.blank()
-    for n,(dec,want) in enumerate(zip(can.decs,i.want.decs)):
-      can1[n] = want.maker() if p > r() else dec
+    for n,(dec,about) in enumerate(zip(can.decs,i.about.decs)):
+      can1.decs[n] = about.maker() if p > r() else dec
     return can1
   
   def baseline(i,n=100):
+    "Log the results of generating, say, 100 random instances."
     for _ in xrange(n):
-      can = i.evaluate( i.decs() )
-      i.log.aggregate  += i.aggregate(can)
-      i.also.aggregate += i.aggregate(can)
-      i.seen(can, ["decs","objs"],
-                  [i.log,i.also])
-      
+      can = i.keepEval( i.keepDecs() )
+      i.keepAggregate(can)
+      return can
 
 
 def sa(m,
