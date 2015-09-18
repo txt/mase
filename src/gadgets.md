@@ -239,7 +239,7 @@ following, always write
     + For example, the primitive `decs` method (that generates decisions)
       on `keeps` the decision if called by `keepDecs`.
 
-<a href="gadgets.py#L224-L288"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L224-L292"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   83:   class Gadgets:
@@ -256,57 +256,61 @@ following, always write
   94:     def keepDecs(i)     : return i.decs(True)
   95:     def keepEval(i,can) : return i.eval(i,can,True)
   96:     def keepAggregate(i,can) : return i.aggregate(i,can,True)
-  97:   
-  98:     def decs(i,keep=False):
-  99:       "return a new candidate, with guesses for decisions"
- 100:       can = i.blank()
- 101:       can.decs = [about.maker() for about in i.abouts.decs]
- 102:       if keep:
- 103:         [log + dec for log,dec in zip(i.log.decs,can.decs)]
- 104:       return can
- 105:     
- 106:     def eval(i,c,keep=False):
- 107:       "expire the old aggregate. make the objective scores."
- 108:       can.aggregate = None:
- 109:       can.objs = [about.maker(can) for about in i.abouts.objs]
- 110:       if keep:
- 111:         [log + obj for log,obj in zip(i.log.objs, can.objs]
- 112:       return can
- 113:   
- 114:     def aggregate(i,can,keep=False):
- 115:       "Return the aggregate. Side-effect: store it in the can"
- 116:       if can.aggregate == None:
- 117:          agg = n = 0
- 118:          for obj,about,log in zip(c.objs,
- 119:                                   i.abouts.objs,
- 120:                                   i.log.objs):
- 121:            n   += 1
- 122:            agg += about.fromHell(obj,log)
- 123:          can.aggregate = agg ** 0.5 / n ** 0.5
- 124:          if keep:
- 125:            i.abouts.aggregate += can.aggregate
- 126:       return can.aggregate
- 127:          
- 128:     def mutate(i,can,p):
- 129:       "Return a new can with p% mutated"
- 130:       can1= i.blank()
- 131:       for n,(dec,about) in enumerate(zip(can.decs,i.about.decs)):
- 132:         can1.decs[n] = about.maker() if p > r() else dec
- 133:       return can1
- 134:     
- 135:     def baseline(i,n=100):
- 136:       "Log the results of generating, say, 100 random instances."
- 137:       for _ in xrange(n):
- 138:         can = i.keepEval( i.keepDecs() )
- 139:         i.keepAggregate(can)
- 140:         return can
- 141:   
- 142:   
- 143:   def sa(m,
- 144:          p=0.3, cooling=1,kmax=1000,e[silon=10.1,era=100,lives=5): # e.g. sa(Schafer())
- 145:          k, life, e = 1,lives,1e32):
+  97:     def keeps(i,logs,things)  :
+  98:       for log,thing in zip(logs,things):
+  99:         log + thing
+ 100:         
+ 101:     def decs(i,keep=False):
+ 102:       "return a new candidate, with guesses for decisions"
+ 103:       can = i.blank()
+ 104:       can.decs = [about.maker() for about in i.abouts.decs]
+ 105:       if keep:
+ 106:         i.keeps(i.log.decs,can.decs)
+ 107:       return can
+ 108:     
+ 109:     def eval(i,c,keep=False):
+ 110:       "expire the old aggregate. make the objective scores."
+ 111:       can.aggregate = None:
+ 112:       can.objs = [about.maker(can) for about in i.abouts.objs]
+ 113:       if keep:
+ 114:         i.keeps(i.log.objs,can.objs)
+ 115:       return can
+ 116:   
+ 117:     def aggregate(i,can,keep=False):
+ 118:       "Return the aggregate. Side-effect: store it in the can"
+ 119:       if can.aggregate == None:
+ 120:          agg = n = 0
+ 121:          for obj,about,log in zip(c.objs,
+ 122:                                   i.abouts.objs,
+ 123:                                   i.log.objs):
+ 124:            n   += 1
+ 125:            agg += about.fromHell(obj,log)
+ 126:          can.aggregate = agg ** 0.5 / n ** 0.5
+ 127:          if keep:
+ 128:            i.abouts.aggregate += can.aggregate
+ 129:       return can.aggregate
+ 130:          
+ 131:     def mutate(i,can,p,keep=False):
+ 132:       "Return a new can with p% mutated"
+ 133:       can1= i.blank()
+ 134:       for n,(dec,about) in enumerate(zip(can.decs,i.about.decs)):
+ 135:         can1.decs[n] = about.maker() if p > r() else dec
+ 136:       if keep:
+ 137:         i.keeps(i.log.decs,can1.decs)
+ 138:       return can1
+ 139:     
+ 140:     def baseline(i,n=100):
+ 141:       "Log the results of generating, say, 100 random instances."
+ 142:       for _ in xrange(n):
+ 143:         can = i.keepEval( i.keepDecs() )
+ 144:         i.keepAggregate(can)
+ 145:         return can
  146:   
- 147:   
+ 147:   def sa(m,
+ 148:          p=0.3, cooling=1,kmax=1000,e[silon=10.1,era=100,lives=5): # e.g. sa(Schafer())
+ 149:          k, life, e = 1,lives,1e32):
+ 150:   
+ 151:   
 ```
 
 
