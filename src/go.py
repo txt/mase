@@ -112,14 +112,14 @@ def fill(x, what=none):
   if isinstance(x,list):
     return fillList(x,what)
   elif isinstance(x,o):
-    return o( fillDictionary(o.__dict__, what) )
+    return o( **fillDictionary(x.__dict__, what) )
   else:
     return slot()
 
 def fillList(lst,what):
   return [ what() for _ in lst]
 def fillDictionary(d,what):
-  return { k:fill(v,what) for k,v in d.items() }
+  return { k : what() for k in d }
 """
 
 ## Want

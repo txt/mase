@@ -4,7 +4,7 @@ sys.dont_write_bytecode = True
 
 """
 
-# Test suite for Timm's generic optimizer
+# Test suite for a generic optimizer
 
 """
 from ok import *
