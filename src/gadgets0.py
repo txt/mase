@@ -112,6 +112,12 @@ def misc(): return o(
 Here's a place to explore changes to the defaults, and have
 all those changes undo afterwards.
 
+While we are about it, lets print
+
++ the date;
++ what  `the` values were active at the time. 
++ how long it took to run the code
+
 """
 def use(x,**y):
   """Convenience function: for temporarily 

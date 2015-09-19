@@ -127,7 +127,13 @@ function, shown below.
 Here's a place to explore changes to the defaults, and have
 all those changes undo afterwards.
 
-<a href="gadgets0.py#L116-L140"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+While we are about it, lets print
+
++ the date;
++ what  `the` values were active at the time. 
++ how long it took to run the code
+
+<a href="gadgets0.py#L122-L146"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   50:   def use(x,**y):
