@@ -92,7 +92,7 @@ That place has the following properties:
 The last two requirements are handled by the `study`
 function, shown below.
 
-<a href="gadgets0.py#L85-L96"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L85-L97"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   32:   the = o()
@@ -102,23 +102,24 @@ function, shown below.
   36:     name = f.__name__
   37:     def wrapper(**d):
   38:       tmp = f()
-  39:       tmp.__dict__.update(d)
-  40:       the[name] = tmp
+  39:       tmp.__dict__.update(d) # maybe do some overrides
+  40:       the[name] = tmp  # store the settings in `the`
   41:       return tmp
-  42:     wrapper()
-  43:     return wrapper
+  42:     wrapper()  # so a side effect of loading the function
+  43:                # is to call the function
+  44:     return wrapper
 ```
 
 ### Set some settings
 
-<a href="gadgets0.py#L102-L106"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L103-L107"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  44:   @setting
-  45:   def misc(): return o(
-  46:       seed=1,
-  47:       show=o(indent=2,
-  48:              width=50))
+  45:   @setting
+  46:   def misc(): return o(
+  47:       seed=1,
+  48:       show=o(indent=2,
+  49:              width=50))
 ```
 
 ### Temporarily Setting, the Resetting
@@ -126,34 +127,34 @@ function, shown below.
 Here's a place to explore changes to the defaults, and have
 all those changes undo afterwards.
 
-<a href="gadgets0.py#L115-L139"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L116-L140"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  49:   def use(x,**y):
-  50:     """Convenience function: for temporarily 
-  51:        overwriting defaults."""
-  52:     return (x,y)
-  53:   
-  54:   @contextmanager
-  55:   def study(what,*usings):
-  56:     """Maybe change settings. Always call 
-  57:        seed(). Afterwards, set  settings back 
-  58:        to defaults."""
-  59:     print("\n# " + "-" * 50,
-  60:           "\n# ", what, "\n#",
-  61:           datetime.datetime.now().strftime(
-  62:             "%Y-%m-%d %H:%M:%S"))
-  63:     for (using, override) in usings:
-  64:       using(**override)
-  65:     seed()
-  66:     t1 = time.time()
-  67:     yield
-  68:     show(the)
-  69:     t2 = time.time()
-  70:     print("\n# " + "-" * 50)
-  71:     print("# Runtime: %.3f secs" % (t2-t1))
-  72:     for (using,_) in usings:
-  73:       using()
+  50:   def use(x,**y):
+  51:     """Convenience function: for temporarily 
+  52:        overwriting defaults."""
+  53:     return (x,y)
+  54:   
+  55:   @contextmanager
+  56:   def study(what,*usings):
+  57:     """Maybe change settings. Always call 
+  58:        seed(). Afterwards, set  settings back 
+  59:        to defaults."""
+  60:     print("\n# " + "-" * 50,
+  61:           "\n# ", what, "\n#",
+  62:           datetime.datetime.now().strftime(
+  63:             "%Y-%m-%d %H:%M:%S"))
+  64:     for (using, override) in usings:
+  65:       using(**override)
+  66:     seed()
+  67:     t1 = time.time()
+  68:     yield
+  69:     show(the)
+  70:     t2 = time.time()
+  71:     print("\n# " + "-" * 50)
+  72:     print("# Runtime: %.3f secs" % (t2-t1))
+  73:     for (using,_) in usings:
+  74:       using()
 ```
 
 

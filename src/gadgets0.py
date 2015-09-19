@@ -89,10 +89,11 @@ def setting(f):
   name = f.__name__
   def wrapper(**d):
     tmp = f()
-    tmp.__dict__.update(d)
-    the[name] = tmp
+    tmp.__dict__.update(d) # maybe do some overrides
+    the[name] = tmp  # store the settings in `the`
     return tmp
-  wrapper()
+  wrapper()  # so a side effect of loading the function
+             # is to call the function
   return wrapper
 """ 
 
