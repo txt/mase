@@ -151,7 +151,7 @@ def Kursawe(a=1,b=1):
   def f2(can):
     return sum( (abs(x)**a + 5*sin(x)**b) for x in can.decs )
   def dec(x):
-    return Want(x, lo=-5, hi=5)            
+    return  Want(x, lo=-5, hi=5)           
   return Candidate(
            decs = [dec(x) for x in range(3)],
            objs = [Less("f1",  maker=f1),
@@ -269,8 +269,8 @@ class Gadgets:
   def keepDecs(i)     : return i.decs(True)
   def keepEval(i,can) : return i.eval(can,True)
   def keepAggregate(i,can) : return i.aggregate(can,True)
-  def keeps(i,keeps,logs,things)  :
-    if keeps:
+  def keeps(i,keep,logs,things)  :
+    if keep:
       for log,thing in zip(logs,things):
         log + thing
       
