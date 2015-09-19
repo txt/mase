@@ -123,18 +123,18 @@ def study(what,*usings):
   """Maybe change settings. Always call 
      seed(). Afterwards, set  settings back 
      to defaults."""
-  print("\n# " + "-" * 50,
-        "\n# ", what, "\n#",
-        datetime.datetime.now().strftime(
-          "%Y-%m-%d %H:%M:%S"))
-  for (using, override) in usings:
-    using(**override)
-  seed()
-  t1 = time.time()
-  yield
-  show(the)
-  t2 = time.time()
-  print("\n# " + "-" * 50)
-  print("# Runtime: %.3f secs" % (t2-t1))
-  for (using,_) in usings:
-    using()
+  print("\n# " + "-" * 50,                 # before
+        "\n# ", what, "\n#",               # before
+        datetime.datetime.now().strftime(  # before
+          "%Y-%m-%d %H:%M:%S"))            # before
+  for (using, override) in usings:         # before
+    using(**override)                      # before
+  seed()                                   # before
+  t1 = time.time()                         # before
+  yield                                      
+  show(the)                                # after
+  t2 = time.time()                         # after
+  print("\n# " + "-" * 50)                 # after
+  print("# Runtime: %.3f secs" % (t2-t1))  # after
+  for (using,_) in usings:                 # after
+    using()                                # after

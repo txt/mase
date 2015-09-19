@@ -140,21 +140,21 @@ all those changes undo afterwards.
   57:     """Maybe change settings. Always call 
   58:        seed(). Afterwards, set  settings back 
   59:        to defaults."""
-  60:     print("\n# " + "-" * 50,
-  61:           "\n# ", what, "\n#",
-  62:           datetime.datetime.now().strftime(
-  63:             "%Y-%m-%d %H:%M:%S"))
-  64:     for (using, override) in usings:
-  65:       using(**override)
-  66:     seed()
-  67:     t1 = time.time()
-  68:     yield
-  69:     show(the)
-  70:     t2 = time.time()
-  71:     print("\n# " + "-" * 50)
-  72:     print("# Runtime: %.3f secs" % (t2-t1))
-  73:     for (using,_) in usings:
-  74:       using()
+  60:     print("\n# " + "-" * 50,                 # before
+  61:           "\n# ", what, "\n#",               # before
+  62:           datetime.datetime.now().strftime(  # before
+  63:             "%Y-%m-%d %H:%M:%S"))            # before
+  64:     for (using, override) in usings:         # before
+  65:       using(**override)                      # before
+  66:     seed()                                   # before
+  67:     t1 = time.time()                         # before
+  68:     yield                                      
+  69:     show(the)                                # after
+  70:     t2 = time.time()                         # after
+  71:     print("\n# " + "-" * 50)                 # after
+  72:     print("# Runtime: %.3f secs" % (t2-t1))  # after
+  73:     for (using,_) in usings:                 # after
+  74:       using()                                # after
 ```
 
 
