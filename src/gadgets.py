@@ -1,6 +1,7 @@
 from __future__ import print_function, division
 import sys
 sys.dont_write_bytecode = True
+from gadgets0 import *
 
 """
 
@@ -47,47 +48,55 @@ record of all assigned values (the `Log`). While
 this can be added to standard Python, it can get a
 little messy.
 
-## Standard support utils
-
-The usual suspects:
-"""
-import random
-r   = random.random
-isa = isinstance
-
-def seed(x=1):
-  random.seed(x)
-
-class o:
-  def __init__(i,**d)    : i.__dict__.update(d)
-  def __setitem__(i,k,v) : i.__dict__[k] = v
-  def __getitem__(i,k)   : return i.__dict__[k]
-  def __repr__(i)        : return 'o'+str(i.__dict__)
-"""
 
 ## Log
 
 This class is the simplest of all.  It just remembers the range of values
 seen so far.
 
+Note two small details about these `Log`s:
+
++ Sometimes we are logging information
+  about one run within other runs. So `Log` has an `also` pointer
+  which, if non-nil, is another place to repeat the same information. 
++ As a side-effect of logging, we also keep a small sample of
+  the logged items. This will come in handy... later.
+
 """
 class Log:
   def __init__(i,also=None):
-    i.lo, i.hi, i.also = None, None, also
+    i.lo, i.hi, i.also, i._some= None, None, also,Some()
   def __add__(i,x):
     if   i.lo == None : i.lo = i.hi = x # auto-initialize
     elif x > i.hi     : i.hi = x
-    else x < i.lo     : i.lo = x
+    elif x < i.lo     : i.lo = x
     if i.also:
       i.also + x
+    i._some += x
     return x
+  def some(i):
+    return i._some.any
   def norm(i,x):
     return (x - i.lo)/(i.hi - i.lo + 10**-32)
-"""
 
-Note one small detail. Sometimes we are logging information
-about one run as well as all runs. So `Log` has an `also` pointer
-which, if non-nil, is another place to repeat the same information.
+@setting
+def somes(): return o(
+    size=256
+    )
+
+class Some:
+  def __init__(i, max=None): 
+    i.n, i.any = 0,[]
+    i.max = max or the.somes.size
+  def __iadd__(i,x):
+    i.n += 1
+    now = len(i.any)
+    if now < i.max:    
+      i.any += [x]
+    elif r() <= now/i.n:
+      i.any[ int(r() * now) ]= x 
+    return i
+"""
 
 ## Candidates
 
@@ -96,7 +105,7 @@ they are just containers, we define `Candidate` using the `o` container class.
 
 """        
 def Candidate(decs=[],objs=[]):
-  return o(dec=dec,objs=objs,
+  return o(decs=decs,objs=objs,
            aggregate=None)
 """
 
@@ -116,9 +125,11 @@ def Schaffer():
                   Less("f2", maker=f2)])
 """
 
-### Filling in the Candidates
+## Candidates have the Same Shape as `Log`s and `Want`s
 
-+ Replace some template candidate with one `what` for each location. Useful for:
+Candidates can be used as templates by
+replace some template candidate with one `what` for each location. 
+This is useful for:
    + Generating logs (replace each slot with one `Log`)
    + Generating a new blank candidate (replace each slot with `None`)
 
@@ -134,7 +145,7 @@ def fill(x, what=none):
 def fillList(lst,what):
   return [ fill(x,what) for x in lst]
 def fillContainer(old,what):
-  return o( **{ k : fill(d[k], what) for k in old } )
+  return o( **{ k : fill(old[k], what) for k in old.__dict__ } )
 """
 
 ## Want
@@ -158,15 +169,20 @@ Note that `Want` is a handy place to implement some useful services:
 + How to compute the distance `fromHell`.
 
 """
+def lt(i,j): return i < j
+def gt(i,j): return i > j
+
 class Want(object):
   def __init__(i, txt, init=None,
                   lo=-10**32, hi=10**32,
+                  better=lt,
                   maker=None):
     i.txt,i.init,i.lo,i.hi = txt,init,lo,hi
     i.maker = maker or i.guess
+    i.better= better
   def __repr__(i):
     return 'o'+str(i.__dict__)
-    def guess(i):
+  def guess(i):
     return i.lo + r()*(i.hi - i.lo)
   def restrain(i,x):
     return max(i.lo, min(i.hi, x))
@@ -179,29 +195,14 @@ class Want(object):
     return (hell - log.norm(x)) ** 2
 """
 
-### Want Objectives?
-
-Subclasses of `Want` store information about objectives; spefically:
-
-+ When does one objective have a `better` value than another;
-
-Here are out `better` predicates:
+Using the above, we can succinctly specify objectives
+that want to minimize or maximize their values.
 
 """
-def lt(i,j): return i < j
-def gt(i,j): return i > j
-"""
+Less=Want
 
-And these control our objectives as follows:
-
-"""
-def More(txt,init,better=gt,**d):
-  x = Obj(txt,init, **d)
-  x.better = better
-  return x
-
-def Less(txt,init,**d):
-  return More(txt,init,better=lt,**d)
+def More(txt,*lst,**d):
+  return Want(txt,*lst,better=gt,**d)
 """
 
 ## `Gadgets`: places to store lots of `Want`s
@@ -216,6 +217,11 @@ following, always write
       on `keeps` the decision if called by `keepDecs`.
 
 """
+@setting
+def gadgets(): return  o(
+    baseline=100)
+
+
 class Gadgets:
   def __init__(i,
                abouts, # e.g. Schaffer()
@@ -230,24 +236,23 @@ class Gadgets:
   def keepDecs(i)     : return i.decs(True)
   def keepEval(i,can) : return i.eval(i,can,True)
   def keepAggregate(i,can) : return i.aggregate(i,can,True)
-  def keeps(i,logs,things)  :
-    for log,thing in zip(logs,things):
-      log + thing
+  def keeps(i,keep,logs,things)  :
+    if keep:
+      for log,thing in zip(logs,things):
+        log + thing
       
   def decs(i,keep=False):
     "return a new candidate, with guesses for decisions"
     can = i.blank()
     can.decs = [about.maker() for about in i.abouts.decs]
-    if keep:
-      i.keeps(i.log.decs,can.decs)
+    i.keeps(keep,i.log.decs,can.decs)
     return can
   
   def eval(i,c,keep=False):
     "expire the old aggregate. make the objective scores."
-    can.aggregate = None:
+    can.aggregate = None
     can.objs = [about.maker(can) for about in i.abouts.objs]
-    if keep:
-      i.keeps(i.log.objs,can.objs)
+    i.keeps(keep,i.log.objs,can.objs)
     return can
 
   def aggregate(i,can,keep=False):
@@ -269,19 +274,14 @@ class Gadgets:
     can1= i.blank()
     for n,(dec,about) in enumerate(zip(can.decs,i.about.decs)):
       can1.decs[n] = about.maker() if p > r() else dec
-    if keep:
-      i.keeps(i.log.decs,can1.decs)
+    i.keeps(keep,i.log.decs,can1.decs)
     return can1
   
-  def baseline(i,n=100):
+  def baseline(i,n=None):
     "Log the results of generating, say, 100 random instances."
-    for _ in xrange(n):
+    for _ in xrange(n or the.gadgets.baseline):
       can = i.keepEval( i.keepDecs() )
       i.keepAggregate(can)
       return can
-
-def sa(m,
-       p=0.3, cooling=1,kmax=1000,e[silon=10.1,era=100,lives=5): # e.g. sa(Schafer())
-       k, life, e = 1,lives,1e32):
 
 
