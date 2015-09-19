@@ -263,7 +263,7 @@ following, always write
     + For example, the primitive `decs` method (that generates decisions)
       on `keeps` the decision if called by `keepDecs`.
 
-<a href="gadgets.py#L253-L322"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L253-L325"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  120:   @setting
@@ -333,9 +333,12 @@ following, always write
  184:       for j in xrange(n or the.GADGETS.baseline):
  185:         can = i.keepEval( i.keepDecs() )
  186:         i.keepAggregate(can)
- 187:         
- 188:   
- 189:   
+ 187:   
+ 188:   @setting
+ 189:   def GA():
+ 190:     
+ 191:   class sa(Gadgets):
+ 192:     def run()
 ```
 
 

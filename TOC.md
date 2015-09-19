@@ -11,6 +11,8 @@
 
 + [Abstraction (Advanced Python Coding)](https://github.com/txt/mase/blob/master/doc/abstract.md)
 + [Domain-Specific Languages 101 (in Python)](https://github.com/txt/mase/blob/master/doc/dsl101.md)
++ [GADGETS: Timm's Generic Optimizer Gadgets (and Goodies)](https://github.com/txt/mase/blob/master/doc/gadgets.md)
++ [Standard support utils](https://github.com/txt/mase/blob/master/doc/gadgets0.md)
 + [Hi There!](https://github.com/txt/mase/blob/master/doc/get-pip.md)
 + [demos 101](https://github.com/txt/mase/blob/master/doc/ntiles.md)
 + [[2.0, 1.0, 3.0, 4.0, 5.0]](https://github.com/txt/mase/blob/master/doc/rank.md)

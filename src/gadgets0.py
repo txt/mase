@@ -79,6 +79,8 @@ them after some study.
 
 That place has the following properties:
 
++ Magic constants do not become 1000 global variables:
+  + All such constants are nested inside one global called `the`.
 + It is all stored in one central place (so we
   can print all the current constants);
   + This code stores everything in a magic place called `the`.
@@ -88,13 +90,24 @@ That place has the following properties:
   + This code defines a decorator that wraps any function
     that defines a settings.
   + E.g. see `MISC`, below.
-+ It is possible to:
++ Using the `study`
+  function, defined below, it is possible to:
    + Temporarily override those values;
    + Then reset all those values back to
      some defaults.
 
-The last two requirements are handled by the `study`
-function, shown below.
+The code assumes that settings are set via some method:
+
+```python
+def theseSettings(**overrides):
+  d1 = theSettings()
+  d1.update(overrides)
+  the.theseSettings = d1
+```
+
+This is a common enough pattern that I auto-create the above
+using a decorator around a function that returns
+a dictionary.
 
 """
 the = o()
@@ -134,6 +147,7 @@ While we are about it, lets print
 + what  `the` values were active at the time. 
 + how long it took to run the code
 
+  
 """
 def use(x,**y):
   """Convenience function: for temporarily 
@@ -150,14 +164,14 @@ def study(what,*usings):
         datetime.datetime.now().strftime(  # before
           "%Y-%m-%d %H:%M:%S"))            # before
   for (using, override) in usings:         # before
-    using(**override)                      # before
-  seed()                                   # before
+    using(**override)                      # before: make new settings
+  seed()                                   # before: reset seed
   t1 = time.time()                         # before
   show(the)                                # before
   print("")                                # before
   yield                                      
   t2 = time.time()                         # after
   print("\n# " + "-" * 50)                 # after
-  print("# Runtime: %.3f secs\n" % (t2-t1))# after
-  for (using,_) in usings:                 # after
+  print("# Runtime: %.3f secs\n" % (t2-t1))# after  : print runtime
+  for (using,_) in usings:                 # after  : reset settings
     using()                                # after

@@ -317,6 +317,9 @@ class Gadgets:
     for j in xrange(n or the.GADGETS.baseline):
       can = i.keepEval( i.keepDecs() )
       i.keepAggregate(can)
-      
 
-
+@setting
+def GA():
+  
+class sa(Gadgets):
+  def run()

@@ -90,6 +90,8 @@ them after some study.
 
 That place has the following properties:
 
++ Magic constants do not become 1000 global variables:
+  + All such constants are nested inside one global called `the`.
 + It is all stored in one central place (so we
   can print all the current constants);
   + This code stores everything in a magic place called `the`.
@@ -99,15 +101,26 @@ That place has the following properties:
   + This code defines a decorator that wraps any function
     that defines a settings.
   + E.g. see `MISC`, below.
-+ It is possible to:
++ Using the `study`
+  function, defined below, it is possible to:
    + Temporarily override those values;
    + Then reset all those values back to
      some defaults.
 
-The last two requirements are handled by the `study`
-function, shown below.
+The code assumes that settings are set via some method:
 
-<a href="gadgets0.py#L100-L112"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+def theseSettings(**overrides):
+  d1 = theSettings()
+  d1.update(overrides)
+  the.theseSettings = d1
+```
+
+This is a common enough pattern that I auto-create the above
+using a decorator around a function that returns
+a dictionary.
+
+<a href="gadgets0.py#L113-L125"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   47:   the = o()
@@ -127,7 +140,7 @@ function, shown below.
 
 ### Set some settings
 
-<a href="gadgets0.py#L118-L123"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L131-L136"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   60:   @setting
@@ -149,7 +162,8 @@ While we are about it, lets print
 + what  `the` values were active at the time. 
 + how long it took to run the code
 
-<a href="gadgets0.py#L138-L163"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+  
+<a href="gadgets0.py#L152-L177"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   66:   def use(x,**y):
@@ -167,16 +181,16 @@ While we are about it, lets print
   78:           datetime.datetime.now().strftime(  # before
   79:             "%Y-%m-%d %H:%M:%S"))            # before
   80:     for (using, override) in usings:         # before
-  81:       using(**override)                      # before
-  82:     seed()                                   # before
+  81:       using(**override)                      # before: make new settings
+  82:     seed()                                   # before: reset seed
   83:     t1 = time.time()                         # before
   84:     show(the)                                # before
   85:     print("")                                # before
   86:     yield                                      
   87:     t2 = time.time()                         # after
   88:     print("\n# " + "-" * 50)                 # after
-  89:     print("# Runtime: %.3f secs\n" % (t2-t1))# after
-  90:     for (using,_) in usings:                 # after
+  89:     print("# Runtime: %.3f secs\n" % (t2-t1))# after  : print runtime
+  90:     for (using,_) in usings:                 # after  : reset settings
   91:       using()                                # after
 ```
 
