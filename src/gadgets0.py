@@ -15,7 +15,7 @@ import random,math
 from ok import *
 """
 
-## Some one liners.
+## Some one(ish) liners.
 
 """
 pi  = math.pi
@@ -25,6 +25,10 @@ sqrt= math.sqrt
 r   = random.random
 isa = isinstance
 
+def say(*lst):
+  sys.stdout.write(', '.join(map(str,lst)))
+  sys.stdout.flush()
+  
 def r3(lst,n=3):
   return map(lambda x:round(x,n),lst)
 
@@ -42,6 +46,18 @@ def ntiles(lst, tiles=None,ordered=True):
   lst   = lst if ordered else sorted(lst)
   at    = lambda x: lst[ int(len(lst)*x) ]
   return [ at(tile) for tile in tiles ]
+
+def median(lst,ordered=False):
+  lst = sorted(lst)
+  m = len(lst)
+  print(m,lst)
+  j = lst[int(m/2)+1]
+  if m % 2:
+    return j
+  else:
+    i = lst[int(m/2)]
+    return (i+j)/2.1
+  
 """
 
 ## Printing some structure of arbitrary depth:

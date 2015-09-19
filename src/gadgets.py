@@ -66,10 +66,11 @@ Note two small details about these `Log`s:
 """
 class Log:
   def __init__(i,init=[],also=None):
-    i.lo, i.hi, i.also, i._some= None, None, also,Some()
+    i.n,i.lo, i.hi, i.also, i._some= 0,None, None, also,Some()
     map(i.__add__,init)
   def __add__(i,x):
-    if   i.lo == None : i.lo = i.hi = x # auto-initialize
+    i.n += 1
+    if   i.empty() : i.lo = i.hi = x # auto-initialize
     elif x > i.hi     : i.hi = x
     elif x < i.lo     : i.lo = x
     if i.also:
@@ -80,6 +81,8 @@ class Log:
     return i._some.any
   def tiles(i,tiles=None,ordered=False,n=3):
     return r3(ntiles(i.some(),tiles,ordered),n)
+  def empty(i):
+    return i.lo == None
   def norm(i,x):
     return (x - i.lo)/(i.hi - i.lo + 10**-32)
 
@@ -111,10 +114,27 @@ they are just containers, we define `Candidate` using the `o` container class.
 def Candidate(decs=[],objs=[]):
   return o(decs=decs,objs=objs,
            aggregate=None)
+
+def canCopy(can,
+                  what = lambda : None):
+  copy= Candidate()
+  copy.decs = [what() for _ in can.decs]
+  copy.objs = [what() for _ in can.objs]
+  copy.aggregate = what()
+  return copy
+
+def twins(can1=None,can2=None):
+  "convince iterator. used later"
+  if can1 and can2:
+    for one,two in zip(can1.decs, can2.decs):
+      yield one,two
+    for one,two in zip(can1.objs, can2.objs):
+      yield one,two
+    yield can1.aggregate, can2.aggregate
 """
 
 Example model (note the use of the `want`, `less` and `more` classes... defined below).
-
+s
 """
 def Schaffer():
   def f1(can):
@@ -156,29 +176,7 @@ def Kursawe(a=1,b=1):
            decs = [dec(x) for x in range(3)],
            objs = [Less("f1",  maker=f1),
                    Less("f2",  maker=f2)])
-"""
 
-## Candidates have the Same Shape as `Log`s and `Want`s
-
-Candidates can be used as templates by
-replace some template candidate with one `what` for each location. 
-This is useful for:
-   + Generating logs (replace each slot with one `Log`)
-   + Generating a new blank candidate (replace each slot with `None`)
-
-"""
-def none() : return None
-def log()  : return Log
-
-def fill(x, what=none):
-  if   isa(x,list): return fillList(x,what)
-  elif isa(x,o)   : return fillContainer(x,what)
-  else            : return what()
-
-def fillList(lst,what):
-  return [ fill(x,what) for x in lst]
-def fillContainer(old,what):
-  return o( **{ k : fill(old[k], what) for k in old.__dict__ } )
 """
 
 ## Want
@@ -260,66 +258,130 @@ class Gadgets:
   def __init__(i,
                abouts):
     i.abouts = abouts
-    i.log    = fill(i.abouts, log())
     
   def blank(i):
     "return a new candidate, filled with None"
-    return fill(i.abouts, none)
-  
-  def keepDecs(i)     : return i.decs(True)
-  def keepEval(i,can) : return i.eval(can,True)
-  def keepAggregate(i,can) : return i.aggregate(can,True)
-  def keeps(i,keep,logs,things)  :
-    if keep:
-      for log,thing in zip(logs,things):
-        log + thing
-      
-  def decs(i,keep=False):
+    return canCopy(i.abouts, lambda: None)
+  def logs(i,also=None):
+    "Return a new log, also linked to another log"
+    new = canCopy(i.abouts, lambda: Log())
+    for new1,also1 in twins(new,also):
+        new1.also = also1
+    return new
+  def decs(i):
     "return a new candidate, with guesses for decisions"
     can = i.blank()
     can.decs = [about.maker() for about in i.abouts.decs]
-    i.keeps(keep,i.log.decs,can.decs)
     return can
   
-  def eval(i,can,keep=False):
+  def eval(i,can):
     "expire the old aggregate. make the objective scores."
     can.aggregate = None
     can.objs = [about.maker(can) for about in i.abouts.objs]
-    i.keeps(keep,i.log.objs,can.objs)
     return can
 
-  def aggregate(i,can,keep=False):
+  def aggregate(i,can,logs):
     "Return the aggregate. Side-effect: store it in the can"
     if can.aggregate == None:
        agg = n = 0
        for obj,about,log in zip(can.objs,
                                 i.abouts.objs,
-                                i.log.objs):
+                                logs.objs):
          n   += 1
-         agg += about.fromHell(obj,log)
+         if not log.empty():
+           agg += about.fromHell(obj,log)
        can.aggregate = agg ** 0.5 / n ** 0.5
-       if keep:
-         i.log.aggregate + can.aggregate
     return can.aggregate
        
-  def mutate(i,can,p=None,keep=False):
+  def mutate(i,can,p=None):
     "Return a new can with p% mutated"
     if p is None: p = the.GADGETS.mutate
     can1= i.blank()
     for n,(dec,about) in enumerate(zip(can.decs,
                                        i.abouts.decs)):
       can1.decs[n] = about.maker() if p > r() else dec
-    i.keeps(keep,i.log.decs,can1.decs)
     return can1
   
-  def baseline(i,n=None):
+  def baseline(i,logs,n=None):
     "Log the results of generating, say, 100 random instances."
+    frontier = []
     for j in xrange(n or the.GADGETS.baseline):
-      can = i.keepEval( i.keepDecs() )
-      i.keepAggregate(can)
+      can = i.eval( i.decs() )
+      i.aggregate(can,logs)
+      for log,x in twins(logs,can):
+        log + x
+      frontier += [can]
+    return frontier
+  def energy(i,can,logs):
+    "Returns an energy value to be minimized"
+    i.eval(can)
+    return 1 - i.aggregate(can,logs)
+  def better1(i,now,last):
+    better=worse=0
+    for now1,last1,about in zip(now.objs,
+                                last.objs,
+                                i.abouts.objs):
+      nowMed = median(now1.some())
+      lastMed= median(last1.some())
+      if about.better(nowMed, lastMed):
+        better += 1
+      elif nowMed != lastMed:
+        worse += 1
+    return better > 0 and worse < 1
 
 @setting
-def GA():
+def SA(): return o(
+    p=0.25,
+    cooling=1,
+    kmax=1000,
+    epsilon=0.01,
+    era=100,
+    lives=5,
+    verbose=True)
   
 class sa(Gadgets):
-  def run()
+  def fyi(i,x)      : the.SA.verbose and say(x)  
+  def bye(info,now) : i.fyi(info); return now
+  def p(i,old,new,t): return ee**((old - new)/t)
+  def run(i):
+    k,life = 0,the.SA.lives
+    also = i.logs()
+    now  = i.logs(also)
+    i.baseline(now,the.SA.era)
+    last, now  = now, i.logs(also)
+    s    = i.decs()
+    e    = i.energy(s,now)
+    eb   = 1e32
+    print("now some", now.aggregate.some())
+    exit()
+    i.fyi("%4s [%2s] %3s "% (k,life,""))
+    while True:
+      k += 1
+      t  = (k/the.SA.kmax) ** (1/the.SA.cooling)
+      info="."
+      sn = i.mutate(s, the.SA.p)
+      en = i.energy(sn,also)
+      if en < eb:
+        sb,eb = sn,en
+        i.fyi("\033[7m!\033[m")
+      if en < e:
+        s,e = sn,en
+        info = "+"
+      elif i.p(e,en,t) < r():
+         s,e = sn, en
+         info="?"
+      if k % the.SA.era: 
+        i.fyi(info)
+      else:
+        print(k,k % the.SA.era)
+        life = life - 1
+        if i.better1(now, last): 
+          life = the.SA.lives 
+        if eb < the.SA.epsilon: return i.bye("E %.5f" %eb,now)
+        if life < 1           : return i.bye("L", now)
+        if k > kmax           : return i.bye("K", now)
+        i.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
+        last, now  = now, i.log(also) 
+    
+sa(Schaffer()).run()
+    

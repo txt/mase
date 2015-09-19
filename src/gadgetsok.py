@@ -33,7 +33,7 @@ def _log():
 @ok
 def _fill():
   b4 = Candidate([1,2],[2,4])
-  assert str(fill(b4)) ==  \
+  assert str(canCopy(b4)) ==  \
          "o{'aggregate': None, "  + \
          "'objs': [None, None], " + \
          "'decs': [None, None]}"
@@ -60,12 +60,13 @@ def _gadgets1(f=Schaffer):
              use(MISC,
                  tiles=[0.05,0.1,0.2,0.4,0.8])):
     g=Gadgets(f())
-    g.baseline()
+    log = g.logs()
+    g.baseline(log)
     print("aggregates:",
-          g.log.aggregate.tiles())
+          log.aggregate.tiles())
     for whats in ['decs', 'objs']:
       print("")
-      for n,what in enumerate(g.log[whats]):
+      for n,what in enumerate(log[whats]):
         print(whats, n,what.tiles())
 
 @ok
