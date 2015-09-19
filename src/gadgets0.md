@@ -73,7 +73,26 @@
 A place to store all the magic params, and reset
 them after some study.
 
-<a href="gadgets0.py#L66-L77"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+That place has the following properties:
+
++ It is all stored in one central place (so we
+  can print all the current constants);
+  + This code stores everything in a magic place called `the`.
++ That place can be updated from all over the code base
+  (so the specification of those constants can be
+  distributed over to near the code that actually uses them);
+  + This code defines a decorator that wraps any function
+    that defines a settings.
+  + E.g. see `misc`, below.
++ It is possible to:
+   + Temporarily override those values;
+   + Then reset all those values back to
+     some defaults.
+
+The last two requirements are handled by the `study`
+function, shown below.
+
+<a href="gadgets0.py#L85-L96"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   32:   the = o()
@@ -92,7 +111,7 @@ them after some study.
 
 ### Set some settings
 
-<a href="gadgets0.py#L83-L87"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L102-L106"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   44:   @setting
@@ -102,12 +121,12 @@ them after some study.
   48:              width=50))
 ```
 
-## Contexts for settings.
+### Temporarily Setting, the Resetting
 
 Here's a place to explore changes to the defaults, and have
 all those changes undo afterwards.
 
-<a href="gadgets0.py#L96-L120"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L115-L139"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   49:   def use(x,**y):

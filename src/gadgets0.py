@@ -62,6 +62,25 @@ class o:
 A place to store all the magic params, and reset
 them after some study.
 
+That place has the following properties:
+
++ It is all stored in one central place (so we
+  can print all the current constants);
+  + This code stores everything in a magic place called `the`.
++ That place can be updated from all over the code base
+  (so the specification of those constants can be
+  distributed over to near the code that actually uses them);
+  + This code defines a decorator that wraps any function
+    that defines a settings.
+  + E.g. see `misc`, below.
++ It is possible to:
+   + Temporarily override those values;
+   + Then reset all those values back to
+     some defaults.
+
+The last two requirements are handled by the `study`
+function, shown below.
+
 """
 the = o()
 
@@ -87,7 +106,7 @@ def misc(): return o(
            width=50))
 """
 
-## Contexts for settings.
+### Temporarily Setting, the Resetting
 
 Here's a place to explore changes to the defaults, and have
 all those changes undo afterwards.
