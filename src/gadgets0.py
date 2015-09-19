@@ -11,22 +11,37 @@ sys.dont_write_bytecode = True
 """
 from contextlib import contextmanager
 import pprint,datetime,time
-import random
+import random,math
 from ok import *
 """
 
 ## Some one liners.
 
 """
+pi  = math.pi
+ee  = math.e
+sin = math.sin
+sqrt= math.sqrt
 r   = random.random
 isa = isinstance
 
+def r3(lst,n=3):
+  return map(lambda x:round(x,n),lst)
+
+def r5(lst): return r3(lst,5)
+
 def seed(x=None):
-  random.seed(x or the.misc.seed)
+  random.seed(x or the.MISC.seed)
 
 def shuffle(lst):
   random.shuffle(lst)
   return lst
+
+def ntiles(lst, tiles=None,ordered=True):
+  tiles = tiles or the.MISC.tiles
+  lst   = lst if ordered else sorted(lst)
+  at    = lambda x: lst[ int(len(lst)*x) ]
+  return [ at(tile) for tile in tiles ]
 """
 
 ## Printing some structure of arbitrary depth:
@@ -42,8 +57,8 @@ def show(x, indent=None, width=None):
     if isa(x,float): return '%g' % x
     return x
   print(pprint.pformat(has(x),
-            indent= indent or the.misc.show.indent,
-            width = width  or the.misc.show.width))
+            indent= indent or the.MISC.show.indent,
+            width = width  or the.MISC.show.width))
 
 """
 
@@ -72,7 +87,7 @@ That place has the following properties:
   distributed over to near the code that actually uses them);
   + This code defines a decorator that wraps any function
     that defines a settings.
-  + E.g. see `misc`, below.
+  + E.g. see `MISC`, below.
 + It is possible to:
    + Temporarily override those values;
    + Then reset all those values back to
@@ -101,8 +116,9 @@ def setting(f):
 
 """    
 @setting
-def misc(): return o(
+def MISC(): return o(
     seed=1,
+    tiles=[0.1,0.3,0.5,0.7,0.9],
     show=o(indent=2,
            width=50))
 """
@@ -137,10 +153,11 @@ def study(what,*usings):
     using(**override)                      # before
   seed()                                   # before
   t1 = time.time()                         # before
+  show(the)                                # before
+  print("")                                # before
   yield                                      
-  show(the)                                # after
   t2 = time.time()                         # after
   print("\n# " + "-" * 50)                 # after
-  print("# Runtime: %.3f secs" % (t2-t1))  # after
+  print("# Runtime: %.3f secs\n" % (t2-t1))# after
   for (using,_) in usings:                 # after
     using()                                # after

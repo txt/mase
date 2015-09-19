@@ -47,7 +47,8 @@ a clear set of expectations (the `Want`) and a track
 record of all assigned values (the `Log`). While
 this can be added to standard Python, it can get a
 little messy.
-
++ The syntax of the Python class system is sometimes...
+  awful. I find I can do cleaner coding if I dodge it.
 
 ## Log
 
@@ -64,8 +65,9 @@ Note two small details about these `Log`s:
 
 """
 class Log:
-  def __init__(i,also=None):
+  def __init__(i,init=[],also=None):
     i.lo, i.hi, i.also, i._some= None, None, also,Some()
+    map(i.__add__,init)
   def __add__(i,x):
     if   i.lo == None : i.lo = i.hi = x # auto-initialize
     elif x > i.hi     : i.hi = x
@@ -76,18 +78,20 @@ class Log:
     return x
   def some(i):
     return i._some.any
+  def tiles(i,tiles=None,ordered=False,n=3):
+    return r3(ntiles(i.some(),tiles,ordered),n)
   def norm(i,x):
     return (x - i.lo)/(i.hi - i.lo + 10**-32)
 
 @setting
-def somes(): return o(
+def SOMES(): return o(
     size=256
     )
 
 class Some:
   def __init__(i, max=None): 
     i.n, i.any = 0,[]
-    i.max = max or the.somes.size
+    i.max = max or the.SOMES.size
   def __iadd__(i,x):
     i.n += 1
     now = len(i.any)
@@ -120,9 +124,38 @@ def Schaffer():
     x = can.decs[0]
     return (x-2)**2
   return Candidate(
-          decs = [Want("x",   lo = -4, hi = 4)],
+          decs = [Want("x",   lo = -10**5, hi = 10**5)],
           objs = [Less("f1",  maker=f1),
                   Less("f2", maker=f2)])
+
+def Fonseca(n=3):
+  def f1(can):
+    z = sum((x - 1/sqrt(n))**2 for x in can.decs)
+    return 1 - ee**(-1*z)
+  def f2(can):
+    z = sum((x + 1/sqrt(n))**2 for x in can.decs)
+    return 1 - ee**(-1*z)
+  def dec(x):
+    return Want(x, lo=-4, hi=4)
+  return Candidate(
+          decs = [dec(x) for x in range(n)],
+          objs = [Less("f1",  maker=f1),
+                  Less("f2",  maker=f2)])
+
+def Kursawe(a=1,b=1):
+  def f1(can):
+    def xy(x,y):
+      return -10*ee**(-0.2*sqrt(x*x + y*y))
+    a,b,c = can.decs
+    return xy(a,b) + xy(b,c)
+  def f2(can):
+    return sum( (abs(x)**a + 5*sin(x)**b) for x in can.decs )
+  def dec(x):
+    return Want(x, lo=-5, hi=5)            
+  return Candidate(
+           decs = [dec(x) for x in range(3)],
+           objs = [Less("f1",  maker=f1),
+                   Less("f2",  maker=f2)])
 """
 
 ## Candidates have the Same Shape as `Log`s and `Want`s
@@ -134,8 +167,8 @@ This is useful for:
    + Generating a new blank candidate (replace each slot with `None`)
 
 """
-def none()        : return None
-def log(also=None): return lambda: Log(also)
+def none() : return None
+def log()  : return Log
 
 def fill(x, what=none):
   if   isa(x,list): return fillList(x,what)
@@ -190,7 +223,7 @@ class Want(object):
     return i.lo + (x - i.lo) % (i.hi - i.lo)
   def ok(i,x):
     return i.lo <= x <= i.hi
-  def fromHelll(i,x,log):
+  def fromHell(i,x,log):
     hell = 1 if i.better == lt else 0
     return (hell - log.norm(x)) ** 2
 """
@@ -218,26 +251,26 @@ following, always write
 
 """
 @setting
-def gadgets(): return  o(
-    baseline=100)
-
+def GADGETS(): return  o(
+    baseline=100,
+    mutate = 0.3
+)
 
 class Gadgets:
   def __init__(i,
-               abouts, # e.g. Schaffer()
-               also = None):
+               abouts):
     i.abouts = abouts
-    i.log    = fill(i.abouts, log(also))
+    i.log    = fill(i.abouts, log())
     
   def blank(i):
     "return a new candidate, filled with None"
     return fill(i.abouts, none)
   
   def keepDecs(i)     : return i.decs(True)
-  def keepEval(i,can) : return i.eval(i,can,True)
-  def keepAggregate(i,can) : return i.aggregate(i,can,True)
-  def keeps(i,keep,logs,things)  :
-    if keep:
+  def keepEval(i,can) : return i.eval(can,True)
+  def keepAggregate(i,can) : return i.aggregate(can,True)
+  def keeps(i,keeps,logs,things)  :
+    if keeps:
       for log,thing in zip(logs,things):
         log + thing
       
@@ -248,7 +281,7 @@ class Gadgets:
     i.keeps(keep,i.log.decs,can.decs)
     return can
   
-  def eval(i,c,keep=False):
+  def eval(i,can,keep=False):
     "expire the old aggregate. make the objective scores."
     can.aggregate = None
     can.objs = [about.maker(can) for about in i.abouts.objs]
@@ -259,29 +292,31 @@ class Gadgets:
     "Return the aggregate. Side-effect: store it in the can"
     if can.aggregate == None:
        agg = n = 0
-       for obj,about,log in zip(c.objs,
+       for obj,about,log in zip(can.objs,
                                 i.abouts.objs,
                                 i.log.objs):
          n   += 1
          agg += about.fromHell(obj,log)
        can.aggregate = agg ** 0.5 / n ** 0.5
        if keep:
-         i.abouts.aggregate += can.aggregate
+         i.log.aggregate + can.aggregate
     return can.aggregate
        
-  def mutate(i,can,p,keep=False):
+  def mutate(i,can,p=None,keep=False):
     "Return a new can with p% mutated"
+    if p is None: p = the.GADGETS.mutate
     can1= i.blank()
-    for n,(dec,about) in enumerate(zip(can.decs,i.about.decs)):
+    for n,(dec,about) in enumerate(zip(can.decs,
+                                       i.abouts.decs)):
       can1.decs[n] = about.maker() if p > r() else dec
     i.keeps(keep,i.log.decs,can1.decs)
     return can1
   
   def baseline(i,n=None):
     "Log the results of generating, say, 100 random instances."
-    for _ in xrange(n or the.gadgets.baseline):
+    for j in xrange(n or the.GADGETS.baseline):
       can = i.keepEval( i.keepDecs() )
       i.keepAggregate(can)
-      return can
+      
 
 
