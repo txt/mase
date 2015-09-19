@@ -7,7 +7,7 @@
 
 
 
-# GADGETS: Timm's Generic Optimizer Tricks
+# GADGETS: Timm's Generic Optimizer Gadgets (and Goodies)
 
 <img width=400 align=right src="../img/gogo.jpg">
 
@@ -50,104 +50,112 @@ record of all assigned values (the `Log`). While
 this can be added to standard Python, it can get a
 little messy.
 
-## Standard support utils
-
-The usual suspects:
-<a href="gadgets.py#L54-L65"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
-```python
-
-   1:   import random
-   2:   r   = random.random
-   3:   isa = isinstance
-   4:   
-   5:   def seed(x=1):
-   6:     random.seed(x)
-   7:   
-   8:   class o:
-   9:     def __init__(i,**d)    : i.__dict__.update(d)
-  10:     def __setitem__(i,k,v) : i.__dict__[k] = v
-  11:     def __getitem__(i,k)   : return i.__dict__[k]
-  12:     def __repr__(i)        : return 'o'+str(i.__dict__)
-```
 
 ## Log
 
 This class is the simplest of all.  It just remembers the range of values
 seen so far.
 
-<a href="gadgets.py#L74-L85"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+Note two small details about these `Log`s:
+
++ Sometimes we are logging information
+  about one run within other runs. So `Log` has an `also` pointer
+  which, if non-nil, is another place to repeat the same information. 
++ As a side-effect of logging, we also keep a small sample of
+  the logged items. This will come in handy... later.
+
+<a href="gadgets.py#L66-L98"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  13:   class Log:
-  14:     def __init__(i,also=None):
-  15:       i.lo, i.hi, i.also = None, None, also
-  16:     def __add__(i,x):
-  17:       if   i.lo == None : i.lo = i.hi = x # auto-initialize
-  18:       elif x > i.hi     : i.hi = x
-  19:       else x < i.lo     : i.lo = x
-  20:       if i.also:
-  21:         i.also + x
-  22:       return x
-  23:     def norm(i,x):
-  24:       return (x - i.lo)/(i.hi - i.lo + 10**-32)
+   1:   class Log:
+   2:     def __init__(i,also=None):
+   3:       i.lo, i.hi, i.also, i._some= None, None, also,Some()
+   4:     def __add__(i,x):
+   5:       if   i.lo == None : i.lo = i.hi = x # auto-initialize
+   6:       elif x > i.hi     : i.hi = x
+   7:       elif x < i.lo     : i.lo = x
+   8:       if i.also:
+   9:         i.also + x
+  10:       i._some += x
+  11:       return x
+  12:     def some(i):
+  13:       return i._some.any
+  14:     def norm(i,x):
+  15:       return (x - i.lo)/(i.hi - i.lo + 10**-32)
+  16:   
+  17:   @setting
+  18:   def somes(): return o(
+  19:       size=256
+  20:       )
+  21:   
+  22:   class Some:
+  23:     def __init__(i, max=None): 
+  24:       i.n, i.any = 0,[]
+  25:       i.max = max or the.somes.size
+  26:     def __iadd__(i,x):
+  27:       i.n += 1
+  28:       now = len(i.any)
+  29:       if now < i.max:    
+  30:         i.any += [x]
+  31:       elif r() <= now/i.n:
+  32:         i.any[ int(r() * now) ]= x 
+  33:       return i
 ```
-
-Note one small detail. Sometimes we are logging information
-about one run as well as all runs. So `Log` has an `also` pointer
-which, if non-nil, is another place to repeat the same information.
 
 ## Candidates
 
 `Candidate`s have objectives, decisions and maybe some aggregate value. Note that since
 they are just containers, we define `Candidate` using the `o` container class.
 
-<a href="gadgets.py#L98-L100"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L107-L109"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  25:   def Candidate(decs=[],objs=[]):
-  26:     return o(dec=dec,objs=objs,
-  27:              aggregate=None)
+  34:   def Candidate(decs=[],objs=[]):
+  35:     return o(decs=decs,objs=objs,
+  36:              aggregate=None)
 ```
 
 Example model (note the use of the `want`, `less` and `more` classes... defined below).
 
-<a href="gadgets.py#L106-L116"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L115-L125"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  28:   def Schaffer():
-  29:     def f1(can):
-  30:       x = can.decs[0]
-  31:       return x**2
-  32:     def f2(can):
-  33:       x = can.decs[0]
-  34:       return (x-2)**2
-  35:     return Candidate(
-  36:             decs = [Want("x",   lo = -4, hi = 4)],
-  37:             objs = [Less("f1",  maker=f1),
-  38:                     Less("f2", maker=f2)])
+  37:   def Schaffer():
+  38:     def f1(can):
+  39:       x = can.decs[0]
+  40:       return x**2
+  41:     def f2(can):
+  42:       x = can.decs[0]
+  43:       return (x-2)**2
+  44:     return Candidate(
+  45:             decs = [Want("x",   lo = -4, hi = 4)],
+  46:             objs = [Less("f1",  maker=f1),
+  47:                     Less("f2", maker=f2)])
 ```
 
-### Filling in the Candidates
+## Candidates have the Same Shape as `Log`s and `Want`s
 
-+ Replace some template candidate with one `what` for each location. Useful for:
+Candidates can be used as templates by
+replace some template candidate with one `what` for each location. 
+This is useful for:
    + Generating logs (replace each slot with one `Log`)
    + Generating a new blank candidate (replace each slot with `None`)
 
-<a href="gadgets.py#L126-L137"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L137-L148"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  39:   def none()        : return None
-  40:   def log(also=None): return lambda: Log(also)
-  41:   
-  42:   def fill(x, what=none):
-  43:     if   isa(x,list): return fillList(x,what)
-  44:     elif isa(x,o)   : return fillContainer(x,what)
-  45:     else            : return what()
-  46:   
-  47:   def fillList(lst,what):
-  48:     return [ fill(x,what) for x in lst]
-  49:   def fillContainer(old,what):
-  50:     return o( **{ k : fill(d[k], what) for k in old } )
+  48:   def none()        : return None
+  49:   def log(also=None): return lambda: Log(also)
+  50:   
+  51:   def fill(x, what=none):
+  52:     if   isa(x,list): return fillList(x,what)
+  53:     elif isa(x,o)   : return fillContainer(x,what)
+  54:     else            : return what()
+  55:   
+  56:   def fillList(lst,what):
+  57:     return [ fill(x,what) for x in lst]
+  58:   def fillContainer(old,what):
+  59:     return o( **{ k : fill(old[k], what) for k in old.__dict__ } )
 ```
 
 ## Want
@@ -168,64 +176,47 @@ Note that `Want` is a handy place to implement some useful services:
 + Checking if a value is `ok` (in bounds `lo..hi`);
 + `restrain`ing out of bound values back to `lo..hi`;
 + `wrap`ing out of bounds value via modulo;
-
-<a href="gadgets.py#L160-L175"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
-```python
-
-  51:   class Want(object):
-  52:     def __init__(i, txt, init=None,
-  53:                     lo=-10**32, hi=10**32,
-  54:                     maker=None):
-  55:       i.txt,i.init,i.lo,i.hi = txt,init,lo,hi
-  56:       i.maker = maker or i.guess
-  57:     def __repr__(i):
-  58:       return 'o'+str(i.__dict__)
-  59:       def guess(i):
-  60:       return i.lo + r()*(i.hi - i.lo)
-  61:     def restrain(i,x):
-  62:       return max(i.lo, min(i.hi, x))
-  63:     def wrap(i,x):
-  64:       return i.lo + (x - i.lo) % (i.hi - i.lo)
-  65:     def ok(i,x):
-  66:       return i.lo <= x <= i.hi
-```
-
-### Want Objectives?
-
-Subclasses of `Want` store information about objectives 
-including:
-
 + How to compute the distance `fromHell`.
-+ When does one objective have a `better` value than another;
 
-Here are out `better` predicates:
-
-<a href="gadgets.py#L189-L190"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L172-L195"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  67:   def lt(i,j): return i < j
-  68:   def gt(i,j): return i > j
+  60:   def lt(i,j): return i < j
+  61:   def gt(i,j): return i > j
+  62:   
+  63:   class Want(object):
+  64:     def __init__(i, txt, init=None,
+  65:                     lo=-10**32, hi=10**32,
+  66:                     better=lt,
+  67:                     maker=None):
+  68:       i.txt,i.init,i.lo,i.hi = txt,init,lo,hi
+  69:       i.maker = maker or i.guess
+  70:       i.better= better
+  71:     def __repr__(i):
+  72:       return 'o'+str(i.__dict__)
+  73:     def guess(i):
+  74:       return i.lo + r()*(i.hi - i.lo)
+  75:     def restrain(i,x):
+  76:       return max(i.lo, min(i.hi, x))
+  77:     def wrap(i,x):
+  78:       return i.lo + (x - i.lo) % (i.hi - i.lo)
+  79:     def ok(i,x):
+  80:       return i.lo <= x <= i.hi
+  81:     def fromHelll(i,x,log):
+  82:       hell = 1 if i.better == lt else 0
+  83:       return (hell - log.norm(x)) ** 2
 ```
 
-And these control our objectives as follows:
+Using the above, we can succinctly specify objectives
+that want to minimize or maximize their values.
 
-<a href="gadgets.py#L196-L209"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L202-L205"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  69:   class Obj(Want):
-  70:     def fromHelll(i,x,log):
-  71:       hell = 1 if i.better == lt else 0
-  72:       return (hell - log.norm(x)) ** 2
-  73:     
-  74:   class Less(Obj):
-  75:     def __init__(i,txt,init,lo=-10**32,hi=10**32,maker=None):
-  76:       super(less, i).__init__(txt,init,lo=lo,hi=hi,maker=maker)
-  77:       i.better = lt
-  78:       
-  79:   class More(Obj):
-  80:     def __init__(i,txt,init,lo=-10**32,hi=10**32,maker=None):
-  81:       super(less, i).__init__(txt,init,lo=lo,hi=hi,maker=maker)
-  82:       i.better = gt
+  84:   Less=Want
+  85:   
+  86:   def More(txt,*lst,**d):
+  87:     return Want(txt,*lst,better=gt,**d)
 ```
 
 ## `Gadgets`: places to store lots of `Want`s
@@ -239,78 +230,77 @@ following, always write
     + For example, the primitive `decs` method (that generates decisions)
       on `keeps` the decision if called by `keepDecs`.
 
-<a href="gadgets.py#L224-L292"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L220-L287"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  83:   class Gadgets:
-  84:     def __init__(i,
-  85:                  abouts, # e.g. Schaffer()
-  86:                  also = None):
-  87:       i.abouts = abouts
-  88:       i.log    = fill(i.abouts, log(also))
-  89:       
-  90:     def blank(i):
-  91:       "return a new candidate, filled with None"
-  92:       return fill(i.abouts, none)
-  93:     
-  94:     def keepDecs(i)     : return i.decs(True)
-  95:     def keepEval(i,can) : return i.eval(i,can,True)
-  96:     def keepAggregate(i,can) : return i.aggregate(i,can,True)
-  97:     def keeps(i,logs,things)  :
-  98:       for log,thing in zip(logs,things):
-  99:         log + thing
- 100:         
- 101:     def decs(i,keep=False):
- 102:       "return a new candidate, with guesses for decisions"
- 103:       can = i.blank()
- 104:       can.decs = [about.maker() for about in i.abouts.decs]
- 105:       if keep:
- 106:         i.keeps(i.log.decs,can.decs)
- 107:       return can
- 108:     
- 109:     def eval(i,c,keep=False):
- 110:       "expire the old aggregate. make the objective scores."
- 111:       can.aggregate = None:
- 112:       can.objs = [about.maker(can) for about in i.abouts.objs]
- 113:       if keep:
- 114:         i.keeps(i.log.objs,can.objs)
- 115:       return can
- 116:   
- 117:     def aggregate(i,can,keep=False):
- 118:       "Return the aggregate. Side-effect: store it in the can"
- 119:       if can.aggregate == None:
- 120:          agg = n = 0
- 121:          for obj,about,log in zip(c.objs,
- 122:                                   i.abouts.objs,
- 123:                                   i.log.objs):
- 124:            n   += 1
- 125:            agg += about.fromHell(obj,log)
- 126:          can.aggregate = agg ** 0.5 / n ** 0.5
- 127:          if keep:
- 128:            i.abouts.aggregate += can.aggregate
- 129:       return can.aggregate
- 130:          
- 131:     def mutate(i,can,p,keep=False):
- 132:       "Return a new can with p% mutated"
- 133:       can1= i.blank()
- 134:       for n,(dec,about) in enumerate(zip(can.decs,i.about.decs)):
- 135:         can1.decs[n] = about.maker() if p > r() else dec
- 136:       if keep:
- 137:         i.keeps(i.log.decs,can1.decs)
- 138:       return can1
- 139:     
- 140:     def baseline(i,n=100):
- 141:       "Log the results of generating, say, 100 random instances."
- 142:       for _ in xrange(n):
- 143:         can = i.keepEval( i.keepDecs() )
- 144:         i.keepAggregate(can)
- 145:         return can
- 146:   
- 147:   def sa(m,
- 148:          p=0.3, cooling=1,kmax=1000,e[silon=10.1,era=100,lives=5): # e.g. sa(Schafer())
- 149:          k, life, e = 1,lives,1e32):
- 150:   
- 151:   
+  88:   @setting
+  89:   def gadgets(): return  o(
+  90:       baseline=100)
+  91:   
+  92:   
+  93:   class Gadgets:
+  94:     def __init__(i,
+  95:                  abouts, # e.g. Schaffer()
+  96:                  also = None):
+  97:       i.abouts = abouts
+  98:       i.log    = fill(i.abouts, log(also))
+  99:       
+ 100:     def blank(i):
+ 101:       "return a new candidate, filled with None"
+ 102:       return fill(i.abouts, none)
+ 103:     
+ 104:     def keepDecs(i)     : return i.decs(True)
+ 105:     def keepEval(i,can) : return i.eval(i,can,True)
+ 106:     def keepAggregate(i,can) : return i.aggregate(i,can,True)
+ 107:     def keeps(i,keep,logs,things)  :
+ 108:       if keep:
+ 109:         for log,thing in zip(logs,things):
+ 110:           log + thing
+ 111:         
+ 112:     def decs(i,keep=False):
+ 113:       "return a new candidate, with guesses for decisions"
+ 114:       can = i.blank()
+ 115:       can.decs = [about.maker() for about in i.abouts.decs]
+ 116:       i.keeps(keep,i.log.decs,can.decs)
+ 117:       return can
+ 118:     
+ 119:     def eval(i,c,keep=False):
+ 120:       "expire the old aggregate. make the objective scores."
+ 121:       can.aggregate = None
+ 122:       can.objs = [about.maker(can) for about in i.abouts.objs]
+ 123:       i.keeps(keep,i.log.objs,can.objs)
+ 124:       return can
+ 125:   
+ 126:     def aggregate(i,can,keep=False):
+ 127:       "Return the aggregate. Side-effect: store it in the can"
+ 128:       if can.aggregate == None:
+ 129:          agg = n = 0
+ 130:          for obj,about,log in zip(c.objs,
+ 131:                                   i.abouts.objs,
+ 132:                                   i.log.objs):
+ 133:            n   += 1
+ 134:            agg += about.fromHell(obj,log)
+ 135:          can.aggregate = agg ** 0.5 / n ** 0.5
+ 136:          if keep:
+ 137:            i.abouts.aggregate += can.aggregate
+ 138:       return can.aggregate
+ 139:          
+ 140:     def mutate(i,can,p,keep=False):
+ 141:       "Return a new can with p% mutated"
+ 142:       can1= i.blank()
+ 143:       for n,(dec,about) in enumerate(zip(can.decs,i.about.decs)):
+ 144:         can1.decs[n] = about.maker() if p > r() else dec
+ 145:       i.keeps(keep,i.log.decs,can1.decs)
+ 146:       return can1
+ 147:     
+ 148:     def baseline(i,n=None):
+ 149:       "Log the results of generating, say, 100 random instances."
+ 150:       for _ in xrange(n or the.gadgets.baseline):
+ 151:         can = i.keepEval( i.keepDecs() )
+ 152:         i.keepAggregate(can)
+ 153:         return can
+ 154:   
+ 155:   
 ```
 
 
