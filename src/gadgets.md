@@ -159,7 +159,7 @@ Example model (note the use of the `want`, `less` and `more` classes... defined 
   72:     def f2(can):
   73:       return sum( (abs(x)**a + 5*sin(x)**b) for x in can.decs )
   74:     def dec(x):
-  75:       return Want(x, lo=-5, hi=5)            
+  75:       return  Want(x, lo=-5, hi=5)           
   76:     return Candidate(
   77:              decs = [dec(x) for x in range(3)],
   78:              objs = [Less("f1",  maker=f1),
@@ -285,8 +285,8 @@ following, always write
  136:     def keepDecs(i)     : return i.decs(True)
  137:     def keepEval(i,can) : return i.eval(can,True)
  138:     def keepAggregate(i,can) : return i.aggregate(can,True)
- 139:     def keeps(i,keeps,logs,things)  :
- 140:       if keeps:
+ 139:     def keeps(i,keep,logs,things)  :
+ 140:       if keep:
  141:         for log,thing in zip(logs,things):
  142:           log + thing
  143:         
