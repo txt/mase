@@ -171,7 +171,7 @@ def _sa3(): _sa1(Kursawe)
 
 
 @ok
-def _sa3(): _sa1(ZDT1)
+def _sa4(): _sa1(ZDT1)
 
 
     

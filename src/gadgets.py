@@ -130,6 +130,8 @@ class Log:
     return i.lo == None
   def norm(i,x):
     return (x - i.lo)/(i.hi - i.lo + 10**-32)
+  def nudge(i,f=1):
+    return (i.hi - i.lo)*f
 
 @setting
 def SOMES(): return o(
@@ -307,7 +309,12 @@ following, always write
 @setting
 def GADGETS(): return  o(
     baseline=100,
-    mutate = 0.3
+    mutate = 0.3,
+    epsilon=0.01,
+    era=50,
+    lives=5,
+    verbose=True,
+    nudge=1
 )
 
 class Gadgets:
@@ -349,13 +356,19 @@ class Gadgets:
        can.aggregate = agg ** 0.5 / n ** 0.5
     return can.aggregate
        
-  def mutate(i,can,p=None):
+  def mutate(i,can,logs,p=None,f=None):
     "Return a new can with p% mutated"
     if p is None: p = the.GADGETS.mutate
+    if f is None: f = the.GADGETS.nudge
     can1= i.blank()
-    for n,(dec,about) in enumerate(zip(can.decs,
-                                       i.abouts.decs)):
-      can1.decs[n] = about.maker() if p > r() else dec
+    for n,(dec,about,log) in enumerate(zip(can.decs,
+                                           i.abouts.decs,
+                                           logs.decs)):
+      val   = can.decs[n]
+      if p > r():
+        nudge = log.nudge(the.GADGETS.nudge)*r()
+        val  = about.wrap(val + nudge)
+      can1.decs[n] = val
     return can1
   
   def baseline(i,logs,n=None):
@@ -370,7 +383,10 @@ class Gadgets:
   def energy(i,can,logs):
     "Returns an energy value to be minimized"
     i.eval(can)
-    return 1 - i.aggregate(can,logs)
+    e = abs(1 - i.aggregate(can,logs))
+    if e < 0: e= 0
+    if e > 1: e= 1
+    return e
   def better1(i,now,last):
     better=worse=0
     for now1,last1,about in zip(now.objs,
@@ -383,26 +399,22 @@ class Gadgets:
       elif nowMed != lastMed:
         worse += 1
     return better > 0 and worse < 1
+  def fyi(i,x)              : the.GADGETS.verbose and say(x)  
+  def bye(i,info,first,now) : i.fyi(info); return first,now
 
 @setting
 def SA(): return o(
     p=0.25,
     cooling=1,
-    kmax=1000,
-    epsilon=0.01,
-    era=50,
-    lives=5,
-    verbose=True)
+    kmax=1000)
   
 class sa(Gadgets):
-  def fyi(i,x)        : the.SA.verbose and say(x)  
-  def bye(i,info,first,now) : i.fyi(info); return first,now
   def p(i,old,new,t)  : return ee**((old - new)/t)
   def run(i):
-    k,eb,life, = 0,1,the.SA.lives
+    k,eb,life, = 0,1,the.GADGETS.lives
     also = i.logs()
     first = now  = i.logs(also)
-    i.baseline(now, the.SA.era)
+    i.baseline(now, the.GADGETS.era)
     last, now = now, i.logs(also)
     s    = i.decs()
     e    = i.energy(s,now)
@@ -411,7 +423,7 @@ class sa(Gadgets):
       info="."
       k += 1
       t  = (k/the.SA.kmax) ** (1/the.SA.cooling)
-      sn = i.mutate(s, the.SA.p)
+      sn = i.mutate(s, also, the.GADGETS.mutate)
       en = i.energy(sn,also)
       [log + x for log,x in parts(now,sn)]
       if en < eb:
@@ -423,13 +435,13 @@ class sa(Gadgets):
       elif i.p(e,en,t) < r():
          s,e = sn, en
          info="?"
-      if k % the.SA.era: 
+      if k % the.GADGETS.era: 
         i.fyi(info)
       else:
         life = life - 1
         if i.better1(now, last): 
-          life = the.SA.lives 
-        if eb < the.SA.epsilon :
+          life = the.GADGETS.lives 
+        if eb < the.GADGETS.epsilon :
           return i.bye("E %.5f" %eb,first,now)
         if life < 1 :
           return i.bye("L", first,now)
