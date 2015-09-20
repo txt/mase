@@ -11,7 +11,7 @@
 #    /\____/                  /\____/                    
 #    \_/__/                   \_/__/ 
 #   		    
-# (c) Tim Menzies, 2015
+# (c) 2015 Tim Menzies, http://menzies.us
 #
 # Anyone is free to copy, modify, publish, use,
 # compile, sell, or distribute this software, either
@@ -384,9 +384,9 @@ def SA(): return o(
     verbose=True)
   
 class sa(Gadgets):
-  def fyi(i,x)      : the.SA.verbose and say(x)  
+  def fyi(i,x)        : the.SA.verbose and say(x)  
   def bye(i,info,now) : i.fyi(info); return now
-  def p(i,old,new,t): return ee**((old - new)/t)
+  def p(i,old,new,t)  : return ee**((old - new)/t)
   def run(i):
     k,eb,life, = 0,1,the.SA.lives
     also = i.logs()

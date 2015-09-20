@@ -7,9 +7,9 @@
 
 
 
-# Test suite for a generic optimizer
+# Test suite for some generic optimizer gadgets
 
-<a href="gadgetsok.py#L10-L102"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgetsok.py#L55-L147"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   from ok import *

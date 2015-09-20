@@ -11,7 +11,7 @@
 
 ## The usual suspects
 
-<a href="gadgets0.py#L12-L15"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L57-L60"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   from contextlib import contextmanager
@@ -22,7 +22,7 @@
 
 ## Some one(ish) liners.
 
-<a href="gadgets0.py#L21-L59"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L66-L104"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    5:   pi  = math.pi
@@ -68,7 +68,7 @@
 
 ## Printing some structure of arbitrary depth:
 
-<a href="gadgets0.py#L65-L77"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L110-L122"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   44:   def show(x, indent=None, width=None):
@@ -88,7 +88,7 @@
 
 ## Javascript struct emulation
 
-<a href="gadgets0.py#L83-L87"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L128-L132"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   57:   class o:
@@ -135,7 +135,7 @@ This is a common enough pattern that I auto-create the above
 using a decorator around a function that returns
 a dictionary.
 
-<a href="gadgets0.py#L128-L140"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L173-L185"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   62:   the = o()
@@ -155,7 +155,7 @@ a dictionary.
 
 ### Set some settings
 
-<a href="gadgets0.py#L146-L151"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L191-L196"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   75:   @setting
@@ -178,7 +178,7 @@ While we are about it, lets print
 + how long it took to run the code
 
   
-<a href="gadgets0.py#L167-L192"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L212-L237"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   81:   def use(x,**y):

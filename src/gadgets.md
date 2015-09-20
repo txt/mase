@@ -353,9 +353,9 @@ following, always write
  217:       verbose=True)
  218:     
  219:   class sa(Gadgets):
- 220:     def fyi(i,x)      : the.SA.verbose and say(x)  
+ 220:     def fyi(i,x)        : the.SA.verbose and say(x)  
  221:     def bye(i,info,now) : i.fyi(info); return now
- 222:     def p(i,old,new,t): return ee**((old - new)/t)
+ 222:     def p(i,old,new,t)  : return ee**((old - new)/t)
  223:     def run(i):
  224:       k,eb,life, = 0,1,the.SA.lives
  225:       also = i.logs()
