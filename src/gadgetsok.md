@@ -9,7 +9,7 @@
 
 # Test suite for a generic optimizer
 
-<a href="gadgetsok.py#L10-L86"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgetsok.py#L10-L102"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   from ok import *
@@ -38,7 +38,7 @@
   24:   @ok
   25:   def _fill():
   26:     b4 = Candidate([1,2],[2,4])
-  27:     assert str(fill(b4)) ==  \
+  27:     assert str(canCopy(b4)) ==  \
   28:            "o{'aggregate': None, "  + \
   29:            "'objs': [None, None], " + \
   30:            "'decs': [None, None]}"
@@ -65,30 +65,46 @@
   51:                use(MISC,
   52:                    tiles=[0.05,0.1,0.2,0.4,0.8])):
   53:       g=Gadgets(f())
-  54:       g.baseline()
-  55:       print("aggregates:",
-  56:             g.log.aggregate.tiles())
-  57:       for whats in ['decs', 'objs']:
-  58:         print("")
-  59:         for n,what in enumerate(g.log[whats]):
-  60:           print(whats, n,what.tiles())
-  61:   
-  62:   @ok
-  63:   def _gadgets2(): _gadgets1(Fonseca)
-  64:   
-  65:   @ok
-  66:   def _gadgets3(): _gadgets1(Kursawe)
-  67:   
-  68:   @ok
-  69:   def _mutate():
-  70:     for m in [0.3,0.7]:
-  71:       with study("mutate",
-  72:                  use(GADGETS,mutate=m)):
-  73:         g=Gadgets(Kursawe())
-  74:         one = g.decs()
-  75:         two = g.mutate(one)
-  76:         print(m, r5(one.decs))
-  77:         print(m, r5(two.decs))
+  54:       log = g.logs()
+  55:       g.baseline(log)
+  56:       print("aggregates:",
+  57:             log.aggregate.tiles())
+  58:       for whats in ['decs', 'objs']:
+  59:         print("")
+  60:         for n,what in enumerate(log[whats]):
+  61:           print(whats, n,what.tiles())
+  62:   
+  63:   @ok
+  64:   def _gadgets2(): _gadgets1(Fonseca)
+  65:   
+  66:   @ok
+  67:   def _gadgets3(): _gadgets1(Kursawe)
+  68:   
+  69:   @ok
+  70:   def _mutate():
+  71:     for m in [0.3,0.7]:
+  72:       with study("mutate",
+  73:                  use(GADGETS,mutate=m)):
+  74:         g=Gadgets(Kursawe())
+  75:         one = g.decs()
+  76:         two = g.mutate(one)
+  77:         print(m, r5(one.decs))
+  78:         print(m, r5(two.decs))
+  79:   
+  80:   @ok
+  81:   def _sa1(m=Schaffer):
+  82:     with study(m.__name__):
+  83:       sa(m()).run()
+  84:   
+  85:   @ok
+  86:   def _sa2(): _sa1(Fonseca)
+  87:   
+  88:   
+  89:   @ok
+  90:   def _sa3(): _sa1(Kursawe)
+  91:   
+  92:   
+  93:       
 ```
 
 
