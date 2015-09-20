@@ -181,7 +181,7 @@ def parts(can1=None,can2=None):
 """
 
 Example model (note the use of the `want`, `less` and `more` classes... defined below).
-s
+
 """
 def Schaffer():
   def f1(can):
@@ -296,6 +296,18 @@ def More(txt,*lst,**d):
 
 ## `Gadgets`: places to store lots of `Want`s
 
+`Gagets` is really a farcade containing a bunch of services
+useful for sa, mws, de, general GAs, etc. It was a toss of a coin
+to make it either:
+
+- a superclass of those optimizers or 
+- a separate class that associated with the optimizers. 
+
+In the end,
+I went with the subclass approach (but I acknowledge that that
+decision is somewhat arbitrary).
+
+
 Note that the following gizmos will get mixed and matched
 any number of ways by different optimizers. So when extending the 
 following, always write
@@ -399,7 +411,8 @@ class Gadgets:
       elif nowMed != lastMed:
         worse += 1
     return better > 0 and worse < 1
-  def fyi(i,x)              : the.GADGETS.verbose and say(x)  
+  def fyi(i,x)   : the.GADGETS.verbose and say(x)
+  def shout(i,x) : i.fyi("\033[7m"+str(x)+"\033[m")
   def bye(i,info,first,now) : i.fyi(info); return first,now
 
 @setting
@@ -409,8 +422,9 @@ def SA(): return o(
     kmax=1000)
   
 class sa(Gadgets):
-  def p(i,old,new,t)  : return ee**((old - new)/t)
   def run(i):
+    def p(old,new,t): return ee**((old - new)/t)
+    def goodbye(x)  : return i.bye(x,first,now)
     k,eb,life, = 0,1,the.GADGETS.lives
     also = i.logs()
     first = now  = i.logs(also)
@@ -428,25 +442,21 @@ class sa(Gadgets):
       [log + x for log,x in parts(now,sn)]
       if en < eb:
         sb,eb = sn,en
-        i.fyi("\033[7m!\033[m")
+        i.shout("!")
       if en < e:
         s,e = sn,en
         info = "+"
-      elif i.p(e,en,t) < r():
+      elif p(e,en,t) < r():
          s,e = sn, en
          info="?"
       if k % the.GADGETS.era: 
         i.fyi(info)
       else:
         life = life - 1
-        if i.better1(now, last): 
-          life = the.GADGETS.lives 
-        if eb < the.GADGETS.epsilon :
-          return i.bye("E %.5f" %eb,first,now)
-        if life < 1 :
-          return i.bye("L", first,now)
-        if k > the.SA.kmax :
-          return i.bye("K", first,now)
+        if i.better1(now, last)     : life = the.GADGETS.lives 
+        if eb < the.GADGETS.epsilon : return goodbye("E %.5f" %eb)
+        if life < 1                 : return goodbye("L")
+        if k > the.SA.kmax          : return goodbye("K")
         i.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
         last, now  = now, i.logs(also) 
 
