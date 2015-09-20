@@ -50,7 +50,6 @@ def ntiles(lst, tiles=None,ordered=True):
 def median(lst,ordered=False):
   lst = sorted(lst)
   m = len(lst)
-  print(m,lst)
   j = lst[int(m/2)+1]
   if m % 2:
     return j

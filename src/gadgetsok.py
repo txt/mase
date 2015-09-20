@@ -85,3 +85,18 @@ def _mutate():
       two = g.mutate(one)
       print(m, r5(one.decs))
       print(m, r5(two.decs))
+
+@ok
+def _sa1(m=Schaffer):
+  with study(m.__name__):
+    sa(m()).run()
+
+@ok
+def _sa2(): _sa1(Fonseca)
+
+
+@ok
+def _sa3(): _sa1(Kursawe)
+
+
+    

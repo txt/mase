@@ -123,7 +123,7 @@ def canCopy(can,
   copy.aggregate = what()
   return copy
 
-def twins(can1=None,can2=None):
+def parts(can1=None,can2=None):
   "convince iterator. used later"
   if can1 and can2:
     for one,two in zip(can1.decs, can2.decs):
@@ -265,7 +265,7 @@ class Gadgets:
   def logs(i,also=None):
     "Return a new log, also linked to another log"
     new = canCopy(i.abouts, lambda: Log())
-    for new1,also1 in twins(new,also):
+    for new1,also1 in parts(new,also):
         new1.also = also1
     return new
   def decs(i):
@@ -308,8 +308,7 @@ class Gadgets:
     for j in xrange(n or the.GADGETS.baseline):
       can = i.eval( i.decs() )
       i.aggregate(can,logs)
-      for log,x in twins(logs,can):
-        log + x
+      [log + x for log,x in parts(logs,can)]
       frontier += [can]
     return frontier
   def energy(i,can,logs):
@@ -335,32 +334,30 @@ def SA(): return o(
     cooling=1,
     kmax=1000,
     epsilon=0.01,
-    era=100,
+    era=50,
     lives=5,
     verbose=True)
   
 class sa(Gadgets):
   def fyi(i,x)      : the.SA.verbose and say(x)  
-  def bye(info,now) : i.fyi(info); return now
+  def bye(i,info,now) : i.fyi(info); return now
   def p(i,old,new,t): return ee**((old - new)/t)
   def run(i):
-    k,life = 0,the.SA.lives
+    k,eb,life, = 0,1,the.SA.lives
     also = i.logs()
     now  = i.logs(also)
     i.baseline(now,the.SA.era)
-    last, now  = now, i.logs(also)
+    last, now = now, i.logs(also)
     s    = i.decs()
     e    = i.energy(s,now)
-    eb   = 1e32
-    print("now some", now.aggregate.some())
-    exit()
-    i.fyi("%4s [%2s] %3s "% (k,life,""))
+    i.fyi("%4s [%2s] %3s "% (k,life,"     "))
     while True:
+      info="."
       k += 1
       t  = (k/the.SA.kmax) ** (1/the.SA.cooling)
-      info="."
       sn = i.mutate(s, the.SA.p)
       en = i.energy(sn,also)
+      [log + x for log,x in parts(now,sn)]
       if en < eb:
         sb,eb = sn,en
         i.fyi("\033[7m!\033[m")
@@ -373,15 +370,12 @@ class sa(Gadgets):
       if k % the.SA.era: 
         i.fyi(info)
       else:
-        print(k,k % the.SA.era)
         life = life - 1
         if i.better1(now, last): 
           life = the.SA.lives 
         if eb < the.SA.epsilon: return i.bye("E %.5f" %eb,now)
         if life < 1           : return i.bye("L", now)
-        if k > kmax           : return i.bye("K", now)
+        if k > the.SA.kmax    : return i.bye("K", now)
         i.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
-        last, now  = now, i.log(also) 
-    
-sa(Schaffer()).run()
-    
+        last, now  = now, i.logs(also) 
+
