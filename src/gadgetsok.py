@@ -61,6 +61,16 @@ def _seed():
   assert 0.134364244111 < r() < 0.134364244113 
 
 @ok
+def _xtileX() :
+  import random
+  seed(1)
+  nums1 = [r()**2 for _ in range(100)]
+  nums2 = [r()**0.5 for _ in range(100)]
+  for nums in [nums1,nums2]:
+    print(xtile(nums,lo=0,hi=1.0,width=25,show=" %3.2f"))
+
+  
+@ok
 def _log():
   with study("log",
              use(SOMES,size=10)):
@@ -133,8 +143,24 @@ def _mutate():
 
 @ok
 def _sa1(m=Schaffer):
-  with study(m.__name__):
-    sa(m()).run()
+  def show(txt,what,all):
+    all = sorted(all)
+    lo, hi = all[0], all[-1]
+    print(txt,xtile(what,lo=lo,hi=hi,width=25,show=" %3.2f"))
+  with study(m.__name__,
+             use(MISC,
+                 tiles=[0,   0.1,0.3 ,0.5,0.7,0.99],
+                 marks=["0" ,"1", "3","5","7","!"])):
+    m = m()
+    firsts,lasts=sa(m).run()
+    print("")
+    for first,last,name in zip(firsts.objs,
+                               lasts.objs,
+                               m.objs):
+      all = first.some() + last.some()
+      print("\n" + name.txt)
+      show("FIRST:",first.some(),all)
+      show("LAST :",last.some(), all)
 
 @ok
 def _sa2(): _sa1(Fonseca)
@@ -142,6 +168,10 @@ def _sa2(): _sa1(Fonseca)
 
 @ok
 def _sa3(): _sa1(Kursawe)
+
+
+@ok
+def _sa3(): _sa1(ZDT1)
 
 
     

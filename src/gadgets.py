@@ -222,6 +222,17 @@ def Kursawe(a=1,b=1):
            objs = [Less("f1",  maker=f1),
                    Less("f2",  maker=f2)])
 
+def ZDT1(n=30):
+  def f1(can): return can.decs[0]
+  def f2(can):
+    g = 1 + 9*sum(x for x in can.decs[1:] )/(n-1)
+    return g*abs(1 - sqrt(can.decs[0]*g))
+  def dec(x):
+    return Want(x,lo=0,hi=1)
+  return Candidate(
+    decs=[dec(x) for x in range(n)],
+    objs=[Less("f1",maker=f1),
+          Less("f2",maker=f2)])
 """
 
 ## Want
@@ -385,13 +396,13 @@ def SA(): return o(
   
 class sa(Gadgets):
   def fyi(i,x)        : the.SA.verbose and say(x)  
-  def bye(i,info,now) : i.fyi(info); return now
+  def bye(i,info,first,now) : i.fyi(info); return first,now
   def p(i,old,new,t)  : return ee**((old - new)/t)
   def run(i):
     k,eb,life, = 0,1,the.SA.lives
     also = i.logs()
-    now  = i.logs(also)
-    i.baseline(now,the.SA.era)
+    first = now  = i.logs(also)
+    i.baseline(now, the.SA.era)
     last, now = now, i.logs(also)
     s    = i.decs()
     e    = i.energy(s,now)
@@ -418,9 +429,12 @@ class sa(Gadgets):
         life = life - 1
         if i.better1(now, last): 
           life = the.SA.lives 
-        if eb < the.SA.epsilon: return i.bye("E %.5f" %eb,now)
-        if life < 1           : return i.bye("L", now)
-        if k > the.SA.kmax    : return i.bye("K", now)
+        if eb < the.SA.epsilon :
+          return i.bye("E %.5f" %eb,first,now)
+        if life < 1 :
+          return i.bye("L", first,now)
+        if k > the.SA.kmax :
+          return i.bye("K", first,now)
         i.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
         last, now  = now, i.logs(also) 
 
