@@ -378,6 +378,14 @@ class Gadgets:
                                            logs.decs)):
       val   = can.decs[n]
       if p > r():
+      #  above = log.hi - val
+       # below = log.lo - val
+       # if above < below:
+       #   lo,hi = log.hi - above*2,log.hi
+       # else:
+       #   lo,hi = log.lo, log.lo + below*2
+       # val = about.wrap(lo + r()*(hi - lo))
+        
         nudge = log.nudge(the.GADGETS.nudge)*r()
         val  = about.wrap(val + nudge)
       can1.decs[n] = val

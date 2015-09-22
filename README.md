@@ -78,6 +78,10 @@ of search-based optimization for exploring models
 0. <a href="REVIEW1.md">Review1</a><br>  
 
 </td><td valign=top><small>
+11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/">
+Context managers2</a>a<br>
+10. <a href="https://github.com/rahlk/learnPy/blob/master/Lecture4.ipynb">Context managers1</a><br>
+9. <a href="https://docs.google.com/spreadsheets/d/1VAHzvm4f4yYu5ELjwE6y1hu0szluWgRUki-Mc-eCMDg/edit?usp=sharing">auto norm</a><br>
 8. <a href="https://goo.gl/1nYBsj">SA calc</a><br>
 7. <a href="https://github.com/CSC591-MASE-ASA/x9115asa/blob/master/paper/Summary3.md">Goals</a>; <a href="img/reBad.png">history</a><br>
 6. <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=7&cad=rja&uact=8&ved=0CEMQtwIwBmoVChMIqaLAkZr-xwIVTeCACh3frQt6&url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D0lPE6qJsRfQ&usg=AFQjCNGouGu150HBTt3ccL1k6Nv2E58jUQ&sig2=00oLWW5al5HehcbfYpjAsQ">Relax</a>,
