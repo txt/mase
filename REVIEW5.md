@@ -23,6 +23,7 @@
    * multiply that by the time tick dt and add the result back to the stock, e.g., v.C += dt*(u.q - u.r)
    ![screen shot 2015-09-24 at 6 56 52 pm](https://cloud.githubusercontent.com/assets/1433964/10089106/069d4912-62ee-11e5-8ba9-4eaa3a24b277.png)
  + Describe each of the in a line:
+ 
    ![cmnl](https://cloud.githubusercontent.com/assets/1433964/10089237/51831d7a-62ef-11e5-9cc9-ba128fd2bd16.jpeg)
 
 
