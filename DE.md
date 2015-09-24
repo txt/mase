@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-[[etc/img/leftarrow.png]]   [Back   to SBSE'14](Home)
+
 
 
 Differential Evolution
@@ -15,7 +15,8 @@ Differential Evolution
 From [http://en.wikipedia.org/wiki/Differential_evolution](http://en.wikipedia.org/wiki/Differential_evolution).
 
 Differential evolution (DE) is a method that
-optimizes a problem by iteratively trying to improve
+optimizes a problem by iteratively trying to
+improve
 a candidate solution with regard to a given measure
 of quality. Such methods are commonly known as
 metaheuristics as they make few or no assumptions
@@ -293,7 +294,13 @@ But note the computational cost of the above:
 + The _closest_ variants can be very slow: all those distance
   calculations! (and much slower in decision space than objective space: why?).
   
- 
+
+## Applications of DE to SE
+
+Paper currently under review:
+[Tuning for Software Analytics: is it Really Necessary?](img/tunelearners.pdf)
+by Wei Fu, Tim Menzies, Xipeng Shen.
+
 
 
 _________

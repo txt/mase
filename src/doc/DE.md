@@ -1,4 +1,4 @@
-[[etc/img/leftarrow.png]]   [Back   to SBSE'14](Home)
+
 
 
 Differential Evolution
@@ -286,4 +286,10 @@ But note the computational cost of the above:
 + The _closest_ variants can be very slow: all those distance
   calculations! (and much slower in decision space than objective space: why?).
   
- 
+
+## Applications of DE to SE
+
+Paper currently under review:
+[Tuning for Software Analytics: is it Really Necessary?](img/tunelearners.pdf)
+by Wei Fu, Tim Menzies, Xipeng Shen.
+
