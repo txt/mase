@@ -1,4 +1,4 @@
-# Code7: coding homework : Differnetial Evolution
+# Code7: coding homework : Differential Evolution
 
 ## What to Hand in
 
