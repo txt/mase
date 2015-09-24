@@ -52,6 +52,7 @@ of search-based optimization for exploring models
 </td>
 <td valign=top  xwidth="100px">
 
+6. <a href="DE.md">DE</a><br>
 5. <a href="src/dsl101.md">DSLs</a><br>
 4. <a href="MWS.md">MaxWalkSat</a><br>
 3. <a href="SA.md">SA 101</a><br>
@@ -78,7 +79,7 @@ of search-based optimization for exploring models
 0. <a href="REVIEW1.md">Review1</a><br>  
 
 </td><td valign=top><small>
-11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/">
+11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/"><br>
 Context managers2</a>a<br>
 10. <a href="https://github.com/rahlk/learnPy/blob/master/Lecture4.ipynb">Context managers1</a><br>
 9. <a href="https://docs.google.com/spreadsheets/d/1VAHzvm4f4yYu5ELjwE6y1hu0szluWgRUki-Mc-eCMDg/edit?usp=sharing">auto norm</a><br>
