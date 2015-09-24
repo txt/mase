@@ -51,7 +51,7 @@ created.
 
 Try and make a report that looks like the output from SA.
 
-## DE(s)
+## DE(s) = DE + elite sampling
 
 Try some elite sampling, keeping the _s_ best items in frontier. At the _start_ of each
 generation of DE, sort the frontier by the aggregate and find the min/max aggregate
