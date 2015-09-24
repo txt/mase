@@ -7,7 +7,8 @@ Differential Evolution
 From [http://en.wikipedia.org/wiki/Differential_evolution](http://en.wikipedia.org/wiki/Differential_evolution).
 
 Differential evolution (DE) is a method that
-optimizes a problem by iteratively trying to improve
+optimizes a problem by iteratively trying to
+improve
 a candidate solution with regard to a given measure
 of quality. Such methods are commonly known as
 metaheuristics as they make few or no assumptions

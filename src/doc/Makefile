@@ -13,10 +13,10 @@ publish: $(outs)
 
 $(root)/%.md : %.md $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
 	@echo "making... $@"
-	@(cat $(etc)/header.txt  $<  $(etc)/footer.txt) \
+	(cat $(etc)/header.txt  $<  $(etc)/footer.txt) \
 	| sed 's?__PRE?$(prefix)?g' \
         | sed 's?__IMG?$(img)?g' > $@;
-	@git add $@
+	git add $@
 
 parts  : ;cd ..; $(MAKE) parts
 typo   : ;cd ..; $(Make) typo
