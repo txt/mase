@@ -11,10 +11,10 @@
 ## What to Hand in
 
 After doing all the following, you should 
-be able to write one source files into  `hw/code/5` along with
+be able to write one source files into  `hw/code/7` along with
 screen snaps of your work (if relevant).
 
-Using some URL shortener (e.g. goo.gl), shorten the URL to `hw/code/5`
+Using some URL shortener (e.g. goo.gl), shorten the URL to `hw/code/7`
 and paste into [the submission page](https://goo.gl/lZEmEm).
 
 
@@ -35,7 +35,7 @@ For energy, use the fromHell calculation to generate an aggregate
 + Incrementally track of the _min,max_ seen for each objective
 + Run back over the frontier, computing the aggregate score
   (note that hell = 1 and so _g<sub>1</sub>_ = _fromHell_ for one objective
-  _f<sub>1</sub>_is the
+  _f<sub>1</sub>_ is the
   normalized distance to 1. Then, the aggregate energy for _n_ objectives    
   _e = 1 - sqrt(sum( g<sub>i</sub><sup>2</sup> )) / sqrt(n)_
 
