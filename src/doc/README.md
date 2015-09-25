@@ -75,8 +75,8 @@ of search-based optimization for exploring models
 
 </td><td valign=top><small>
 11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/">
-Cxt managers2</a><br>
-10. <a href="https://github.com/rahlk/learnPy/blob/master/Lecture4.ipynb">Cxt managers1</a><br>
+Cxt manager2</a><br>
+10. <a href="https://github.com/rahlk/learnPy/blob/master/Lecture4.ipynb">Cxt manager1</a><br>
 9. <a href="https://docs.google.com/spreadsheets/d/1VAHzvm4f4yYu5ELjwE6y1hu0szluWgRUki-Mc-eCMDg/edit?usp=sharing">auto norm</a><br>
 8. <a href="https://goo.gl/1nYBsj">SA calc</a><br>
 7. <a href="https://github.com/CSC591-MASE-ASA/x9115asa/blob/master/paper/Summary3.md">Goals</a>; <a href="img/reBad.png">history</a><br>
