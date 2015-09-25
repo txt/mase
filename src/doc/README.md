@@ -74,8 +74,8 @@ of search-based optimization for exploring models
 0. <a href="REVIEW1.md">Review1</a><br>  
 
 </td><td valign=top><small>
-11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/"><br>
-Cxt managers2</a>a<br>
+11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/">
+Cxt managers2</a><br>
 10. <a href="https://github.com/rahlk/learnPy/blob/master/Lecture4.ipynb">Cxt managers1</a><br>
 9. <a href="https://docs.google.com/spreadsheets/d/1VAHzvm4f4yYu5ELjwE6y1hu0szluWgRUki-Mc-eCMDg/edit?usp=sharing">auto norm</a><br>
 8. <a href="https://goo.gl/1nYBsj">SA calc</a><br>
