@@ -22,7 +22,7 @@
 
 ## Some one(ish) liners.
 
-<a href="gadgets0.py#L66-L104"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L66-L103"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    5:   pi  = math.pi
@@ -63,39 +63,60 @@
   40:     else:
   41:       i = lst[int(m/2)]
   42:       return (i+j)/2.1
-  43:     
+```
+
+## Some Iterators
+
+<a href="gadgets0.py#L109-L123"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+
+  43:   def item(items):
+  44:     "return all items in a nested list"
+  45:     if isinstance(items,(list,tuple)):
+  46:       for one in items:
+  47:         for x in item(one):
+  48:           yield x
+  49:     else:
+  50:       yield items
+  51:       
+  52:   def pairs(lst):
+  53:     "Return all pairs of items i,i+1 from a list."
+  54:     last=lst[0]
+  55:     for i in lst[1:]:
+  56:       yield last,i
+  57:       last = i    
 ```
 
 ## Printing some structure of arbitrary depth:
 
-<a href="gadgets0.py#L110-L122"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L129-L141"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  44:   def show(x, indent=None, width=None):
-  45:     def has(x):
-  46:       if isa(x,list): return [has(v) for v in x]
-  47:       if isa(x,dict): return {k:has(v) for k,v
-  48:                               in x.items()
-  49:                               if k[0] != "_"}
-  50:       if isa(x,o): return has(x.__dict__)
-  51:       if isa(x,float): return '%g' % x
-  52:       return x
-  53:     print(pprint.pformat(has(x),
-  54:               indent= indent or the.MISC.show.indent,
-  55:               width = width  or the.MISC.show.width))
-  56:   
+  58:   def show(x, indent=None, width=None):
+  59:     def has(x):
+  60:       if isa(x,list): return [has(v) for v in x]
+  61:       if isa(x,dict): return {k:has(v) for k,v
+  62:                               in x.items()
+  63:                               if k[0] != "_"}
+  64:       if isa(x,o): return has(x.__dict__)
+  65:       if isa(x,float): return '%g' % x
+  66:       return x
+  67:     print(pprint.pformat(has(x),
+  68:               indent= indent or the.MISC.show.indent,
+  69:               width = width  or the.MISC.show.width))
+  70:   
 ```
 
 ## Javascript struct emulation
 
-<a href="gadgets0.py#L128-L132"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L147-L151"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  57:   class o:
-  58:     def __init__(i,**d)    : i.__dict__.update(d)
-  59:     def __setitem__(i,k,v) : i.__dict__[k] = v
-  60:     def __getitem__(i,k)   : return i.__dict__[k]
-  61:     def __repr__(i)        : return 'o'+str(i.__dict__)
+  71:   class o:
+  72:     def __init__(i,**d)    : i.__dict__.update(d)
+  73:     def __setitem__(i,k,v) : i.__dict__[k] = v
+  74:     def __getitem__(i,k)   : return i.__dict__[k]
+  75:     def __repr__(i)        : return 'o'+str(i.__dict__)
 ```
 
 ## Magic constants
@@ -135,35 +156,36 @@ This is a common enough pattern that I auto-create the above
 using a decorator around a function that returns
 a dictionary.
 
-<a href="gadgets0.py#L173-L185"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L192-L204"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  62:   the = o()
-  63:   
-  64:   def setting(f):
-  65:     "Decorator. Stores output of function in 'the'."
-  66:     name = f.__name__
-  67:     def wrapper(**d):
-  68:       tmp = f()
-  69:       tmp.__dict__.update(d) # maybe do some overrides
-  70:       the[name] = tmp  # store the settings in `the`
-  71:       return tmp
-  72:     wrapper()  # so a side effect of loading the function
-  73:                # is to call the function
-  74:     return wrapper
+  76:   the = o()
+  77:   
+  78:   def setting(f):
+  79:     "Decorator. Stores output of function in 'the'."
+  80:     name = f.__name__
+  81:     def wrapper(**d):
+  82:       tmp = f()
+  83:       tmp.__dict__.update(d) # maybe do some overrides
+  84:       the[name] = tmp  # store the settings in `the`
+  85:       return tmp
+  86:     wrapper()  # so a side effect of loading the function
+  87:                # is to call the function
+  88:     return wrapper
 ```
 
 ### Set some settings
 
-<a href="gadgets0.py#L191-L196"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L210-L216"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  75:   @setting
-  76:   def MISC(): return o(
-  77:       seed=1,
-  78:       tiles=[0.1,0.3,0.5,0.7,0.9],
-  79:       show=o(indent=2,
-  80:              width=50))
+  89:   @setting
+  90:   def MISC(): return o(
+  91:       seed=1,
+  92:       tiles=[0.1 ,0.3,0.5,0.7,0.9],
+  93:       marks=["-" ," "," ","-"," "],
+  94:       show=o(indent=2,
+  95:              width=50))
 ```
 
 ### Temporarily Setting, the Resetting
@@ -178,35 +200,72 @@ While we are about it, lets print
 + how long it took to run the code
 
   
-<a href="gadgets0.py#L212-L237"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets0.py#L232-L257"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  81:   def use(x,**y):
-  82:     """Convenience function: for temporarily 
-  83:        overwriting defaults."""
-  84:     return (x,y)
-  85:   
-  86:   @contextmanager
-  87:   def study(what,*usings):
-  88:     """Maybe change settings. Always call 
-  89:        seed(). Afterwards, set  settings back 
-  90:        to defaults."""
-  91:     print("\n# " + "-" * 50,                 # before
-  92:           "\n# ", what, "\n#",               # before
-  93:           datetime.datetime.now().strftime(  # before
-  94:             "%Y-%m-%d %H:%M:%S"))            # before
-  95:     for (using, override) in usings:         # before
-  96:       using(**override)                      # before: make new settings
-  97:     seed()                                   # before: reset seed
-  98:     t1 = time.time()                         # before
-  99:     show(the)                                # before
- 100:     print("")                                # before
- 101:     yield                                      
- 102:     t2 = time.time()                         # after
- 103:     print("\n# " + "-" * 50)                 # after
- 104:     print("# Runtime: %.3f secs\n" % (t2-t1))# after  : print runtime
- 105:     for (using,_) in usings:                 # after  : reset settings
- 106:       using()                                # after
+  96:   def use(x,**y):
+  97:     """Convenience function: for temporarily 
+  98:        overwriting defaults."""
+  99:     return (x,y)
+ 100:   
+ 101:   @contextmanager
+ 102:   def study(what,*usings):
+ 103:     """Maybe change settings. Always call 
+ 104:        seed(). Afterwards, set  settings back 
+ 105:        to defaults."""
+ 106:     print("\n# " + "-" * 50,                 # before
+ 107:           "\n# ", what, "\n#",               # before
+ 108:           datetime.datetime.now().strftime(  # before
+ 109:             "%Y-%m-%d %H:%M:%S"))            # before
+ 110:     for (using, override) in usings:         # before
+ 111:       using(**override)                      # before: make new settings
+ 112:     seed()                                   # before: reset seed
+ 113:     t1 = time.time()                         # before
+ 114:     show(the)                                # before
+ 115:     print("")                                # before
+ 116:     yield                                      
+ 117:     t2 = time.time()                         # after
+ 118:     print("\n# " + "-" * 50)                 # after
+ 119:     print("# Runtime: %.3f secs\n" % (t2-t1))# after  : print runtime
+ 120:     for (using,_) in usings:                 # after  : reset settings
+ 121:       using()                                # after
+```
+
+<a href="gadgets0.py#L261-L292"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+```python
+
+ 122:   
+ 123:   def xtile(lst,lo=0,hi=100,width=50, 
+ 124:                chops=None,
+ 125:                marks=None,
+ 126:                bar="|",star="*",show=" %3.0f"):
+ 127:     """The function _xtile_ takes a list of (possibly)
+ 128:     unsorted numbers and presents them as a horizontal
+ 129:     xtile chart (in ascii format). The default is a 
+ 130:     contracted _quintile_ that shows the 
+ 131:     10,30,50,70,90 breaks in the data (but this can be 
+ 132:     changed- see the optional flags of the function).
+ 133:     """
+ 134:     chops = chops or the.MISC.tiles
+ 135:     marks = marks or the.MISC.marks
+ 136:     def pos(p)   : return ordered[int(len(lst)*p)]
+ 137:     def place(x) : 
+ 138:       return int(width*float((x - lo))/(hi - lo))
+ 139:     def pretty(lst) : 
+ 140:       return ', '.join([show % x for x in lst])
+ 141:     ordered = sorted(lst)
+ 142:     lo      = min(lo,ordered[0])
+ 143:     hi      = max(hi,ordered[-1])
+ 144:     what    = [pos(p)   for p in chops]
+ 145:     where   = [place(n) for n in  what]
+ 146:     out     = [" "] * width
+ 147:     for one,two in pairs(where):
+ 148:       for i in range(one,two): 
+ 149:         out[i] = marks[0]
+ 150:       marks = marks[1:]
+ 151:     out[int(width/2)]    = bar
+ 152:     out[place(pos(0.5))] = star 
+ 153:     return ''.join(out) +  "," +  pretty(what)
 ```
 
 
