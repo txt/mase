@@ -73,7 +73,10 @@ isa = isinstance
 def say(*lst):
   sys.stdout.write(', '.join(map(str,lst)))
   sys.stdout.flush()
-  
+
+def printer(i,**d):
+   return i.__class__.__name__ + str(o(**d))[1:]
+ 
 def r3(lst,n=3):
   return map(lambda x:round(x,n),lst)
 

@@ -1,16 +1,21 @@
-#########################################################
-# This is free and unencumbered software released into
-# the public domain.
+from __future__ import print_function, division
+import sys
+sys.dont_write_bytecode = True
+print("""
+########################################################################
 #                    __                  __                   __         
 #                   /\ \                /\ \__               /\ \        
 #    __      __     \_\ \     __      __\ \ ,_\   ____    ___\ \ \/'\    
 #  /'_ `\  /'__`\   /'_` \  /'_ `\  /'__`\ \ \/  /',__\  / __`\ \ , <    
 # /\ \L\ \/\ \L\.\_/\ \L\ \/\ \L\ \/\  __/\ \ \_/\__, `\/\ \L\ \ \ \\`\  
-# \ \____ \ \__/.\_\ \___,_\ \____ \ \____\\ \__\/\____/\ \____/\ \_\ \_\
+# \ \____ \ \__/.\_\ \___,_\ \____ \ \____\\ \__\/\____/\ \____/\ \_\ \_\ 
 #  \/___L\ \/__/\/_/\/__,_ /\/___L\ \/____/ \/__/\/___/  \/___/  \/_/\/_/
 #    /\____/                  /\____/                                    
 #    \_/__/                   \_/__/                                     
 #                                                                  
+#########################################################################""")
+# This is free and unencumbered software released into
+# the public domain.
 # (c) Tim Menzies 2015, http://menzies.us
 #
 # Anyone is free to copy, modify, publish, use,
@@ -43,9 +48,6 @@
 # For more information, please refer to
 # http://unlicense.org
 #########################################################
-from __future__ import print_function, division
-import sys
-sys.dont_write_bytecode = True
 
 """
 
@@ -86,28 +88,36 @@ def _log():
   assert the.SOMES.size == 256
 
 @ok
-def _fill():
+def _fill1():
   b4 = Candidate([1,2],[2,4])
-  assert str(canCopy(b4)) ==  \
-         "o{'aggregate': None, "  + \
-         "'objs': [None, None], " + \
-         "'decs': [None, None]}"
+  assert str(b4.clone()) ==  \
+    "Candidate{'objs': [None, None], " + \
+    "'aggregated': None, 'decs': [None, None]}"
+
+@ok
+def _fill2():
+  b4 = Schaffer()
+  assert b4.clone().__class__ == Schaffer
 
 @ok
 def _want():
   with study("log",
              use(SOMES,size=10)):
     for klass in [Less,More]:
-      w = klass("fred",lo=0,hi=10)
-      guess = [w.guess() for _ in xrange(20)]
+      z = klass("fred",lo=0,hi=10)
+      guess = [z.guess() for _ in xrange(20)]
       log = Log(guess)
-      assert w.restrain(20) == 10
-      assert w.wrap(15) == 5
-      assert not w.ok(12)
-      assert w.ok(8)
+      assert z.restrain(20) == 10
+      assert z.wrap(15) == 5
+      assert not z.ok(12)
+      assert z.ok(8)
+      print("\n"+klass.__name__)
       show(sorted(log.some()))
-      show(map(lambda n: w.fromHell(n,log),
+      show(map(lambda n: z.fromHell(n,log),
                sorted(log.some())))
+
+    
+
 
 @ok
 def _gadgets1(f=Schaffer):
@@ -116,7 +126,7 @@ def _gadgets1(f=Schaffer):
                  tiles=[0.05,0.1,0.2,0.4,0.8])):
     g=Gadgets(f())
     log = g.logs()
-    g.baseline(log)
+    g.logNews(log, g.news())
     print("aggregates:",
           log.aggregate.tiles())
     for whats in ['decs', 'objs']:
@@ -131,29 +141,37 @@ def _gadgets2(): _gadgets1(Fonseca)
 def _gadgets3(): _gadgets1(Kursawe)
 
 @ok
+def _gadgets4(): _gadgets1(ZDT1)
+
+@ok
 def _mutate():
-  for m in [0.3,0.7]:
+  for m in [0.3,0.6]:
     with study("mutate",
                use(GADGETS,mutate=m)):
       g=Gadgets(Kursawe())
+      log =g.logs()
+      g.logNews(log,
+                g.news(100))
       one = g.decs()
-      two = g.mutate(one)
+      two = g.mutate(one,log)
       print(m, r5(one.decs))
       print(m, r5(two.decs))
 
+
+            
 @ok
 def _sa1(m=Schaffer):
   def show(txt,what,all):
     all = sorted(all)
     lo, hi = all[0], all[-1]
-    print(txt,xtile(what,lo=lo,hi=hi,width=25,show=" %3.2f"))
+    print("##",txt,xtile(what,lo=lo,hi=hi,width=25,show=" %6.2f"),m.__class__.__name__)
   with study(m.__name__,
              use(MISC,
                  tiles=[0,   0.1,0.3 ,0.5,0.7,0.99],
                  marks=["0" ,"1", "3","5","7","!"])):
     m = m()
-    firsts,lasts=sa(m).run()
-    print("")
+    firsts,lasts=sa(m)
+    print("##")
     for first,last,name in zip(firsts.objs,
                                lasts.objs,
                                m.objs):
@@ -162,6 +180,8 @@ def _sa1(m=Schaffer):
       show("FIRST:",first.some(),all)
       show("LAST :",last.some(), all)
 
+
+      
 @ok
 def _sa2(): _sa1(Fonseca)
 
@@ -174,4 +194,4 @@ def _sa3(): _sa1(Kursawe)
 def _sa4(): _sa1(ZDT1)
 
 
-    
+unittest.enough()    

@@ -130,8 +130,6 @@ class Log:
     return i.lo == None
   def norm(i,x):
     return (x - i.lo)/(i.hi - i.lo + 10**-32)
-  def nudge(i,f=1):
-    return (i.hi - i.lo)*f
 
 @setting
 def SOMES(): return o(
@@ -158,83 +156,92 @@ class Some:
 they are just containers, we define `Candidate` using the `o` container class.
 
 """        
-def Candidate(decs=[],objs=[]):
-  return o(decs=decs,objs=objs,
-           aggregate=None)
-
-def canCopy(can,
-                  what = lambda : None):
-  copy= Candidate()
-  copy.decs = [what() for _ in can.decs]
-  copy.objs = [what() for _ in can.objs]
-  copy.aggregate = what()
-  return copy
-
-def parts(can1=None,can2=None):
-  "convince iterator. used later"
-  if can1 and can2:
-    for one,two in zip(can1.decs, can2.decs):
-      yield one,two
-    for one,two in zip(can1.objs, can2.objs):
-      yield one,two
-    yield can1.aggregate, can2.aggregate
+class Candidate(object):
+  def __init__(i,decs=[],objs=[]):
+    i.decs,i.objs=decs,objs
+    i.aggregate=None
+    i.abouts = i.about()
+  def __getitem__(i,key):
+    return i.__dict__[key]
+  def ok(i,can): return True
+  def about(i): True
+  def __repr__(i):
+    return printer(i,decs=i.decs,
+                   objs=i.objs,
+                   aggregated=i.aggregate)
+  def clone(i,what = lambda _: None):
+    j      = object.__new__(i.__class__)
+    j.decs = [what(x) for x in i.decs]
+    j.objs = [what(x) for x in i.objs]
+    j.aggregate = what(i.aggregate)
+    return j
+  def alongWith(i,j=None):
+    "convenient iterator."
+    if j:
+      for one,two in zip(i.decs, j.decs):
+        yield one,two
+      for one,two in zip(i.objs, j.objs):
+        yield one,two
+      yield i.aggregate, j.aggregate
 """
 
 Example model (note the use of the `want`, `less` and `more` classes... defined below).
 
 """
-def Schaffer():
-  def f1(can):
-    x = can.decs[0]
-    return x**2
-  def f2(can):
-    x = can.decs[0]
-    return (x-2)**2
-  return Candidate(
-          decs = [Want("x",   lo = -10**5, hi = 10**5)],
-          objs = [Less("f1",  maker=f1),
-                  Less("f2", maker=f2)])
+class Schaffer(Candidate):
+  def about(i):
+    def f1(can):
+      x = can.decs[0]
+      return x**2
+    def f2(can):
+      x = can.decs[0]
+      return (x-2)**2
+    i.decs = [An("x",   lo = -10**5, hi = 10**5)]
+    i.objs = [Less("f1",  maker=f1),
+              Less("f2", maker=f2)]
+  
+class Fonseca(Candidate):
+  n=3
+  def about(i):
+    def f1(can):
+      z = sum([(x - 1/sqrt(Fonseca.n))**2 for x in can.decs])
+      return 1 - ee**(-1*z)
+    def f2(can):
+      z = sum([(x + 1/sqrt(Fonseca.n))**2 for x in can.decs])
+      return 1 - ee**(-1*z)
+    def dec(x):
+      return An(x, lo=-4, hi=4)
+    i.decs = [dec(x) for x in range(Fonseca.n)]
+    i.objs = [Less("f1",  maker=f1),
+              Less("f2",  maker=f2)]
 
-def Fonseca(n=3):
-  def f1(can):
-    z = sum((x - 1/sqrt(n))**2 for x in can.decs)
-    return 1 - ee**(-1*z)
-  def f2(can):
-    z = sum((x + 1/sqrt(n))**2 for x in can.decs)
-    return 1 - ee**(-1*z)
-  def dec(x):
-    return Want(x, lo=-4, hi=4)
-  return Candidate(
-          decs = [dec(x) for x in range(n)],
-          objs = [Less("f1",  maker=f1),
-                  Less("f2",  maker=f2)])
+class Kursawe(Candidate):
+  def about(i,a=1,b=1):
+    def f1(can):
+      def xy(x,y):
+        return -10*ee**(-0.2*sqrt(x*x + y*y))
+      a,b,c = can.decs
+      return xy(a,b) + xy(b,c)
+    def f2(can):
+      return sum( (abs(x)**a + 5*sin(x)**b) for x in can.decs )
+    def dec(x):
+      return  An(x, lo=-5, hi=5)           
+    i.decs = [dec(x) for x in range(3)]
+    i.objs = [Less("f1",  maker=f1),
+              Less("f2",  maker=f2)]
 
-def Kursawe(a=1,b=1):
-  def f1(can):
-    def xy(x,y):
-      return -10*ee**(-0.2*sqrt(x*x + y*y))
-    a,b,c = can.decs
-    return xy(a,b) + xy(b,c)
-  def f2(can):
-    return sum( (abs(x)**a + 5*sin(x)**b) for x in can.decs )
-  def dec(x):
-    return  Want(x, lo=-5, hi=5)           
-  return Candidate(
-           decs = [dec(x) for x in range(3)],
-           objs = [Less("f1",  maker=f1),
-                   Less("f2",  maker=f2)])
-
-def ZDT1(n=30):
-  def f1(can): return can.decs[0]
-  def f2(can):
-    g = 1 + 9*sum(x for x in can.decs[1:] )/(n-1)
-    return g*abs(1 - sqrt(can.decs[0]*g))
-  def dec(x):
-    return Want(x,lo=0,hi=1)
-  return Candidate(
-    decs=[dec(x) for x in range(n)],
-    objs=[Less("f1",maker=f1),
-          Less("f2",maker=f2)])
+class ZDT1(Candidate):
+  n=30
+  def about(i):
+    def f1(can): return can.decs[0]
+    def f2(can):
+      g = 1 + 9*sum(x for x in can.decs[1:] )/(ZDT1.n-1)
+      return g*abs(1 - sqrt(can.decs[0]*g))
+    def dec(x):
+      return An(x,lo=0,hi=1)
+    i.decs = [dec(x) for x in range(ZDT1.n)]
+    i.objs = [Less("f1",maker=f1),
+              Less("f2",maker=f2)]
 """
 
 ## Want
@@ -261,7 +268,7 @@ Note that `Want` is a handy place to implement some useful services:
 def lt(i,j): return i < j
 def gt(i,j): return i > j
 
-class Want(object):
+class About(object):
   def __init__(i, txt, init=None,
                   lo=-10**32, hi=10**32,
                   better=lt,
@@ -277,21 +284,24 @@ class Want(object):
     return max(i.lo, min(i.hi, x))
   def wrap(i,x):
     return i.lo + (x - i.lo) % (i.hi - i.lo)
+  def norm(i,x):
+    return (x - i.lo) / (i.hi - i.lo + 10**-32)
   def ok(i,x):
     return i.lo <= x <= i.hi
-  def fromHell(i,x,log):
+  def fromHell(i,x,log,min=None,max=None):
+    norm = i.norm if log.lo == None else log.norm
     hell = 1 if i.better == lt else 0
-    return (hell - log.norm(x)) ** 2
+    return (hell - norm(x)) ** 2
 """
 
 Using the above, we can succinctly specify objectives
 that want to minimize or maximize their values.
 
 """
-Less=Want
+A = An = Less = About
 
 def More(txt,*lst,**d):
-  return Want(txt,*lst,better=gt,**d)
+  return About(txt,*lst,better=gt,**d)
 """
 
 ## `Gadgets`: places to store lots of `Want`s
@@ -320,7 +330,7 @@ following, always write
 """
 @setting
 def GADGETS(): return  o(
-    baseline=100,
+    baseline=50,
     mutate = 0.3,
     epsilon=0.01,
     era=50,
@@ -330,29 +340,37 @@ def GADGETS(): return  o(
 )
 
 class Gadgets:
-  def __init__(i,
-               abouts):
-    i.abouts = abouts
+  def __init__(i,model):
+    i.my  = model
     
   def blank(i):
     "return a new candidate, filled with None"
-    return canCopy(i.abouts, lambda: None)
+    return i.my.clone(lambda _: None)
   def logs(i,also=None):
     "Return a new log, also linked to another log"
-    new = canCopy(i.abouts, lambda: Log())
-    for new1,also1 in parts(new,also):
+    new = i.my.clone(lambda _ : Log())
+    for new1,also1 in new.alongWith(also):
         new1.also = also1
     return new
+  def log1(i,can,log):
+     [log1 + x for log1,x in log.alongWith(can)]
+  def logNews(i,log, news):
+    for can in news:
+      for x,log1 in zip(can.decs,log.decs):
+        log1 + x
+      for x,log1 in zip(can.objs,log.objs):
+        log1 + x
+      log.aggregate + i.aggregate(can,log)
   def decs(i):
     "return a new candidate, with guesses for decisions"
     can = i.blank()
-    can.decs = [about.maker() for about in i.abouts.decs]
+    can.decs = [dec.maker() for dec in i.my.decs]
     return can
   
   def eval(i,can):
     "expire the old aggregate. make the objective scores."
     can.aggregate = None
-    can.objs = [about.maker(can) for about in i.abouts.objs]
+    can.objs = [obj.maker(can) for obj in i.my.objs]
     return can
 
   def aggregate(i,can,logs):
@@ -360,11 +378,10 @@ class Gadgets:
     if can.aggregate == None:
        agg = n = 0
        for obj,about,log in zip(can.objs,
-                                i.abouts.objs,
+                                i.my.objs,
                                 logs.objs):
          n   += 1
-         if not log.empty():
-           agg += about.fromHell(obj,log)
+         agg += about.fromHell(obj,log)
        can.aggregate = agg ** 0.5 / n ** 0.5
     return can.aggregate
        
@@ -374,32 +391,21 @@ class Gadgets:
     if f is None: f = the.GADGETS.nudge
     can1= i.blank()
     for n,(dec,about,log) in enumerate(zip(can.decs,
-                                           i.abouts.decs,
+                                           i.my.decs,
                                            logs.decs)):
       val   = can.decs[n]
       if p > r():
-      #  above = log.hi - val
-       # below = log.lo - val
-       # if above < below:
-       #   lo,hi = log.hi - above*2,log.hi
-       # else:
-       #   lo,hi = log.lo, log.lo + below*2
-       # val = about.wrap(lo + r()*(hi - lo))
-        
-        nudge = log.nudge(the.GADGETS.nudge)*r()
-        val  = about.wrap(val + nudge)
+         some  = (log.hi - log.lo)*0.5
+         val   = val - some + 2*some*r()
+         val   = about.wrap(val)
       can1.decs[n] = val
     return can1
   
-  def baseline(i,logs,n=None):
-    "Log the results of generating, say, 100 random instances."
-    frontier = []
-    for j in xrange(n or the.GADGETS.baseline):
-      can = i.eval( i.decs() )
-      i.aggregate(can,logs)
-      [log + x for log,x in parts(logs,can)]
-      frontier += [can]
-    return frontier
+  def news(i,n=None):
+    "Generating, say, 100 random instances."
+    return [i.eval( i.decs())
+            for _ in xrange(n or the.GADGETS.baseline)]
+
   def energy(i,can,logs):
     "Returns an energy value to be minimized"
     i.eval(can)
@@ -411,7 +417,7 @@ class Gadgets:
     better=worse=0
     for now1,last1,about in zip(now.objs,
                                 last.objs,
-                                i.abouts.objs):
+                                i.my.objs):
       nowMed = median(now1.some())
       lastMed= median(last1.some())
       if about.better(nowMed, lastMed):
@@ -420,7 +426,7 @@ class Gadgets:
         worse += 1
     return better > 0 and worse < 1
   def fyi(i,x)   : the.GADGETS.verbose and say(x)
-  def shout(i,x) : i.fyi("\033[7m"+str(x)+"\033[m")
+  def shout(i,x) : i.fyi("__" + x)
   def bye(i,info,first,now) : i.fyi(info); return first,now
 
 @setting
@@ -429,42 +435,44 @@ def SA(): return o(
     cooling=1,
     kmax=1000)
   
-class sa(Gadgets):
-  def run(i):
-    def p(old,new,t): return ee**((old - new)/t)
-    def goodbye(x)  : return i.bye(x,first,now)
-    k,eb,life, = 0,1,the.GADGETS.lives
-    also = i.logs()
-    first = now  = i.logs(also)
-    i.baseline(now, the.GADGETS.era)
-    last, now = now, i.logs(also)
-    s    = i.decs()
-    e    = i.energy(s,now)
-    i.fyi("%4s [%2s] %3s "% (k,life,"     "))
-    while True:
-      info="."
-      k += 1
-      t  = (k/the.SA.kmax) ** (1/the.SA.cooling)
-      sn = i.mutate(s, also, the.GADGETS.mutate)
-      en = i.energy(sn,also)
-      [log + x for log,x in parts(now,sn)]
-      if en < eb:
-        sb,eb = sn,en
-        i.shout("!")
-      if en < e:
-        s,e = sn,en
-        info = "+"
-      elif p(e,en,t) < r():
-         s,e = sn, en
-         info="?"
-      if k % the.GADGETS.era: 
-        i.fyi(info)
-      else:
-        life = life - 1
-        if i.better1(now, last)     : life = the.GADGETS.lives 
-        if eb < the.GADGETS.epsilon : return goodbye("E %.5f" %eb)
-        if life < 1                 : return goodbye("L")
-        if k > the.SA.kmax          : return goodbye("K")
-        i.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
-        last, now  = now, i.logs(also) 
+def sa(m,also=None,baseline=None):
+  g = Gadgets(m)
+  def p(old,new,t): return ee**((old - new)/t)
+  def goodbye(x)  : return g.bye(x,first,now)
+  k,eb,life, = 0,1,the.GADGETS.lives
+  #===== setting up logs
+  also     = also or g.logs()
+  first    = now  = g.logs(also)
+  g.logNews(first,baseline or g.news())
+  last, now  = now, g.logs(also)
+  #===== ok to go
+  s = g.decs()
+  e = g.energy(s,now)
+  g.fyi("%4s [%2s] %3s "% (k,life,"     "))
+  while True:
+    info="."
+    k += 1
+    t  = (k/the.SA.kmax) ** (1/the.SA.cooling)
+    sn = g.mutate(s, also, the.GADGETS.mutate)
+    en = g.energy(sn,also)
+    g.log1(sn,now)
+    if en < eb:
+      sb,eb = sn,en
+      g.shout("!")
+    if en < e:
+      s,e = sn,en
+      info = "+"
+    elif p(e,en,t) < r():
+      s,e = sn, en
+      info="?"
+    if k % the.GADGETS.era: 
+      g.fyi(info)
+    else:
+      life = life - 1
+      if g.better1(now, last)     : life = the.GADGETS.lives 
+      if eb < the.GADGETS.epsilon : return goodbye("E %.5f" %eb)
+      if life < 1                 : return goodbye("L")
+      if k > the.SA.kmax          : return goodbye("K")
+      g.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
+      last, now  = now, g.logs(also) 
 

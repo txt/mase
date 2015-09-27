@@ -24,6 +24,9 @@ def ok(*lst):
 class unittest:
   tries = fails = 0  #  tracks the record so far
   @staticmethod
+  def enough():
+    print(unittest.score()); exit()
+  @staticmethod
   def score():
     t = unittest.tries
     f = unittest.fails
