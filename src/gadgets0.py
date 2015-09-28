@@ -71,6 +71,8 @@ r   = random.random
 isa = isinstance
 seed=random.seed
 
+nl = lambda: print("")
+
 def say(*lst):
   sys.stdout.write(', '.join(map(str,lst)))
   sys.stdout.flush()
@@ -81,6 +83,8 @@ def printer(i,**d):
 def r3(lst,n=3):
   return map(lambda x:round(x,n),lst)
 
+
+def r2(lst): return r3(lst,2)
 def r5(lst): return r3(lst,5)
 def r7(lst): return r3(lst,7)
 def r10(lst): return r3(lst,10)

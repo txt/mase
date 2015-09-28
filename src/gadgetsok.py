@@ -218,23 +218,37 @@ def _threeOthers():
 
 
 def opts(optimizers,models,n=20):
-  tiles=[0,0.1,0.2,0.4,0.8]
-  print(r5(tiles))
+  def report(lst,what):
+     print("",', '.join(map(str,r2(lst))),
+           model.__name__,
+           what,
+           sep=", ")
+  tiles=[0.25,0.50,0.75]
+  print("#"," "*(n-2),r5(tiles))
   for model in models:
-    print("")
+    shown=False
     for opt in optimizers:
-      firsts  = Log()
-      lasts   = Log()
       seed()
-      for _ in xrange(n):
+      firsts = Log()
+      lasts  = Log()
+      for i in xrange(n):
+        say(".")
         m = model()
         g = Gadgets(m)
         baseline = g.news(the.GADGETS.baseline)
-        with study(opt.__name__,use(GADGETS, verbose=False),verbose=False):
+        with study(opt.__name__,use(GADGETS,
+                                    verbose=False),
+                   verbose=False):
           first,last = opt(m,baseline)
           firsts.adds( first.aggregate.some() )
           lasts.adds(  last.aggregate.some() )
-      print(r3(lasts.stats(tiles)),model.__name__,opt.__name__)
+      if shown:
+        report(firsts.stats(tiles),"baseline")
+        say("."*n)
+        shown = True
+      report(lasts.stats(tiles),opt.__name__)
+    print("")
+
             
 @ok
 def _opts():

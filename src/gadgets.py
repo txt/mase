@@ -134,7 +134,7 @@ class Log:
     return (x - i.lo)/(i.hi - i.lo + 10**-32)
   def stats(i,tiles=[0.25,0.5,0.75]):
     return ntiles(sorted(i._some.any),
-           ordered=False,
+           ordered=False, 
            tiles=tiles)
     
 

@@ -112,4 +112,6 @@ $(root)/toc.md:  Makefile $(etc)/header.txt $(etc)/footer.txt $(etc)/p2md.awk
           | sed 's?__IMG?$(img)?g' > $(root)/TOC.md 
 	@git add $@
 
+gadgetsok.txt: *.py
+	python gadgetsok.py | cat -n > $@
 
