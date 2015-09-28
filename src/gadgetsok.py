@@ -153,25 +153,26 @@ def _mutate():
       g.logNews(log,
                 g.news(100))
       one = g.decs()
-      two = g.mutate(one,log)
+      two = g.mutate(one,log,the.GADGETS.mutate)
       print(m, r5(one.decs))
       print(m, r5(two.decs))
 
 
             
 @ok
-def _sa1(m=Schaffer):
+def _opt(m=Schaffer,optimizer=sa):
   def show(txt,what,all):
     all = sorted(all)
     lo, hi = all[0], all[-1]
     print("##",txt,xtile(what,lo=lo,hi=hi,width=25,show=" %6.2f"),m.__class__.__name__)
   with study(m.__name__,
+             use(GADGETS,
+                 verbose=True),
              use(MISC,
                  tiles=[0,   0.1,0.3 ,0.5,0.7,0.99],
                  marks=["0" ,"1", "3","5","7","!"])):
     m = m()
-    firsts,lasts=sa(m)
-    print("##")
+    firsts,lasts=optimizer(m)
     for first,last,name in zip(firsts.objs,
                                lasts.objs,
                                m.objs):
@@ -180,18 +181,65 @@ def _sa1(m=Schaffer):
       show("FIRST:",first.some(),all)
       show("LAST :",last.some(), all)
 
-
-      
-@ok
-def _sa2(): _sa1(Fonseca)
+def _de(m=Schaffer):
+  _opt(m,de)
 
 
 @ok
-def _sa3(): _sa1(Kursawe)
-
+def _opt0(): _opt()
+@ok
+def _de0(): _de(Schaffer)
 
 @ok
-def _sa4(): _sa1(ZDT1)
+def _opt1(): _opt(Fonseca,sa)
+@ok
+def _de0(): _de(Fonseca)
+
+@ok
+def _opt2(): _opt(Kursawe)
+@ok
+def _de0(): _de(Kursawe)
+
+@ok
+def _opt3(): _opt(ZDT1)
+@ok
+def _de0(): _de(ZDT1)
+
+@ok
+def _opt4(): _opt(Viennet4)
+@ok
+def _de0(): _de(Viennet4)
+
+@ok
+def _threeOthers():
+  seed(1)
+  lst = list('abcdefg')
+  print(another3(lst,'a'))
+
+
+def opts(optimizers,models,n=20):
+  tiles=[0,0.1,0.2,0.4,0.8]
+  print(r5(tiles))
+  for model in models:
+    print("")
+    for opt in optimizers:
+      firsts  = Log()
+      lasts   = Log()
+      seed()
+      for _ in xrange(n):
+        m = model()
+        g = Gadgets(m)
+        baseline = g.news(the.GADGETS.baseline)
+        with study(opt.__name__,use(GADGETS, verbose=False),verbose=False):
+          first,last = opt(m,baseline)
+          firsts.adds( first.aggregate.some() )
+          lasts.adds(  last.aggregate.some() )
+      print(r3(lasts.stats(tiles)),model.__name__,opt.__name__)
+            
+@ok
+def _opts():
+  opts([sa,de],[Schaffer,Fonseca,Kursawe,ZDT1,Viennet4])
+
 
 
 unittest.enough()    

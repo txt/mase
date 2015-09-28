@@ -113,6 +113,8 @@ class Log:
   def __init__(i,init=[],also=None):
     i.n,i.lo, i.hi, i.also, i._some= 0,None, None, also,Some()
     map(i.__add__,init)
+  def adds(i,lst):
+    map(i.__add__,lst)
   def __add__(i,x):
     i.n += 1
     if   i.empty() : i.lo = i.hi = x # auto-initialize
@@ -130,6 +132,11 @@ class Log:
     return i.lo == None
   def norm(i,x):
     return (x - i.lo)/(i.hi - i.lo + 10**-32)
+  def stats(i,tiles=[0.25,0.5,0.75]):
+    return ntiles(sorted(i._some.any),
+           ordered=False,
+           tiles=tiles)
+    
 
 @setting
 def SOMES(): return o(
@@ -174,6 +181,7 @@ class Candidate(object):
     j.decs = [what(x) for x in i.decs]
     j.objs = [what(x) for x in i.objs]
     j.aggregate = what(i.aggregate)
+    j.abouts = i.abouts
     return j
   def alongWith(i,j=None):
     "convenient iterator."
@@ -233,7 +241,8 @@ class Kursawe(Candidate):
 class ZDT1(Candidate):
   n=30
   def about(i):
-    def f1(can): return can.decs[0]
+    def f1(can):
+      return can.decs[0]
     def f2(can):
       g = 1 + 9*sum(x for x in can.decs[1:] )/(ZDT1.n-1)
       return g*abs(1 - sqrt(can.decs[0]*g))
@@ -242,6 +251,30 @@ class ZDT1(Candidate):
     i.decs = [dec(x) for x in range(ZDT1.n)]
     i.objs = [Less("f1",maker=f1),
               Less("f2",maker=f2)]
+
+class Viennet4(Candidate):
+  def ok(i,can):
+     one,two = can.decs
+     g1 = -1*two - 4*one + 4
+     g2 = one + 1            
+     g3 = two - one + 2
+     return g1 >= 0 and g2 >= 0 and g3 >= 0
+  def about(i):
+    def f1(can):
+      one,two = can.decs
+      return (one - 2)**2 /2 + (two + 1)**2 /13 + 3
+    def f2(can):
+      one,two = can.decs
+      return (one + two - 3)**2 /175 + (2*two - one)**2 /17 - 13
+    def f3(can):
+      one,two= can.decs
+      return (3*one - 2*two + 4)**2 /8 + (one - two + 1)**2 /27 + 15
+    def dec(x):
+      return An(x,lo= -4,hi= 4)
+    i.decs = [dec(x) for x in range(2)]
+    i.objs = [Less("f1",maker=f1),
+              Less("f2",maker=f2),
+              Less("f3",maker=f3)]
 """
 
 ## Want
@@ -331,24 +364,27 @@ following, always write
 @setting
 def GADGETS(): return  o(
     baseline=50,
+    era=50,
     mutate = 0.3,
     epsilon=0.01,
-    era=50,
     lives=5,
     verbose=True,
-    nudge=1
+    nudge=1,
+    patience=64
 )
 
 class Gadgets:
+  """Gadgets is a "facade"; i.e. a simplified 
+  interface to a body of code."""
   def __init__(i,model):
-    i.my  = model
+    i.model  = model
     
   def blank(i):
     "return a new candidate, filled with None"
-    return i.my.clone(lambda _: None)
+    return i.model.clone(lambda _: None)
   def logs(i,also=None):
     "Return a new log, also linked to another log"
-    new = i.my.clone(lambda _ : Log())
+    new = i.model.clone(lambda _ : Log())
     for new1,also1 in new.alongWith(also):
         new1.also = also1
     return new
@@ -361,16 +397,26 @@ class Gadgets:
       for x,log1 in zip(can.objs,log.objs):
         log1 + x
       log.aggregate + i.aggregate(can,log)
+    return news
+      
+  def aFewBlanks(i):
+    patience = the.GADGETS.patience
+    while True:
+      yield i.blank()
+      patience -= 1
+      assert patience > 0, "constraints too hard to satisfy"
+
   def decs(i):
     "return a new candidate, with guesses for decisions"
-    can = i.blank()
-    can.decs = [dec.maker() for dec in i.my.decs]
-    return can
+    for can in i.aFewBlanks():
+      can.decs = [dec.maker() for dec in i.model.decs]
+      if i.model.ok(can):
+        return can
   
   def eval(i,can):
     "expire the old aggregate. make the objective scores."
     can.aggregate = None
-    can.objs = [obj.maker(can) for obj in i.my.objs]
+    can.objs = [obj.maker(can) for obj in i.model.objs]
     return can
 
   def aggregate(i,can,logs):
@@ -378,29 +424,43 @@ class Gadgets:
     if can.aggregate == None:
        agg = n = 0
        for obj,about,log in zip(can.objs,
-                                i.my.objs,
+                                i.model.objs,
                                 logs.objs):
          n   += 1
          agg += about.fromHell(obj,log)
        can.aggregate = agg ** 0.5 / n ** 0.5
     return can.aggregate
        
-  def mutate(i,can,logs,p=None,f=None):
+  def mutate(i,can,logs,p):
     "Return a new can with p% mutated"
-    if p is None: p = the.GADGETS.mutate
-    if f is None: f = the.GADGETS.nudge
-    can1= i.blank()
-    for n,(dec,about,log) in enumerate(zip(can.decs,
-                                           i.my.decs,
+    for sn in i.aFewBlanks():
+      for n,(dec,about,log) in enumerate(zip(can.decs,
+                                           i.model.decs,
                                            logs.decs)):
-      val   = can.decs[n]
-      if p > r():
-         some  = (log.hi - log.lo)*0.5
-         val   = val - some + 2*some*r()
-         val   = about.wrap(val)
-      can1.decs[n] = val
-    return can1
-  
+        val = can.decs[n]
+        if p > r():
+          some = (log.hi - log.lo)*0.5
+          val  = val - some + 2*some*r()
+          val  = about.wrap(val)
+        sn.decs[n] = val
+      if i.model.ok(sn):
+        return sn
+      
+  def xPlusFyz(i,threeMore,cr,f):
+    "Crossovers some decisions, by a factor of 'f'"
+    def smear((x1, y1, z1, about)):
+      x1 = x1 if cr <= r() else x1 + f*(y1-z1)
+      return about.wrap(x1)
+    for sn in i.aFewBlanks():
+      x,y,z   = threeMore()
+      sn.decs = [smear(these)
+                 for these in zip(x.decs,
+                                  y.decs,
+                                  z.decs,
+                                  i.model.decs)]
+      if i.model.ok(sn):
+        return sn
+    
   def news(i,n=None):
     "Generating, say, 100 random instances."
     return [i.eval( i.decs())
@@ -417,7 +477,7 @@ class Gadgets:
     better=worse=0
     for now1,last1,about in zip(now.objs,
                                 last.objs,
-                                i.my.objs):
+                                i.model.objs):
       nowMed = median(now1.some())
       lastMed= median(last1.some())
       if about.better(nowMed, lastMed):
@@ -429,19 +489,20 @@ class Gadgets:
   def shout(i,x) : i.fyi("__" + x)
   def bye(i,info,first,now) : i.fyi(info); return first,now
 
+    
 @setting
 def SA(): return o(
     p=0.25,
     cooling=1,
     kmax=1000)
   
-def sa(m,also=None,baseline=None):
+def sa(m,baseline=None,also2=None):
+  def goodbye(x)  : return g.bye(x,first,now)
   g = Gadgets(m)
   def p(old,new,t): return ee**((old - new)/t)
-  def goodbye(x)  : return g.bye(x,first,now)
-  k,eb,life, = 0,1,the.GADGETS.lives
+  k,eb,life = 0,1,the.GADGETS.lives
   #===== setting up logs
-  also     = also or g.logs()
+  also     = g.logs(also2) # also = log of all eras
   first    = now  = g.logs(also)
   g.logNews(first,baseline or g.news())
   last, now  = now, g.logs(also)
@@ -453,7 +514,7 @@ def sa(m,also=None,baseline=None):
     info="."
     k += 1
     t  = (k/the.SA.kmax) ** (1/the.SA.cooling)
-    sn = g.mutate(s, also, the.GADGETS.mutate)
+    sn = g.mutate(s, also,the.SA.p)
     en = g.energy(sn,also)
     g.log1(sn,now)
     if en < eb:
@@ -470,9 +531,68 @@ def sa(m,also=None,baseline=None):
     else:
       life = life - 1
       if g.better1(now, last)     : life = the.GADGETS.lives 
-      if eb < the.GADGETS.epsilon : return goodbye("E %.5f" %eb)
       if life < 1                 : return goodbye("L")
+      if eb < the.GADGETS.epsilon : return goodbye("E %.5f" %eb)
       if k > the.SA.kmax          : return goodbye("K")
       g.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
       last, now  = now, g.logs(also) 
+
+
+@setting
+def DE(): return o(
+    cr = 0.4,
+    f  = 0.5,
+    npExpand = 10,
+    kmax=1000)
+  
+def de(m,baseline=None,also2=None):
+  def goodbye(x)  : return g.bye(x,first,now)
+  g  = Gadgets(m)
+  np = len(g.model.decs) * the.DE.npExpand
+  k,eb,life = 0,1,the.GADGETS.lives
+  #===== setting up logs
+  also     = g.logs(also2) # also = log of all eras
+  first    = now  = g.logs(also)
+  frontier = g.logNews(first,baseline or g.news(np))
+  last, now  = now, g.logs(also)
+  #===== ok to go
+  sn = en = None
+  g.fyi("%4s [%2s] %3s "% (k,life,"     "))
+  while True:
+    for n,parent in enumerate(frontier):
+      info="."
+      k += 1
+      e  = g.aggregate(parent, also)
+      sn = g.xPlusFyz(lambda: another3(frontier,parent),
+                      the.DE.cr,
+                      the.DE.f)
+      en = g.energy(sn,also)
+      g.log1(sn,now)
+      if en < eb:
+        sb,eb = sn,en
+        g.shout("!")
+      if en < e:
+        frontier[n] = sn # goodbye parent
+        info = "+"
+      g.fyi(info)
+    life = life - 1
+    if g.better1(now, last)     : life = the.GADGETS.lives 
+    if life < 1                 : return goodbye("L")
+    if eb < the.GADGETS.epsilon : return goodbye("E %.5f" %eb)
+    if k > the.DE.kmax          : return goodbye("K")
+    g.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
+    last, now  = now, g.logs(also) 
+
+def another3(lst, avoid=None):
+  def another1():
+    x = avoid
+    while id(x) in seen: 
+      x = lst[  int(random.uniform(0,len(lst))) ]
+    seen.append( id(x) )
+    return x
+  # -----------------------
+  assert len(lst) > 4
+  avoid = avoid or lst[0]
+  seen  = [ id(avoid) ]
+  return another1(), another1(), another1()
 
