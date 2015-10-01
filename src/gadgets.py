@@ -1,3 +1,4 @@
+from __future__ import print_function, division
 #########################################################
 # This is free and unencumbered software released into
 # the public domain.
@@ -43,7 +44,7 @@
 # For more information, please refer to
 # http://unlicense.org
 #########################################################
-from __future__ import print_function, division
+
 import sys
 sys.dont_write_bytecode = True
 from gadgets0 import *
@@ -141,7 +142,7 @@ class Candidate(object):
   def __init__(i,decs=[],objs=[]):
     i.decs,i.objs=decs,objs
     i.aggregate=None
-    #i.abouts = i.about()
+    i.abouts = i.about()
     
   def __getitem__(i,key):
     "Simple way to access decs or objs or aggregates."
@@ -169,7 +170,7 @@ class Candidate(object):
     j.decs = [what(x) for x in i.decs]
     j.objs = [what(x) for x in i.objs]
     j.aggregate = what(i.aggregate)
-    #j.abouts = i.abouts
+    j.abouts = i.abouts
     return j
   
   def alongWith(i,j=None):
@@ -180,9 +181,11 @@ class Candidate(object):
       for one,two in zip(i.objs, j.objs):
         yield one,two
       yield i.aggregate, j.aggregate
+      
 """
 
-Using the above, we can build a _factory_ method called `about` that returns what we know `About`
+Using the above, we can build a _factory_ method
+called `about` that returns what we know `About`
 each candidate.
 
 #### Schaffer
@@ -627,7 +630,7 @@ def sa(m,baseline=None,also2=None):
   def p(old,new,t): return ee**((old - new)/t)
   k,eb,life = 0,1,the.GADGETS.lives
   #===== setting up logs
-  also     = g.logs(also2) # also = log of all eras
+  also     = g.logs(also2) # log of all eras
   first    = now  = g.logs(also)
   g.logNews(first,baseline or g.news())
   last, now  = now, g.logs(also)

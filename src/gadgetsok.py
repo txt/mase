@@ -62,6 +62,7 @@ def _seed():
   seed(1)
   assert 0.134364244111 < r() < 0.134364244113 
 
+  
 @ok
 def _xtileX() :
   import random
@@ -71,7 +72,9 @@ def _xtileX() :
   for nums in [nums1,nums2]:
     print(xtile(nums,lo=0,hi=1.0,width=25,show=" %3.2f"))
 
-  
+
+
+
 @ok
 def _log():
   with study("log",
@@ -81,17 +84,21 @@ def _log():
      shuffle([x for x in xrange(20)])]
     assert log.lo==0
     assert log.hi==19
-    assert log.some() == [9, 11, 13, 15, 6,
-                          19, 12, 14, 16, 1]
+    print(sorted(log.some()))
+    print(sorted(log.some()))
+    assert sorted(log.some()) == [1, 6, 9, 11, 12,
+                                  13, 14, 15, 16, 19]
+    
   # after the study, all the defaults are
   # back to zero
   assert the.SOMES.size == 256
 
+
 @ok
 def _fill1():
-  b4 = Candidate([1,2],[2,4])
+  b4 = Schaffer([1],[1,2])
   assert str(b4.clone()) ==  \
-    "Candidate{'objs': [None, None], " + \
+    "Schaffer{'objs': [None], " + \
     "'aggregated': None, 'decs': [None, None]}"
 
 @ok
@@ -115,10 +122,7 @@ def _want():
       show(sorted(log.some()))
       show(map(lambda n: z.fromHell(n,log),
                sorted(log.some())))
-
-    
-
-
+  
 @ok
 def _gadgets1(f=Schaffer):
   with study(f.__name__,
@@ -134,6 +138,7 @@ def _gadgets1(f=Schaffer):
       for n,what in enumerate(log[whats]):
         print(whats, n,what.tiles())
 
+       
 @ok
 def _gadgets2(): _gadgets1(Fonseca)
 

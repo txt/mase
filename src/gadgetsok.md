@@ -9,7 +9,7 @@
 
 # Test suite for some generic optimizer gadgets
 
-<a href="gadgetsok.py#L57-L259"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgetsok.py#L57-L264"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   from ok import *
@@ -20,201 +20,206 @@
    6:     seed(1)
    7:     assert 0.134364244111 < r() < 0.134364244113 
    8:   
-   9:   @ok
-  10:   def _xtileX() :
-  11:     import random
-  12:     seed(1)
-  13:     nums1 = [r()**2 for _ in range(100)]
-  14:     nums2 = [r()**0.5 for _ in range(100)]
-  15:     for nums in [nums1,nums2]:
-  16:       print(xtile(nums,lo=0,hi=1.0,width=25,show=" %3.2f"))
-  17:   
-  18:     
-  19:   @ok
-  20:   def _log():
-  21:     with study("log",
-  22:                use(SOMES,size=10)):
-  23:       log = Log()
-  24:       [log + y for y in
-  25:        shuffle([x for x in xrange(20)])]
-  26:       assert log.lo==0
-  27:       assert log.hi==19
-  28:       assert log.some() == [9, 11, 13, 15, 6,
-  29:                             19, 12, 14, 16, 1]
-  30:     # after the study, all the defaults are
-  31:     # back to zero
-  32:     assert the.SOMES.size == 256
-  33:   
-  34:   @ok
-  35:   def _fill1():
-  36:     b4 = Candidate([1,2],[2,4])
-  37:     assert str(b4.clone()) ==  \
-  38:       "Candidate{'objs': [None, None], " + \
-  39:       "'aggregated': None, 'decs': [None, None]}"
+   9:     
+  10:   @ok
+  11:   def _xtileX() :
+  12:     import random
+  13:     seed(1)
+  14:     nums1 = [r()**2 for _ in range(100)]
+  15:     nums2 = [r()**0.5 for _ in range(100)]
+  16:     for nums in [nums1,nums2]:
+  17:       print(xtile(nums,lo=0,hi=1.0,width=25,show=" %3.2f"))
+  18:   
+  19:   
+  20:   
+  21:   
+  22:   @ok
+  23:   def _log():
+  24:     with study("log",
+  25:                use(SOMES,size=10)):
+  26:       log = Log()
+  27:       [log + y for y in
+  28:        shuffle([x for x in xrange(20)])]
+  29:       assert log.lo==0
+  30:       assert log.hi==19
+  31:       print(sorted(log.some()))
+  32:       print(sorted(log.some()))
+  33:       assert sorted(log.some()) == [1, 6, 9, 11, 12,
+  34:                                     13, 14, 15, 16, 19]
+  35:       
+  36:     # after the study, all the defaults are
+  37:     # back to zero
+  38:     assert the.SOMES.size == 256
+  39:   
   40:   
   41:   @ok
-  42:   def _fill2():
-  43:     b4 = Schaffer()
-  44:     assert b4.clone().__class__ == Schaffer
-  45:   
-  46:   @ok
-  47:   def _want():
-  48:     with study("log",
-  49:                use(SOMES,size=10)):
-  50:       for klass in [Less,More]:
-  51:         z = klass("fred",lo=0,hi=10)
-  52:         guess = [z.guess() for _ in xrange(20)]
-  53:         log = Log(guess)
-  54:         assert z.restrain(20) == 10
-  55:         assert z.wrap(15) == 5
-  56:         assert not z.ok(12)
-  57:         assert z.ok(8)
-  58:         print("\n"+klass.__name__)
-  59:         show(sorted(log.some()))
-  60:         show(map(lambda n: z.fromHell(n,log),
-  61:                  sorted(log.some())))
-  62:   
-  63:       
-  64:   
-  65:   
-  66:   @ok
-  67:   def _gadgets1(f=Schaffer):
-  68:     with study(f.__name__,
-  69:                use(MISC,
-  70:                    tiles=[0.05,0.1,0.2,0.4,0.8])):
-  71:       g=Gadgets(f())
-  72:       log = g.logs()
-  73:       g.logNews(log, g.news())
-  74:       print("aggregates:",
-  75:             log.aggregate.tiles())
-  76:       for whats in ['decs', 'objs']:
-  77:         print("")
-  78:         for n,what in enumerate(log[whats]):
-  79:           print(whats, n,what.tiles())
-  80:   
-  81:   @ok
-  82:   def _gadgets2(): _gadgets1(Fonseca)
-  83:   
-  84:   @ok
-  85:   def _gadgets3(): _gadgets1(Kursawe)
-  86:   
-  87:   @ok
-  88:   def _gadgets4(): _gadgets1(ZDT1)
-  89:   
-  90:   @ok
-  91:   def _mutate():
-  92:     for m in [0.3,0.6]:
-  93:       with study("mutate",
-  94:                  use(GADGETS,mutate=m)):
-  95:         g=Gadgets(Kursawe())
-  96:         log =g.logs()
-  97:         g.logNews(log,
-  98:                   g.news(100))
-  99:         one = g.decs()
- 100:         two = g.mutate(one,log,the.GADGETS.mutate)
- 101:         print(m, r5(one.decs))
- 102:         print(m, r5(two.decs))
- 103:   
- 104:   
- 105:               
- 106:   @ok
- 107:   def _opt(m=Schaffer,optimizer=sa):
- 108:     def show(txt,what,all):
- 109:       all = sorted(all)
- 110:       lo, hi = all[0], all[-1]
- 111:       print("##",txt,xtile(what,lo=lo,hi=hi,width=25,show=" %6.2f"),m.__class__.__name__)
- 112:     with study(m.__name__,
- 113:                use(GADGETS,
- 114:                    verbose=True),
- 115:                use(MISC,
- 116:                    tiles=[0,   0.1,0.3 ,0.5,0.7,0.99],
- 117:                    marks=["0" ,"1", "3","5","7","!"])):
- 118:       m = m()
- 119:       firsts,lasts=optimizer(m)
- 120:       for first,last,name in zip(firsts.objs,
- 121:                                  lasts.objs,
- 122:                                  m.objs):
- 123:         all = first.some() + last.some()
- 124:         print("\n" + name.txt)
- 125:         show("FIRST:",first.some(),all)
- 126:         show("LAST :",last.some(), all)
- 127:   
- 128:   def _de(m=Schaffer):
- 129:     _opt(m,de)
- 130:   
- 131:   
- 132:   @ok
- 133:   def _opt0(): _opt()
- 134:   @ok
- 135:   def _de0(): _de(Schaffer)
+  42:   def _fill1():
+  43:     b4 = Schaffer([1],[1,2])
+  44:     assert str(b4.clone()) ==  \
+  45:       "Schaffer{'objs': [None], " + \
+  46:       "'aggregated': None, 'decs': [None, None]}"
+  47:   
+  48:   @ok
+  49:   def _fill2():
+  50:     b4 = Schaffer()
+  51:     assert b4.clone().__class__ == Schaffer
+  52:   
+  53:   @ok
+  54:   def _want():
+  55:     with study("log",
+  56:                use(SOMES,size=10)):
+  57:       for klass in [Less,More]:
+  58:         z = klass("fred",lo=0,hi=10)
+  59:         guess = [z.guess() for _ in xrange(20)]
+  60:         log = Log(guess)
+  61:         assert z.restrain(20) == 10
+  62:         assert z.wrap(15) == 5
+  63:         assert not z.ok(12)
+  64:         assert z.ok(8)
+  65:         print("\n"+klass.__name__)
+  66:         show(sorted(log.some()))
+  67:         show(map(lambda n: z.fromHell(n,log),
+  68:                  sorted(log.some())))
+  69:     
+  70:   @ok
+  71:   def _gadgets1(f=Schaffer):
+  72:     with study(f.__name__,
+  73:                use(MISC,
+  74:                    tiles=[0.05,0.1,0.2,0.4,0.8])):
+  75:       g=Gadgets(f())
+  76:       log = g.logs()
+  77:       g.logNews(log, g.news())
+  78:       print("aggregates:",
+  79:             log.aggregate.tiles())
+  80:       for whats in ['decs', 'objs']:
+  81:         print("")
+  82:         for n,what in enumerate(log[whats]):
+  83:           print(whats, n,what.tiles())
+  84:   
+  85:          
+  86:   @ok
+  87:   def _gadgets2(): _gadgets1(Fonseca)
+  88:   
+  89:   @ok
+  90:   def _gadgets3(): _gadgets1(Kursawe)
+  91:   
+  92:   @ok
+  93:   def _gadgets4(): _gadgets1(ZDT1)
+  94:   
+  95:   @ok
+  96:   def _mutate():
+  97:     for m in [0.3,0.6]:
+  98:       with study("mutate",
+  99:                  use(GADGETS,mutate=m)):
+ 100:         g=Gadgets(Kursawe())
+ 101:         log =g.logs()
+ 102:         g.logNews(log,
+ 103:                   g.news(100))
+ 104:         one = g.decs()
+ 105:         two = g.mutate(one,log,the.GADGETS.mutate)
+ 106:         print(m, r5(one.decs))
+ 107:         print(m, r5(two.decs))
+ 108:   
+ 109:   
+ 110:               
+ 111:   @ok
+ 112:   def _opt(m=Schaffer,optimizer=sa):
+ 113:     def show(txt,what,all):
+ 114:       all = sorted(all)
+ 115:       lo, hi = all[0], all[-1]
+ 116:       print("##",txt,xtile(what,lo=lo,hi=hi,width=25,show=" %6.2f"),m.__class__.__name__)
+ 117:     with study(m.__name__,
+ 118:                use(GADGETS,
+ 119:                    verbose=True),
+ 120:                use(MISC,
+ 121:                    tiles=[0,   0.1,0.3 ,0.5,0.7,0.99],
+ 122:                    marks=["0" ,"1", "3","5","7","!"])):
+ 123:       m = m()
+ 124:       firsts,lasts=optimizer(m)
+ 125:       for first,last,name in zip(firsts.objs,
+ 126:                                  lasts.objs,
+ 127:                                  m.objs):
+ 128:         all = first.some() + last.some()
+ 129:         print("\n" + name.txt)
+ 130:         show("FIRST:",first.some(),all)
+ 131:         show("LAST :",last.some(), all)
+ 132:   
+ 133:   def _de(m=Schaffer):
+ 134:     _opt(m,de)
+ 135:   
  136:   
  137:   @ok
- 138:   def _opt1(): _opt(Fonseca,sa)
+ 138:   def _opt0(): _opt()
  139:   @ok
- 140:   def _de0(): _de(Fonseca)
+ 140:   def _de0(): _de(Schaffer)
  141:   
  142:   @ok
- 143:   def _opt2(): _opt(Kursawe)
+ 143:   def _opt1(): _opt(Fonseca,sa)
  144:   @ok
- 145:   def _de0(): _de(Kursawe)
+ 145:   def _de0(): _de(Fonseca)
  146:   
  147:   @ok
- 148:   def _opt3(): _opt(ZDT1)
+ 148:   def _opt2(): _opt(Kursawe)
  149:   @ok
- 150:   def _de0(): _de(ZDT1)
+ 150:   def _de0(): _de(Kursawe)
  151:   
  152:   @ok
- 153:   def _opt4(): _opt(Viennet4)
+ 153:   def _opt3(): _opt(ZDT1)
  154:   @ok
- 155:   def _de0(): _de(Viennet4)
+ 155:   def _de0(): _de(ZDT1)
  156:   
  157:   @ok
- 158:   def _threeOthers():
- 159:     seed(1)
- 160:     lst = list('abcdefg')
- 161:     print(another3(lst,'a'))
- 162:   
- 163:   
- 164:   def opts(optimizers,models,n=20):
- 165:     def report(lst,what):
- 166:        print("",', '.join(map(str,r2(lst))),
- 167:              model.__name__,
- 168:              what,
- 169:              sep=", ")
- 170:     tiles=[0.25,0.50,0.75]
- 171:     print("#"," "*(n-2),r5(tiles))
- 172:     for model in models:
- 173:       shown=False
- 174:       for opt in optimizers:
- 175:         seed()
- 176:         firsts = Log()
- 177:         lasts  = Log()
- 178:         for i in xrange(n):
- 179:           say(".")
- 180:           m = model()
- 181:           g = Gadgets(m)
- 182:           baseline = g.news(the.GADGETS.baseline)
- 183:           with study(opt.__name__,use(GADGETS,
- 184:                                       verbose=False),
- 185:                      verbose=False):
- 186:             first,last = opt(m,baseline)
- 187:             firsts.adds( first.aggregate.some() )
- 188:             lasts.adds(  last.aggregate.some() )
- 189:         if shown:
- 190:           report(firsts.stats(tiles),"baseline")
- 191:           say("."*n)
- 192:           shown = True
- 193:         report(lasts.stats(tiles),opt.__name__)
- 194:       print("")
- 195:   
- 196:               
- 197:   @ok
- 198:   def _opts():
- 199:     opts([sa,de],[Schaffer,Fonseca,Kursawe,ZDT1,Viennet4])
+ 158:   def _opt4(): _opt(Viennet4)
+ 159:   @ok
+ 160:   def _de0(): _de(Viennet4)
+ 161:   
+ 162:   @ok
+ 163:   def _threeOthers():
+ 164:     seed(1)
+ 165:     lst = list('abcdefg')
+ 166:     print(another3(lst,'a'))
+ 167:   
+ 168:   
+ 169:   def opts(optimizers,models,n=20):
+ 170:     def report(lst,what):
+ 171:        print("",', '.join(map(str,r2(lst))),
+ 172:              model.__name__,
+ 173:              what,
+ 174:              sep=", ")
+ 175:     tiles=[0.25,0.50,0.75]
+ 176:     print("#"," "*(n-2),r5(tiles))
+ 177:     for model in models:
+ 178:       shown=False
+ 179:       for opt in optimizers:
+ 180:         seed()
+ 181:         firsts = Log()
+ 182:         lasts  = Log()
+ 183:         for i in xrange(n):
+ 184:           say(".")
+ 185:           m = model()
+ 186:           g = Gadgets(m)
+ 187:           baseline = g.news(the.GADGETS.baseline)
+ 188:           with study(opt.__name__,use(GADGETS,
+ 189:                                       verbose=False),
+ 190:                      verbose=False):
+ 191:             first,last = opt(m,baseline)
+ 192:             firsts.adds( first.aggregate.some() )
+ 193:             lasts.adds(  last.aggregate.some() )
+ 194:         if shown:
+ 195:           report(firsts.stats(tiles),"baseline")
+ 196:           say("."*n)
+ 197:           shown = True
+ 198:         report(lasts.stats(tiles),opt.__name__)
+ 199:       print("")
  200:   
- 201:   
- 202:   
- 203:   unittest.enough()    
+ 201:               
+ 202:   @ok
+ 203:   def _opts():
+ 204:     opts([sa,de],[Schaffer,Fonseca,Kursawe,ZDT1,Viennet4])
+ 205:   
+ 206:   
+ 207:   
+ 208:   unittest.enough()    
 ```
 
 

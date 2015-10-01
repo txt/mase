@@ -1,3 +1,4 @@
+from __future__ import print_function, division
 #########################################################
 # This is free and unencumbered software released into
 # the public domain.
@@ -43,7 +44,7 @@
 # For more information, please refer to
 # http://unlicense.org
 #########################################################
-from __future__ import print_function, division
+
 import sys
 sys.dont_write_bytecode = True
 
@@ -69,9 +70,11 @@ sin = math.sin
 sqrt= math.sqrt
 r   = random.random
 isa = isinstance
-seed=random.seed
-
 nl = lambda: print("")
+
+def seed(s=None):
+  if s == None: s = the.MISC.seed
+  random.seed(s)
 
 def say(*lst):
   sys.stdout.write(', '.join(map(str,lst)))
