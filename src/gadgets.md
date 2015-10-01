@@ -630,16 +630,17 @@ accept that baseline as an optional argument.
 Note also that all the following:
 
 + Process a model in `era`s
-+ May stop early after a sequence of unpromising `era`s.
-+ May stop early if we get too close to zero
-+ Either create a baseline era or accepts a baseline `first` era
-  passed in as a parameter.
++ As each era progresses, a log of what was seen is entered into `now`.
++ Between each era, `last` is set to `now` and a new log is created for
+  the next `now` to be used in the next era.
++ Optimizers may stop early after a sequence of unpromising `era`s.
++ Optimizers may stop early if we get too close to zero
 + When generating logs, if there is an outer log, store values in this
-  log as well as the outer.
+  log as well as the outer (see the `also` and `also2` parameters).
 
 ### Simulated Annealing
 
-<a href="gadgets.py#L663-L708"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L664-L709"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  358:   @setting
@@ -692,7 +693,7 @@ Note also that all the following:
 
 ### Differential Evolution
 
-<a href="gadgets.py#L714-L757"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L715-L758"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  404:   @setting
@@ -743,7 +744,7 @@ Note also that all the following:
 
 DE trick for finding three unique things in a list that are not `avoid`.
 
-<a href="gadgets.py#L763-L775"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L764-L776"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  448:   def another3(lst, avoid=None):
