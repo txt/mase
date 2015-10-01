@@ -7,6 +7,8 @@
 
 
  + What is a Domain Specific language? Example?
+ + Why do DSLs?
+ + What's a causal loop?
  + What is an elbow test?
  + What is a context manager?
    - logger
