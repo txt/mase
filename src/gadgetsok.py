@@ -222,7 +222,7 @@ def _threeOthers():
   print(another3(lst,'a'))
 
 
-def opts(optimizers,models,n=2):
+def opts(optimizers,models,n=20):
   def report(lst,what):
      print("",', '.join(map(str,r2(lst))),
            model.__name__,
