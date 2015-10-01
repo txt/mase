@@ -144,6 +144,12 @@ class Candidate(object):
     i.aggregate=None
     i.abouts = i.about()
     
+  def __repr__(i):
+    "Present me in a  string"
+    return printer(i,decs=i.decs,
+                   objs=i.objs,
+                   aggregated=i.aggregate)
+
   def __getitem__(i,key):
     "Simple way to access decs or objs or aggregates."
     return i.__dict__[key]
@@ -157,11 +163,6 @@ class Candidate(object):
        About objects."""
     assert False,'implemented by subclass'
     
-  def __repr__(i):
-    "Present me in a  string"
-    return printer(i,decs=i.decs,
-                   objs=i.objs,
-                   aggregated=i.aggregate)
   
   def clone(i,what = lambda _: None):
     """A genetic factory that makes a new  thing
@@ -428,6 +429,9 @@ class About(object):
     return (hell - norm(x)) ** 2
 """
 
+Note that many of the above will be called many times as we (e.g.) fill in the decisions
+of a `can` (e.g. `guess`, `wrap`, `norm`) or its objectives (e.g. `fromHell`).
+ 
 Using the above, we can succinctly specify objectives
 that want to minimize or maximize their values.
 
