@@ -19,7 +19,8 @@
  + What is an internal DSL?
  + Write a compartmental model for the diaper example below:
  
- 
+ ![image](https://cloud.githubusercontent.com/assets/1433964/10233708/2cce5aac-685e-11e5-9bbc-79d14d5986b2.png)
+
 
 
 _________
