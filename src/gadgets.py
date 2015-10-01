@@ -64,7 +64,7 @@ With `Gadgets`, it is possible to encode something
 that looks a little like....
 
 ```python
-for model in [Schaffer,...]:
+for model in [Schaffer,Fonseca,...]:
   for optimizer in [sa,mws...]:
     for _ in xrange(20):
       optimizer(model())
@@ -85,7 +85,7 @@ Note that:
   objects without specifying the exact class of
   object that will be created. This is done by
   creating objects via (e.g.)  calling a factory
-  method—- either specified in an interface and
+  method-- either specified in an interface and
   implemented by child classes.
 + A _facade_ is an object that provides a simplified 
   interface to a larger body of code, such as a class library. A facade can:
@@ -122,7 +122,7 @@ _Factories_ assemble _parts_. In this code, I know of three kinds of parts:
 
 ## Parts of the `Gadgets`
 
-### Candidates
+### `Candidate`s
 
 `Candidate`s objects have  objectives, decisions and maybe some aggregate value. 
 Using a factory method,  we will fill in `Candidate`s with either 
@@ -141,7 +141,7 @@ class Candidate(object):
   def __init__(i,decs=[],objs=[]):
     i.decs,i.objs=decs,objs
     i.aggregate=None
-    i.abouts = i.about()
+    #i.abouts = i.about()
     
   def __getitem__(i,key):
     "Simple way to access decs or objs or aggregates."
@@ -169,7 +169,7 @@ class Candidate(object):
     j.decs = [what(x) for x in i.decs]
     j.objs = [what(x) for x in i.objs]
     j.aggregate = what(i.aggregate)
-    j.abouts = i.abouts
+    #j.abouts = i.abouts
     return j
   
   def alongWith(i,j=None):
@@ -186,6 +186,8 @@ Using the above, we can build a _factory_ method called `about` that returns wha
 each candidate.
 
 #### Schaffer
+
+One decision, two objectives, zero  constraints.
 
 """
 class Schaffer(Candidate):
@@ -211,6 +213,8 @@ you will recall, I call `can`s).
 
 #### Fonseca
 
+One decisions, two objectives, zero constraints.
+
 """  
 class Fonseca(Candidate):
   n=3
@@ -228,10 +232,13 @@ class Fonseca(Candidate):
               Less("f2",  maker=f2)]
 """
 
+Note the use of a list comprehension to create multiple decisions, all with similar properties.
+This is handy here and, for more complex models like `ZDT1` with 30 decisions with similar properties,
+it is very useful indeed.
 
-Note the use of a list comprehension to create
+#### Kursawe
 
-### Kursawe
+Three decisions, two objectives,  zero constraints.
 
 """
 class Kursawe(Candidate):
@@ -248,7 +255,13 @@ class Kursawe(Candidate):
     i.decs = [dec(x) for x in range(3)]
     i.objs = [Less("f1",  maker=f1),
               Less("f2",  maker=f2)]
+"""
 
+#### ZDT1
+
+Thirty decisions, two objectives,  zero constraints.
+
+"""
 class ZDT1(Candidate):
   n=30
   def about(i):
@@ -262,7 +275,15 @@ class ZDT1(Candidate):
     i.decs = [dec(x) for x in range(ZDT1.n)]
     i.objs = [Less("f1",maker=f1),
               Less("f2",maker=f2)]
+"""
 
+Again, note the use of a list comprehension to create multiple decisions, all with similar properties.
+
+#### Viennet4
+
+Two decisions, three objectives,  three constraints (all codes into the `ok` method).
+
+"""    
 class Viennet4(Candidate):
   def ok(i,can):
      one,two = can.decs
@@ -288,50 +309,17 @@ class Viennet4(Candidate):
               Less("f3",maker=f3)]
 """
 
+### `Log`ging Objects 
 
-a little object system based on Python:
-
-+ Candidates store example instances
-+ And our knowledge of candidates is stored in `Want` and `Wants` and `Log`:
-    + `Log` stores the range of values seen within the generated candidates
-    + `Want` stores our expectations for single values of the candidates;
-       + This will be used to (e.g.) generate values from some pre-defined range.
-       + And we will run one `Log` object for every `Want` object
-
-`Gadgets` then uses the above to store our expectations for lists of values;
-       
-+ Many of the services of `Gadgets` are define by recursive calls to `Want`
-+ E.g. to initialize a candidate, we ask a list of `Want`s for some values.
-    
-So Candidate is like "instance" and `Want`  are like "class" and `Gadgets` is like
-a factory for building new Candidates, and `Log`s.
- 
-It is insightful to ask why I wrote my own mini-class system (rather than, say, standard
-Python). The answers are that:
-
-+ Sometimes, these models are generated at runtime
-in which case we want a simple programmatic way of
-defining new "classes";
-+ My classes are special in that each slot value has
-a clear set of expectations (the `Want`) and a track
-record of all assigned values (the `Log`). While
-this can be added to standard Python, it can get a
-little messy.
-+ The syntax of the Python class system is sometimes...
-  awful. I find I can do cleaner coding if I dodge it.
-
-## Log
-
-This class is the simplest of all.  It just remembers the range of values
+Another kind of part that is assembled into a `Candidate` by a factory methods are
+`Log` objects. These  remembers the range of values
 seen so far.
 
-Note two small details about these `Log`s:
+Note one small details about these `Log`s:
 
 + Sometimes we are logging information
   about one run within other runs. So `Log` has an `also` pointer
   which, if non-nil, is another place to repeat the same information. 
-+ As a side-effect of logging, we also keep a small sample of
-  the logged items. This will come in handy... later.
 
 """
 class Log:
@@ -347,7 +335,7 @@ class Log:
     elif x < i.lo     : i.lo = x
     if i.also:
       i.also + x
-    i._some += x
+    i._some += x     # NOTE1
     return x
   def some(i):
     return i._some.any
@@ -361,8 +349,13 @@ class Log:
     return ntiles(sorted(i._some.any),
            ordered=False, 
            tiles=tiles)
-    
-
+"""
+ 
+_NOTE1_ As a side-effect of logging, we also keep a small sample of
+  the logged items This will come in handy... later. The code
+for keeping _Some_ values is shown below.
+   
+"""
 @setting
 def SOMES(): return o(
     size=256
@@ -382,10 +375,9 @@ class Some:
     return i
 """
 
+### `About` Objects 
 
-## Want
-
-The `Want` class (and its subs: `Less` and `More`) define our expectation for 
+The `About` class (and its variants: `Less` and `More`) define our expectation for 
 each `Candidate`
 values.
 
@@ -396,7 +388,7 @@ If we need a value for a `Candidate`, we call `.maker()`:
 + For objectives,
   call some `maker` function passed over an initialization time.
 
-Note that `Want` is a handy place to implement some useful services:
+Note that `About` is a handy place to implement some useful services:
 
 + Checking if a value is `ok` (in bounds `lo..hi`);
 + `restrain`ing out of bound values back to `lo..hi`;
@@ -443,28 +435,11 @@ def More(txt,*lst,**d):
   return About(txt,*lst,better=gt,**d)
 """
 
-## `Gadgets`: places to store lots of `Want`s
+## The `Gadgets` Facade
 
-`Gagets` is really a farcade containing a bunch of services
-useful for sa, mws, de, general GAs, etc. It was a toss of a coin
-to make it either:
-
-- a superclass of those optimizers or 
-- a separate class that associated with the optimizers. 
-
-In the end,
-I went with the subclass approach (but I acknowledge that that
-decision is somewhat arbitrary).
-
-
-Note that the following gizmos will get mixed and matched
-any number of ways by different optimizers. So when extending the 
-following, always write
-
-+ Simple primitives
-+ Which can be combined together by other functions.
-    + For example, the primitive `decs` method (that generates decisions)
-      on `keeps` the decision if called by `keepDecs`.
+Note that `Gadgets` stores most of the generic processing
+of my optimizers. Hence the control params of `Gadgets`
+is really the control params of most of the optimization.
 
 """
 @setting
@@ -478,25 +453,39 @@ def GADGETS(): return  o(
     nudge=1,
     patience=64
 )
+"""
 
+Gadgets are created from a `model` (which is one of the  subclasses of `Candidate`). For exmaple
+
+```
+m = Gadgets(Schaffer())
+```
+
+Note the brackets after the model name-- this creates a new instance of that model.
+
+"""
 class Gadgets:
-  """Gadgets is a "facade"; i.e. a simplified 
-  interface to a body of code."""
   def __init__(i,model):
     i.model  = model
     
   def blank(i):
-    "return a new candidate, filled with None"
+    "Factory for candidate objects containing Nones"
     return i.model.clone(lambda _: None)
+  
   def logs(i,also=None):
-    "Return a new log, also linked to another log"
+    "Factory for candidate objects containing Logs"
     new = i.model.clone(lambda _ : Log())
     for new1,also1 in new.alongWith(also):
         new1.also = also1
     return new
+  
   def log1(i,can,log):
-     [log1 + x for log1,x in log.alongWith(can)]
+    "Stores values from 'can' into 'log'."
+    [log1 + x for log1,x in log.alongWith(can)]
+    
   def logNews(i,log, news):
+    """Stores values from a list of cans, called 'news'
+       into a log."""
     for can in news:
       for x,log1 in zip(can.decs,log.decs):
         log1 + x
@@ -506,6 +495,8 @@ class Gadgets:
     return news
       
   def aFewBlanks(i):
+    """ Handles instantiation with constraints.
+        If can't  make  newinstance after some repeats, crash."""
     patience = the.GADGETS.patience
     while True:
       yield i.blank()
@@ -579,7 +570,9 @@ class Gadgets:
     if e < 0: e= 0
     if e > 1: e= 1
     return e
+  
   def better1(i,now,last):
+    "Is one era better than another?"
     better=worse=0
     for now1,last1,about in zip(now.objs,
                                 last.objs,
@@ -591,11 +584,37 @@ class Gadgets:
       elif nowMed != lastMed:
         worse += 1
     return better > 0 and worse < 1
-  def fyi(i,x)   : the.GADGETS.verbose and say(x)
-  def shout(i,x) : i.fyi("__" + x)
-  def bye(i,info,first,now) : i.fyi(info); return first,now
-
+  
+  def fyi(i,x)   :
+    "Maybe, mention something"
+    the.GADGETS.verbose and say(x)
     
+  def shout(i,x) :
+    "Add an emphasis to an output."
+    i.fyi("__" + x)
+    
+  def bye(i,info,first,now) :
+    """Optimizers return the distribution of values seen in
+       first and final era"""
+    i.fyi(info)
+    return first,now
+"""
+
+## Optimizers
+
+Finally, we can build our optimizers. Note that the following:
+
++ Process a model in `era`s
++ May stop early after a sequence of unpromising `era`s.
++ May stop early if we get too close to zero
++ Either create a baseline era or accepts a baseline `first` era
+  passed in as a parameter.
++ When generating logs, if there is an outer log, store values in this
+  log as well as the outer.
+
+### Simulated Annealling
+
+"""    
 @setting
 def SA(): return o(
     p=0.25,
@@ -642,8 +661,11 @@ def sa(m,baseline=None,also2=None):
       if k > the.SA.kmax          : return goodbye("K")
       g.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
       last, now  = now, g.logs(also) 
+"""
 
+### Differential Evolution
 
+"""
 @setting
 def DE(): return o(
     cr = 0.4,
@@ -688,7 +710,11 @@ def de(m,baseline=None,also2=None):
     if k > the.DE.kmax          : return goodbye("K")
     g.fyi("\n%4s [%2s] %.3f %s" % (k,life,eb,info))
     last, now  = now, g.logs(also) 
+"""
 
+DE trick for finding three unique things in a list that are not `avoid`.
+
+"""
 def another3(lst, avoid=None):
   def another1():
     x = avoid
