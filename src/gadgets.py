@@ -460,39 +460,48 @@ def GADGETS(): return  o(
     nudge=1,
     patience=64
 )
-"""
-
-Gadgets are created from a `model` (which is one of the  subclasses of `Candidate`). For exmaple
+"""Gadgets are created from subclasses of `Candidate`. For example
 
 ```
-m = Gadgets(Schaffer())
+g = Gadgets(Schaffer())
 ```
 
-Note the brackets after the model name-- this creates a new instance of that model.
+(Note the brackets-- this creates a new instance.)
+
+Here is the `Gadgets` facade. Note that it offers a wide range of services
+including:
+
++ Factory methods for generating empty `can`s, or `can`s filled with `Log`s.
++ 
 
 """
 class Gadgets:
   def __init__(i,abouts):
     i.abouts  = abouts
-    
+
+  ### Factory methods ###
+
   def blank(i):
     "Factory for candidate objects containing Nones"
     return i.abouts.clone(lambda _: None)
-  
+
   def logs(i,also=None):
     "Factory for candidate objects containing Logs"
     new = i.abouts.clone(lambda _ : Log())
     for new1,also1 in new.alongWith(also):
         new1.also = also1
     return new
-  
+
+  ##### Logging methods #####
+
   def log1(i,can,log):
     "Stores values from 'can' into 'log'."
     [log1 + x for log1,x in log.alongWith(can)]
     
   def logNews(i,log, news):
     """Stores values from a list of cans, called 'news'
-       into a log."""
+       into a log. Does not use 'log1' since this
+       also calls the 'aggregate' method."""
     for can in news:
       for x,log1 in zip(can.decs,log.decs):
         log1 + x
@@ -500,10 +509,12 @@ class Gadgets:
         log1 + x
       log.aggregate + i.aggregate(can,log)
     return news
-      
+
+  ##### Filling in decisions #####
+  
   def aFewBlanks(i):
     """ Handles instantiation with constraints.
-        If can't  make  newinstance after some repeats, crash."""
+        If can't  make  new instance after some repeats, crash."""
     patience = the.GADGETS.patience
     while True:
       yield i.blank()
@@ -516,6 +527,8 @@ class Gadgets:
       can.decs = [dec.maker() for dec in i.abouts.decs]
       if i.abouts.ok(can):
         return can
+
+  ##### Filling in objectives #####
   
   def eval(i,can):
     "expire the old aggregate. make the objective scores."
@@ -534,6 +547,8 @@ class Gadgets:
          agg += about.fromHell(obj,log)
        can.aggregate = agg ** 0.5 / n ** 0.5
     return can.aggregate
+
+  ##### Mutation methods #####
        
   def mutate(i,can,logs,p):
     "Return a new can with p% mutated"
@@ -564,12 +579,16 @@ class Gadgets:
                                   i.abouts.decs)]
       if i.abouts.ok(sn):
         return sn
-    
+
+  ##### Fully filling in many candidates #####
+  
   def news(i,n=None):
     "Generating, say, 100 random instances."
     return [i.eval( i.decs())
             for _ in xrange(n or the.GADGETS.baseline)]
 
+  ##### Evaluation of candidates #####
+  
   def energy(i,can,logs):
     "Returns an energy value to be minimized"
     i.eval(can)
@@ -591,7 +610,9 @@ class Gadgets:
       elif nowMed != lastMed:
         worse += 1
     return better > 0 and worse < 1
-  
+
+  ##### Pretty printing #####
+    
   def fyi(i,x)   :
     "Maybe, mention something"
     the.GADGETS.verbose and say(x)

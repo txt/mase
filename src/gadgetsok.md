@@ -180,7 +180,7 @@
  166:     print(another3(lst,'a'))
  167:   
  168:   
- 169:   def opts(optimizers,models,n=20):
+ 169:   def opts(optimizers,models,n=2):
  170:     def report(lst,what):
  171:        print("",', '.join(map(str,r2(lst))),
  172:              model.__name__,
