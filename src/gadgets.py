@@ -472,16 +472,16 @@ Note the brackets after the model name-- this creates a new instance of that mod
 
 """
 class Gadgets:
-  def __init__(i,model):
-    i.model  = model
+  def __init__(i,abouts):
+    i.abouts  = abouts
     
   def blank(i):
     "Factory for candidate objects containing Nones"
-    return i.model.clone(lambda _: None)
+    return i.abouts.clone(lambda _: None)
   
   def logs(i,also=None):
     "Factory for candidate objects containing Logs"
-    new = i.model.clone(lambda _ : Log())
+    new = i.abouts.clone(lambda _ : Log())
     for new1,also1 in new.alongWith(also):
         new1.also = also1
     return new
@@ -513,14 +513,14 @@ class Gadgets:
   def decs(i):
     "return a new candidate, with guesses for decisions"
     for can in i.aFewBlanks():
-      can.decs = [dec.maker() for dec in i.model.decs]
-      if i.model.ok(can):
+      can.decs = [dec.maker() for dec in i.abouts.decs]
+      if i.abouts.ok(can):
         return can
   
   def eval(i,can):
     "expire the old aggregate. make the objective scores."
     can.aggregate = None
-    can.objs = [obj.maker(can) for obj in i.model.objs]
+    can.objs = [obj.maker(can) for obj in i.abouts.objs]
     return can
 
   def aggregate(i,can,logs):
@@ -528,7 +528,7 @@ class Gadgets:
     if can.aggregate == None:
        agg = n = 0
        for obj,about,log in zip(can.objs,
-                                i.model.objs,
+                                i.abouts.objs,
                                 logs.objs):
          n   += 1
          agg += about.fromHell(obj,log)
@@ -539,7 +539,7 @@ class Gadgets:
     "Return a new can with p% mutated"
     for sn in i.aFewBlanks():
       for n,(dec,about,log) in enumerate(zip(can.decs,
-                                           i.model.decs,
+                                           i.abouts.decs,
                                            logs.decs)):
         val = can.decs[n]
         if p > r():
@@ -547,7 +547,7 @@ class Gadgets:
           val  = val - some + 2*some*r()
           val  = about.wrap(val)
         sn.decs[n] = val
-      if i.model.ok(sn):
+      if i.abouts.ok(sn):
         return sn
       
   def xPlusFyz(i,threeMore,cr,f):
@@ -561,8 +561,8 @@ class Gadgets:
                  for these in zip(x.decs,
                                   y.decs,
                                   z.decs,
-                                  i.model.decs)]
-      if i.model.ok(sn):
+                                  i.abouts.decs)]
+      if i.abouts.ok(sn):
         return sn
     
   def news(i,n=None):
@@ -583,7 +583,7 @@ class Gadgets:
     better=worse=0
     for now1,last1,about in zip(now.objs,
                                 last.objs,
-                                i.model.objs):
+                                i.abouts.objs):
       nowMed = median(now1.some())
       lastMed= median(last1.some())
       if about.better(nowMed, lastMed):
@@ -683,7 +683,7 @@ def DE(): return o(
 def de(m,baseline=None,also2=None):
   def goodbye(x)  : return g.bye(x,first,now)
   g  = Gadgets(m)
-  np = len(g.model.decs) * the.DE.npExpand
+  np = len(g.abouts.decs) * the.DE.npExpand
   k,eb,life = 0,1,the.GADGETS.lives
   #===== setting up logs
   also     = g.logs(also2) # also = log of all eras
