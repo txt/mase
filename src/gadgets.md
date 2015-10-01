@@ -449,10 +449,16 @@ g = Gadgets(Schaffer())
 Here is the `Gadgets` facade. Note that it offers a wide range of services
 including:
 
-+ Factory methods for generating empty `can`s, or `can`s filled with `Log`s.
-+ 
++ Factory methods (for generating empty `can`s, or `can`s filled with `Log`s.)
++ Logging methods (for remembering what values were generated)
++ Methods for filling in decisions;
++ Methods for filling in objectives;
++ Mutation methods;
++ Methods for fully filling in many methods
++ Methods for evaluating one candidate or sets of candidates
++ Pretty print methods.
 
-<a href="gadgets.py#L478-L628"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L484-L634"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  207:   class Gadgets:
@@ -528,54 +534,54 @@ including:
  277:          can.aggregate = agg ** 0.5 / n ** 0.5
  278:       return can.aggregate
  279:   
- 280:     ##### Mutation methods #####
- 281:          
- 282:     def mutate(i,can,logs,p):
- 283:       "Return a new can with p% mutated"
- 284:       for sn in i.aFewBlanks():
- 285:         for n,(dec,about,log) in enumerate(zip(can.decs,
- 286:                                              i.abouts.decs,
- 287:                                              logs.decs)):
- 288:           val = can.decs[n]
- 289:           if p > r():
- 290:             some = (log.hi - log.lo)*0.5
- 291:             val  = val - some + 2*some*r()
- 292:             val  = about.wrap(val)
- 293:           sn.decs[n] = val
- 294:         if i.abouts.ok(sn):
- 295:           return sn
- 296:         
- 297:     def xPlusFyz(i,threeMore,cr,f):
- 298:       "Crossovers some decisions, by a factor of 'f'"
- 299:       def smear((x1, y1, z1, about)):
- 300:         x1 = x1 if cr <= r() else x1 + f*(y1-z1)
- 301:         return about.wrap(x1)
- 302:       for sn in i.aFewBlanks():
- 303:         x,y,z   = threeMore()
- 304:         sn.decs = [smear(these)
- 305:                    for these in zip(x.decs,
- 306:                                     y.decs,
- 307:                                     z.decs,
- 308:                                     i.abouts.decs)]
- 309:         if i.abouts.ok(sn):
- 310:           return sn
- 311:   
- 312:     ##### Fully filling in many candidates #####
- 313:     
- 314:     def news(i,n=None):
- 315:       "Generating, say, 100 random instances."
- 316:       return [i.eval( i.decs())
- 317:               for _ in xrange(n or the.GADGETS.baseline)]
- 318:   
- 319:     ##### Evaluation of candidates #####
- 320:     
- 321:     def energy(i,can,logs):
- 322:       "Returns an energy value to be minimized"
- 323:       i.eval(can)
- 324:       e = abs(1 - i.aggregate(can,logs))
- 325:       if e < 0: e= 0
- 326:       if e > 1: e= 1
- 327:       return e
+ 280:     def energy(i,can,logs):
+ 281:       "Returns an energy value to be minimized"
+ 282:       i.eval(can)
+ 283:       e = abs(1 - i.aggregate(can,logs))
+ 284:       if e < 0: e= 0
+ 285:       if e > 1: e= 1
+ 286:       return e
+ 287:     
+ 288:     ##### Mutation methods #####
+ 289:          
+ 290:     def mutate(i,can,logs,p):
+ 291:       "Return a new can with p% mutated"
+ 292:       for sn in i.aFewBlanks():
+ 293:         for n,(dec,about,log) in enumerate(zip(can.decs,
+ 294:                                              i.abouts.decs,
+ 295:                                              logs.decs)):
+ 296:           val = can.decs[n]
+ 297:           if p > r():
+ 298:             some = (log.hi - log.lo)*0.5
+ 299:             val  = val - some + 2*some*r()
+ 300:             val  = about.wrap(val)
+ 301:           sn.decs[n] = val
+ 302:         if i.abouts.ok(sn):
+ 303:           return sn
+ 304:         
+ 305:     def xPlusFyz(i,threeMore,cr,f):
+ 306:       "Crossovers some decisions, by a factor of 'f'"
+ 307:       def smear((x1, y1, z1, about)):
+ 308:         x1 = x1 if cr <= r() else x1 + f*(y1-z1)
+ 309:         return about.wrap(x1)
+ 310:       for sn in i.aFewBlanks():
+ 311:         x,y,z   = threeMore()
+ 312:         sn.decs = [smear(these)
+ 313:                    for these in zip(x.decs,
+ 314:                                     y.decs,
+ 315:                                     z.decs,
+ 316:                                     i.abouts.decs)]
+ 317:         if i.abouts.ok(sn):
+ 318:           return sn
+ 319:   
+ 320:     ##### Fully filling in many candidates #####
+ 321:     
+ 322:     def news(i,n=None):
+ 323:       "Generating, say, 100 random instances."
+ 324:       return [i.eval( i.decs())
+ 325:               for _ in xrange(n or the.GADGETS.baseline)]
+ 326:   
+ 327:     ##### Evaluation of candidates #####
  328:     
  329:     def better1(i,now,last):
  330:       "Is one era better than another?"
@@ -608,9 +614,20 @@ including:
  357:       return first,now
 ```
 
+Note the last method, `bye`. What it is saying that my optimizers
+return logs of what was true _before_ the optimizer ran (in the `first`
+era) and _after_ the optimizer completed (in the `last` era found by the optimizer).
+
 ## Optimizers
 
-Finally, we can build our optimizers. Note that the following:
+Optimizers take (or create) some examples in some `first` era then do 
+what they can to produce a new `last` era of better examples.
+
+One detail is that, when assessing _N_ optimizers, they all have to
+start at the same baseline (the same `first` era). So these optimizers
+accept that baseline as an optional argument.
+
+Note also that all the following:
 
 + Process a model in `era`s
 + May stop early after a sequence of unpromising `era`s.
@@ -620,9 +637,9 @@ Finally, we can build our optimizers. Note that the following:
 + When generating logs, if there is an outer log, store values in this
   log as well as the outer.
 
-### Simulated Annealling
+### Simulated Annealing
 
-<a href="gadgets.py#L646-L691"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L663-L708"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  358:   @setting
@@ -675,7 +692,7 @@ Finally, we can build our optimizers. Note that the following:
 
 ### Differential Evolution
 
-<a href="gadgets.py#L697-L740"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L714-L757"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  404:   @setting
@@ -726,7 +743,7 @@ Finally, we can build our optimizers. Note that the following:
 
 DE trick for finding three unique things in a list that are not `avoid`.
 
-<a href="gadgets.py#L746-L758"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L763-L775"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  448:   def another3(lst, avoid=None):

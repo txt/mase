@@ -471,8 +471,14 @@ g = Gadgets(Schaffer())
 Here is the `Gadgets` facade. Note that it offers a wide range of services
 including:
 
-+ Factory methods for generating empty `can`s, or `can`s filled with `Log`s.
-+ 
++ Factory methods (for generating empty `can`s, or `can`s filled with `Log`s.)
++ Logging methods (for remembering what values were generated)
++ Methods for filling in decisions;
++ Methods for filling in objectives;
++ Mutation methods;
++ Methods for fully filling in many methods
++ Methods for evaluating one candidate or sets of candidates
++ Pretty print methods.
 
 """
 class Gadgets:
@@ -548,6 +554,14 @@ class Gadgets:
        can.aggregate = agg ** 0.5 / n ** 0.5
     return can.aggregate
 
+  def energy(i,can,logs):
+    "Returns an energy value to be minimized"
+    i.eval(can)
+    e = abs(1 - i.aggregate(can,logs))
+    if e < 0: e= 0
+    if e > 1: e= 1
+    return e
+  
   ##### Mutation methods #####
        
   def mutate(i,can,logs,p):
@@ -589,14 +603,6 @@ class Gadgets:
 
   ##### Evaluation of candidates #####
   
-  def energy(i,can,logs):
-    "Returns an energy value to be minimized"
-    i.eval(can)
-    e = abs(1 - i.aggregate(can,logs))
-    if e < 0: e= 0
-    if e > 1: e= 1
-    return e
-  
   def better1(i,now,last):
     "Is one era better than another?"
     better=worse=0
@@ -628,9 +634,20 @@ class Gadgets:
     return first,now
 """
 
+Note the last method, `bye`. What it is saying that my optimizers
+return logs of what was true _before_ the optimizer ran (in the `first`
+era) and _after_ the optimizer completed (in the `last` era found by the optimizer).
+
 ## Optimizers
 
-Finally, we can build our optimizers. Note that the following:
+Optimizers take (or create) some examples in some `first` era then do 
+what they can to produce a new `last` era of better examples.
+
+One detail is that, when assessing _N_ optimizers, they all have to
+start at the same baseline (the same `first` era). So these optimizers
+accept that baseline as an optional argument.
+
+Note also that all the following:
 
 + Process a model in `era`s
 + May stop early after a sequence of unpromising `era`s.
@@ -640,7 +657,7 @@ Finally, we can build our optimizers. Note that the following:
 + When generating logs, if there is an outer log, store values in this
   log as well as the outer.
 
-### Simulated Annealling
+### Simulated Annealing
 
 """    
 @setting
