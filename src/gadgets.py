@@ -48,11 +48,13 @@ import sys
 sys.dont_write_bytecode = True
 from gadgets0 import *
 
-"""# GADGETS: Timm's Generic Optimizer Gadgets (and Goodies)
+"""
+
+# GADGETS: Timm's Generic Optimizer Gadgets (and Goodies)
 
 <img width=400 align=right src="../img/gogo.jpg">
 
-`Gadgets` is a library of utilities for working with
+`Gadgets` are a library of utilities for working with
 optimization models. 
 
 With `Gadgets`, it is possible to encode something
@@ -202,7 +204,6 @@ In the above, `An` and `Less` are really `About` objects that define legal range
 
 Note also that `f1` and `f2` are nested methods that accepted a `Candidate` object (which,
 you will recall, I call `can`s).
-
 
 
 #### Fonseca
