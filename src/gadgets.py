@@ -48,22 +48,243 @@ import sys
 sys.dont_write_bytecode = True
 from gadgets0 import *
 
-"""
-
-# GADGETS: Timm's Generic Optimizer Gadgets (and Goodies)
+"""# GADGETS: Timm's Generic Optimizer Gadgets (and Goodies)
 
 <img width=400 align=right src="../img/gogo.jpg">
 
-`Gadgets` is a library of utilities for working with optimization models. With `Gadgets`,
-it is possible to encode:
+`Gadgets` is a library of utilities for working with
+optimization models. 
+
+With `Gadgets`, it is possible to encode something
+that looks a little like....
 
 ```python
 for model in [Schaffer,...]:
   for optimizer in [sa,mws...]:
-    optimizer(model())
+    for _ in xrange(20):
+      optimizer(model())
 ```
 
-`Gadgets` uses 
+Note that:
+
++ For samples of how to use this code, see [gadgetsok.py](gadgetsok.py).
++ In the following, anything in `this font` is some method or class in the code.
+
+## What are `Gadgets`?
+
+`Gadgets` are a _Factory_ and a _Facade_:
+
++ In class-based programming, the _factory_ method
+  pattern is a _creational pattern_ which uses factory
+  methods to deal with the problem of creating
+  objects without specifying the exact class of
+  object that will be created. This is done by
+  creating objects via (e.g.)  calling a factory
+  method—- either specified in an interface and
+  implemented by child classes.
++ A _facade_ is an object that provides a simplified 
+  interface to a larger body of code, such as a class library. A facade can:
+   + make a software library easier to use,
+     understand and test, since the facade has
+     convenient methods for common tasks;
+   + make the library more readable, for the same
+     reason; 
+   + reduce dependencies of outside code on
+     the inner workings of a library, since most
+     code uses the facade, thus allowing more
+     flexibility in developing the system;
+
+`Gadgets` are a _facade_ since, every time I code a new optimizer, its always some mix-and-match of
+numerous lower-level facilities. 
+
++ On Sundays and Wednesdays, I think optimizers should inherit from
+`Gadgets`.
++ On every other day, I believe that since not every gadget applies to every optimizer,
+its just more flexible and easier to place all those lower-level facilities into a box, and just 
+call interface methods to that box.
+
+_Factories_ assemble _parts_. In this code, I know of three kinds of parts:
+
++ Parts to hold the specific values from one set of
+  decisions, objectives and (optionally) some aggregation of the objective
+  scores. In the following, these will be called
+  + `decs`
+  + `objs`
+  + `aggregate`
++ Parts for the some _logging code_ that keeps track of the observed `decs` and `objs, aggregate` values.
++ Parts that talk `About` legal values for the `decs` and `objs` and, for `objs` if we want to minimize
+  or maximize those scores.
+
+## Parts of the `Gadgets`
+
+### Candidates
+
+`Candidate`s objects have  objectives, decisions and maybe some aggregate value. 
+Using a factory method,  we will fill in `Candidate`s with either 
+
++ The specific values from one set `decs` and `objs, aggregate`;
++ Or, `Log`ging objects that remember what specific values were ever assigned to  `decs` and `objs, aggregate`;
++ Or, `About` objects that defined what are legel values from the specific values  
+  (and, for `objs` if we want to minimize
+  or maximize those scores)
+
+In the following, I sometimes refer to `Candidate` objects as `can`. For example, the `ok` method
+received a `can` and returns true if the current contents of `decs` are valid.
+
+"""        
+class Candidate(object):
+  def __init__(i,decs=[],objs=[]):
+    i.decs,i.objs=decs,objs
+    i.aggregate=None
+    i.abouts = i.about()
+    
+  def __getitem__(i,key):
+    "Simple way to access decs or objs or aggregates."
+    return i.__dict__[key]
+  
+  def ok(i,can):
+    "Maybe overwritten by subclass."
+    return True
+  
+  def about(i):
+    """Factory method for return a Candidate full of 
+       About objects."""
+    assert False,'implemented by subclass'
+    
+  def __repr__(i):
+    "Present me in a  string"
+    return printer(i,decs=i.decs,
+                   objs=i.objs,
+                   aggregated=i.aggregate)
+  
+  def clone(i,what = lambda _: None):
+    """A genetic factory that makes a new  thing
+       like receiver, filled in with 'what' objects."""
+    j      = object.__new__(i.__class__)
+    j.decs = [what(x) for x in i.decs]
+    j.objs = [what(x) for x in i.objs]
+    j.aggregate = what(i.aggregate)
+    j.abouts = i.abouts
+    return j
+  
+  def alongWith(i,j=None):
+    "Convenient iterator."
+    if j:
+      for one,two in zip(i.decs, j.decs):
+        yield one,two
+      for one,two in zip(i.objs, j.objs):
+        yield one,two
+      yield i.aggregate, j.aggregate
+"""
+
+Using the above, we can build a _factory_ method called `about` that returns what we know `About`
+each candidate.
+
+#### Schaffer
+
+"""
+class Schaffer(Candidate):
+  def about(i):
+    def f1(can):
+      x = can.decs[0]
+      return x**2
+    def f2(can):
+      x = can.decs[0]
+      return (x-2)**2
+    i.decs = [An("x",   lo = -10**5, hi = 10**5)]
+    i.objs = [Less("f1",  maker=f1),
+              Less("f2", maker=f2)]
+"""
+
+In the above, `An` and `Less` are really `About` objects that define legal ranges for values 
+ (and, for `objs` if we want to minimize
+  or maximize those scores).
+
+Note also that `f1` and `f2` are nested methods that accepted a `Candidate` object (which,
+you will recall, I call `can`s).
+
+
+
+#### Fonseca
+
+"""  
+class Fonseca(Candidate):
+  n=3
+  def about(i):
+    def f1(can):
+      z = sum([(x - 1/sqrt(Fonseca.n))**2 for x in can.decs])
+      return 1 - ee**(-1*z)
+    def f2(can):
+      z = sum([(x + 1/sqrt(Fonseca.n))**2 for x in can.decs])
+      return 1 - ee**(-1*z)
+    def dec(x):
+      return An(x, lo=-4, hi=4)
+    i.decs = [dec(x) for x in range(Fonseca.n)]
+    i.objs = [Less("f1",  maker=f1),
+              Less("f2",  maker=f2)]
+"""
+
+
+Note the use of a list comprehension to create
+
+### Kursawe
+
+"""
+class Kursawe(Candidate):
+  def about(i,a=1,b=1):
+    def f1(can):
+      def xy(x,y):
+        return -10*ee**(-0.2*sqrt(x*x + y*y))
+      a,b,c = can.decs
+      return xy(a,b) + xy(b,c)
+    def f2(can):
+      return sum( (abs(x)**a + 5*sin(x)**b) for x in can.decs )
+    def dec(x):
+      return  An(x, lo=-5, hi=5)           
+    i.decs = [dec(x) for x in range(3)]
+    i.objs = [Less("f1",  maker=f1),
+              Less("f2",  maker=f2)]
+
+class ZDT1(Candidate):
+  n=30
+  def about(i):
+    def f1(can):
+      return can.decs[0]
+    def f2(can):
+      g = 1 + 9*sum(x for x in can.decs[1:] )/(ZDT1.n-1)
+      return g*abs(1 - sqrt(can.decs[0]*g))
+    def dec(x):
+      return An(x,lo=0,hi=1)
+    i.decs = [dec(x) for x in range(ZDT1.n)]
+    i.objs = [Less("f1",maker=f1),
+              Less("f2",maker=f2)]
+
+class Viennet4(Candidate):
+  def ok(i,can):
+     one,two = can.decs
+     g1 = -1*two - 4*one + 4
+     g2 = one + 1            
+     g3 = two - one + 2
+     return g1 >= 0 and g2 >= 0 and g3 >= 0
+  def about(i):
+    def f1(can):
+      one,two = can.decs
+      return (one - 2)**2 /2 + (two + 1)**2 /13 + 3
+    def f2(can):
+      one,two = can.decs
+      return (one + two - 3)**2 /175 + (2*two - one)**2 /17 - 13
+    def f3(can):
+      one,two= can.decs
+      return (3*one - 2*two + 4)**2 /8 + (one - two + 1)**2 /27 + 15
+    def dec(x):
+      return An(x,lo= -4,hi= 4)
+    i.decs = [dec(x) for x in range(2)]
+    i.objs = [Less("f1",maker=f1),
+              Less("f2",maker=f2),
+              Less("f3",maker=f3)]
+"""
+
+
 a little object system based on Python:
 
 + Candidates store example instances
@@ -157,125 +378,6 @@ class Some:
     return i
 """
 
-## Candidates
-
-`Candidate`s have objectives, decisions and maybe some aggregate value. Note that since
-they are just containers, we define `Candidate` using the `o` container class.
-
-"""        
-class Candidate(object):
-  def __init__(i,decs=[],objs=[]):
-    i.decs,i.objs=decs,objs
-    i.aggregate=None
-    i.abouts = i.about()
-  def __getitem__(i,key):
-    return i.__dict__[key]
-  def ok(i,can): return True
-  def about(i): True
-  def __repr__(i):
-    return printer(i,decs=i.decs,
-                   objs=i.objs,
-                   aggregated=i.aggregate)
-  def clone(i,what = lambda _: None):
-    j      = object.__new__(i.__class__)
-    j.decs = [what(x) for x in i.decs]
-    j.objs = [what(x) for x in i.objs]
-    j.aggregate = what(i.aggregate)
-    j.abouts = i.abouts
-    return j
-  def alongWith(i,j=None):
-    "convenient iterator."
-    if j:
-      for one,two in zip(i.decs, j.decs):
-        yield one,two
-      for one,two in zip(i.objs, j.objs):
-        yield one,two
-      yield i.aggregate, j.aggregate
-"""
-
-Example model (note the use of the `want`, `less` and `more` classes... defined below).
-
-"""
-class Schaffer(Candidate):
-  def about(i):
-    def f1(can):
-      x = can.decs[0]
-      return x**2
-    def f2(can):
-      x = can.decs[0]
-      return (x-2)**2
-    i.decs = [An("x",   lo = -10**5, hi = 10**5)]
-    i.objs = [Less("f1",  maker=f1),
-              Less("f2", maker=f2)]
-  
-class Fonseca(Candidate):
-  n=3
-  def about(i):
-    def f1(can):
-      z = sum([(x - 1/sqrt(Fonseca.n))**2 for x in can.decs])
-      return 1 - ee**(-1*z)
-    def f2(can):
-      z = sum([(x + 1/sqrt(Fonseca.n))**2 for x in can.decs])
-      return 1 - ee**(-1*z)
-    def dec(x):
-      return An(x, lo=-4, hi=4)
-    i.decs = [dec(x) for x in range(Fonseca.n)]
-    i.objs = [Less("f1",  maker=f1),
-              Less("f2",  maker=f2)]
-
-class Kursawe(Candidate):
-  def about(i,a=1,b=1):
-    def f1(can):
-      def xy(x,y):
-        return -10*ee**(-0.2*sqrt(x*x + y*y))
-      a,b,c = can.decs
-      return xy(a,b) + xy(b,c)
-    def f2(can):
-      return sum( (abs(x)**a + 5*sin(x)**b) for x in can.decs )
-    def dec(x):
-      return  An(x, lo=-5, hi=5)           
-    i.decs = [dec(x) for x in range(3)]
-    i.objs = [Less("f1",  maker=f1),
-              Less("f2",  maker=f2)]
-
-class ZDT1(Candidate):
-  n=30
-  def about(i):
-    def f1(can):
-      return can.decs[0]
-    def f2(can):
-      g = 1 + 9*sum(x for x in can.decs[1:] )/(ZDT1.n-1)
-      return g*abs(1 - sqrt(can.decs[0]*g))
-    def dec(x):
-      return An(x,lo=0,hi=1)
-    i.decs = [dec(x) for x in range(ZDT1.n)]
-    i.objs = [Less("f1",maker=f1),
-              Less("f2",maker=f2)]
-
-class Viennet4(Candidate):
-  def ok(i,can):
-     one,two = can.decs
-     g1 = -1*two - 4*one + 4
-     g2 = one + 1            
-     g3 = two - one + 2
-     return g1 >= 0 and g2 >= 0 and g3 >= 0
-  def about(i):
-    def f1(can):
-      one,two = can.decs
-      return (one - 2)**2 /2 + (two + 1)**2 /13 + 3
-    def f2(can):
-      one,two = can.decs
-      return (one + two - 3)**2 /175 + (2*two - one)**2 /17 - 13
-    def f3(can):
-      one,two= can.decs
-      return (3*one - 2*two + 4)**2 /8 + (one - two + 1)**2 /27 + 15
-    def dec(x):
-      return An(x,lo= -4,hi= 4)
-    i.decs = [dec(x) for x in range(2)]
-    i.objs = [Less("f1",maker=f1),
-              Less("f2",maker=f2),
-              Less("f3",maker=f3)]
-"""
 
 ## Want
 
