@@ -50,9 +50,11 @@ from gadgets0 import *
 
 """
 
+<img width=400 align=right src="../img/gogo.jpg">
+
 # GADGETS: Timm's Generic Optimizer Gadgets (and Goodies)
 
-<img width=400 align=right src="../img/gogo.jpg">
+
 
 `Gadgets` are a library of utilities for working with
 optimization models. 
