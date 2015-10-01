@@ -22,6 +22,7 @@
  ![image](https://cloud.githubusercontent.com/assets/1433964/10233708/2cce5aac-685e-11e5-9bbc-79d14d5986b2.png)
  
  + Infer the linguistic clues from below:
+
 ![image](https://cloud.githubusercontent.com/assets/1433964/10234294/94699da4-6861-11e5-8b8f-b8e1cc252d8a.png)
 
 
