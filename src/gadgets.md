@@ -7,10 +7,11 @@
 
 
 
-<img width=400 align=right src="../img/gogo.jpg">
+
 
 # GADGETS: Timm's Generic Optimizer Gadgets (and Goodies)
 
+<img width=400 align=right src="../img/gogo.jpg">
 
 
 `Gadgets` are a library of utilities for working with
@@ -92,7 +93,7 @@ Using a factory method,  we will fill in `Candidate`s with either
 In the following, I sometimes refer to `Candidate` objects as `can`. For example, the `ok` method
 received a `can` and returns true if the current contents of `decs` are valid.
 
-<a href="gadgets.py#L139-L181"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L140-L182"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   class Candidate(object):
@@ -145,7 +146,7 @@ each candidate.
 
 #### Schaffer
 
-<a href="gadgets.py#L190-L200"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L191-L201"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   44:   class Schaffer(Candidate):
@@ -171,7 +172,7 @@ you will recall, I call `can`s).
 
 #### Fonseca
 
-<a href="gadgets.py#L214-L227"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L215-L228"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   55:   class Fonseca(Candidate):
@@ -195,7 +196,7 @@ Note the use of a list comprehension to create
 
 ### Kursawe
 
-<a href="gadgets.py#L236-L287"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L237-L288"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   69:   class Kursawe(Candidate):
@@ -297,7 +298,7 @@ Note two small details about these `Log`s:
 + As a side-effect of logging, we also keep a small sample of
   the logged items. This will come in handy... later.
 
-<a href="gadgets.py#L336-L381"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L337-L382"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  121:   class Log:
@@ -369,7 +370,7 @@ Note that `Want` is a handy place to implement some useful services:
 + `wrap`ing out of bounds value via modulo;
 + How to compute the distance `fromHell`.
 
-<a href="gadgets.py#L406-L432"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L407-L433"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  167:   def lt(i,j): return i < j
@@ -404,7 +405,7 @@ Note that `Want` is a handy place to implement some useful services:
 Using the above, we can succinctly specify objectives
 that want to minimize or maximize their values.
 
-<a href="gadgets.py#L439-L442"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L440-L443"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  194:   A = An = Less = About
@@ -436,7 +437,7 @@ following, always write
     + For example, the primitive `decs` method (that generates decisions)
       on `keeps` the decision if called by `keepDecs`.
 
-<a href="gadgets.py#L469-L703"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="gadgets.py#L470-L704"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
  198:   @setting
