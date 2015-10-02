@@ -7,10 +7,11 @@
 
 
 # Review6: Dr. Dam's Talk
+Here's a [link](https://github.com/txt/mase/blob/master/src/doc/Hoa-NCSU-2015.pdf) to the slides.
 
 + What are predictive models?
 + What are rule based models?
-+ Define: !) Supervised learning; 2) Features; 3) Dependent Varaibles.
++ Define: 1) Supervised learning; 2) Features; 3) Dependent Varaibles.
 + In the following figure, label features and independent variables.
 + In a few lines, differentiate regression and classification.
 + What is risk exposure? Give a mathematical expression to calculate it.
