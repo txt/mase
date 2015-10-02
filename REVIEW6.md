@@ -12,7 +12,10 @@ Here's a [link](https://github.com/txt/mase/blob/master/src/doc/Hoa-NCSU-2015.pd
 + What are predictive models?
 + What are rule based models?
 + Define: 1) Supervised learning; 2) Features; 3) Dependent Varaibles.
-+ In the following figure, label features and independent variables.
++ In the following figure, label features and independent variables:
+
+![image](https://cloud.githubusercontent.com/assets/1433964/10260099/0c3e6dc2-693f-11e5-8ec1-16cb29ab6928.png)
+
 + In a few lines, differentiate regression and classification.
 + What is risk exposure? Give a mathematical expression to calculate it.
 + Sort the steps taken in reducing delays, as proposed by Dr. Hoa:
