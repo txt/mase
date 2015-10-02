@@ -21,7 +21,7 @@ Here's a [link](https://github.com/txt/mase/blob/master/src/doc/Hoa-NCSU-2015.pd
   * Train classifiers.
 + In the following figure label **A** and **B**:
 
-![1](https://cloud.githubusercontent.com/assets/1433964/10259938/29db384a-693c-11e5-8163-69f25542da9a.png)
+![1](![image](https://cloud.githubusercontent.com/assets/1433964/10260006/3d5ac04c-693d-11e5-8c3b-f971f1a1d49b.png)
 
 + Define networked data
 + Briefly describe task networks
