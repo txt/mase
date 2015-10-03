@@ -4,6 +4,35 @@ import random,re,sys
 sys.dont_write_bytecode = True
 from walkcsv import *
 
+class o:
+  """Emulate Javascript's uber simple objects.."""
+  def __init__(i,**d)    : i.__dict__.update(d)
+  def __setitem__(i,k,v) : i.__dict__[k] = v
+  def __getitem__(i,k)   : return i.__dict__[k]
+  def __repr__(i)        : return 'o'+str(i.__dict__)
+
+the = o()
+
+def setting(f):
+  name = f.__name__
+  def wrapper(**d):
+    tmp = f()
+    tmp.__dict__.update(d) 
+    the[name] = tmp  
+    return tmp
+  wrapper() 
+  return wrapper
+
+@setting
+def COL(): return o(
+    cache = 256,
+    dull  = [0.147, # small
+             0.33,  # medium
+             0.474  # large
+            ][0],
+    missing="?"
+    )
+
 """
 
 
@@ -28,40 +57,53 @@ rseed = random.seed
 gt    = lambda x,y: x > y
 lt    = lambda x,y: x < y
 
-class o:
-  """Emulate Javascript's uber simple objects.
-  Note my convention: I use "`i`" not "`this`."""
-  def __init__(i,**d)    : i.__dict__.update(d)
-  def __setitem__(i,k,v) : i.__dict__[k] = v
-  def __getitem__(i,k)   : return i.__dict__[k]
-  def __repr__(i)        : return 'o'+str(i.__dict__)
 
 class Some:
   "Keep some things."
-  def __init__(i, keep=8): # note, usually 256 or 128 or 64 (if brave)
-    i.n, i.any, i.keep, i.ordered = 0,[],keep, False
-  def __iadd__(i,x):
-    i.ordered = False
+  def __init__(i, keep=None): # note, usually 256 or 128 or 64 (if brave)
+    i.keep = keep or the.COL.cache
+    i.n, i.any  = 0,[]
+  def add(i,x):
     i.n += 1
     now = len(i.any)
-    if now < i.keep:    # not full yet, so just keep it   
+    if now < i.keep:       
       i.any += [x]
     elif r() <= now/i.n:
-      i.any[ int(r() * now) ]= x # zap some older value
-    #else: forget x
-    return i
-  def sorted(i):
-    i.any = i.any if i.ordered else sorted(i.any)
-    i.ordered = True
-    return i.any
-  def lo(i): return i.sorted()[0]
-  def hi(i): return i.sorted()[-1]
-  def norm(i,x):
-    lo,hi = i.lo(), i.hi()
-    if x < lo: return 0
-    if x > hi: return 1
-    return (x - lo)/ (hi - lo + 1e-32)
+      i.any[ int(r() * now) ]= x 
 
+class Log:
+  def __init__(i,inits=[]):
+    i.reset()
+    i.n = 0 
+    i.cache=Some()
+    map(i.add,inits)
+  def add(i,x):
+    if x != the.COL.missing:
+      i.add1(x)
+      i.n += 1
+      i.cache.add(x)
+
+class Num(Log):
+  def reset(i):
+    i.hi = i.lo = None
+    i.mu = i.sd = i.m2 = 0  
+  def add1(i,z):
+    i.lo  = min(z,i.lo)
+    i.hi  = max(z,i.hi)
+    delta = z - i.mu;
+    i.mu += delta/i.n
+    i.m2 += delta*(z - i.mu)
+    if i.n > 1:
+      i.sd = (i.m2/(i.n - 1))**0.5
+
+class Sym(Log):
+  def reset(i):
+    i.most, i.mode, i.all = 1,0,None,{}
+  def add1(i,z):
+    tmp = i.all[z] = i.all.get(z,0) + 1
+    if tmp > i.most:
+      i.most,i.mode = tmp,z
+    
 """
 
 ## Table
