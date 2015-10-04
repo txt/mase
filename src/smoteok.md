@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-<a href="smoteok.py#L1-L39"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="smoteok.py#L1-L46"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
 ```

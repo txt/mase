@@ -39,17 +39,17 @@
   25:   
   26:   @ok
   27:   def _line():
-  28:     for line in lines(FROM(weather)):
+  28:     for line in lines(weather):
   29:       print("[",line,"]",sep="")
   30:   
   31:   @ok
   32:   def _row():
-  33:     for row in rows(FROM(weather)):
+  33:     for row in rows(lines('weather.csv')):
   34:       print("[",row,"]",sep="")
   35:   
   36:   @ok
-  37:   def _values():
-  38:     for cells in values(FROM(weather)):
+  37:   def _col():
+  38:     for cells in cols(lines(weather)):
   39:       print(cells)
 ```
 
