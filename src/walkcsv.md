@@ -5,8 +5,6 @@
 [Code](https://github.com/txt/mase/tree/master/src) |
 [Lecturer](http://menzies.us) 
 
-
-
 # Iterators for Walking CSV Data
 
 Can handing raw strings, files, zip files.
@@ -14,7 +12,6 @@ Can handing raw strings, files, zip files.
 Assumes if lines end in ',' then that line continues to the next.
 
 Also assumes first line is column names. 
-
 
 ## Handing Raw String, Files, Zip Files.
 

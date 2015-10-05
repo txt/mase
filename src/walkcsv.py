@@ -13,7 +13,6 @@ Assumes if lines end in ',' then that line continues to the next.
 
 Also assumes first line is column names. 
 
-
 ## Handing Raw String, Files, Zip Files.
 
 The function `FROM` returns iterators that can handle different kinds of data.
@@ -77,4 +76,11 @@ def cols(src):
     want = want or [col for col in xrange(len(lst))
                     if lst[col][0] != "?" ]
     yield [ make(lst[col]) for col in want ]
-    
+
+def headBody(src):
+  head=None
+  for cells in cols(src):
+    if head:
+      return head,cells
+    else:
+      head = cells
