@@ -2,7 +2,7 @@
 
 + What are predictive models?
 + What are rule based models?
-+ Define: !) Supervised learning; 2) Features; 3) Dependent Varaibles.
++ Define: 1) Supervised learning; 2) Features; 3) Dependent Varaibles.
 + In the following figure, label features and independent variables.
 + In a few lines, differentiate regression and classification.
 + What is risk exposure? Give a mathematical expression to calculate it.
