@@ -217,7 +217,7 @@ you will recall, I call `can`s).
 
 #### Fonseca
 
-One decisions, two objectives, zero constraints.
+Three decisions, two objectives, zero constraints.
 
 """  
 class Fonseca(Candidate):
@@ -246,6 +246,7 @@ Three decisions, two objectives,  zero constraints.
 
 """
 class Kursawe(Candidate):
+  n=3
   def about(i,a=1,b=1):
     def f1(can):
       def xy(x,y):
@@ -256,7 +257,7 @@ class Kursawe(Candidate):
       return sum( (abs(x)**a + 5*sin(x)**b) for x in can.decs )
     def dec(x):
       return  An(x, lo=-5, hi=5)           
-    i.decs = [dec(x) for x in range(3)]
+    i.decs = [dec(x) for x in range(Kursawe.n)]
     i.objs = [Less("f1",  maker=f1),
               Less("f2",  maker=f2)]
 """
@@ -289,6 +290,7 @@ Two decisions, three objectives,  three constraints (all codes into the `ok` met
 
 """    
 class Viennet4(Candidate):
+  n=2
   def ok(i,can):
      one,two = can.decs
      g1 = -1*two - 4*one + 4
@@ -307,7 +309,7 @@ class Viennet4(Candidate):
       return (3*one - 2*two + 4)**2 /8 + (one - two + 1)**2 /27 + 15
     def dec(x):
       return An(x,lo= -4,hi= 4)
-    i.decs = [dec(x) for x in range(2)]
+    i.decs = [dec(x) for x in range(Viennet4.n)]
     i.objs = [Less("f1",maker=f1),
               Less("f2",maker=f2),
               Less("f3",maker=f3)]
