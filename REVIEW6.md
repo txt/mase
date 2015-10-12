@@ -11,7 +11,10 @@
 + What are predictive models?
 + What are rule based models?
 + Define: 1) Supervised learning; 2) Features; 3) Dependent Varaibles.
-+ In the following figure, label features and independent variables.
++ In the following figure, label features and independent variables:
+
+![image](https://cloud.githubusercontent.com/assets/1433964/10419861/9b895770-7052-11e5-9fed-77c53a922a20.png)
+
 + In a few lines, differentiate regression and classification.
 + What is risk exposure? Give a mathematical expression to calculate it.
 + Sort the steps taken in predicting delays, as proposed by Dr. Hoa:
