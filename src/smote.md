@@ -23,178 +23,173 @@ If less than N examples per class, use synthetic oversamples:
 
 ## Support code
 
-<a href="smote.py#L26-L64"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="smote.py#L37-L70"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-   1:   r     = random.random
-   2:   rseed = random.seed
-   3:   gt    = lambda x,y: x > y
-   4:   lt    = lambda x,y: x < y
-   5:   
-   6:   class o:
-   7:     """Emulate Javascript's uber simple objects.
-   8:     Note my convention: I use "`i`" not "`this`."""
-   9:     def __init__(i,**d)    : i.__dict__.update(d)
-  10:     def __setitem__(i,k,v) : i.__dict__[k] = v
-  11:     def __getitem__(i,k)   : return i.__dict__[k]
-  12:     def __repr__(i)        : return 'o'+str(i.__dict__)
+   1:   
+   2:   class Log:
+   3:     def __init__(i,inits=[]):
+   4:       i.reset()
+   5:       i.n = 0 
+   6:       i.cache=Some()
+   7:       map(i.add,inits)
+   8:     def add(i,x):
+   9:       if x != the.COL.missing:
+  10:         i.add1(x)
+  11:         i.n += 1
+  12:         i.cache.add(x)
   13:   
-  14:   class Some:
-  15:     "Keep some things."
-  16:     def __init__(i, keep=8): # note, usually 256 or 128 or 64 (if brave)
-  17:       i.n, i.any, i.keep, i.ordered = 0,[],keep, False
-  18:     def __iadd__(i,x):
-  19:       i.ordered = False
-  20:       i.n += 1
-  21:       now = len(i.any)
-  22:       if now < i.keep:    # not full yet, so just keep it   
-  23:         i.any += [x]
-  24:       elif r() <= now/i.n:
-  25:         i.any[ int(r() * now) ]= x # zap some older value
-  26:       #else: forget x
-  27:       return i
-  28:     def sorted(i):
-  29:       i.any = i.any if i.ordered else sorted(i.any)
-  30:       i.ordered = True
-  31:       return i.any
-  32:     def lo(i): return i.sorted()[0]
-  33:     def hi(i): return i.sorted()[-1]
-  34:     def norm(i,x):
-  35:       lo,hi = i.lo(), i.hi()
-  36:       if x < lo: return 0
-  37:       if x > hi: return 1
-  38:       return (x - lo)/ (hi - lo + 1e-32)
-  39:   
+  14:   class Num(Log):
+  15:     def reset(i):
+  16:       i.hi = i.lo = None
+  17:       i.mu = i.sd = i.m2 = 0  
+  18:     def add1(i,z):
+  19:       i.lo  = min(z,i.lo)
+  20:       i.hi  = max(z,i.hi)
+  21:       delta = z - i.mu;
+  22:       i.mu += delta/i.n
+  23:       i.m2 += delta*(z - i.mu)
+  24:       if i.n > 1:
+  25:         i.sd = (i.m2/(i.n - 1))**0.5
+  26:   
+  27:   class Sym(Log):
+  28:     def reset(i):
+  29:       i.most, i.mode, i.all = 1,0,None,{}
+  30:     def add1(i,z):
+  31:       tmp = i.all[z] = i.all.get(z,0) + 1
+  32:       if tmp > i.most:
+  33:         i.most,i.mode = tmp,z
+  34:       
 ```
 
 ## Table
 
-<a href="smote.py#L70-L192"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="smote.py#L76-L198"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
-  40:   
-  41:   class Table:
-  42:     " Tables keep `Some` values for each column in a string."
-  43:     def __init__(i,header,what="_all_",keep=100,rows=[]):
-  44:       i.header= header
-  45:       i.what  = what
-  46:       i.dep   = o(less=[], more=[], klass=None)
-  47:       i.indep = o(nums=[], syms=[])
-  48:       i.nums, i.syms, i.all = [],[],[]
-  49:       i.rows  = Some(keep=keep)
-  50:       for pos,name in enumerate(header):
-  51:         i.col(pos,name)
-  52:       map(i.__iadd__, rows)
-  53:       i.there = There(i)
-  54:     def clone(i,what=None,keep=None,rows=[]):
-  55:       return Table(i.header,
-  56:                    what= what or i.what,
-  57:                    keep= keep or i.rows.keep,
-  58:                    rows= rows)
-  59:     def __iadd__(i,cells):
-  60:       i.rows += [cells]
-  61:       for col in i.all:
-  62:         col += cells[col.pos]
-  63:       return i
-  64:     def klassp(i,x) : return "=" in x
-  65:     def lessp( i,x) : return "<" in x
-  66:     def morep( i,x) : return ">" in x
-  67:     def nump(  i,x) : return "$" in x
-  68:     def col(i,pos,name):
-  69:       z      = Some()
-  70:       z.pos  = pos
-  71:       z.name = name
-  72:       also   = i.nums 
-  73:       if   i.morep(name) : i.dep.more += [z]
-  74:       elif i.lessp(name) : i.dep.less += [z]
-  75:       elif i.nump(name)  : i.indep.nums += [z]
-  76:       else:
-  77:         also = i.syms
-  78:         if i.klassp(name): i.dep.klass = z
-  79:         else             : i.indep.syms += [z]
-  80:       i.all += [z]
-  81:       also  += [z]
-  82:     
-  83:   class There:
-  84:     def __init__(i,t):
-  85:       i.t, i.dists = t,{}
-  86:     def dist(i,j,k):
-  87:       jid, kid = id(j),id(k)
-  88:       if jid == kid : return 0
-  89:       if jid > kid  : return i.dist(i.t,k,j)
-  90:       key = (jid,kid)
-  91:       if not key in i.dists :
-  92:         i.dists[key] = dist(i.t,j,k)
-  93:       return i.dists[key]
-  94:     def furthest(i,r1,lst,best=-1,better=gt):
-  95:       out = r1
-  96:       for r2 in lst:
-  97:         tmp = dist(i.t,r1,r2)
-  98:         if tmp and better(tmp,best):
-  99:           out,best = r2,tmp
- 100:       return out
- 101:     def closest(i,r1,lst):
- 102:       return i.furthest(i,r1,lst,best=1e32,better=lt)
- 103:     def nn(i,lst):
- 104:       all,nn,rnn = [],{}, {}
- 105:       for n1,r1 in enumerate(lst):
- 106:         all += [(n1,r1)]
- 107:         r2   = i.closest(r1,lst)
- 108:         nn[ n1] = r2
- 109:         rnn[n2] = rnn.get(n2,[]) + [n1]   
- 110:       return nn,rnn
- 111:     def decrowd(i,lst,min=2):
- 112:       "zap nearest neighbors"
- 113:       _,rnn = i.nn(i,lst)
- 114:       rnn = sorted([z for z in rnn.items()],
- 115:                    key = lambda pair: len(pair[1]),
- 116:                    reverse=True)
- 117:       out, dead = [],{}
- 118:       for n,nears in rnn:
- 119:         if len(nears) < min: break
- 120:         if not n in dead:
- 121:           out += [lst[n]]
- 122:           for z in nears:
- 123:             dead[z] = True
- 124:       return out      
- 125:       
- 126:   def dist(t,j,k):
- 127:     "Does the calcs"
- 128:     def colxy(cols,xs,ys):
- 129:       for col in cols:
- 130:         x = xs[col.pos]
- 131:         y = ys[col.pos]
- 132:         if x == "?" and y=="?": continue
- 133:         yield col,x,y
- 134:     def far(col,x,y):
- 135:       y = col.norm(y)
- 136:       x = 0 if y > 0.5 else 1
- 137:       return x,y
- 138:     #---------
- 139:     n=all=0
- 140:     for col in colsxy(t.indep.syms,j,k):
- 141:       if x== "?" or y == "?":
- 142:         n   += 1
- 143:         all += 1
- 144:       else:
- 145:         inc = 0 if x == y else 1
- 146:         n   += 1
- 147:         all += inc
- 148:     for col,x,y in colxy(t.indep.nums,j,k):
- 149:       if   x == "?" : x,y = far(col,x,y)
- 150:       elif y == "?" : y,x = far(col,y,x)
- 151:       else          : x,y = col.norm(x), col.norm(y)
- 152:       n   += 1
- 153:       all += (x-y)**2
- 154:     return all**0.5 / n**0.5   
- 155:   
- 156:   def table(src):
- 157:     for cells in values(src):
- 158:       if t:
- 159:         t += cells
- 160:       else:
- 161:        t = Table(cells)
- 162:     return t
+  35:   
+  36:   class Table:
+  37:     " Tables keep `Some` values for each column in a string."
+  38:     def __init__(i,header,what="_all_",keep=100,rows=[]):
+  39:       i.header= header
+  40:       i.what  = what
+  41:       i.dep   = o(less=[], more=[], klass=None)
+  42:       i.indep = o(nums=[], syms=[])
+  43:       i.nums, i.syms, i.all = [],[],[]
+  44:       i.rows  = Some(keep=keep)
+  45:       for pos,name in enumerate(header):
+  46:         i.col(pos,name)
+  47:       map(i.__iadd__, rows)
+  48:       i.there = There(i)
+  49:     def clone(i,what=None,keep=None,rows=[]):
+  50:       return Table(i.header,
+  51:                    what= what or i.what,
+  52:                    keep= keep or i.rows.keep,
+  53:                    rows= rows)
+  54:     def __iadd__(i,cells):
+  55:       i.rows += [cells]
+  56:       for col in i.all:
+  57:         col += cells[col.pos]
+  58:       return i
+  59:     def klassp(i,x) : return "=" in x
+  60:     def lessp( i,x) : return "<" in x
+  61:     def morep( i,x) : return ">" in x
+  62:     def nump(  i,x) : return "$" in x
+  63:     def col(i,pos,name):
+  64:       z      = Some()
+  65:       z.pos  = pos
+  66:       z.name = name
+  67:       also   = i.nums 
+  68:       if   i.morep(name) : i.dep.more += [z]
+  69:       elif i.lessp(name) : i.dep.less += [z]
+  70:       elif i.nump(name)  : i.indep.nums += [z]
+  71:       else:
+  72:         also = i.syms
+  73:         if i.klassp(name): i.dep.klass = z
+  74:         else             : i.indep.syms += [z]
+  75:       i.all += [z]
+  76:       also  += [z]
+  77:     
+  78:   class There:
+  79:     def __init__(i,t):
+  80:       i.t, i.dists = t,{}
+  81:     def dist(i,j,k):
+  82:       jid, kid = id(j),id(k)
+  83:       if jid == kid : return 0
+  84:       if jid > kid  : return i.dist(i.t,k,j)
+  85:       key = (jid,kid)
+  86:       if not key in i.dists :
+  87:         i.dists[key] = dist(i.t,j,k)
+  88:       return i.dists[key]
+  89:     def furthest(i,r1,lst,best=-1,better=gt):
+  90:       out = r1
+  91:       for r2 in lst:
+  92:         tmp = dist(i.t,r1,r2)
+  93:         if tmp and better(tmp,best):
+  94:           out,best = r2,tmp
+  95:       return out
+  96:     def closest(i,r1,lst):
+  97:       return i.furthest(i,r1,lst,best=1e32,better=lt)
+  98:     def nn(i,lst):
+  99:       all,nn,rnn = [],{}, {}
+ 100:       for n1,r1 in enumerate(lst):
+ 101:         all += [(n1,r1)]
+ 102:         r2   = i.closest(r1,lst)
+ 103:         nn[ n1] = r2
+ 104:         rnn[n2] = rnn.get(n2,[]) + [n1]   
+ 105:       return nn,rnn
+ 106:     def decrowd(i,lst,min=2):
+ 107:       "zap nearest neighbors"
+ 108:       _,rnn = i.nn(i,lst)
+ 109:       rnn = sorted([z for z in rnn.items()],
+ 110:                    key = lambda pair: len(pair[1]),
+ 111:                    reverse=True)
+ 112:       out, dead = [],{}
+ 113:       for n,nears in rnn:
+ 114:         if len(nears) < min: break
+ 115:         if not n in dead:
+ 116:           out += [lst[n]]
+ 117:           for z in nears:
+ 118:             dead[z] = True
+ 119:       return out      
+ 120:       
+ 121:   def dist(t,j,k):
+ 122:     "Does the calcs"
+ 123:     def colxy(cols,xs,ys):
+ 124:       for col in cols:
+ 125:         x = xs[col.pos]
+ 126:         y = ys[col.pos]
+ 127:         if x == "?" and y=="?": continue
+ 128:         yield col,x,y
+ 129:     def far(col,x,y):
+ 130:       y = col.norm(y)
+ 131:       x = 0 if y > 0.5 else 1
+ 132:       return x,y
+ 133:     #---------
+ 134:     n=all=0
+ 135:     for col in colsxy(t.indep.syms,j,k):
+ 136:       if x== "?" or y == "?":
+ 137:         n   += 1
+ 138:         all += 1
+ 139:       else:
+ 140:         inc = 0 if x == y else 1
+ 141:         n   += 1
+ 142:         all += inc
+ 143:     for col,x,y in colxy(t.indep.nums,j,k):
+ 144:       if   x == "?" : x,y = far(col,x,y)
+ 145:       elif y == "?" : y,x = far(col,y,x)
+ 146:       else          : x,y = col.norm(x), col.norm(y)
+ 147:       n   += 1
+ 148:       all += (x-y)**2
+ 149:     return all**0.5 / n**0.5   
+ 150:   
+ 151:   def table(src):
+ 152:     for cells in values(src):
+ 153:       if t:
+ 154:         t += cells
+ 155:       else:
+ 156:        t = Table(cells)
+ 157:     return t
 ```
 
 Helper functions:
@@ -203,15 +198,15 @@ Helper functions:
   seen that klass before, create a list of `Some` counters
   (one for each column).
 
-<a href="smote.py#L202-L207"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="smote.py#L208-L213"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
- 163:   class Default(dict):
- 164:     def __init__(i, default): i.default = default
- 165:     def __getitem__(i, key):
- 166:       if key in i: return i.get(key)
- 167:       return i.setdefault(key, i.default())
- 168:   
+ 158:   class Default(dict):
+ 159:     def __init__(i, default): i.default = default
+ 160:     def __getitem__(i, key):
+ 161:       if key in i: return i.get(key)
+ 162:       return i.setdefault(key, i.default())
+ 163:   
 ```
 
 

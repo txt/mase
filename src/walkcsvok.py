@@ -35,15 +35,15 @@ rainy    , 71, 91, TRUE , no"""
 
 @ok
 def _line():
-  for line in lines(FROM(weather)):
+  for line in lines(weather):
     print("[",line,"]",sep="")
 
 @ok
 def _row():
-  for row in rows(FROM(weather)):
+  for row in rows(lines('weather.csv')):
     print("[",row,"]",sep="")
 
 @ok
-def _values():
-  for cells in values(FROM(weather)):
+def _col():
+  for cells in cols(lines(weather)):
     print(cells)

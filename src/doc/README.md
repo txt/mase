@@ -44,7 +44,9 @@ of search-based optimization for exploring models
 </td>
 <td valign=top  xwidth="100px">
 
-6. <a href="DE.md">DE</a><br>
+8. <a href="src/gadgets.md">Gadgets</a><br>
+7. <a href="DE.md">DE</a><br>
+6. <a href="src/doc/Hoa-NCSU-2015.pdf">Effort Estimation (Dr. Hoa's talk)</a><br>
 5. <a href="src/dsl101.md">DSLs</a><br>
 4. <a href="MWS.md">MaxWalkSat</a><br>
 3. <a href="SA.md">SA 101</a><br>
@@ -67,14 +69,18 @@ of search-based optimization for exploring models
 
 </td><td valign=top xwidth="100px">
 
-2. <a href="REVIEW3.md">Review3</a><br>  
-1. <a href="REVIEW2.md">Review2</a><br>  
-0. <a href="REVIEW1.md">Review1</a><br>  
+7. <a href="REVIEW7.md">Review7</a><br>
+6. <a href="REVIEW6.md">Review6</a><br>
+5. <a href="REVIEW5.md">Review5</a><br>  
+4. <a href="REVIEW4.md">Review4</a><br>  
+3. <a href="REVIEW3.md">Review3</a><br>  
+2. <a href="REVIEW2.md">Review2</a><br>  
+1. <a href="REVIEW1.md">Review1</a><br>  
 
 </td><td valign=top><small>
-11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/"><br>
-Context managers2</a>a<br>
-10. <a href="https://github.com/rahlk/learnPy/blob/master/Lecture4.ipynb">Context managers1</a><br>
+11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/">
+Cxt manager2</a><br>
+10. <a href="https://github.com/rahlk/learnPy/blob/master/Lecture4.ipynb">Cxt manager1</a><br>
 9. <a href="https://docs.google.com/spreadsheets/d/1VAHzvm4f4yYu5ELjwE6y1hu0szluWgRUki-Mc-eCMDg/edit?usp=sharing">auto norm</a><br>
 8. <a href="https://goo.gl/1nYBsj">SA calc</a><br>
 7. <a href="https://github.com/CSC591-MASE-ASA/x9115asa/blob/master/paper/Summary3.md">Goals</a>; <a href="img/reBad.png">history</a><br>

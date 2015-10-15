@@ -9,13 +9,20 @@ def _some():
   rseed(1)
   s = Some(16)
   for i in xrange(100000):
-    s += i
+    s.add(i)
   assert sorted(s.any)== [ 5852, 24193, 28929, 38266,
                           41764, 42926, 51310, 52203,
                           54651, 56743, 59368, 60794,
                           61888, 82586, 83018, 88462]
-  print(s.hi())
 
+@ok
+def _sym():
+  rseed(1)
+  s = Sym()
+  for i in list('asdasdas asdsdasa'):
+    s.add(i)
+  print(s.all,s.n,s.cache.any)
+  
 weather="""
 
 outlook,

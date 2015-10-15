@@ -1,3 +1,4 @@
+from __future__ import print_function, division
 #########################################################
 # This is free and unencumbered software released into
 # the public domain.
@@ -43,7 +44,7 @@
 # For more information, please refer to
 # http://unlicense.org
 #########################################################
-from __future__ import print_function, division
+
 import sys
 sys.dont_write_bytecode = True
 
@@ -69,18 +70,28 @@ sin = math.sin
 sqrt= math.sqrt
 r   = random.random
 isa = isinstance
+nl = lambda: print("")
+
+def seed(s=None):
+  if s == None: s = the.MISC.seed
+  random.seed(s)
 
 def say(*lst):
   sys.stdout.write(', '.join(map(str,lst)))
   sys.stdout.flush()
-  
+
+def printer(i,**d):
+   return i.__class__.__name__ + str(o(**d))[1:]
+ 
 def r3(lst,n=3):
   return map(lambda x:round(x,n),lst)
 
-def r5(lst): return r3(lst,5)
 
-def seed(x=None):
-  random.seed(x or the.MISC.seed)
+def r2(lst): return r3(lst,2)
+def r5(lst): return r3(lst,5)
+def r7(lst): return r3(lst,7)
+def r10(lst): return r3(lst,10)
+
 
 def shuffle(lst):
   random.shuffle(lst)
@@ -213,7 +224,7 @@ def MISC(): return o(
     tiles=[0.1 ,0.3,0.5,0.7,0.9],
     marks=["-" ," "," ","-"," "],
     show=o(indent=2,
-           width=50))
+           width=150))
 """
 
 ### Temporarily Setting, the Resetting
@@ -235,11 +246,13 @@ def use(x,**y):
   return (x,y)
 
 @contextmanager
-def study(what,*usings):
+def study(what,*usings,**flags):
   """Maybe change settings. Always call 
      seed(). Afterwards, set  settings back 
      to defaults."""
-  print("\n# " + "-" * 50,                 # before
+  loud = flags.get("verbose",True)
+  loud and print(
+        "\n# " + "-" * 50,                 # before
         "\n# ", what, "\n#",               # before
         datetime.datetime.now().strftime(  # before
           "%Y-%m-%d %H:%M:%S"))            # before
@@ -247,12 +260,12 @@ def study(what,*usings):
     using(**override)                      # before: make new settings
   seed()                                   # before: reset seed
   t1 = time.time()                         # before
-  show(the)                                # before
-  print("")                                # before
+  loud and show(the)                       # before
+  loud and print("")                       # before
   yield                                      
   t2 = time.time()                         # after
-  print("\n# " + "-" * 50)                 # after
-  print("# Runtime: %.3f secs\n" % (t2-t1))# after  : print runtime
+  loud and print("\n# " + "-" * 50)        # after
+  loud and print("# Runtime: %.3f secs\n" % (t2-t1))# after  : print runtime
   for (using,_) in usings:                 # after  : reset settings
     using()                                # after
 """
