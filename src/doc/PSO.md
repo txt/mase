@@ -9,6 +9,8 @@ consider how tiny little birds called  starling self-organize into fantastic pat
 
 ![startlongs](img/starlings.png)
 
+<iframe width="420" height="315" src="https://www.youtube.com/embed/iRNqhi2ka9k" frameborder="0" allowfullscreen></iframe>
+
 See the [fantastic videos of starling murmurations](https://www.youtube.com/watch?v=iRNqhi2ka9k).
 
 So, how can flocks form into fantatsic patterns?
