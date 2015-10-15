@@ -5,6 +5,8 @@
 [Code](https://github.com/txt/mase/tree/master/src) |
 [Lecturer](http://menzies.us) 
 
+
+
 # Iterators for Walking CSV Data
 
 Can handing raw strings, files, zip files.
@@ -17,7 +19,7 @@ Also assumes first line is column names.
 
 The function `FROM` returns iterators that can handle different kinds of data.
 
-<a href="walkcsv.py#L22-L47"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="walkcsv.py#L21-L46"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
    1:   def lines(x):
@@ -50,7 +52,7 @@ The function `FROM` returns iterators that can handle different kinds of data.
 
 ## Iterators
 
-<a href="walkcsv.py#L53-L80"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
+<a href="walkcsv.py#L52-L86"><img align=right src="http://www.hungarianreference.com/i/arrow_out.gif"></a><br clear=all>
 ```python
 
   27:   def rows(src):
@@ -80,7 +82,14 @@ The function `FROM` returns iterators that can handle different kinds of data.
   51:       want = want or [col for col in xrange(len(lst))
   52:                       if lst[col][0] != "?" ]
   53:       yield [ make(lst[col]) for col in want ]
-  54:       
+  54:   
+  55:   def headBody(src):
+  56:     head=None
+  57:     for cells in cols(src):
+  58:       if head:
+  59:         return head,cells
+  60:       else:
+  61:         head = cells
 ```
 
 

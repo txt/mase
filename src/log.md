@@ -267,7 +267,7 @@ From that population, we can generate another distribution that is nearly the sa
  115:     print found.counts
  116:     print sum(found.counts.values())
  117:   
- 118:   if __name__ == "__main__": eval(cmd())
+ 118:   if __name__ == "__main__": eval(cmd()) 
  119:   
  120:   
 ```
