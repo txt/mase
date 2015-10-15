@@ -13,7 +13,7 @@
 
 If ever you want to relax a little and reflect on the glories of nature,
 consider how tiny little birds called  starling self-organize into fantastic patterns
-(called _murmurations_):
+(called _[murmurations](https://www.youtube.com/watch?v=iRNqhi2ka9k)_):
 
 ![startlongs](img/starlings.png)
 
