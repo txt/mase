@@ -25,6 +25,7 @@
 + Next release problem
      + Assuming all requirements are independent [Section 4.1 and start of Section 7](http://crest.cs.ucl.ac.uk/fileadmin/crest/sebasepaper/ZhangHM07.pdf)
      + Otherwise: [See section 3,4,5.1](http://dl.acm.org/citation.cfm?id=2042264)
+	       + See [Python code](https://github.com/ai-se/storm/blob/master/Problems/NRP/nrp.py) for NRP with dependents.
 + [Modeller](https://github.com/nave91/modeller)
      + [XOMOk](http://menzies.us/pdf/05xomo101.pdf): software project defects,
 	          effort, time ,risk;
