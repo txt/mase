@@ -7,7 +7,7 @@ If ever you want to relax a little and reflect on the glories of nature,
 consider how tiny little birds called  starling self-organize into fantastic patterns
 (called _murmurations_):
 
-[[img/starlings.png]]
+![startlongs](img/starlings.png)
 
 See the [fantastic videos of starling murmurations](https://www.youtube.com/watch?v=iRNqhi2ka9k).
 
@@ -125,7 +125,7 @@ for a long list of exciting variants to this form).
 New velocity = old velocity plus a pull towards my best plus a pull towards everyone'es best.
 
 
-[[img/psoAdd.png]]
+![img](img/psoAdd.png)
 
 ### The Details
 
