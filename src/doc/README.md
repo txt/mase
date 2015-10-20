@@ -44,7 +44,7 @@ of search-based optimization for exploring models
 </td>
 <td valign=top  xwidth="100px">
 
-10. <a href="http://www.slideshare.net/timmenzies/gale-geometric-active-learning-for-searchbased-software-engineering">GALE</a>: <a href="http://tiny.cc/gale15code">code</a><br>
+10. <a href="http://www.slideshare.net/timmenzies/gale-geometric-active-learning-for-searchbased-software-engineering">GALE</a> (<a href="http://tiny.cc/gale15code">code</a>)<br>
 9. <a href="PSO.md">PSO</a><br>
 8. <a href="src/gadgets.md">Gadgets</a><br>
 7. <a href="DE.md">DE</a><br>
