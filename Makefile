@@ -14,6 +14,10 @@ update: ready
 status: ready
 	@- git status
 
+permit:
+	chmod -R g+rwX .
+	find . -type d -exec chmod g+s '{}' +
+
 ready:
 	@git config --global credential.helper cache
 	@git config credential.helper 'cache --timeout=3600'
