@@ -15,8 +15,26 @@ and paste into [the submission page](https://goo.gl/lZEmEm).
 
 ## What to do
 
-Write a report applying the stats (Scott-Knott, a12) on performance data
-collected from different optimizers on harder models (
+For each of the following,
+write a report (1500 words+) applying the stats (Scott-Knott, a12) on performance data
+collected from different optimizers on five hard models (see [Table1](http://e-collection.library.ethz.ch/eserv/eth:24696/eth-24696-01.pdf)) using
+
+Your report should
+
++ Explain all algorithms (so I know that you know what is going on in them)
++ The whole report should be a _story_ that take the reader from some initial shared place to some final new and exciting place.
+
+## Code8
+
+
+For DE and MWS and SA, code up the Type1,Type2, Type3 comparison operators and use them to:
+
++ Find the final era computed by DE, MWS, SA (with early termination)
++ Computer the _loss_ numbers between era0 the final era
+     + Important implementation note: repeat the above with 20 different baseline populations. For each baseline, run DE,MWS,SA.
+
+Apply the above for DTLZ7 with 2 objectives 10 decisions.
+
 
 
 ### A standard genetic algorithm
