@@ -52,9 +52,17 @@ Collect a performance statistic:
 +  compute the _loss_ statisic described below between all
    pairs of candidates in era0 and last era.
 
-Repeat the above for 20 different seeds. Compare with the stats methods
-discussed last week.
+Repeat the above for 20 different seeds.
 
+Compare with the stats methods discussed last week.
+
+Warning:
+
++ When comparing N optimizers for R repeats....\
+    + For each repeat, generate one new baseline, then...
+         + Run each optimizer for each repeat.
+   
+        
 ## Comparison Type2: Between sets of candidates from the same optimizer
 
 
