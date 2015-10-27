@@ -57,13 +57,13 @@ print("""
 from ok import *
 from gadgets import *
 
-@ok
+#@ok
 def _seed():
   seed(1)
   assert 0.134364244111 < r() < 0.134364244113 
 
   
-@ok
+#@ok
 def _xtileX() :
   import random
   seed(1)
@@ -75,7 +75,7 @@ def _xtileX() :
 
 
 
-@ok
+#@ok
 def _log():
   with study("log",
              use(SOMES,size=10)):
@@ -94,19 +94,19 @@ def _log():
   assert the.SOMES.size == 256
 
 
-@ok
+#@ok
 def _fill1():
   b4 = Schaffer([1],[1,2])
   assert str(b4.clone()) ==  \
     "Schaffer{'objs': [None], " + \
     "'aggregated': None, 'decs': [None, None]}"
 
-@ok
+#@ok
 def _fill2():
   b4 = Schaffer()
   assert b4.clone().__class__ == Schaffer
 
-@ok
+#@ok
 def _want():
   with study("log",
              use(SOMES,size=10)):
@@ -123,7 +123,7 @@ def _want():
       show(map(lambda n: z.fromHell(n,log),
                sorted(log.some())))
   
-@ok
+#@ok
 def _gadgets1(f=Schaffer):
   with study(f.__name__,
              use(MISC,
@@ -139,16 +139,16 @@ def _gadgets1(f=Schaffer):
         print(whats, n,what.tiles())
 
        
-@ok
+#@ok
 def _gadgets2(): _gadgets1(Fonseca)
 
-@ok
+#@ok
 def _gadgets3(): _gadgets1(Kursawe)
 
-@ok
+#@ok
 def _gadgets4(): _gadgets1(ZDT1)
 
-@ok
+#@ok
 def _mutate():
   for m in [0.3,0.6]:
     with study("mutate",
@@ -164,7 +164,7 @@ def _mutate():
 
 
             
-@ok
+#@ok
 def _opt(m=Schaffer,optimizer=sa):
   def show(txt,what,all):
     all = sorted(all)
@@ -190,32 +190,32 @@ def _de(m=Schaffer):
   _opt(m,de)
 
 
-@ok
+#@ok
 def _opt0(): _opt()
 @ok
 def _de0(): _de(Schaffer)
 
-@ok
+#@ok
 def _opt1(): _opt(Fonseca,sa)
 @ok
 def _de0(): _de(Fonseca)
 
-@ok
+#@ok
 def _opt2(): _opt(Kursawe)
 @ok
 def _de0(): _de(Kursawe)
 
-@ok
+#@ok
 def _opt3(): _opt(ZDT1)
 @ok
 def _de0(): _de(ZDT1)
 
-@ok
+#@ok
 def _opt4(): _opt(Viennet4)
 @ok
 def _de0(): _de(Viennet4)
 
-@ok
+#@ok
 def _threeOthers():
   seed(1)
   lst = list('abcdefg')
@@ -255,7 +255,7 @@ def opts(optimizers,models,n=20):
     print("")
 
             
-@ok
+#@ok
 def _opts():
   opts([sa,de],[Schaffer,Fonseca,Kursawe,ZDT1,Viennet4])
 

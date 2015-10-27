@@ -425,6 +425,10 @@ class About(object):
     return (x - i.lo) / (i.hi - i.lo + 10**-32)
   def ok(i,x):
     return i.lo <= x <= i.hi
+  def fromHeaven(i,x,log,min=None,max=None):
+    norm = i.norm if log.lo == None else log.norm
+    heaven = 0 if i.better == lt else 1
+    return abs(heaven - norm(x))
   def fromHell(i,x,log,min=None,max=None):
     norm = i.norm if log.lo == None else log.norm
     hell = 1 if i.better == lt else 0
@@ -460,7 +464,9 @@ def GADGETS(): return  o(
     lives=5,
     verbose=True,
     nudge=1,
-    patience=64
+    patience= 64,
+    scoreFun   = lambda i,can,logs : i.aggregate(can,logs),
+#    scoreFun   = lambda i,can,logs : i.sums(can,logs)
 )
 """Gadgets are created from subclasses of `Candidate`. For example
 
@@ -556,10 +562,25 @@ class Gadgets:
        can.aggregate = agg ** 0.5 / n ** 0.5
     return can.aggregate
 
+  def sums(i,can,logs):
+    "Return the aggregate. Side-effect: store it in the can"
+    if can.aggregate == None:
+       agg = 0
+       n = 1
+       for obj,about,log in zip(can.objs,
+                                i.abouts.objs,
+                                logs.objs):
+         n   += 1
+         inc = about.fromHeaven(obj,log)
+         agg *= inc 
+       can.aggregate = agg  
+    return can.aggregate
+
   def energy(i,can,logs):
     "Returns an energy value to be minimized"
+    how = the.GADGETS.scoreFun
     i.eval(can)
-    e = abs(1 - i.aggregate(can,logs))
+    e = abs(1 - how(i,can,logs))
     if e < 0: e= 0
     if e > 1: e= 1
     return e

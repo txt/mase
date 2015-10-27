@@ -15,13 +15,13 @@
    1:   from ok import *
    2:   from gadgets import *
    3:   
-   4:   @ok
+   4:   #@ok
    5:   def _seed():
    6:     seed(1)
    7:     assert 0.134364244111 < r() < 0.134364244113 
    8:   
    9:     
-  10:   @ok
+  10:   #@ok
   11:   def _xtileX() :
   12:     import random
   13:     seed(1)
@@ -33,7 +33,7 @@
   19:   
   20:   
   21:   
-  22:   @ok
+  22:   #@ok
   23:   def _log():
   24:     with study("log",
   25:                use(SOMES,size=10)):
@@ -52,19 +52,19 @@
   38:     assert the.SOMES.size == 256
   39:   
   40:   
-  41:   @ok
+  41:   #@ok
   42:   def _fill1():
   43:     b4 = Schaffer([1],[1,2])
   44:     assert str(b4.clone()) ==  \
   45:       "Schaffer{'objs': [None], " + \
   46:       "'aggregated': None, 'decs': [None, None]}"
   47:   
-  48:   @ok
+  48:   #@ok
   49:   def _fill2():
   50:     b4 = Schaffer()
   51:     assert b4.clone().__class__ == Schaffer
   52:   
-  53:   @ok
+  53:   #@ok
   54:   def _want():
   55:     with study("log",
   56:                use(SOMES,size=10)):
@@ -81,7 +81,7 @@
   67:         show(map(lambda n: z.fromHell(n,log),
   68:                  sorted(log.some())))
   69:     
-  70:   @ok
+  70:   #@ok
   71:   def _gadgets1(f=Schaffer):
   72:     with study(f.__name__,
   73:                use(MISC,
@@ -97,16 +97,16 @@
   83:           print(whats, n,what.tiles())
   84:   
   85:          
-  86:   @ok
+  86:   #@ok
   87:   def _gadgets2(): _gadgets1(Fonseca)
   88:   
-  89:   @ok
+  89:   #@ok
   90:   def _gadgets3(): _gadgets1(Kursawe)
   91:   
-  92:   @ok
+  92:   #@ok
   93:   def _gadgets4(): _gadgets1(ZDT1)
   94:   
-  95:   @ok
+  95:   #@ok
   96:   def _mutate():
   97:     for m in [0.3,0.6]:
   98:       with study("mutate",
@@ -122,7 +122,7 @@
  108:   
  109:   
  110:               
- 111:   @ok
+ 111:   #@ok
  112:   def _opt(m=Schaffer,optimizer=sa):
  113:     def show(txt,what,all):
  114:       all = sorted(all)
@@ -148,32 +148,32 @@
  134:     _opt(m,de)
  135:   
  136:   
- 137:   @ok
+ 137:   #@ok
  138:   def _opt0(): _opt()
  139:   @ok
  140:   def _de0(): _de(Schaffer)
  141:   
- 142:   @ok
+ 142:   #@ok
  143:   def _opt1(): _opt(Fonseca,sa)
  144:   @ok
  145:   def _de0(): _de(Fonseca)
  146:   
- 147:   @ok
+ 147:   #@ok
  148:   def _opt2(): _opt(Kursawe)
  149:   @ok
  150:   def _de0(): _de(Kursawe)
  151:   
- 152:   @ok
+ 152:   #@ok
  153:   def _opt3(): _opt(ZDT1)
  154:   @ok
  155:   def _de0(): _de(ZDT1)
  156:   
- 157:   @ok
+ 157:   #@ok
  158:   def _opt4(): _opt(Viennet4)
  159:   @ok
  160:   def _de0(): _de(Viennet4)
  161:   
- 162:   @ok
+ 162:   #@ok
  163:   def _threeOthers():
  164:     seed(1)
  165:     lst = list('abcdefg')
@@ -213,7 +213,7 @@
  199:       print("")
  200:   
  201:               
- 202:   @ok
+ 202:   #@ok
  203:   def _opts():
  204:     opts([sa,de],[Schaffer,Fonseca,Kursawe,ZDT1,Viennet4])
  205:   
