@@ -67,6 +67,7 @@ of search-based optimization for exploring models
 0. <a href="ABOUT.md">About</a>
 
 </td><td valign=top xwidth="100px">
+11. <a href="CODE890.md">Code7</a><br>
 10. <a href="CODE7.md">Code7</a><br>
 9. <a href="CODE6.md">Code6</a><br>
 8. <a href="CODE5.md">Code5</a><br>
