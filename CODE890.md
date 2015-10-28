@@ -8,6 +8,12 @@
 
 # Code890: Final Project, cs591
 
+Code8 and 9 are worth 6 marks each (plus 1 bonus for completing an extra homework).
+
+Code10 is worth 6 marks.
+
+Total: 20 marks.
+
 ## What to Hand in
 
 For each of the following tasks, create a sub-directory called
@@ -23,79 +29,78 @@ and paste into [the submission page](https://goo.gl/lZEmEm).
 
 ## What to do
 
-Write a report applying the stats (Scott-Knott, a12) on performance data
-collected from different optimizers on harder models (
+For each of the following,  write a Markdown readme.md file(1500 words+)
+Note that there will be some overlap in the content
+of these reports. Feel free to "borrow" text from
+your earlier reports for your later reports-- ideally, improving the borrowed bits each time.
+
+Your report must
+
++ Explain all algorithms it discussed (so I know that you know what is going on in them)
++ Succinctly describe the results. Not 1000 tables, but key insights relating to a small number of key displayed
+  results
+  + No figure should be used _unless_ it is discussed in the text;
+  + No text should claim a result _unless_ there is an associated future.
 
 
-### A standard genetic algorithm
+Your report should be a [technical report](https://www.cg.tuwien.ac.at/resources/HowToWriteAScientificPaper.html).
+For a list of sections of those reports, plus some tips, see
 
-+ Mutation: at probability 5%
-+ Crossover: one point (i.e. pick a random decision, take all dad's decisions up to that point, take alll mum's decisions after that point)
-+ Size of population: 100
-+ Number of generations: 1000 (but have early termination considered every 100 generations)
++ [here](http://cs.stanford.edu/people/widom/paper-writing.html)
++ and [here](https://www.cg.tuwien.ac.at/resources/HowToWriteAScientificPaper.html)
++ and [here](http://www.dgp.toronto.edu/~hertzman/advice/writing-technical-papers.pdf)
 
-### 
-Basic Differential Evolution
+Two key parts of the reports are "threats to validity" and "future work". For notes on those sections, please see:
 
-Read the [lecture](DE.md) on Differential Evolution
++ _[threats to validity](http://www.robertfeldt.net/publications/feldt_2010_validity_threats_in_ese_initial_survey.pdf)_
++ _[future work](https://guidetogradschoolsurvival.wordpress.com/2011/04/15/how-to-write-future-workconclusions-2/)_.
+Note that the _better_ your future work section, the _better_ your mark. In future work,
+      we really can see what your learned from the experience of this work-- what strange quirks
+	  you have observered and what insights those quirks may bring.
 
-To the generic experimentation loop of Code6,
-add
-
-+ DE
-+ Yet another model: Golinski (from the usual place).
-
-For energy, use the fromHell calculation to generate an aggregate
-
-+ Generate the frontier
-+ For each candidate, evaluate the objectives
-+ Incrementally track of the _min,max_ seen for each objective
-+ Run back over the frontier, computing the aggregate score
-  (note that hell = 1 and so _g<sub>1</sub>_ = _fromHell_ for one objective
-  _f<sub>1</sub>_ is the
-  normalized distance to 1. Then, the aggregate energy for _n_ objectives    
-  _e = 1 - sqrt(sum( g<sub>i</sub><sup>2</sup> )) / sqrt(n)_
+## Code8
 
 
-(Aside: We use "_1 - "_ so this becomes a value we want to minimize. So we say
-candiadte1 is better than candidate2 if it generates lower energy.)
+For DE and MWS and SA, code up the Type1,Type2, Type3 comparison operators and use them to:
 
-Now, after frontier0, if we incrementally track min
-max objective scores then all future candidates can
-be stamped with their _"e"_ just as soon as they are
-created.
++ Find the final era computed by DE, MWS, SA (with early termination)
++ Computer the _loss_ numbers between era0 the final era
+     + Important implementation note: repeat the above with 20 different baseline populations. For each baseline, run DE,MWS,SA.
 
+Apply the above for [DTLZ7](http://e-collection.library.ethz.ch/eserv/eth:24696/eth-24696-01.pdf)
+with 2 objectives 10 decisions.
 
-Try and make a report that looks like the output from SA.
+Using the statistical machinery discussed in class (Scott-Knott, a12, bootstrap) to decide in any of
+DE, MWS, SA is best for this model. TO collect data, 20 times, generate a baseline population and for each
+baseline, the run DE, MWS, SA from that baseline.
 
-## DE(s) = DE + elite sampling
+## Code9: A Simple Standard Genetic Algorithm
 
-Try some elite sampling, keeping the _s_ best items in frontier. At the _start_ of each
-generation of DE, sort the frontier by the aggregate and find the min/max aggregate
-score (these will be found at the start and end of the list). Let _small_ be
+GAs mutate by swapping parts of daddy into parts of mummy
 
-_min + (max-min)*s/100_
-
-(e.g. at _s=33_ you are keeping just the best 33% of of the frontier as scored
-by the aggregate score).
-
-For all the models you are currently running, collect the
-the median values of energy in the the last era generated by DE(s) for s in _(12,25,33,50,100)_ (note that _s=100_ makes DE(s) the same as standard DE). Offer a conclusion: is DE(s) useful?
-
-(Aside: comparing just the medians is kind of brain dead but until we
-have the stats machinery of CODE8, its the best we can do for now.)
-
-## Tips
-
-### As before Not everything is "ok".
++ Defaults for mutation: at probability 5%
++ Defaults for crossover: one point (i.e. pick a random decision, take all dad's decisions up to that point, take alll mum's decisions after that point)
++ Defaults for select: for all pairs in the population, apply binary domination.
++ Defaults for number of candidates: 100
++ Defaults for number of generations: 1000 (but have early termination considered every 100 generations)
 
 
-Note that this model has constraints-- so after you
-_mutate_ a solution, you must check if it is _ok_
-(I.e. does not violate the constraints-- otherwise,
-mutate again until ok).
+Do NOT analyze the result statistically, but offer succinct diagrams comparing the performance results
+on 20 repeats of  [DTLZ1,3,5,7](http://e-collection.library.ethz.ch/eserv/eth:24696/eth-24696-01.pdf)
+with 2,4,6,8 objectives and 10,20,40 decisions
 
+## Code10: Hyper parameter optimization (hard)
 
+Use DE to tune your defaults for GAs.
+
+Create at least three options for mutation, crossover, select, number of candidates, number of generations.
+See if  standard DE (default control settings) can improve on the scores seen in COde9.
+
+Using the statistical machinery discussed in class (Scott-Knott, a12, bootstrap) to decide in any of
+tuned or untuned GAs are best for
+[DTLZ1,3,5,7](http://e-collection.library.ethz.ch/eserv/eth:24696/eth-24696-01.pdf)
+with 2,4,6,8 objectives and 10,20,40 decisions. Remember to repeat your runs of tuned vs untuned using the
+same baseline populations.
 
 
 _________

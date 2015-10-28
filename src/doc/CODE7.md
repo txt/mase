@@ -4,7 +4,7 @@
 
 After doing all the following, you should 
 be able to write one source files into  `hw/code/7` along with
-screen snaps of your work (if relevant).
+screen snaps of your work (if relevant). 
 
 Using some URL shortener (e.g. goo.gl), shorten the URL to `hw/code/7`
 and paste into [the submission page](https://goo.gl/lZEmEm).
