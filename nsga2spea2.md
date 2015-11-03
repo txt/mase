@@ -39,9 +39,9 @@ BUt how do you finds the bands? And what is crowd-pruning?
 Primary rankings: sort by how many things you dominate:
 
 + Part one: find....
-  + _n<sub>p</sup>_: number of candidates that dominate _p_ (the upstream counter)
-  + _S<sup>p</sup>_: candidates dominated by _p_ (the downstream set)
-  + _F<sup>1</sup>_: frontier 1 (the frontier of things dominated by no one) 
+  + _n<sub>p</sub>_: number of candidates that dominate _p_ (the upstream counter)
+  + _S<sub>p</sub>_: candidates dominated by _p_ (the downstream set)
+  + _F<sub>1</sub>_: frontier 1 (the frontier of things dominated by no one) 
 + Part two...
    + For _P_ in frontier i
      + For everything _Q_ dominated by _P_
@@ -63,8 +63,8 @@ Find an approximation to the cuboid space around around each
       + Find the _gap_ equal to the sum of the space
         _up_ and _down_ to the next candidate
       + Normalize _gap_  by the max-min in that objective.
-      + Add _gap_ to _I<sup>p</sup>_
-+ Sort candidates by _I<sup>p</sup>_
+      + Add _gap_ to _I<sub>p</sub>_
++ Sort candidates by _I<sub>p</sub>_
   + Discard the smaller ones. 
 
 ![cubioid](img/cuboid.png)
