@@ -38,4 +38,6 @@ Format this as:
 And when you pass this to `rdivDemo(data)`, you'll get the nice ascii charts.
 
 ### 2. `fromFile(f='filename.dat')`
-You may also save your outputs to a file, like this [one]()
+You may also save your outputs to a file, like this [one](https://github.com/txt/mase/blob/master/src/doc/data.dat). In that case, all you have to do is run `fromFile(f='filename.dat')` to get the outputs.
+
+
