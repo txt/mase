@@ -93,7 +93,7 @@ of search-based optimization for exploring models
 
 </td><td valign=top><small>
 12. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/">
-Cxt manager2</a><br>
+Scott Knott Demo</a><br>
 11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/">
 Cxt manager2</a><br>
 10. <a href="https://github.com/rahlk/learnPy/blob/master/Lecture4.ipynb">Cxt manager1</a><br>
