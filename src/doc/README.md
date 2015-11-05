@@ -84,7 +84,7 @@ of search-based optimization for exploring models
 1. <a href="REVIEW1.md">Review1</a><br>  
 
 </td><td valign=top><small>
-12. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/">
+12. <a href="https://github.com/txt/mase/blob/master/src/doc/Scott-Knott-Demo.md">
 Scott Knott Demo</a><br>
 11. <a href="https://codefisher.org/catch/blog/2015/02/10/python-decorators-and-context-managers/">
 Cxt manager2</a><br>
