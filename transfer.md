@@ -72,8 +72,12 @@ What is the relationship between training and testing data?
 
 Nam, Jaechang, and Sunghun Kim. "[Heterogeneous defect prediction](http://lifove.net/research/files/HDP_FSE2015.pdf)." Proceedings of the 2015 10th Joint Meeting on Foundations of Software Engineering. ACM, 2015.
 
+<<<<<<< HEAD
 Key idea: __Synonym discovery__
 Given a target(testing) data set, we have to find the appropriate traning set to build the learner. Here "__appropiate__" means the distribution of the source(training) set should be "the __most__ simialr" to the target(testing) data set.
+=======
+Key idea: Synonym discovery. Given a target(testing) data set, we have to find the appropriate traning set to build the learner. Here "__appropiate__" means the distribution of the source(training) set should be "the most simialr" to the target(testing) data set.
+>>>>>>> 4c0ad6fdd5dbc83cc8a6042227ebb56d509d6894
 
 
 Assumption: Training and testing data sets are from different projects with different attributes.
