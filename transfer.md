@@ -6,7 +6,7 @@
 [Lecturer](http://menzies.us) 
 
 
-# Transfer Defect Prediction 
+# Transfer Learning for Defect Prediction 
 
  * What's defect prediction? 
  * How to predict? 
@@ -15,7 +15,7 @@
  
 ## What's defect prediction?
 
-Human programmers are clever, but flawed. Coding adds functionality, but also defects. Since prograrmning inherently introduces defects into program, it's important to test them before releasing.
+Human programmers are clever, but not flawless. Coding adds functionality, but also defects. Since prograrmning inherently introduces defects into program, it's important to test them before releasing.
 ![](https://github.com/txt/mase/blob/master/img/defect/bugs.png)
 
 For software developers(bug creators), there're several tools to help you get rid of some bugs:
@@ -24,19 +24,22 @@ For software developers(bug creators), there're several tools to help you get ri
   * nose(unit test)
   * unittest(unit test)
   
-For quality assurance(QA) team, software assessment budgets are finite while assessment effeectiveness increases exponentially iwth assessment effort. For example, for black-box testing methods, a linear increase in the confidence C of finding defecgts anca take expoentntially more effort. __So the standard practice is to apply the best available resources on code sections that seem most critical(most bug-prone).__ 
+For quality assurance(QA) team, software assessment budgets are finite while assesment effort increases exponentionally wrt. assesment effectiveness. For example, for black-box testing methods, a linear increase in the confidence C of finding defects can take expoentntially more effort. __So the standard practice is to apply the available resources on code sections that seem most critical(most bug-prone).__ 
 
-We need a rig to predict which files, modules or classes are bug-prone before testing. HERE defect predictor comes in!
+We need a rig to predict which files, modules or classes are (probably) bug-prone before testing. (This is where) HERE defect predictor comes in!
 
 ## How to predict?
 
 Menzies, T.; Greenwald, J.; Frank, A., ["Data Mining Static Code Attributes to Learn Defect Predictors,"](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4027145&tag=1) in Software Engineering, IEEE Transactions on , vol.33, no.1, pp.2-13, Jan. 2007
+
+__What does prediction mean?__ Use historical data as the training data to train(fit) the data mining algorithm . When the new testing data comes in, we pass the data into the model to get the estimated label for this data.
 
 ![](https://github.com/txt/mase/blob/master/img/defect/attributes.png)
 
 Here's a data set example.
 
 ![](https://github.com/txt/mase/blob/master/img/defect/data.png)
+
 
 Example:
 
@@ -46,30 +49,31 @@ Example:
 
 ![](https://github.com/txt/mase/blob/master/img/defect/WPDP.png)
 
-Such defect predictors are easy to use, widely-used, and useful to use.
+Such defect predictors are easy to use, widely-used, and useful.
 
 * easy to use: static code attributes can be automatically collected, even for very large systems.
-* widely used: researchers and industrial practitioners use sattic attibutes to guide software quality preditions(NASA).
-* useful: defect precitors often find the locaiton of 70% (or more) defects in the code.
+* widely used: researchers and industrial practitioners use static attibutes to guide software quality predictors(NASA).
+* useful: defect precitors often find the location of 70% (or more) defects in the code.
 
 
 ## Why transfer?
 
-The above paradigm is useful when the training and testing(predition) data sets are different versions(releases)for the same project. __What if we want to predict defects on a new project with few historical information? How to get training data sets.__ Can we use:
+The above paradigm is useful when the training and testing(predition) datasets are available within the same project. 
 
-* data sets from different projects with the same attributes
-* or data sets form different projects with different attributes
-* or data sets form different companies
+__What if we want to predict defects on a new project with few/no historical information? How to get training data sets.__ Can we use:
 
-Before answering that, what's fundamental theory of data mining? When using training data to train a data minign algorithm, what's the assumption here?
+* data sets from different projects (within the same organization) with the same attributes
+* or data sets from different projects with different attributes
+* or data sets from different organization
 
-So, the answer is YES.
+What is the relationship between training and testing data?
 
 ## How to transfer?
 
+Nam, Jaechang, and Sunghun Kim. "[Heterogeneous defect prediction](http://lifove.net/research/files/HDP_FSE2015.pdf)." Proceedings of the 2015 10th Joint Meeting on Foundations of Software Engineering. ACM, 2015.
 
-
-Key idea: Synonym discovery. Given a target(testing) data set, we have to find the appropriate traning set to build the learner. Here "__appropiate__" means the distribution of the source(training) set should be "the most simialr" to the target(testing) data set.
+Key idea: __Synonym discovery__
+Given a target(testing) data set, we have to find the appropriate traning set to build the learner. Here "__appropiate__" means the distribution of the source(training) set should be "the __most__ simialr" to the target(testing) data set.
 
 
 Assumption: Training and testing data sets are from different projects with different attributes.
@@ -103,17 +107,6 @@ Details:
 ## How about Performance?
 
 ![](https://github.com/txt/mase/blob/master/img/defect/result.png)
-
-
-
-
-
-
-
-
-
-
-
 
 
 _________
