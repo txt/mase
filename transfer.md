@@ -39,9 +39,10 @@ Here's a data set example.
 ![](https://github.com/txt/mase/blob/master/img/defect/data.png)
 
 Example:
-training data set: ivy-1.1
-learner: CART, randomForests, Logistic Regresssion and so on.
-predicting data set: ivy-1.4
+
+* training data set: ivy-1.1
+* learner: CART, randomForests, Logistic Regresssion and so on.
+* predicting data set: ivy-1.4
 
 ![](https://github.com/txt/mase/blob/master/img/defect/WPDP.png)
 
@@ -89,9 +90,19 @@ STEPS:
 	* Kolmogorov-Smirnov Test based matching
 	* Spearman's correlation based matching
 	 	
-* Prediction: after we get matched source and target metric sets, we can build learners with the source data sets and predict the label of target data sets.
+* Prediction: after we get best matched source and target metric sets, we can build learners with the source data set and predict the label of target data sets.
+
+![](https://github.com/txt/mase/blob/master/img/defect/datasets.png)
+
+Details:
+  
+  * KS test is a non-parameteric two sample test that can be applicable when we are not sure abou the normality of two samples. In defect prediction data sets, some features have exponential distribution and others are unkown. using KS test, we can find the best matched source-target attributes.
+  * For each target data set, we compare all the source data sets except for itself and the source data set with the highest score will be selected as the training data for this testing data.
 
 
+## How about Performance?
+
+![](https://github.com/txt/mase/blob/master/img/defect/result.png)
 
 
 
