@@ -67,7 +67,7 @@ So, the answer is YES.
 
 ## How to transfer?
 
-
+Nam, Jaechang, and Sunghun Kim. "[Heterogeneous defect prediction](http://lifove.net/research/files/HDP_FSE2015.pdf)." Proceedings of the 2015 10th Joint Meeting on Foundations of Software Engineering. ACM, 2015.
 
 Key idea: Synonym discovery. Given a target(testing) data set, we have to find the appropriate traning set to build the learner. Here "__appropiate__" means the distribution of the source(training) set should be "the most simialr" to the target(testing) data set.
 
