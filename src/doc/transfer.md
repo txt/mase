@@ -12,6 +12,6 @@ For software developers(bug creators), there're several tools to help you get ri
   * pylint (static code defect predictors)
   * py.test(unit test)
   * nose(unit test)
-  * unittest(python module)
+  * unittest(unit test)
   
-For quality assurance(QA) team, with the 
+For quality assurance(QA) team, with the finite budgets/efforts, how to 
