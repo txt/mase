@@ -25,6 +25,9 @@ We need a rig to predict which files, modules or classes are bug-prone before te
 Menzies, T.; Greenwald, J.; Frank, A., ["Data Mining Static Code Attributes to Learn Defect Predictors,"](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4027145&tag=1) in Software Engineering, IEEE Transactions on , vol.33, no.1, pp.2-13, Jan. 2007
 
 ![](https://github.com/txt/mase/blob/master/img/defect/attributes.png)
+
+Here's a data set example.
+
 ![](https://github.com/txt/mase/blob/master/img/defect/data.png)
 
 Example:
@@ -55,7 +58,32 @@ So, the answer is YES.
 
 ## How to transfer?
 
-Synonym discovery.
+
+
+Key idea: Synonym discovery. Given a target(testing) data set, we have to find the appropriate traning set to build the learner. Here "__appropiate__" means the distribution of the source(training) set should be "the most simialr" to the target(testing) data set.
+
+
+Assumption: Training and testing data sets are from different projects with different attributes.
+
+![](https://github.com/txt/mase/blob/master/img/defect/framework.png)
+
+
+
+STEPS:
+
+* Metric(attribute) selection: applying metric selection technique to the source.
+	* feature selection is a common method used in data minning for selecting a subset of features by removing redundant and irrelevant features
+	* e.g. grain ratio, chi-square, relief-F methods
+	* Top 15% metrics are selected
+* Metirc(attribute) matching
+	* metrics based on their similarity such as distribution or correlation between source and taret metrics are mached together.
+	* Percentile based matching
+	* Kolmogorov-Smirnov Test based matching
+	* Spearman's correlation based matching
+	 	
+* Prediction: after we get matched source and target metric sets, we can build learners with the source data sets and predict the label of target data sets.
+
+
 
 
 
