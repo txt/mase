@@ -74,6 +74,7 @@ Nam, Jaechang, and Sunghun Kim. "[Heterogeneous defect prediction](http://lifove
 
 
 Key idea: __Synonym discovery__
+
 Given a target(testing) data set, we have to find the appropriate traning set to build the learner. Here "__appropiate__" means the distribution of the source(training) set should be "the __most__ simialr" to the target(testing) data set.
 
 
