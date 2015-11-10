@@ -86,11 +86,15 @@ Given a target(testing) data set, we have to find the appropriate traning set to
 
 Assumption: Training and testing data sets are from different projects with different attributes.
 
-![](https://github.com/txt/mase/blob/master/img/defect/framework.png)
 
+Data Set:
+
+![](https://github.com/txt/mase/blob/master/img/defect/datasets.png)
 
 
 STEPS:
+
+![](https://github.com/txt/mase/blob/master/img/defect/framework.png)
 
 * Metric(attribute) selection: applying metric selection technique to the source.
 	* feature selection is a common method used in data minning for selecting a subset of features by removing redundant and irrelevant features
@@ -104,7 +108,6 @@ STEPS:
 ![](https://github.com/txt/mase/blob/master/img/defect/matching.png) 	
 * Prediction: after we get best matched source and target metric sets, we can build learners with the source data set and predict the label of target data sets.
 
-![](https://github.com/txt/mase/blob/master/img/defect/datasets.png)
 
 Details:
   
