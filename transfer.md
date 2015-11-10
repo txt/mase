@@ -87,12 +87,12 @@ Given a target(testing) data set, we have to find the appropriate traning set to
 Assumption: Training and testing data sets are from different projects with different attributes.
 
 
-Data Set:
+__Data set__:
 
 ![](https://github.com/txt/mase/blob/master/img/defect/datasets.png)
 
 
-STEPS:
+__Steps__:
 
 ![](https://github.com/txt/mase/blob/master/img/defect/framework.png)
 
@@ -109,7 +109,7 @@ STEPS:
 * Prediction: after we get best matched source and target metric sets, we can build learners with the source data set and predict the label of target data sets.
 
 
-Details:
+__Details__:
   
   * KS test is a non-parameteric two sample test that can be applicable when we are not sure abou the normality of two samples. In defect prediction data sets, some features have exponential distribution and others are unkown. using KS test, we can find the best matched source-target attributes.
   * For each target data set, we compare all the source data sets except for itself and the source data set with the highest score will be selected as the training data for this testing data.
