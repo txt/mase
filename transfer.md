@@ -101,11 +101,11 @@ __Steps__:
 	* E.g. grain ratio, chi-square, [relief-F](https://en.wikipedia.org/wiki/Relief_(feature_selection)) methods
 	* Top 15% metrics are selected
 * Metirc(attribute) matching
-	* The key idea is to compute matching scores fall all pairs between source and target metrics. 
+	* The key idea is to compute matching scores for all pairs between source and target metrics. 
 	* Metrics based on their similarity such as distribution or correlation between source and target metrics are mached together.
-		* Percentile based matching
-		* Kolmogorov-Smirnov Test based matching
-		* Spearman's correlation based matching
+		* [Percentile](https://en.wikipedia.org/wiki/Percentile) based matching
+		* [Kolmogorov-Smirnov(KS) Test](https://en.wikipedia.org/wiki/Kolmogorov–Smirnov_test) based matching
+		* [Spearman's correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient) based matching
 	* Maximum weighted bipartite matching is used to select a group  of matched matrics, whose sum of matching scores is highest.
 		
 ![](https://github.com/txt/mase/blob/master/img/defect/matching.png) 
@@ -115,7 +115,7 @@ __Steps__:
 
 __Details__:
   
-  * KS test is a non-parameteric two sample test that can be applicable when we are not sure abou the normality of two samples. In defect prediction data sets, some features have exponential distribution and others are unkown. using KS test, we can find the best matched source-target attributes.
+  * KS test is a non-parameteric two sample test that can be applicable when we are not sure about the normality of two samples. In defect prediction data sets, some features have exponential distribution and others are unkown. using KS test, we can find the best matched source-target attributes.
   * For each target data set, we compare all the source data sets except for itself and the source data set with the highest score will be selected as the training data for this testing data.
 
 
