@@ -1,5 +1,5 @@
 # Transfer Learning for Defect Prediction 
-
+## Road Map
  * What's defect prediction? 
  * How to predict? 
  * Why transfer?
@@ -24,8 +24,6 @@ We need a rig to predict which files, modules or classes are (probably) bug-pron
 
 Menzies, T.; Greenwald, J.; Frank, A., ["Data Mining Static Code Attributes to Learn Defect Predictors,"](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4027145&tag=1) in Software Engineering, IEEE Transactions on , vol.33, no.1, pp.2-13, Jan. 2007
 
-
-
 ![](https://github.com/txt/mase/blob/master/img/defect/attributes.png)
 
 Video: [Are Software Metrics Useful?](https://www.youtube.com/watch?v=O89iu-ghABY)
@@ -35,7 +33,6 @@ Here's a data set example.
 ![](https://github.com/txt/mase/blob/master/img/defect/data.png)
 
 __What does prediction mean?__ Use historical data as the training data to train(fit) the data mining algorithm . When the new testing data comes in, we pass the data into the model to get the estimated label for this data.
-
 
 Example:
 
