@@ -44,17 +44,17 @@ Here's a data set example of [ivy](http://ant.apache.org/ivy/features.html).
 
 Example:
 
-* training data set: ivy-1.1
-* learner: CART, randomForests, Logistic Regresssion and so on.
-* predicting data set: ivy-1.4
+* Training data set: ivy-1.1
+* Learner: CART, randomForests, Logistic Regresssion and so on.
+* Predicting data set: ivy-1.4
 
 ![](https://github.com/txt/mase/blob/master/img/defect/WPDP.png)
 
 Such defect predictors are easy to use, widely-used, and useful.
 
-* easy to use: static code attributes can be automatically collected, even for very large systems.
-* widely used: researchers and industrial practitioners use static attibutes to guide software quality predictors(NASA).
-* useful: defect precitors often find the location of 70% (or more) defects in the code.
+* Easy to use: static code attributes can be automatically collected, even for very large systems.
+* Widely used: researchers and industrial practitioners use static attibutes to guide software quality predictors(NASA).
+* Useful: defect precitors often find the location of 70% (or more) defects in the code.
 
 Q: What's the problem/limitation of this paradigm?  data? attributes?
 
@@ -97,15 +97,19 @@ __Steps__:
 ![](https://github.com/txt/mase/blob/master/img/defect/framework.png)
 
 * Metric(attribute) selection: applying metric selection technique to the source.
-	* feature selection is a common method used in data minning for selecting a subset of features by removing redundant and irrelevant features
-	* e.g. grain ratio, chi-square, [relief-F](https://en.wikipedia.org/wiki/Relief_(feature_selection)) methods
+	* Feature selection is a common method used in data minning for selecting a subset of features by removing redundant and irrelevant features
+	* E.g. grain ratio, chi-square, [relief-F](https://en.wikipedia.org/wiki/Relief_(feature_selection)) methods
 	* Top 15% metrics are selected
 * Metirc(attribute) matching
-	* metrics based on their similarity such as distribution or correlation between source and target metrics are mached together.
-	* Percentile based matching
-	* Kolmogorov-Smirnov Test based matching
-	* Spearman's correlation based matching
-![](https://github.com/txt/mase/blob/master/img/defect/matching.png) 	
+	* The key idea is to compute matching scores fall all pairs between source and target metrics. 
+	* Metrics based on their similarity such as distribution or correlation between source and target metrics are mached together.
+		* Percentile based matching
+		* Kolmogorov-Smirnov Test based matching
+		* Spearman's correlation based matching
+	* Maximum weighted bipartite matching is used to select a group  of matched matrics, whose sum of matching scores is highest.
+		
+![](https://github.com/txt/mase/blob/master/img/defect/matching.png) 
+			
 * Prediction: after we get best matched source and target metric sets, we can build learners with the source data set and predict the label of target data sets.
 
 
